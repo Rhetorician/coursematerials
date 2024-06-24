@@ -2,130 +2,147 @@
 <html>
 <head>
 <style>
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+body {
+  font-family: "Lato", sans-serif;
 }
 
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
   transition: 0.3s;
 }
 
-.tab button:hover {
-  background-color: #ddd;
+.sidenav a:hover {
+  color: #f1f1f1;
 }
 
-.tab button.active {
-  background-color: #ccc;
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 </style>
 </head>
 <body>
 
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'CourseInformation')">Course Information</button>
-  <button class="tablinks" onclick="openTab(event, 'CreditsPrerequisites')">Credits and Prerequisites</button>
-  <button class="tablinks" onclick="openTab(event, 'CourseRequirements')">Course Requirements</button>
-  <button class="tablinks" onclick="openTab(event, 'CourseDescription')">Course Description</button>
-  <button class="tablinks" onclick="openTab(event, 'StudentLearningOutcomes')">Student Learning Outcomes</button>
-  <button class="tablinks" onclick="openTab(event, 'AssignmentAssessmentMethods')">Assignment and Assessment Methods</button>
-  <button class="tablinks" onclick="openTab(event, 'AssignmentDescriptions')">Assignment Descriptions</button>
-  <button class="tablinks" onclick="openTab(event, 'CourseGrading')">Course Grading</button>
-  <button class="tablinks" onclick="openTab(event, 'CommunicationFeedback')">Communication and Feedback</button>
-  <button class="tablinks" onclick="openTab(event, 'CourseUniversityPolicies')">Course and University Policies</button>
-  <button class="tablinks" onclick="openTab(event, 'Schedule')">Schedule</button>
-  <button class="tablinks" onclick="openTab(event, 'FAQs')">FAQs</button>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#CourseInformation">Course Information</a>
+  <a href="#CreditsPrerequisites">Credits and Prerequisites</a>
+  <a href="#CourseRequirements">Course Requirements</a>
+  <a href="#CourseDescription">Course Description</a>
+  <a href="#StudentLearningOutcomes">Student Learning Outcomes</a>
+  <a href="#AssignmentAssessmentMethods">Assignment and Assessment Methods</a>
+  <a href="#AssignmentDescriptions">Assignment Descriptions</a>
+  <a href="#CourseGrading">Course Grading</a>
+  <a href="#CommunicationFeedback">Communication and Feedback</a>
+  <a href="#CourseUniversityPolicies">Course and University Policies</a>
+  <a href="#Schedule">Schedule</a>
+  <a href="#FAQs">FAQs</a>
 </div>
 
-<div id="CourseInformation" class="tabcontent">
-  <h3>Course Information</h3>
-  <p>Content for Course Information.</p>
-</div>
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Syllabus</span>
 
-<div id="CreditsPrerequisites" class="tabcontent">
-  <h3>Credits and Prerequisites</h3>
-  <p>Content for Credits and Prerequisites.</p>
-</div>
+  <div id="CourseInformation" class="tabcontent">
+    <h3>Course Information</h3>
+    <p>Content for Course Information.</p>
+  </div>
 
-<div id="CourseRequirements" class="tabcontent">
-  <h3>Course Requirements</h3>
-  <p>Content for Course Requirements.</p>
-</div>
+  <div id="CreditsPrerequisites" class="tabcontent">
+    <h3>Credits and Prerequisites</h3>
+    <p>Content for Credits and Prerequisites.</p>
+  </div>
 
-<div id="CourseDescription" class="tabcontent">
-  <h3>Course Description</h3>
-  <p>Content for Course Description.</p>
-</div>
+  <div id="CourseRequirements" class="tabcontent">
+    <h3>Course Requirements</h3>
+    <p>Content for Course Requirements.</p>
+  </div>
 
-<div id="StudentLearningOutcomes" class="tabcontent">
-  <h3>Student Learning Outcomes</h3>
-  <p>Content for Student Learning Outcomes.</p>
-</div>
+  <div id="CourseDescription" class="tabcontent">
+    <h3>Course Description</h3>
+    <p>Content for Course Description.</p>
+  </div>
 
-<div id="AssignmentAssessmentMethods" class="tabcontent">
-  <h3>Assignment and Assessment Methods</h3>
-  <p>Content for Assignment and Assessment Methods.</p>
-</div>
+  <div id="StudentLearningOutcomes" class="tabcontent">
+    <h3>Student Learning Outcomes</h3>
+    <p>Content for Student Learning Outcomes.</p>
+  </div>
 
-<div id="AssignmentDescriptions" class="tabcontent">
-  <h3>Assignment Descriptions</h3>
-  <p>Content for Assignment Descriptions.</p>
-</div>
+  <div id="AssignmentAssessmentMethods" class="tabcontent">
+    <h3>Assignment and Assessment Methods</h3>
+    <p>Content for Assignment and Assessment Methods.</p>
+  </div>
 
-<div id="CourseGrading" class="tabcontent">
-  <h3>Course Grading</h3>
-  <p>Content for Course Grading.</p>
-</div>
+  <div id="AssignmentDescriptions" class="tabcontent">
+    <h3>Assignment Descriptions</h3>
+    <p>Content for Assignment Descriptions.</p>
+  </div>
 
-<div id="CommunicationFeedback" class="tabcontent">
-  <h3>Communication and Feedback</h3>
-  <p>Content for Communication and Feedback.</p>
-</div>
+  <div id="CourseGrading" class="tabcontent">
+    <h3>Course Grading</h3>
+    <p>Content for Course Grading.</p>
+  </div>
 
-<div id="CourseUniversityPolicies" class="tabcontent">
-  <h3>Course and University Policies</h3>
-  <p>Content for Course and University Policies.</p>
-</div>
+  <div id="CommunicationFeedback" class="tabcontent">
+    <h3>Communication and Feedback</h3>
+    <p>Content for Communication and Feedback.</p>
+  </div>
 
-<div id="Schedule" class="tabcontent">
-  <h3>Schedule</h3>
-  <p>Content for Schedule.</p>
-</div>
+  <div id="CourseUniversityPolicies" class="tabcontent">
+    <h3>Course and University Policies</h3>
+    <p>Content for Course and University Policies.</p>
+  </div>
 
-<div id="FAQs" class="tabcontent">
-  <h3>FAQs</h3>
-  <p>Content for FAQs.</p>
+  <div id="Schedule" class="tabcontent">
+    <h3>Schedule</h3>
+    <p>Content for Schedule.</p>
+  </div>
+
+  <div id="FAQs" class="tabcontent">
+    <h3>FAQs</h3>
+    <p>Content for FAQs.</p>
+  </div>
 </div>
 
 <script>
-function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
 }
-document.getElementsByClassName('tablinks')[0].click();
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
 </script>
 
 </body>
