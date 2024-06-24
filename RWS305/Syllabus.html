@@ -8,21 +8,20 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 0;
+  width: 80px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 20px;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   color: #818181;
   display: block;
   transition: 0.3s;
@@ -30,19 +29,13 @@ body {
 
 .sidenav a:hover {
   color: #f1f1f1;
+  left: 0;
 }
 
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
+.main {
+  margin-left: 85px; /* Same as the width of the sidenav */
+  font-size: 18px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
 }
 
 @media screen and (max-height: 450px) {
@@ -53,97 +46,82 @@ body {
 </head>
 <body>
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#CourseInformation">Course Information</a>
-  <a href="#CreditsPrerequisites">Credits and Prerequisites</a>
-  <a href="#CourseRequirements">Course Requirements</a>
-  <a href="#CourseDescription">Course Description</a>
-  <a href="#StudentLearningOutcomes">Student Learning Outcomes</a>
-  <a href="#AssignmentAssessmentMethods">Assignment and Assessment Methods</a>
-  <a href="#AssignmentDescriptions">Assignment Descriptions</a>
-  <a href="#CourseGrading">Course Grading</a>
-  <a href="#CommunicationFeedback">Communication and Feedback</a>
-  <a href="#CourseUniversityPolicies">Course and University Policies</a>
+<div class="sidenav">
+  <a href="#CourseInformation">Course Info</a>
+  <a href="#CreditsPrerequisites">Credits & Prereqs</a>
+  <a href="#CourseRequirements">Requirements</a>
+  <a href="#CourseDescription">Description</a>
+  <a href="#StudentLearningOutcomes">Outcomes</a>
+  <a href="#AssignmentAssessmentMethods">Assessment</a>
+  <a href="#AssignmentDescriptions">Assignments</a>
+  <a href="#CourseGrading">Grading</a>
+  <a href="#CommunicationFeedback">Feedback</a>
+  <a href="#CourseUniversityPolicies">Policies</a>
   <a href="#Schedule">Schedule</a>
   <a href="#FAQs">FAQs</a>
 </div>
 
-<div id="main">
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Syllabus</span>
-
-  <div id="CourseInformation" class="tabcontent">
-    <h3>Course Information</h3>
+<div class="main">
+  <div id="CourseInformation">
+    <h2>Course Information</h2>
     <p>Content for Course Information.</p>
   </div>
 
-  <div id="CreditsPrerequisites" class="tabcontent">
-    <h3>Credits and Prerequisites</h3>
+  <div id="CreditsPrerequisites">
+    <h2>Credits and Prerequisites</h2>
     <p>Content for Credits and Prerequisites.</p>
   </div>
 
-  <div id="CourseRequirements" class="tabcontent">
-    <h3>Course Requirements</h3>
+  <div id="CourseRequirements">
+    <h2>Course Requirements</h2>
     <p>Content for Course Requirements.</p>
   </div>
 
-  <div id="CourseDescription" class="tabcontent">
-    <h3>Course Description</h3>
+  <div id="CourseDescription">
+    <h2>Course Description</h2>
     <p>Content for Course Description.</p>
   </div>
 
-  <div id="StudentLearningOutcomes" class="tabcontent">
-    <h3>Student Learning Outcomes</h3>
+  <div id="StudentLearningOutcomes">
+    <h2>Student Learning Outcomes</h2>
     <p>Content for Student Learning Outcomes.</p>
   </div>
 
-  <div id="AssignmentAssessmentMethods" class="tabcontent">
-    <h3>Assignment and Assessment Methods</h3>
+  <div id="AssignmentAssessmentMethods">
+    <h2>Assignment and Assessment Methods</h2>
     <p>Content for Assignment and Assessment Methods.</p>
   </div>
 
-  <div id="AssignmentDescriptions" class="tabcontent">
-    <h3>Assignment Descriptions</h3>
+  <div id="AssignmentDescriptions">
+    <h2>Assignment Descriptions</h2>
     <p>Content for Assignment Descriptions.</p>
   </div>
 
-  <div id="CourseGrading" class="tabcontent">
-    <h3>Course Grading</h3>
+  <div id="CourseGrading">
+    <h2>Course Grading</h2>
     <p>Content for Course Grading.</p>
   </div>
 
-  <div id="CommunicationFeedback" class="tabcontent">
-    <h3>Communication and Feedback</h3>
+  <div id="CommunicationFeedback">
+    <h2>Communication and Feedback</h2>
     <p>Content for Communication and Feedback.</p>
   </div>
 
-  <div id="CourseUniversityPolicies" class="tabcontent">
-    <h3>Course and University Policies</h3>
+  <div id="CourseUniversityPolicies">
+    <h2>Course and University Policies</h2>
     <p>Content for Course and University Policies.</p>
   </div>
 
-  <div id="Schedule" class="tabcontent">
-    <h3>Schedule</h3>
+  <div id="Schedule">
+    <h2>Schedule</h2>
     <p>Content for Schedule.</p>
   </div>
 
-  <div id="FAQs" class="tabcontent">
-    <h3>FAQs</h3>
+  <div id="FAQs">
+    <h2>FAQs</h2>
     <p>Content for FAQs.</p>
   </div>
 </div>
-
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-}
-</script>
 
 </body>
 </html>
