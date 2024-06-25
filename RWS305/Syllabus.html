@@ -1,92 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {box-sizing: border-box}
+body {
+  font-family: "Lato", sans-serif;
+}
 
-/* Set height of body and the document to 100% */
-body, html {
+.sidenav {
   height: 100%;
-  margin: 0;
-  font-family: Arial;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
-/* Style tab links */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 12.5%; /* Adjust width to fit more tabs */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-.tablink:hover {
-  background-color: #777;
+.sidenav a:hover {
+  color: #f1f1f1;
 }
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
-#CourseInformation {background-color: black;}
-#CreditsPrerequisites {background-color: black;}
-#CourseRequirements {background-color: black;}
-#CourseDescription {background-color: black;}
-#StudentLearningOutcomes {background-color: black;}
-#AssignmentDescriptions {background-color: black;}
-#CourseGrading {background-color: black;}
-#CommunicationFeedback {background-color: black;}
-#CourseUniversityPolicies {background-color: black;}
-#Schedule {background-color: black;}
-#FAQs {background-color: black;}
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
 </style>
 </head>
 <body>
 
-<button class="tablink" onclick="openPage('CourseInformation', this, 'red')" id="defaultOpen">Course Information</button>
-<button class="tablink" onclick="openPage('CreditsPrerequisites', this, 'green')">Credits and Prerequisites</button>
-<button class="tablink" onclick="openPage('CourseRequirements', this, 'blue')">Course Requirements</button>
-<button class="tablink" onclick="openPage('CourseDescription', this, 'orange')">Course Description</button>
-<button class="tablink" onclick="openPage('StudentLearningOutcomes', this, 'purple')">Student Learning Outcomes</button>
-<button class="tablink" onclick="openPage('AssignmentDescriptions', this, 'cyan')">Assignment Descriptions</button>
-<button class="tablink" onclick="openPage('CourseGrading', this, 'magenta')">Course Grading</button>
-<button class="tablink" onclick="openPage('CommunicationFeedback', this, 'yellow')">Communication and Feedback</button>
-<button class="tablink" onclick="openPage('CourseUniversityPolicies', this, 'lime')">Course and University Policies</button>
-<button class="tablink" onclick="openPage('Schedule', this, 'teal')">Schedule</button>
-<button class="tablink" onclick="openPage('FAQs', this, 'brown')">FAQs</button>
-
-<div id="CourseInformation" class="tabcontent">
-  <h1>SUMMER 2024<br>RWS 305W, SECTION 30 (2087)</h1>
-  <h2>Course Information</h2>
-  <p>Class Days: Asynchronous<br>Class Time: N/A<br>Class Location: N/A</p>
-  <p>Instructor: Matt Feigner<br>Email: mfeigner@sdsu.edu<br>Oﬃce location: <a href="https://sdsu.zoom.us/j/85270281161" target="_blank">Zoom</a><br>Oﬃce hours: Friday 1:00-2:00</p>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#CourseInformation">Course Information</a>
+  <a href="#CreditsPrerequisites">Credits and Prerequisites</a>
+  <a href="#CourseRequirements">Course Requirements</a>
+  <a href="#CourseDescription">Course Description</a>
+  <a href="#StudentLearningOutcomes">Student Learning Outcomes</a>
+  <a href="#AssignmentAssessmentMethods">Assignment and Assessment Methods</a>
+  <a href="#AssignmentDescriptions">Assignment Descriptions</a>
+  <a href="#CourseGrading">Course Grading</a>
+  <a href="#CommunicationFeedback">Communication and Feedback</a>
+  <a href="#CourseUniversityPolicies">Course and University Policies</a>
+  <a href="#Schedule">Schedule</a>
+  <a href="#FAQs">FAQs</a>
 </div>
 
-<div id="CreditsPrerequisites" class="tabcontent">
-  <h2>Credits and Prerequisites</h2>
-  <p><strong>Credits:</strong> 3 Credit hours</p>
-  <p><strong>Prerequisites:</strong> Completion of 60 units and completion of General Education requirements in Communication and Critical Thinking</p>
-  <p><strong>Class Standing:</strong> Junior, Senior, Graduate</p>
-</div>
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Syllabus</span>
 
-<div id="CourseRequirements" class="tabcontent">
-  <h2>Course Requirements</h2>
-  <p><strong>Required:</strong> RWS Course Reader: Course materials packet (available at SDSU bookstore in digital format; print version can be ordered)</p>
-  <p><strong>Recommended:</strong> Raimes: Keys for Writers (7th edition with exercise workbook—SDSU custom edition) Note: Any other grammar, style, and usage handbook will do.</p>
-  <p>All materials, with the exception of the course reader, are accessed through Canvas.</p>
-  <p>Computer access is required for Canvas posts, Internet links, and assignment submissions.</p>
-  <p>You may use a mobile device for most aspects of our course, but these devices are not always user-friendly with Canvas, especially assignment submissions.</p>
-  <p>You must upload either Microsoft Word documents or PDF files for assignment submissions. If you use Google Docs or Pages software, you must convert to a PDF file or Word doc before submitting.</p>
-</div>
+  <div id="CourseInformation" class="tabcontent">
+    <h2>Course Information</h2>
+    <table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+      <tbody>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Days:</strong> Asynchronous</span></td>
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Instructor:</strong> Matt Feigner</span></td>
+        </tr>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Time:</strong> N/A</span></td>
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Email:</strong> mfeigner@sdsu.edu</span></td>
+        </tr>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Location:</strong> N/A</span></td>
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Office Location:</strong> <a href="https://sdsu.zoom.us/j/85270281161" target="_blank">Zoom</a></span></td>
+        </tr>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Office Hours:</strong> Friday 1:00-2:00</span></td>
+          <td style="width: 24.9746%; height: 29px;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="CreditsPrerequisites" class="tabcontent">
+    <h2>Credits and Prerequisites</h2>
+    <table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+      <tbody>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Credits:</strong> 3 Credit hours</span></td>
+        </tr>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Prerequisites:</strong> Completion of 60 units and completion of General Education requirements in Communication and Critical Thinking</span></td>
+        </tr>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Standing:</strong> Junior, Senior, Graduate</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="CourseRequirements" class="tabcontent">
+    <h2>Course Requirements</h2>
+    <table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+      <tbody>
+        <tr style="height: 29px;">
+          <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Required:</strong></span></td>
+          <td style="width: 75.0254%; height: 29px;"><span style="font-family: helvetica;">RWS Course Reader: Course materials packet (available at SDSU bookstore in digital format; print version can be ordered)</span></td>
+        </tr>
+        <tr style="height: 125px;">
+          <td style="width: 24.9746%; height: 125px;"><span style="font-family: helvetica;"><strong>Recommended:</strong></span></td>
+          <td style="width: 75.0254%; height: 125px;"><span style="font-family: helvetica;">Raimes: Keys for Writers (7th edition with exercise workbook—SDSU custom edition) Note: Any other grammar, style, and usage handbook will do.</span></td>
+        </tr>
+        <tr style="height: 53px;">
+          <td style="width: 24.9746%; height: 53px;"><span style="font-family: helvetica;"><strong>Canvas LMS and Technology Requirements</strong></span></td>
+          <td style="width: 75.0254%; height: 53px;">
+            <p><span style="font-family: helvetica;">All materials, with the exception of the course reader, are accessed through Canvas.</span></p>
+            <p><span style="font-family: helvetica;">Computer access is required for Canvas posts, Internet links and assignment submissions.</span></p>
+            <p><span style="font-family: helvetica;">You may use a mobile device for most aspects of our course, but these devices are not always user friendly with Canvas, especially assignment submissions.</span></p>
+            <p><span style="font-family: helvetica;">You must upload either Microsoft Word documents or PDF files for assignment submissions. If you use Google Docs or Pages software, you must convert to a PDF file or Word doc before submitting.</span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 <div id="CourseDescription" class="tabcontent">
   <h2>Course Description</h2>
