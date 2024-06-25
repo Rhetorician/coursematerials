@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
   font-family: "Lato", sans-serif;
 }
 
-.sidenav {
+.sidebar {
   height: 100%;
   width: 0;
   position: fixed;
@@ -19,7 +20,7 @@ body {
   padding-top: 60px;
 }
 
-.sidenav a {
+.sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -28,16 +29,29 @@ body {
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+.sidebar a:hover {
   color: #f1f1f1;
 }
 
-.sidenav .closebtn {
+.sidebar .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
 }
 
 #main {
@@ -46,15 +60,15 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
 }
 </style>
 </head>
 <body>
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#CourseInformation">Course Information</a>
   <a href="#CreditsPrerequisites">Credits and Prerequisites</a>
   <a href="#CourseRequirements">Course Requirements</a>
@@ -70,7 +84,7 @@ body {
 </div>
 
 <div id="main">
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Syllabus</span>
+  <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
 
   <div id="CourseInformation" class="tabcontent">
     <h2>Course Information</h2>
@@ -141,19 +155,18 @@ body {
 
 <script>
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
 </script>
 
 </body>
 </html>
-
 
 <div id="CourseDescription" class="tabcontent">
   <h2>Course Description</h2>
