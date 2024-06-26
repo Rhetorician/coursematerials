@@ -9,14 +9,13 @@ body {
 
 .sidebar {
   height: 100%;
-  width: 0;
+  width: 250px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
+  overflow-y: auto;
   padding-top: 60px;
 }
 
@@ -55,8 +54,9 @@ body {
 }
 
 #main {
-  transition: margin-left .5s;
+  margin-left: 250px;
   padding: 16px;
+  transition: margin-left .5s;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -70,17 +70,17 @@ body {
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#CourseInformation">Course Information</a>
-  <a href="#CreditsPrerequisites">Credits and Prerequisites</a>
-  <a href="#CourseRequirements">Course Requirements</a>
-  <a href="#CourseDescription">Course Description</a>
-  <a href="#StudentLearningOutcomes">Student Learning Outcomes</a>
-  <a href="#AssignmentAssessmentMethods">Assignment and Assessment Methods</a>
-  <a href="#AssignmentDescriptions">Assignment Descriptions</a>
-  <a href="#CourseGrading">Course Grading</a>
-  <a href="#CommunicationFeedback">Communication and Feedback</a>
-  <a href="#CourseUniversityPolicies">Course and University Policies</a>
-  <a href="#Schedule">Schedule</a>
+  <a href="#course-information">Course Information</a>
+  <a href="#credits-and-prerequisites">Credits and Prerequisites</a>
+  <a href="#course-requirements">Course Requirements</a>
+  <a href="#course-description">Course Description</a>
+  <a href="#student-learning-outcomes">Student Learning Outcomes</a>
+  <a href="#assignment-and-assessment-methods">Assignment and Assessment Methods</a>
+  <a href="#assignment-descriptions">Assignment Descriptions</a>
+  <a href="#course-grading">Course Grading</a>
+  <a href="#communication-and-feedback">Communication and Feedback</a>
+  <a href="#course-university-policies">Course and University Policies</a>
+  <a href="#schedule">Schedule</a>
   <a href="#FAQs">FAQs</a>
 </div>
 
