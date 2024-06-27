@@ -9,7 +9,7 @@
 body, html {
   height: 100%;
   margin: 0;
-  font-family: Arial;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Style tab links */
@@ -22,8 +22,7 @@ body, html {
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  width: 25%;
-  max-width: 25%;
+  width: 33.33%;
 }
 
 .tablink:hover {
@@ -32,50 +31,195 @@ body, html {
 
 /* Style the tab content */
 .tabcontent {
-  color: white;
+  color: black;
   display: none;
   padding: 20px;
-  height: calc(100vh - 50px); /* Adjusted height to take up more space */
+  height: 100%;
+  background-color: white;
+}
+
+#Introduction {background-color: white;}
+#LectureNotes {background-color: white;}
+#ExampleCoverLetter {background-color: white;}
+
+.dark-mode .tabcontent {
   background-color: black;
-  overflow-y: auto;
+  color: white;
 }
 
-.tabcontent iframe, .tabcontent img {
+.dark-mode .tablink {
+  background-color: #333;
+}
+
+.dark-mode .tablink:hover {
+  background-color: #555;
+}
+
+.switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.collapsible {
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
   width: 100%;
-  height: auto;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
 }
 
-#Home {background-color: black;}
-#News {background-color: black;}
-#Contact {background-color: black;}
-#About {background-color: black;}
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f7f7f7;
+  padding: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+  padding: 10px;
+}
 </style>
 </head>
 <body>
 
-<button class="tablink" onclick="openPage('Home', this, 'black')" id="defaultOpen">Effective Cover Letters</button>
-<button class="tablink" onclick="openPage('News', this, 'black')">Cover Letter Lecture Notes</button>
-<button class="tablink" onclick="openPage('Contact', this, 'black')">Cover Letter Sample (Critiqued)</button>
-<button class="tablink" onclick="openPage('About', this, 'black')">Cover Letter Sample (Clean)</button>
+<!-- Dark Mode Switch -->
+<label class="switch">
+  <input type="checkbox" id="darkModeToggle">
+  Dark Mode
+</label>
 
-<div id="Home" class="tabcontent">
-  <h3>Effective Cover Letters</h3>
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&amp;loop=false&amp;delayms=60000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+<button class="tablink" onclick="openPage('Introduction', this, '#555')" id="defaultOpen">Introduction</button>
+<button class="tablink" onclick="openPage('LectureNotes', this, '#555')">Lecture Notes</button>
+<button class="tablink" onclick="openPage('ExampleCoverLetter', this, '#555')">Example Cover Letter</button>
+
+<div id="Introduction" class="tabcontent">
+  <h3>Introduction</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in dolor nec nisi interdum fermentum. Cras auctor arcu id velit ornare, nec laoreet purus elementum. Aliquam erat volutpat. Integer nec ligula non urna viverra pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam vehicula massa in tortor pharetra, a bibendum risus facilisis. Nam sit amet mi at nunc consectetur malesuada.</p>
+
+  <h4>Section Heading</h4>
+  <p>Quisque mollis, purus a fermentum tincidunt, velit urna interdum urna, nec sollicitudin urna arcu at nisi. Proin pharetra urna a orci vestibulum, nec facilisis ex lobortis.</p>
+
+  <!-- Collapsible Section -->
+  <div class="collapsible-section">
+    <button class="collapsible">Open Collapsible</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <button class="collapsible">Open Section 1</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <button class="collapsible">Open Section 2</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <button class="collapsible">Open Section 3</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+
+  <!-- Card Section -->
+  <h4>Card Section</h4>
+  <div class="card">
+    <div class="card-header">Card Header</div>
+    <div class="card-body">
+      <p>This is an example of content displayed using a card layout. It's useful for separating content into distinct sections with a header and body.</p>
+    </div>
+  </div>
+
+  <!-- Toggle Section -->
+  <h4>Toggle Section</h4>
+  <button onclick="toggleVisibility('toggleContent')">Toggle Content</button>
+  <div id="toggleContent" style="display:none;">
+    <p>This is an example of content that can be toggled on and off with a button click.</p>
+  </div>
 </div>
 
-<div id="News" class="tabcontent">
-  <h3>Cover Letter Lecture Notes (guide included)</h3>
-  <iframe src="https://docs.google.com/document/d/e/2PACX-1vS2ZMBJJZYs0DJKNCqh9eLZmfPjKfd4SYhvnBP6LB957gpSbUdY-G86JRUh3G5eeg/pub?embedded=true"></iframe>
+<div id="LectureNotes" class="tabcontent">
+  <h3>Lecture Notes</h3>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&amp;loop=false&amp;delayms=60000" width="100%" height="960" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+  <h4>Cover Letter: Design and Execution</h4>
+  <p>As we evaluate and compose arguments throughout the semester, we will come back to these three components of professional writing repeatedly: audience, purpose and exigency. The components collectively form the context of the argument also known as the “rhetorical situation.” If we are writing effectively, we are using language in a way that complements the rhetorical situation. We will review this in the following sections.</p>
+  <p><strong>Beginning caveat:</strong> Research has consistently shown that at least 1/3 but probably closer to ½ of recruiters and hiring managers do not read cover letters, preferring to go right to the resume. Does that mean that you should not write one? Absolutely not. Employment cover letters help you as a candidate to frame your skills, experiences and goals.</p>
+  <p><strong>Employment Cover Letter Introduction:</strong> There are generally two cover letter families in professional and business writing: Simple “transmittal-based letters” that may cover a report or proposal, and summarize the document’s contents. Employment based cover letters. The most common kinds of cover letters are those associated with resumes, or other job-search documents. A cover letter accompanying a report, or proposal for example, may just be a summary of that document. But an employment cover letter is more, as it serves as part of a marketing package—like the resume, cover letters must be persuasive as well.</p>
+  <p><strong>Rhetoric and Employment Cover Letters:</strong> Audience = The person who makes hiring decisions. But how do you identify that person? → Informational Interview. Research, Identify the contact, suggest a brief meeting, use your SDSU status, buy a thank you card, and prepare a highlighted version of your resume. You’d be surprised how many prospective employers will agree to an informal meeting or interview, particularly from students. Consider Taking the time to create such an opportunity and ask questions like: “What was your career path? How did you get involved in this field?” “What is the biggest issue this industry faces at the moment?” “How is your company reacting to this issue?” “What do you look for in a potential candidate?” “I’m near graduation. What would you do in my position?’ “I’m interested in getting more information. Can you suggest someone else I can talk to, and is it OK to keep you updated on my progress?”</p>
+  <p><strong>Purpose of the Cover Letter:</strong> Generally, the purpose of all cover letters is to introduce the subject as it is manifested in the document it covers. Employment cover letters specifically generate interest in your skills, education and experience. And serve as a bridge between job posting and the resume. It can be tempting just to generate interest by content. After all, perhaps:</p>
+  <ul>
+    <li>Have done your work, reviewed the samples</li>
+    <li>Have great experience, you studied abroad, you had great internships, etc.</li>
+    <li>Have more information that can fit on your resume.</li>
+  </ul>
+  <p>But good cover letter writers use effective visual design as well. They understand that how a cover letter looks is almost as important as what it says. You need to tell the reader’s eyes where to go. For example, before we review the Purdy letter, notice the way the letter looks. An important component of professional writing is visual and information design: Chunked information, bullet pointed, clear, simple language. Several short paragraphs, between 4 and 5 lines that are interrupted by two short, bulleted passages. But cover letters do more than introduce your resume. In addition to the functions listed on the screen, employment cover letters are important because they: explain your experiences in a story-like format that works with the information provided in your resume. Show the employer that you are individualizing (tailoring) this job application. Provide a sample of your written communication skills. It is the first document an employer sees, so it is often the first impression you will make.</p>
+  <p><strong>Exigency/Genre:</strong> Part of an integrated, focused campaign. One overriding fact about the context of employment cover letters—and you need to remember this, perhaps more than any other professional document—readers look to disqualify cover letters and resumes, especially in competitive job climates (like now).</p>
+  <p><strong>Employment Cover Letter Readers:</strong> Because they are read to disqualify, audience is important for employment document because employment documents must be able to convince the reader very quickly that what you are saying is true in order to be effective. So, you must have done your homework about the company because only then are you prepared to directly communicate with the organization. That means you need to know as much as you can about how people read resumes, so here are some general characteristics of your audience: . . . read job letters in stacks. . . . are tired. Often do reading late in the day, less patient with flowery diction and hard to read type or other poor design elements. . . . are impatient. will not dig for information. They expect it to jump right out at them. . . . suddenly become very picky proofreaders.</p>
+  <p><strong>Step-by-Step Guide:</strong> Contact Info [Refer directly to the contact information in the Purdy Letter]. Then summarize, using these points: Provide your contact. Include the date you are writing the letter. Include the address of the company.</p>
+  <p><strong>Introduction:</strong> [Read the first paragraph aloud: what do you notice about the paragraph, specifically, what works in the paragraph?]. The first paragraph offers the way into the letter. Identifies who you are, what your purpose is, what posting you are responding to, where you saw the posting, anyone you know in the organization who has referred you, etc. or it will offer a reason that captures your inspiration for applying. Most important information should be summarized here. That is, provide a quick overview of your qualifications. Greet the specific person with whom you are corresponding. You MUST find this person’s name for the final resume you turn in, even if it’s the CEO. If you don’t know the person, make a name up for the purposes of this class.</p>
+  <p><strong>Employment Cover Letter Body:</strong> [Read each of the Purdy letter paragraphs and after each one, refer to my annotated textbox copy for clarification. Then review using these points]. Remember that the body of the letter, which consists of more than one paragraph is the most important part of the letter: Be very aware of the letter’s purpose. The purpose of an employment cover letter is to amplify and explain and skills and experience from the resume and match them to the job requirements in declarative statements. Focus each paragraph on one qualification that shows you are a good match for the job and organization. Tell a story; do not just list your skills. Show. Give specific examples to prove where you got these skills and how you have used them before. Refer to your resume; do not repeat. Interrupt with block paragraph format with bullets, if appropriate. Let them know subtly that you know something about the company. And definitely use keywords from the job description.</p>
+  <p><strong>Conclusion:</strong> [Read the last paragraph: what do you notice about the paragraph, specifically, what works in the paragraph?]. Exit with confidence. Close with a strong reminder of why you are a good match for the job and the organization. Present information how employer can contact applicant. Request an interview in some way, or at the very least, make scheduling an interview easy. Thank the person for reading your material. Sign your name and print it underneath.</p>
+  <p><strong>Summary: Employment Cover Letters</strong>. Consider the cover letter as part of a marketing package. Do your homework about the company, about discipline-specific communication types, and, as much as you can, about the reader. Consider yourself vital and let this come through with humility.</p>
 </div>
 
-<div id="Contact" class="tabcontent">
-  <h3>Cover Letter Sample (Critiqued)</h3>
-  <img src="https://sdsu.instructure.com/courses/97260/files/12001627/preview" alt="James-Purdy-Cover-Letter-Annotated" />
-</div>
-
-<div id="About" class="tabcontent">
-  <h3>Cover Letter Sample (Clean)</h3>
-  <p style="text-align: center;"><a href="https://sdsu.instructure.com/courses/97260/files/12303907?wrap=1" target="_blank" rel="noopener">Angela Riggs Cover Letter</a></p>
+<div id="ExampleCoverLetter" class="tabcontent">
+  <h3>Example Cover Letter</h3>
+  <p>203 Elmwood Avenue<br>
+     San Diego CA 92182<br>
+     <br>
+     February 21 2017<br>
+     <br>
+     Sara Miller<br>
+     Personnel Director<br>
+     Liberty International Inc.<br>
+     4416 Sharpsburg Pike<br>
+     Lansdowne PA 24135<br>
+     <br>
+     Dear Ms. Miller:<br>
+     <br>
+     Please consider my application for a junior management position at your Lake Tahoe resort The Ledges advertised in the January 2017 issue of Hospitality Monthly. I will graduate from San Diego State University in May 2017 with a Bachelor of Arts degree in Hotel/Restaurant Management. Dr. Carla Anderson my nutrition professor described her positive experience as a consultant for Liberty and encouraged me to apply.<br>
+     <br>
+     For two years I have worked as a part-time desk clerk and am now the part-time night desk manager at a 50-room boutique hotel. Besides monitoring and setting daily reservations I am responsible for scheduling all day and night desk clerks. This experience combined with earlier customer relations work in a variety of retail positions has given me a clear and practical understanding of customers’ and guests’ needs and hotel management’s expectations. For example:<br>
+     <ul>
+       <li>As the night desk manager I developed and implemented a computer-based scheduling system that has decreased staff absentee rate by 82% over six months.</li>
+       <li>With the day managers I developed and implemented extensive quality control procedures that won two Hospitality Resident Awards last year.</li>
+     </ul>
+     As an amateur chef I know the effort, attention, and patience required to prepare and serve fine food. Moreover, my sailing and snowboarding background might be assets to The Ledges’ recreation program. For the last two summers I have volunteered at a sailing program for at-risk children in the San Diego area.<br>
+     <br>
+     I have confidence in my hospitality management skills. My experience and education have prepared me to work well with others and to respond creatively to changes, crises, and added responsibilities.<br>
+     <br>
+     Should my background meet your needs, please phone me any weekday after 4 p.m. at 858-555-1212 or email me at riggsangela95@hotmail.com.<br>
+     <br>
+     Thank you for taking time to read about my qualifications for the junior management position at The Ledges, Ms. Miller, and I look forward to hearing from you soon.<br>
+     <br>
+     Sincerely,<br>
+     <br>
+     Angela Riggs<br>
+     Enclosure
+  </p>
 </div>
 
 <script>
@@ -93,7 +237,37 @@ function openPage(pageName,elmnt,color) {
   elmnt.style.backgroundColor = color;
 }
 
+// Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+// Dark mode toggle
+document.getElementById('darkModeToggle').addEventListener('change', function() {
+  document.body.classList.toggle('dark-mode');
+});
+
+function toggleVisibility(id) {
+  var element = document.getElementById(id);
+  if (element.style.display === "none") {
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
 </script>
    
 </body>
