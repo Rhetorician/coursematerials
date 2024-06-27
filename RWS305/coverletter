@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#EffectiveCoverLetters {background-color: red;}
+#LectureNotes {background-color: green;}
+#CritiquedSample {background-color: blue;}
+#CleanSample {background-color: orange;}
+</style>
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('EffectiveCoverLetters', this, 'red')" id="defaultOpen">Effective Cover Letters</button>
+<button class="tablink" onclick="openPage('LectureNotes', this, 'green')">Cover Letter Lecture Notes (guide included)</button>
+<button class="tablink" onclick="openPage('CritiquedSample', this, 'blue')">Cover Letter Sample (critiqued)</button>
+<button class="tablink" onclick="openPage('CleanSample', this, 'orange')">Cover Letter Sample (Clean)</button>
+
+<div id="EffectiveCoverLetters" class="tabcontent">
+  <h3>Effective Cover Letters</h3>
+  <div id="reveal" class="pad-box-mini border-round" style="border: thin solid grey;">
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&loop=false&delayms=60000" width="100%" height="749" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+  </div>
+</div>
+
+<div id="LectureNotes" class="tabcontent">
+  <h3>Cover Letter Lecture Notes (guide included)</h3>
+  <div id="reveal" class="pad-box-mini border-round" style="border: thin solid grey;">
+    <iframe src="https://docs.google.com/document/d/e/2PACX-1vS2ZMBJJZYs0DJKNCqh9eLZmfPjKfd4SYhvnBP6LB957gpSbUdY-G86JRUh3G5eeg/pub?embedded=true" width="100%" height="600"></iframe>
+  </div>
+</div>
+
+<div id="CritiquedSample" class="tabcontent">
+  <h3>Cover Letter Sample (critiqued)</h3>
+  <div id="reveal" class="pad-box-mini border-round" style="border: thin solid grey;">
+    <img class="instructure_file_link inline_disabled" src="https://sdsu.instructure.com/courses/97260/files/12001627/preview" alt="James-Purdy-Cover-Letter-Annotated.png" data-api-endpoint="https://sdsu.instructure.com/api/v1/courses/97260/files/12001627" data-api-returntype="File" />
+  </div>
+</div>
+
+<div id="CleanSample" class="tabcontent">
+  <h3>Cover Letter Sample (Clean)</h3>
+  <div id="reveal" class="pad-box-mini border-round" style="border: thin solid grey;">
+    <p style="text-align: center;">
+      <a class="instructure_file_link instructure_scribd_file auto_open" style="color: #000000; text-decoration: none;" title="Angela Riggs Cover Letter.docx" href="https://sdsu.instructure.com/courses/97260/files/12303907?wrap=1" target="_blank" rel="noopener" data-canvas-previewable="false" data-api-endpoint="https://sdsu.instructure.com/api/v1/courses/97260/files/12303907" data-api-returntype="File">Angela Riggs Cover Letter</a>
+    </p>
+  </div>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
