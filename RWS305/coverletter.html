@@ -43,29 +43,6 @@ body, html {
 #LectureNotes {background-color: white;}
 #ExampleCoverLetter {background-color: white;}
 
-.dark-mode .tabcontent {
-  background-color: black;
-  color: white;
-}
-
-.dark-mode body {
-  background-color: black;
-}
-
-.dark-mode .tablink {
-  background-color: #333;
-}
-
-.dark-mode .tablink:hover {
-  background-color: #555;
-}
-
-.switch {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
 .collapsible {
   background-color: #000;
   color: white;
@@ -116,44 +93,9 @@ body, html {
 .lecture-notes {
   margin: 1in;
 }
-
-.dark-mode .card {
-  background-color: #444;
-  color: white;
-}
-
-.dark-mode .card-header {
-  background-color: #555;
-}
-
-.dark-mode .content {
-  background-color: #444;
-  color: white;
-}
-
-/* Ensure the card style in dark mode */
-.dark-mode .card {
-  background-color: #444;
-  color: white;
-}
-
-.dark-mode .card-header {
-  background-color: #555;
-}
-
-.dark-mode .card-body {
-  background-color: #444;
-  color: white;
-}
 </style>
 </head>
 <body>
-
-<!-- Dark Mode Switch -->
-<label class="switch">
-  <input type="checkbox" id="darkModeToggle">
-  Dark Mode
-</label>
 
 <button class="tablink" onclick="openPage('Introduction', this, 'black')" id="defaultOpen">Introduction</button>
 <button class="tablink" onclick="openPage('LectureNotes', this, 'black')">Lecture Notes</button>
@@ -205,7 +147,7 @@ body, html {
 
 <div id="LectureNotes" class="tabcontent lecture-notes">
   <h3>Lecture Notes</h3>
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&amp;loop=false&amp;delayms=60000" width="100%" height="960" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&amp;loop=false&amp;delayms=60000" width="100%" height="749" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
   <h4>Cover Letter: Design and Execution</h4>
   <div class="card">
     <div class="card-header">Beginning caveat</div>
@@ -314,24 +256,16 @@ body, html {
      <br>
      Please consider my application for a junior management position at your Lake Tahoe resort The Ledges advertised in the January 2017 issue of Hospitality Monthly. I will graduate from San Diego State University in May 2017 with a Bachelor of Arts degree in Hotel/Restaurant Management. Dr. Carla Anderson my nutrition professor described her positive experience as a consultant for Liberty and encouraged me to apply.<br>
      <br>
-     For two years I have worked as a part-time desk clerk and am now the part-time night desk manager at a 50-room boutique hotel. Besides monitoring and setting daily reservations I am responsible for scheduling all day and night desk clerks. This experience combined with earlier customer relations work in a variety of retail positions has given me a clear and practical understanding of customers’ and guests’ needs and hotel management’s expectations. For example:<br>
+     For two years I have worked as a part-time desk clerk and am now the part-time night desk manager at a 50-room boutique hotel. Besides monitoring and setting daily reservations I am responsible for scheduling all day and night desk clerks. This experience combined with earlier customer relations work in a variety of retail positions has given me a clear and practical understanding of customers’ and guests’ needs and hotel management’s expectations. For example:</p>
      <ul>
        <li>As the night desk manager I developed and implemented a computer-based scheduling system that has decreased staff absentee rate by 82% over six months.</li>
        <li>With the day managers I developed and implemented extensive quality control procedures that won two Hospitality Resident Awards last year.</li>
      </ul>
-     As an amateur chef I know the effort, attention, and patience required to prepare and serve fine food. Moreover, my sailing and snowboarding background might be assets to The Ledges’ recreation program. For the last two summers I have volunteered at a sailing program for at-risk children in the San Diego area.<br>
-     <br>
-     I have confidence in my hospitality management skills. My experience and education have prepared me to work well with others and to respond creatively to changes, crises, and added responsibilities.<br>
-     <br>
-     Should my background meet your needs, please phone me any weekday after 4 p.m. at 858-555-1212 or email me at riggsangela95@hotmail.com.<br>
-     <br>
-     Thank you for taking time to read about my qualifications for the junior management position at The Ledges, Ms. Miller, and I look forward to hearing from you soon.<br>
-     <br>
-     Sincerely,<br>
-     <br>
-     Angela Riggs<br>
-     Enclosure
-  </p>
+     <p>As an amateur chef I know the effort, attention, and patience required to prepare and serve fine food. Moreover, my sailing and snowboarding background might be assets to The Ledges’ recreation program. For the last two summers I have volunteered at a sailing program for at-risk children in the San Diego area.</p>
+     <p>I have confidence in my hospitality management skills. My experience and education have prepared me to work well with others and to respond creatively to changes, crises, and added responsibilities.</p>
+     <p>Should my background meet your needs, please phone me any weekday after 4 p.m. at 858-555-1212 or email me at riggsangela95@hotmail.com.</p>
+     <p>Thank you for taking time to read about my qualifications for the junior management position at The Ledges, Ms. Miller, and I look forward to hearing from you soon.</p>
+     <p>Sincerely,<br><br>Angela Riggs<br>Enclosure</p>
   </div>
 </div>
 
@@ -352,11 +286,6 @@ function openPage(pageName,elmnt,color) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
-
-// Dark mode toggle
-document.getElementById('darkModeToggle').addEventListener('change', function() {
-  document.body.classList.toggle('dark-mode');
-});
 
 function toggleVisibility(id) {
   var element = document.getElementById(id);
