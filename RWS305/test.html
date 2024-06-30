@@ -12,10 +12,9 @@ body, html {
   background-color: #f5f5f5;
 }
 
-/* Black Collapsible Styles */
-.collapsible-black {
-  background-color: #000000;
-  color: white;
+.collapsible {
+  background-color: whitesmoke;
+  color: black;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -25,107 +24,105 @@ body, html {
   font-size: 18pt;
   border-radius: 0;
   margin: 0;
-  border-bottom: 1px solid #303030;
+  border-bottom: 1px solid #ccc;
 }
 
-.active-black, .collapsible-black:hover {
-  background-color: #555;
+.active, .collapsible:hover {
+  background-color: #ddd;
 }
 
-.content-black {
+.content {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #303030;
+  background-color: #f1f1f1;
   margin: 0;
 }
 
-iframe-black {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
-}
-
-/* Animation for Arrow Symbol */
-.arrow-black::before {
-  content: "➤";
+.arrow::before {
+  content: "►";
   display: inline-block;
   margin-right: 10px;
   transition: transform 0.2s;
 }
 
-.active-black .arrow-black::before {
+.active .arrow::before {
   transform: rotate(90deg);
+}
+
+iframe {
+  width: 100%;
+  height: 749px;
+  border: none;
 }
 </style>
 </head>
 <body>
 
-<!-- Using the Black Style -->
-<button class="collapsible-black"><span class="arrow-black"></span> Resume Basics: Required Sections</button>
-<div class="content-black">
-  <iframe class="iframe-black" src="https://docs.google.com/presentation/d/e/2PACX-1vSXibhvVqAddrqKSqWK_WhBiLvkuixNuwYjYSsCI3wvXxrACPGQ_yhE1N5ffXYebw/embed?start=false&amp;loop=false&amp;delayms=3000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+<!-- Collapsible Sections -->
+<button class="collapsible"><span class="arrow"></span> Resume Basics: Required Sections</button>
+<div class="content">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSXibhvVqAddrqKSqWK_WhBiLvkuixNuwYjYSsCI3wvXxrACPGQ_yhE1N5ffXYebw/embed?start=false&amp;loop=false&amp;delayms=3000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Resume Design and Development</button>
-<div class="content-black">
-  <iframe class="iframe-black" src="https://docs.google.com/presentation/d/e/2PACX-1vQ6aCLPTwtgPBticJ3JGb8_NuvUFSlimjO7eoJvRJujX50mfeRoYXOywi0p5Pb4tA/embed?start=false&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+<button class="collapsible"><span class="arrow"></span> Resume Design and Development</button>
+<div class="content">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ6aCLPTwtgPBticJ3JGb8_NuvUFSlimjO7eoJvRJujX50mfeRoYXOywi0p5Pb4tA/embed?start=false&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> The Posting</button>
-<div class="content-black">
-  <iframe class="iframe-black" title="YouTube video player" src="https://www.youtube.com/embed/SYa4aqlAGeE" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+<button class="collapsible"><span class="arrow"></span> The Posting</button>
+<div class="content">
+  <iframe title="YouTube video player" src="https://www.youtube.com/embed/SYa4aqlAGeE" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Objective vs. Profile</button>
-<div class="content-black">
-  <iframe class="iframe-black" src="https://docs.google.com/presentation/d/e/2PACX-1vTcjsUbjDm_JN6yp69TVRCvNQjNi5LhAQa5_XugDF6JkPHDCNugnmF9XsOHf374RQ/embed?start=true&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+<button class="collapsible"><span class="arrow"></span> Objective vs. Profile</button>
+<div class="content">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTcjsUbjDm_JN6yp69TVRCvNQjNi5LhAQa5_XugDF6JkPHDCNugnmF9XsOHf374RQ/embed?start=true&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Resume Types</button>
-<div class="content-black">
-  <iframe class="iframe-black" src="https://docs.google.com/presentation/d/e/2PACX-1vRIF2mdKo01dotASIJ6EXf37DzPxSGTu3jbXXn5Md0vQUfgear5PL57kbolau1UkQ/embed?start=false&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+<button class="collapsible"><span class="arrow"></span> Resume Types</button>
+<div class="content">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRIF2mdKo01dotASIJ6EXf37DzPxSGTu3jbXXn5Md0vQUfgear5PL57kbolau1UkQ/embed?start=false&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Effective Experience Sections Part I</button>
-<div class="content-black">
-  <iframe class="iframe-black" src="https://docs.google.com/presentation/d/e/2PACX-1vTkZvmOaSXDPOEfTxXBbI4kmGq8laiIhwj26Gk-EKvsZ1C3O91tu2RhsG0N8_2t_g/embed?start=false&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+<button class="collapsible"><span class="arrow"></span> Effective Experience Sections Part I</button>
+<div class="content">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTkZvmOaSXDPOEfTxXBbI4kmGq8laiIhwj26Gk-EKvsZ1C3O91tu2RhsG0N8_2t_g/embed?start=false&amp;loop=true&amp;delayms=15000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Effective Experience Sections Part II</button>
-<div class="content-black">
-  <iframe class="iframe-black" src="https://docs.google.com/document/d/e/2PACX-1vQ_QwN5zxmbVWiHhMj8rRWXro9bW2RWG8B0LVoae6zZGx9QHaGs4CFnEyE4WwHxQw/pub?embedded=true"></iframe>
+<button class="collapsible"><span class="arrow"></span> Effective Experience Sections Part II</button>
+<div class="content">
+  <iframe src="https://docs.google.com/document/d/e/2PACX-1vQ_QwN5zxmbVWiHhMj8rRWXro9bW2RWG8B0LVoae6zZGx9QHaGs4CFnEyE4WwHxQw/pub?embedded=true"></iframe>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Power Verbs</button>
-<div class="content-black">
+<button class="collapsible"><span class="arrow"></span> Power Verbs</button>
+<div class="content">
   <p>(Forthcoming)</p>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Traditional "Chronological" Example</button>
-<div class="content-black">
+<button class="collapsible"><span class="arrow"></span> Traditional "Chronological" Example</button>
+<div class="content">
   <p>(Forthcoming) In the meantime, I think it's important to point out that ChatGPT likes to eat its own digital poop and pee.</p>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Skills Resume Example</button>
-<div class="content-black">
+<button class="collapsible"><span class="arrow"></span> Skills Resume</button>
+<div class="content">
   <p>(Forthcoming)</p>
 </div>
 
-<button class="collapsible-black"><span class="arrow-black"></span> Skills Resume How-To</button>
-<div class="content-black">
+<button class="collapsible"><span class="arrow"></span> Skills Resume How-To</button>
+<div class="content">
   <p>(Forthcoming)</p>
 </div>
 
 <script>
-var collBlack = document.getElementsByClassName("collapsible-black");
+var coll = document.getElementsByClassName("collapsible");
 var i;
 
-for (i = 0; i < collBlack.length; i++) {
-  collBlack[i].addEventListener("click", function() {
-    this.classList.toggle("active-black");
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
     var content = this.nextElementSibling;
     if (content.style.maxHeight){
       content.style.maxHeight = null;
