@@ -15,7 +15,10 @@ body {
 
 .mySlides {
   display: none;
+  padding: 20px;
   text-align: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 
 .prev, .next {
@@ -43,17 +46,14 @@ body {
 }
 
 .text {
-  color: #f2f2f2;
+  color: black;
   font-size: 15px;
   padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
   text-align: center;
 }
 
 .numbertext {
-  color: #f2f2f2;
+  color: black;
   font-size: 12px;
   padding: 8px 12px;
   position: absolute;
@@ -84,85 +84,142 @@ body {
   from {opacity: .4} 
   to {opacity: 1}
 }
+
+.collapsible {
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18pt;
+  border-radius: 0;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.active, .collapsible:hover {
+  background-color: #ddd;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+  margin: 0;
+}
+
+.arrow::before {
+  content: "►";
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+.active .arrow::before {
+  transform: rotate(90deg);
+}
 </style>
 </head>
 <body>
 
-<div class="slideshow-container">
+<button class="collapsible"><span class="arrow"></span> Effective Experience Sections</button>
+<div class="content">
+  <div class="slideshow-container">
 
-<div class="mySlides fade">
-  <div class="numbertext">1 / 12</div>
-  <img src="slide1.jpg" style="width:100%">
-  <div class="text">Effective Experience Sections</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 9</div>
+    <div class="text">Effective Experience Sections</div>
+    <p>Action verb + phrase describing result + phrase describing task + phrase describing solution</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">2 / 12</div>
-  <img src="slide2.jpg" style="width:100%">
-  <div class="text">Avoid Simply Listing Your Duties</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 9</div>
+    <div class="text">Avoid Simply Listing Your Duties</div>
+    <p>Avoid simply listing your duties without specifying results and actions taken.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">3 / 12</div>
-  <img src="slide3.jpg" style="width:100%">
-  <div class="text">Use the “Problem-Task-Solution-Result” Format</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 9</div>
+    <div class="text">Use the “Problem-Task-Solution-Result” Format</div>
+    <p>Describe your experiences using the Problem-Task-Solution-Result (PTSR) format.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">4 / 12</div>
-  <img src="slide4.jpg" style="width:100%">
-  <div class="text">Improved customer service</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 9</div>
+    <div class="text">Improved customer service</div>
+    <p>Example: Improved customer service by identifying customer buying patterns and creating personalized product packages.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">5 / 12</div>
-  <img src="slide5.jpg" style="width:100%">
-  <div class="text">Use the “Problem-Task-Solution-Result” Format Example</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">5 / 9</div>
+    <div class="text">PTSR Format Example</div>
+    <p>Task: Improved customer service by identifying customer buying patterns and creating personalized product packages.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">6 / 12</div>
-  <img src="slide6.jpg" style="width:100%">
-  <div class="text">Improved customer service by identifying customer buying patterns</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">6 / 9</div>
+    <div class="text">Solution</div>
+    <p>Solution: Improved customer service by identifying customer buying patterns and creating personalized product packages.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">7 / 12</div>
-  <img src="slide7.jpg" style="width:100%">
-  <div class="text">Increased customer loyalty by 30% in six months</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">7 / 9</div>
+    <div class="text">Result</div>
+    <p>Result (Good): Increased customer loyalty by 30% in six months.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">8 / 12</div>
-  <img src="slide8.jpg" style="width:100%">
-  <div class="text">Added 22 new client referrals within three months</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">8 / 9</div>
+    <div class="text">Result</div>
+    <p>Result (Better): Increased customer loyalty by 30% in six months. Added 22 new client referrals within three months.</p>
+  </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">9 / 12</div>
-  <img src="slide9.jpg" style="width:100%">
-  <div class="text">Use PTSR to describe experience/accomplishments</div>
-</div>
+  <div class="mySlides fade">
+    <div class="numbertext">9 / 9</div>
+    <div class="text">Summary</div>
+    <p>Use PTSR to describe experience/accomplishments: Action verb + phrase describing result + phrase describing task + phrase describing solution. Quantify your experience.</p>
+  </div>
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-</div>
-<br>
+  </div>
+  <br>
 
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-  <span class="dot" onclick="currentSlide(4)"></span> 
-  <span class="dot" onclick="currentSlide(5)"></span> 
-  <span class="dot" onclick="currentSlide(6)"></span> 
-  <span class="dot" onclick="currentSlide(7)"></span> 
-  <span class="dot" onclick="currentSlide(8)"></span> 
-  <span class="dot" onclick="currentSlide(9)"></span> 
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+    <span class="dot" onclick="currentSlide(4)"></span> 
+    <span class="dot" onclick="currentSlide(5)"></span> 
+    <span class="dot" onclick="currentSlide(6)"></span> 
+    <span class="dot" onclick="currentSlide(7)"></span> 
+    <span class="dot" onclick="currentSlide(8)"></span> 
+    <span class="dot" onclick="currentSlide(9)"></span> 
+  </div>
 </div>
 
 <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
