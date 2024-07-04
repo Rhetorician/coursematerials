@@ -51,6 +51,44 @@ p {
   font-family: helvetica, lato, sans-serif;
   line-height: 1.6;
 }
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14pt;
+  font-family: helvetica, lato, sans-serif;
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.button:hover {
+  background-color: grey;
+}
+
+/* Creative Alternatives */
+.fart-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14pt;
+  font-family: helvetica, lato, sans-serif;
+  color: white;
+  background-color: #ff5733;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 0;
+  box-shadow: 0 0 10px #ff5733;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fart-button:hover {
+  background-color: #c70039;
+  box-shadow: 0 0 20px #c70039;
+}
 </style>
 </head>
 <body>
@@ -68,7 +106,8 @@ p {
 <button class="accordion">Plagiarism Tutorial</button>
 <div class="panel">
   <iframe src="https://sdsu.libwizard.com/f/Plagiarism-tutorial" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-  <p><a href="https://sdsu.libwizard.com/f/Plagiarism-tutorial" target="_blank">Direct link</a></p>
+  <a href="https://sdsu.libwizard.com/f/Plagiarism-tutorial" class="button">Direct Link</a>
+  <a href="https://sdsu.libwizard.com/f/Plagiarism-tutorial" class="fart-button">Direct Link (Creative)</a>
 </div>
 
 <script>
