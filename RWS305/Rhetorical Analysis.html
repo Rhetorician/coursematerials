@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.collapsible {
+  background-color: #000000;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18pt;
+  border-radius: 0;
+  margin: 0;
+  border-bottom: 1px solid #303030;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #303030;
+  margin: 0;
+}
+
+.arrow::before {
+  content: "➤";
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+.active .arrow::before {
+  transform: rotate(90deg);
+}
+
+iframe {
+  width: 100%;
+  height: 749px;
+  border: none;
+  background-color: #202020;
+}
+
+p {
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<!-- Collapsible Sections with Black Styling -->
+<button class="collapsible"><span class="arrow"></span> Module Intro: Preliminary considerations about Rhetoric</button>
+<div class="content">
+  <p>Content for Module Intro: Preliminary considerations about Rhetoric.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Module Videos on Rhetorical Analysis</button>
+<div class="content">
+  <iframe src="https://your-videos-link-here" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Rhetorical Strategies Glossary</button>
+<div class="content">
+  <p>Content for Rhetorical Strategies Glossary.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Rhetorical Appeals Chart</button>
+<div class="content">
+  <p>Content for Rhetorical Appeals Chart.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Rhetorical Precis</button>
+<div class="content">
+  <p>Content for Rhetorical Precis.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Sample introductory Paragraph</button>
+<div class="content">
+  <p>Content for Sample introductory Paragraph.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Sample Body Paragraph</button>
+<div class="content">
+  <p>Content for Sample Body Paragraph.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Work Cited Template</button>
+<div class="content">
+  <p>Content for Work Cited Template.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> New: Advice/Example of Part II and III</button>
+<div class="content">
+  <p>Content for New: Advice/Example of Part II and III.</p>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>
