@@ -30,22 +30,23 @@
 
   .dock-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-end;
-    height: 100px;
+    height: calc(100vh - 200px); /* Adjust height to be responsive */
   }
 
   .dock-item {
     background-color: black;
     color: white;
     border: none;
-    padding: 30px;
+    padding: 40px 30px; /* Increase padding for larger buttons */
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 20px; /* Increase font size */
     margin: 10px;
     transition: transform 0.2s ease-in-out;
+    flex-grow: 1; /* Ensure buttons grow to fill space */
   }
 
   .dock-item:hover {
