@@ -17,33 +17,8 @@
             margin-bottom: 50px;
             text-align: center;
         }
-        .collapsible {
-            background-color: #000000;
-            color: white;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18pt;
-            border-radius: 0;
-            margin: 0;
-            border-bottom: 1px solid #303030;
-        }
-        .active, .collapsible:hover {
-            background-color: #555;
-        }
-        .content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            background-color: #303030;
-            margin: 0;
-        }
-        .content.white-background {
-            background-color: #ffffff;
+        .section {
+            margin: 50px 0;
         }
         .button-container {
             display: flex;
@@ -74,14 +49,71 @@
             color: #ffffff;
             text-decoration: none;
         }
+        .button-container-2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .button-2 {
+            width: 45%;
+            padding: 20px;
+            font-size: 18pt;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #000000;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .button-2:hover {
+            background-color: #333333;
+            transform: scale(1.05);
+        }
+        .button-2 a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .button-container-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .button-3 {
+            padding: 20px;
+            font-size: 18pt;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #000000;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .button-3:hover {
+            background-color: #333333;
+            transform: scale(1.05);
+        }
+        .button-3 a {
+            color: #ffffff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <h1>Welcome to [Course Name]</h1>
-
+    
     <!-- Style 1: Basic Buttons -->
-    <button class="collapsible"><span class="arrow"></span> Style 1: Basic Buttons</button>
-    <div class="content">
+    <div class="section">
         <div class="button-container">
             <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Intro Module</a></div>
             <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Project 1</a></div>
@@ -90,54 +122,27 @@
             <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Project 4</a></div>
         </div>
     </div>
-
-    <!-- Style 2: Advanced Collapsible Sections with Buttons -->
-    <button class="collapsible"><span class="arrow"></span> Style 2: Advanced Collapsible Sections</button>
-    <div class="content white-background">
-        <div class="button-container">
-            <button class="collapsible"><span class="arrow"></span> Intro Module</button>
-            <div class="content">
-                <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Intro Module Link</a></div>
-            </div>
-            <button class="collapsible"><span class="arrow"></span> Project 1</button>
-            <div class="content">
-                <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Project 1 Link</a></div>
-            </div>
-            <button class="collapsible"><span class="arrow"></span> Project 2</button>
-            <div class="content">
-                <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Project 2 Link</a></div>
-            </div>
-            <button class="collapsible"><span class="arrow"></span> Project 3</button>
-            <div class="content">
-                <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Project 3 Link</a></div>
-            </div>
-            <button class="collapsible"><span class="arrow"></span> Project 4</button>
-            <div class="content">
-                <div class="button"><a href="https://sdsu.instructure.com/courses/153189#">Project 4 Link</a></div>
-            </div>
+    
+    <!-- Style 2: Icon Buttons with Hover Effects -->
+    <div class="section">
+        <div class="button-container-2">
+            <div class="button-2"><a href="https://sdsu.instructure.com/courses/153189#">Intro Module</a></div>
+            <div class="button-2"><a href="https://sdsu.instructure.com/courses/153189#">Project 1</a></div>
+            <div class="button-2"><a href="https://sdsu.instructure.com/courses/153189#">Project 2</a></div>
+            <div class="button-2"><a href="https://sdsu.instructure.com/courses/153189#">Project 3</a></div>
+            <div class="button-2"><a href="https://sdsu.instructure.com/courses/153189#">Project 4</a></div>
         </div>
     </div>
-
-    <!-- Style 3: Full Page Embed with Buttons -->
-    <button class="collapsible"><span class="arrow"></span> Style 3: Full Page Embed</button>
-    <div class="content white-background">
-        <iframe src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/HomePage.html" style="width: 100%; height: 800px; border: none;"></iframe>
+    
+    <!-- Style 3: Button Grid Layout -->
+    <div class="section">
+        <div class="button-container-3">
+            <div class="button-3"><a href="https://sdsu.instructure.com/courses/153189#">Intro Module</a></div>
+            <div class="button-3"><a href="https://sdsu.instructure.com/courses/153189#">Project 1</a></div>
+            <div class="button-3"><a href="https://sdsu.instructure.com/courses/153189#">Project 2</a></div>
+            <div class="button-3"><a href="https://sdsu.instructure.com/courses/153189#">Project 3</a></div>
+            <div class="button-3"><a href="https://sdsu.instructure.com/courses/153189#">Project 4</a></div>
+        </div>
     </div>
-
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight){
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                } 
-            });
-        }
-    </script>
 </body>
 </html>
