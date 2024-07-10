@@ -11,11 +11,14 @@
   }
 
   .container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 50px;
+    text-align: left;
   }
 
   .header {
-    text-align: left;
+    margin-bottom: 20px;
   }
 
   .header h1 {
@@ -31,7 +34,7 @@
   .dock-container {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     height: 100px;
   }
 
@@ -49,21 +52,11 @@
   }
 
   .dock-item:hover {
-    transform: scale(1.5);
-  }
-
-  /* Hide Canvas navigation menu */
-  #left-side, #sticky-container {
-    display: none;
-  }
-
-  #content {
-    margin-left: 0 !important;
+    transform: scale(2.5);
   }
 </style>
 </head>
 <body>
-
 <div class="container">
   <div class="header">
     <h1>RWS 305W</h1>
@@ -77,6 +70,5 @@
     <a href="https://sdsu.instructure.com/courses/153189#" target="_top" class="dock-item">Project 4</a>
   </div>
 </div>
-
 </body>
 </html>
