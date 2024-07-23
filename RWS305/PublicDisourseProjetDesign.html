@@ -80,11 +80,12 @@ iframe {
 }
 
 .panel {
-  padding: 0 20px;
-  display: none;
+  max-height: 300px; /* Set a reasonable max height */
+  overflow-y: auto; /* Allow vertical scrolling */
+  display: none; /* Ensure panels start hidden */
   background-color: black;
   color: white;
-  overflow: hidden;
+  padding: 0 20px;
   font-size: 16px;
 }
 </style>
@@ -197,7 +198,7 @@ iframe {
        PLAN AND PRACTICE<br>
        • Planning: helps reduce nervousness or “Communication Anxiety”<br>
        • Research: people who plan are less nervous than people who simply rehearse</p>
- </div>
+  </div>
 </div>
 
 <button class="collapsible"><span class="arrow"></span> Four Basic Design Principles</button>
@@ -228,7 +229,7 @@ for (var i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.maxHeight){
+    if (content.style.maxHeight) {
       content.style.maxHeight = null;
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
