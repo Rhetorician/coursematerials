@@ -80,9 +80,9 @@ iframe {
 }
 
 .panel {
-  max-height: 300px; /* Set a reasonable max height */
-  overflow-y: auto; /* Allow vertical scrolling */
-  display: none; /* Ensure panels start hidden */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
   background-color: black;
   color: white;
   padding: 0 20px;
@@ -242,10 +242,10 @@ for (var j = 0; j < acc.length; j++) {
   acc[j].addEventListener("click", function() {
     this.classList.toggle("active-accordion");
     var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
     } else {
-      panel.style.display = "block";
+      panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
 }
