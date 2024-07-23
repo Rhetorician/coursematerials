@@ -9,7 +9,7 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .collapsible {
@@ -36,15 +36,19 @@ body, html {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #000000;
+  background-color: #303030;
   margin: 0;
-  color: white;
+}
+
+.content.white-background {
+  background-color: #ffffff;
 }
 
 iframe {
   width: 100%;
   height: 749px;
   border: none;
+  background-color: #202020;
 }
 
 .arrow::before {
@@ -56,6 +60,30 @@ iframe {
 
 .active .arrow::before {
   transform: rotate(90deg);
+}
+
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active-accordion, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
 }
 </style>
 </head>
@@ -69,50 +97,125 @@ iframe {
 
 <button class="collapsible"><span class="arrow"></span> Layout and Composition</button>
 <div class="content">
-  <iframe title="Beginning Graphic Design: Layout &amp; Composition" src="https://www.youtube.com/embed/a5KYlHNKQB8" width="100%" height="760" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Four Basic Design Principles</button>
-<div class="content">
-  <p style="color: white;">Four Basic Design Principles:</p>
-  <ul style="color: white;">
-    <li>Contrast: Avoid elements on the page that are merely similar. If the elements (type, color, size, line thickness, shape, space, etc.) are not the same, then make them very different. Contrast is often the most important visual attraction on a page—it’s what makes a reader looks at the page in the first place.</li>
-    <li>Repetition: Repeat visual elements of the design throughout the piece. You can repeat colors, shapes, textures, spatial relationships, line thicknesses, fonts, sizes, graphic concepts, etc. This develops the organization and strengthens the unity.</li>
-    <li>Alignment: Nothing should be placed on the page arbitrarily. Every element should have some visual connection with another element on the page. This creates a clean, sophisticated, fresh look.</li>
-    <li>Proximity: Items relating to each other should be grouped close together. When several items are in close proximity to each other, they become one visual unit rather than several separate units. This helps organize information, reduces clutter, and gives the reader a clear structure.</li>
-  </ul>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Example PowerPoint</button>
-<div class="content">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR1tN3vqIXrqZM1AKmRDTFk_49W9M7QvTFGhQ7LCkLSVkrVXbFL81SEG72igrmTzg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  <p><a href="https://docs.google.com/presentation/d/15LxNjUPPK-2XiSed0g62dzG5X2iRgpgM/edit?usp=drive_link&ouid=107529234861990850793&rtpof=true&sd=true" target="_blank" style="color: white;">Open in Google Slides</a></p>
+  <iframe title="Beginning Graphic Design: Layout & Composition" src="https://www.youtube.com/embed/a5KYlHNKQB8" width="100%" height="760" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
 </div>
 
 <button class="collapsible"><span class="arrow"></span> Professional Presentations</button>
 <div class="content">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTa5thF0gO5fvPfHOQI42S0pLNIDrtbvhs-zq49WJuxnP-_8kc2eiR4iJAoAahZIw/embed?start=false&loop=true&delayms=3000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  <button class="collapsible"><span class="arrow"></span> Speaker Notes</button>
-  <div class="content">
-    <ul style="color: white;">
-      <li>Slide #1: This slideshow is concerned with establishing two things: • most important elements of good slideshows • tips for making a good PPT for this class (and beyond)</li>
-      <li>Slide 6: This is the group’s original. (Actually, theirs was worse than this—the text was overlapping with the image, but you get the point.)</li>
-      <li>Slide 7: This is the revision based on the principles of design. Compared to the previous slide, which was cluttered, confusing, and ugly, there's no doubt about the presenter is going to talk about in this slide.</li>
-      <li>Slide 8: Original slide: too much; unclear; boring</li>
-      <li>Slide 9: • Added number six in text to the title • Separated bullets out to two slides • Numbered the bullets to show there are six • Added a “cont.” to the title on the second slide</li>
-      <li>Slide 10: Note the layout was an arbitrary matter—I just kept it consistent with layout of the current slideshow. I could have stuck with what they had and it would have been fine. Instead, the point here is to ensure that you're using the principles of design.</li>
-      <li>Slide 11: Original: Bad</li>
-      <li>Slide 12: Redesigned: readable</li>
-      <li>Slide 16: Remember: In most cases, slides are meant to summarize points made by the speaker. The audience should be listening, not reading.</li>
-      <li>Slide 17: We've looked at how to organize slides with text. Now let’s look at how to integrate visuals on a slide. This is a good example of what not to do. Presenter should have spoken the material on the slide. In other words, it should have been their script, not slide content. Importance of the visual is lost</li>
-      <li>Slide 18: Revised Slide: No text; visual Interaction The slide now summarizes the importance of the image</li>
-      <li>Slide 19: Original Slide: Lots of text • Great graphic, but it has just been dumped in without editing • Text describes a series of effects; the graphic does too • But the text doesn’t relate to the graphic</li>
-      <li>Slide 20: • Edited text to essential points • Connected each bulleted point to the drawing • Numbered the bullets for ease of understanding • Had to do some minor editing of the image itself</li>
-      <li>Slide 21: Original Slide: Too many visuals Slide is way too busy, visually • At least two graphics are irrelevant to the slide’s point • The text is lost on the slide</li>
-      <li>Slide 22: Revised slide with too many visuals • Simply deleted graphics that don’t add to the slide • Kept one visual and moved it, since it was an accent, or ornament • Increased text size from 18 to 24</li>
-      <li>Slide 27: VISUALIZE THE PRESENTATION • “Imagine” the entire process, from when you enter the room, to when you field questions • Avoid visualizing presentation failures, which rarely occur CRAFTING • Practicing the presentation is a combination of rehearsing and revising • It is an essential part of the planning/development phase. PLAN AND PRACTICE • Planning: helps reduce nervousness or “Communication Anxiety” • Research: people who plan are less nervous than people who simply rehearse</li>
-    </ul>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTa5thF0gO5fvPfHOQI42S0pLNIDrtbvhs-zq49WJuxnP-_8kc2eiR4iJAoAahZIw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+  
+  <!-- Sub-collapsibles for each slide with notes -->
+  <button class="accordion"><span class="arrow"></span> Slide #1</button>
+  <div class="panel">
+    <p>This slideshow is concerned with establishing two things:<br>
+    • most important elements of good slideshows<br>
+    • tips for making a good PPT for this class (and beyond)</p>
   </div>
+  <button class="accordion"><span class="arrow"></span> Slide 6</button>
+  <div class="panel">
+    <p>This is the group’s original. (Actually, theirs was worse than this—the text was overlapping with the image, but you get the point.)</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 7</button>
+  <div class="panel">
+    <p>This is the revision based on the principles of design. Compared to the previous slide, which was cluttered, confusing, and ugly, there's no doubt about the presenter is going to talk about in this slide.</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 8</button>
+  <div class="panel">
+    <p>Original slide: too much; unclear; boring</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 9</button>
+  <div class="panel">
+    <p>• Added number six in text to the title<br>
+    • Separated bullets out to two slides<br>
+    • Numbered the bullets to show there are six<br>
+    • Added a “cont.” to the title on the second slide</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 10</button>
+  <div class="panel">
+    <p>Note the layout was an arbitrary matter—I just kept it consistent with layout of the current slideshow. I could have stuck with what they had and it would have been fine. Instead, the point here is to ensure that you're using the principles of design.</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 11</button>
+  <div class="panel">
+    <p>Original: Bad</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 12</button>
+  <div class="panel">
+    <p>Redesigned: readable</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 16</button>
+  <div class="panel">
+    <p>Remember: In most cases, slides are meant to summarize points made by the speaker.<br>
+    The audience should be listening, not reading.</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 17</button>
+  <div class="panel">
+    <p>We've looked at how to organize slides with text. Now let’s look at how to integrate visuals on a slide.<br>
+    This is a good example of what not to do.<br>
+    Presenter should have spoken the material on the slide. In other words, it should have been their script, not slide content.<br>
+    Importance of the visual is lost</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 18</button>
+  <div class="panel">
+    <p>Revised Slide: No text; visual Interaction<br>
+    The slide now summarizes the importance of the image</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 19</button>
+  <div class="panel">
+    <p>Original Slide: Lots of text<br>
+    • Great graphic, but it has just been dumped in without editing<br>
+    • Text describes a series of effects; the graphic does too<br>
+    • But the text doesn’t relate to the graphic</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 20</button>
+  <div class="panel">
+    <p>• Edited text to essential points<br>
+    • Connected each bulleted point to the drawing<br>
+    • Numbered the bullets for ease of understanding<br>
+    • Had to do some minor editing of the image itself</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 21</button>
+  <div class="panel">
+    <p>Original Slide: Too many visuals<br>
+    Slide is way too busy, visually<br>
+    • At least two graphics are irrelevant to the slide’s point<br>
+    • The text is lost on the slide</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 22</button>
+  <div class="panel">
+    <p>Revised slide with too many visuals<br>
+    • Simply deleted graphics that don’t add to the slide<br>
+    • Kept one visual and moved it, since it was an accent, or ornament<br>
+    • Increased text size from 18 to 24</p>
+  </div>
+  <button class="accordion"><span class="arrow"></span> Slide 27</button>
+  <div class="panel">
+    <p>VISUALIZE THE PRESENTATION<br>
+    • “Imagine” the entire process, from when you enter the room, to when you field questions<br>
+    • Avoid visualizing presentation failures, which rarely occur<br>
+    CRAFTING<br>
+    • Practicing the presentation is a combination of rehearsing and revising<br>
+    • It is an essential part of the planning/development phase.<br>
+    PLAN AND PRACTICE<br>
+    • Planning: helps reduce nervousness or “Communication Anxiety”
+    • Research: people who plan are less nervous than people who simply rehearse</p>
+  </div>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Four Basic Design Principles</button>
+<div class="content" style="background-color: black; color: white;">
+  <p>1. Contrast<br>
+  Avoid elements on the page that are merely similar. If the elements (type, color, size, line thickness, shape, space, etc.) are not the same, then make them very different. Contrast is often the most important visual attraction on a page—it’s what makes a reader looks at the page in the first place.<br><br>
+  2. Repetition<br>
+  Repeat visual elements of the design throughout the piece. You can repeat colors, shapes, textures, spatial relationships, line thicknesses, fonts, sizes, graphic concepts, etc. This develops the organization and strengthens the unity.<br><br>
+  3. Alignment<br>
+  Nothing should be placed on the page arbitrarily. Every element should have some visual connection with another element on the page. This creates a clean, sophisticated, fresh look.<br><br>
+  4. Proximity<br>
+  Items relating to each other should be grouped close together. When several items are in close proximity to each other, they become one visual unit rather than several separate units. This helps organize information, reduces clutter, and gives the reader a clear structure.</p>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Example PowerPoint</button>
+<div class="content">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR1tN3vqIXrqZM1AKmRDTFk_49W9M7QvTFGhQ7LCkLSVkrVXbFL81SEG72igrmTzg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
 
 <script>
@@ -123,10 +226,23 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.maxHeight) {
+    if (content.style.maxHeight){
       content.style.maxHeight = null;
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
+var acc = document.getElementsByClassName("accordion");
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active-accordion");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
     }
   });
 }
