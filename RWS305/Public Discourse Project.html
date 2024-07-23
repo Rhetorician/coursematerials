@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
 
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.collapsible {
+  background-color: #000000;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18pt;
+  border-radius: 0;
+  margin: 0;
+  border-bottom: 1px solid #303030;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #303030;
+  margin: 0;
+}
+
+.content.white-background {
+  background-color: #ffffff;
+}
+
+iframe {
+  width: 100%;
+  height: 749px;
+  border: none;
+  background-color: #202020;
+}
+
+.arrow::before {
+  content: "➤";
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+.active .arrow::before {
+  transform: rotate(90deg);
+}
+</style>
+</head>
+<body>
+
+<!-- Collapsible Sections with Black Styling -->
+<button class="collapsible"><span class="arrow"></span> Start Here</button>
+<div class="content">
+  <iframe title="YouTube video player" src="https://www.youtube.com/embed/EN8a7OPJE-U" width="100%" height="749" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Identity Capital</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%204/Identity%20Capital%20(Excerpt).pdf" width="100%" height="600px"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> My Life Should Look Better</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%204/My%20Life%20Should%20Look%20Better%20on%20Facebook%20(Excerpt).pdf" width="100%" height="600px"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Weak Ties</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%204/Weak%20Ties%20(Excerpt).pdf" width="100%" height="600px"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> 30 is not the new 20</button>
+<div class="content">
+  <iframe title="YouTube video player" src="https://www.youtube.com/embed/vhhgI4tSMwc" width="100%" height="749" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Mindset</button>
+<div class="content">
+  <iframe src="https://www.youtube.com/embed/_X0mgOOSpLU" width="100%" height="749" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Grit</button>
+<div class="content">
+  <iframe title="YouTube video player" src="https://www.youtube.com/embed/H14bBuluwB8" width="100%" height="749" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Success</button>
+<div class="content">
+  <iframe title="YouTube video player" src="https://www.youtube.com/embed/jpe-LKn-4gM" width="100%" height="749" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>
