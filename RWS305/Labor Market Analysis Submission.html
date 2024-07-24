@@ -32,6 +32,61 @@ iframe {
   height: 600px;
   border: none;
 }
+
+.no-select {
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.no-select div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  pointer-events: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #000;
+  color: #fff;
+  font-family: helvetica;
+}
+
+td {
+  background-color: #fff;
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.no-select th, .no-select td {
+  position: relative;
+}
+
+.no-select th div, .no-select td div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -56,6 +111,132 @@ iframe {
 <button class="accordion">BLS Guide</button>
 <div class="panel">
   <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/BLS%20Guide%20for%20Research%20(305W).pdf" width="100%" height="600px"></iframe>
+</div>
+
+<button class="accordion">Rubric</button>
+<div class="panel no-select">
+  <div></div>
+  <table>
+    <tr>
+      <th>Criteria</th>
+      <th>Ratings</th>
+      <th>Pts</th>
+    </tr>
+    <tr>
+      <td>Nature of Work</td>
+      <td>
+        12 pts<br><strong>HIGHLY PROFICIENT</strong><br>Clear, factual, well-cited, properly "chunked"<br><br>
+        10 pts<br><strong>PROFICIENT</strong><br>Clear, well-cited, mostly concise<br><br>
+        8 pts<br><strong>COMPETENT</strong><br>Adequate, some clarity issues, and/or "chunking" issues<br><br>
+        6 pts<br><strong>DEVELOPING</strong><br>Incomplete, unclear, weak citations, may have "chunking" issues<br><br>
+        3 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Training/Qualifications</td>
+      <td>
+        12 pts<br><strong>HIGHLY PROFICIENT</strong><br>Clear, factual, well-cited, concise, properly "chunked"<br><br>
+        10 pts<br><strong>PROFICIENT</strong><br>Clear, well-cited, mostly concise<br><br>
+        8 pts<br><strong>COMPETENT</strong><br>Adequate, some clarity issues, and/or "chunking" issues<br><br>
+        6 pts<br><strong>DEVELOPING</strong><br>Incomplete, unclear, weak citations, "chunking" issues<br><br>
+        3 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Job Outlook</td>
+      <td>
+        12 pts<br><strong>HIGHLY PROFICIENT</strong><br>Clear, factual, well-cited, properly "chunked"<br><br>
+        10 pts<br><strong>PROFICIENT</strong><br>Clear, well-cited, mostly concise<br><br>
+        8 pts<br><strong>COMPETENT</strong><br>Adequate, some clarity issues, and/or "chunking" issues<br><br>
+        6 pts<br><strong>DEVELOPING</strong><br>Incomplete, unclear, weak citations, "chunking" issues<br><br>
+        3 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Earnings/Wage Projections</td>
+      <td>
+        12 pts<br><strong>HIGHLY PROFICIENT</strong><br>Clear, factual, well-presented, analyzed, well-cited<br><br>
+        10 pts<br><strong>PROFICIENT</strong><br>Clear, well-cited, analyzed<br><br>
+        8 pts<br><strong>COMPETENT</strong><br>Adequate info, some clarity issues<br><br>
+        6 pts<br><strong>DEVELOPING</strong><br>Incomplete, unclear, weak citations, "chunking" issues<br><br>
+        3 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Alternative Occupations</td>
+      <td>
+        12 pts<br><strong>HIGHLY PROFICIENT</strong><br>Factual, well-cited, analyzed, properly "chunked"<br><br>
+        10 pts<br><strong>PROFICIENT</strong><br>Clear, well-cited, mostly factual, analyzed<br><br>
+        8 pts<br><strong>COMPETENT</strong><br>Adequate info, some clarity issues, weak analysis<br><br>
+        6 pts<br><strong>DEVELOPING</strong><br>Incomplete, unclear, weak citations, "chunking" issues<br><br>
+        3 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>Technical Integration of Images</td>
+      <td>
+        20 pts<br><strong>HIGHLY PROFICIENT</strong><br>Flawless placement, formatting, captions, and titles<br><br>
+        17 pts<br><strong>PROFICIENT</strong><br>Good placement, formatting, captions, and titles<br><br>
+        14 pts<br><strong>COMPETENT</strong><br>Adequate placement, minor formatting issues<br><br>
+        11 pts<br><strong>DEVELOPING</strong><br>Inconsistent or incorrect placement, weak formatting<br><br>
+        5 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>Rhetoric of Figures and Tables</td>
+      <td>
+        20 pts<br><strong>HIGHLY PROFICIENT</strong><br>Excellent interpretation and discussion of visuals<br><br>
+        17 pts<br><strong>PROFICIENT</strong><br>Good interpretation and discussion of visuals<br><br>
+        14 pts<br><strong>COMPETENT</strong><br>Adequate interpretation and discussion<br><br>
+        11 pts<br><strong>DEVELOPING</strong><br>Limited interpretation and discussion<br><br>
+        5 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>Conclusion: Introspection, Critical Thinking, Growth Plan</td>
+      <td>
+        50 pts<br><strong>HIGHLY PROFICIENT</strong><br>Insightful, sincere, clear; High-level analysis and genuine introspection; Growth plan is clear, actionable<br><br>
+        42.5 pts<br><strong>PROFICIENT</strong><br>Insightful, relatively sincere, clear; Strong analysis at times; some genuine introspection; Growth plan is clear, actionable<br><br>
+        35 pts<br><strong>COMPETENT</strong><br>Adequate reflection; Adequate analysis and introspection; Adequate plan, some actionable steps<br><br>
+        27.5 pts<br><strong>DEVELOPING</strong><br>Limited analysis and introspection; Incomplete plan, missing actionable steps<br><br>
+        12.5 pts<br><strong>UNPROFESSIONAL</strong><br>Superficial introspection; growth plan missing or not actionable
+      </td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Readability, Style, and Audience Awareness</td>
+      <td>
+        35 pts<br><strong>HIGHLY PROFICIENT</strong><br>Mechanics: Relatively sound grammar; no verbosity or wordiness; Style: Professional, yet engaging tone; the writer's voice reflects sincerity and carries a sense of humanity<br><br>
+        30 pts<br><strong>PROFICIENT</strong><br>Mechanics: Minor errors; minimal verbosity or wordiness; Style: Professional tone; mostly engaging, sincere, and human<br><br>
+        24 pts<br><strong>COMPETENT</strong><br>Mechanics: Some errors may obscure meaning; verbosity and/or wordiness issues; Style: Adequate tone; somewhat engaging, with some sense of sincerity<br><br>
+        20 pts<br><strong>DEVELOPING</strong><br>Mechanics: Clarity issues; Verbose and/or wordy; Style: Limited engagement; somewhat robotic and/or generic<br><br>
+        10 pts<br><strong>UNPROFESSIONAL</strong><br>Mechanics: Seriously verbose and/or wordy; Style: Dull, robotic, overly formal or otherwise out of touch with audience
+      </td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>Citation Accuracy and Paraphrasing</td>
+      <td>
+        15 pts<br><strong>HIGHLY PROFICIENT</strong><br>Properly cited, footnotes are accurate and well placed; outstanding paraphrasing throughout report<br><br>
+        12 pts<br><strong>PROFICIENT</strong><br>Minor citation errors and/or mostly accurate paraphrasing<br><br>
+        10 pts<br><strong>COMPETENT</br>Some citation errors and/or adequate paraphrasing<br><br>
+        7 pts<br><strong>DEVELOPING</strong><br>Frequent citation errors and/or paraphrasing issues<br><br>
+        3 pts<br><strong>UNPROFESSIONAL</strong><br>Missing or incompetent
+      </td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Total Points</strong></td>
+      <td>200</td>
+    </tr>
+  </table>
 </div>
 
 <script>
