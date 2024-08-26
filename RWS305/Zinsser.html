@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  .accordion {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+
+  .active, .accordion:hover {
+    background-color: #ccc; 
+  }
+
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+  }
+
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+</style>
+</head>
+<body class="no-select">
+
+<h2 style="text-align: center; color: #fff; background-color: #000; padding: 10px;">Course Chapters</h2>
+
+<button class="accordion">Introduction</button>
+<div class="panel">
+  <p>Content for the Introduction will go here...</p>
+</div>
+
+<button class="accordion">Chapter 1</button>
+<div class="panel">
+  <p>Content for Chapter 1 will go here...</p>
+</div>
+
+<button class="accordion">Chapter 2</button>
+<div class="panel">
+  <p>Content for Chapter 2 will go here...</p>
+</div>
+
+<button class="accordion">Chapter 3</button>
+<div class="panel">
+  <p>Content for Chapter 3 will go here...</p>
+</div>
+
+<button class="accordion">Chapter 4</button>
+<div class="panel">
+  <p>Content for Chapter 4 will go here...</p>
+</div>
+
+<button class="accordion">Chapter 5</button>
+<div class="panel">
+  <p>Content for Chapter 5 will go here...</p>
+</div>
+
+<button class="accordion">Chapter 6</button>
+<div class="panel">
+  <p>Content for Chapter 6 will go here...</p>
+</div>
+
+<button class="accordion">Chapter 7</button>
+<div class="panel">
+  <p>Content for Chapter 7 will go here...</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
