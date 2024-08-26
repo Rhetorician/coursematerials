@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#CourseInformation">Course Information</a>
+  <a href="#CreditsPrerequisites">Credits and Prerequisites</a>
+  <a href="#CourseRequirements">Course Requirements</a>
+  <a href="#CourseDescription">Course Description</a>
+  <a href="#StudentLearningOutcomes">Student Learning Outcomes</a>
+  <a href="#AssignmentAssessmentMethods">Assignment and Assessment Methods</a>
+  <a href="#AssignmentDescriptions">Assignment Descriptions</a>
+  <a href="#CourseGrading">Course Grading</a>
+  <a href="#CommunicationFeedback">Communication and Feedback</a>
+  <a href="#CourseUniversityPolicies">Course and University Policies</a>
+  <a href="#Schedule">Schedule</a>
+  <a href="#FAQs">FAQs</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>
+  <h2 id="CourseInformation">Course Information</h2>
+  <table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+    <tbody>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Days:</strong> Thursday</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Instructor:</strong> Matt Feigner</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Time:</strong> 2:00 - 3:30</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Email:</strong> mfeigner@sdsu.edu</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Location:</strong>LH 442</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong></strong> <a href="https://sdsu.zoom.us/j/85270281161" target="_blank" rel="noopener" style="color: #00beff; text-decoration: none;">Zoom</a></span></td>
+
+        </tr>
+        <tr>
+            <td style="width: 24.9746%;"><span style="font-family: helvetica;"><strong>Office hours:</strong></span></td>
+            <td style="width: 24.9746%;"><span style="font-family: helvetica;">Friday 2:00-3:00 and by appointment</span></td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="CreditsPrerequisites">Credits and Prerequisites</h2>
+<table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+    <tbody>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Credits:</strong> 3 Credit hours</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Prerequisites:</strong> Completion of 60 units and completion of General Education requirements in Communication and Critical Thinking</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Class Standing:</strong> Junior, Senior, Graduate</span></td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="CourseRequirements">Course Requirements</h2>
+<table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+    <tbody>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Required:</strong></span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">RWS Course Reader: Course materials packet (available at SDSU bookstore in digital format; print version can be ordered)</span></td>
+        </tr>
+        <tr style="height: 125px;">
+            <td style="width: 24.9746%; height: 125px;" width="312">
+                <p><span style="font-family: helvetica;"><strong>Recommended:</strong></span></p>
+            </td>
+            <td style="width: 24.9746%; height: 125px;">
+                <p><span style="font-family: helvetica;">Raimes: Keys for Writers (7th edition with exercise workbook—SDSU custom edition) Note: Any other grammar, style, and usage handbook will do.</span></p>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 24.9746%; height: 53px; vertical-align: top;" width="312">
+                <p><span style="font-family: helvetica;"><strong>Canvas LMS and Technology Requirements</strong></span></p>
+            </td>
+            <td style="width: 24.9746%; height: 53px;">
+                <p><span style="font-family: helvetica;">All materials, except for the course reader, are accessed through Canvas.</span></p>
+                <p><span style="font-family: helvetica;">Computer access is required for Canvas posts, Internet links, and assignment submissions.</span></p>
+                <p><span style="font-family: helvetica;">You may use a mobile device for most aspects of our course, but these devices are not always user friendly with Canvas, especially assignment submissions.</span></p>
+                <p><span style="font-family: helvetica;">You must upload either Microsoft Word documents or PDF files for assignment submissions. If you use Google Docs or Pages software, you must convert to a PDF file or Word doc before submitting.</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<div id="CourseDescription" class="tabcontent">
+  <h2>Course Description</h2>
+  <p>Successful completion of RWS 305W satisfies the Graduation Writing Assessment Requirement (GWAR) for students who have met the prerequisites noted below. Rhetoric and Writing Studies 305W is designed to help upper-level students develop the communication skills needed for successful professional careers. The course builds on the rhetorical model that students are introduced to in earlier 100 and 200-level courses: attention to audience, purpose, presentation (genre and organization), evidence, and language.</p>
+  <p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+</div>
+
+<div id="StudentLearningOutcomes" class="tabcontent">
+  <h2>Student Learning Outcomes</h2>
+  <ul>
+    <li>Analyze and evaluate complex print, digital, and multimodal texts that engage significant academic, professional, or civic issues.</li>
+    <li>Apply rhetorical principles appropriate to different purposes and goals, within specific disciplinary, professional, and civic communities.</li>
+    <li>Research and contribute to specific areas of inquiry by evaluating, synthesizing, and integrating strategies and sources appropriate to genre.</li>
+    <li>Adapt and employ conventions to communicate with diverse audiences who are members of or affected by a specific area or discipline.</li>
+    <li>Compose a variety of texts, working individually and collaboratively, through processes of drafting, critiquing, reflecting, and editing.</li>
+  </ul>
+  <p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+</div>
+
+<h2 id="AssignmentAssessmentMethods">Assignment and Assessment Methods</h2>
+<p>The course consists of four major projects arranged in modules, each responding to a different rhetorical situation. Within each module, a revised final draft of the project culminates from a series of assignments, including reflection-oriented journal entries that are informed by the module readings, recorded video sessions, and working (rough) drafts. Point values for specific assignments are based on the instructor’s judgment of the overall quality of submitted coursework as evaluated against a set of published criteria. Due dates, module details and submission instructions for all work are in the course assignment schedule posted on Canvas. Due dates are critical; all work is carefully sequenced to maximize your learning and to facilitate successful completion of the Course Learning Outcomes. To be successful, students must assume a high level of self-discipline and responsibility for meeting all deadlines. Late submissions may not receive points. The project components and points associated with them are listed in the table below.</p>
+<table style="border-collapse: collapse; width: 100%; border-color: #000000; margin-left: auto; margin-right: auto;" width="100%">
+    <tbody>
+        <tr style="height: 54px;">
+            <td style="border-color: #000000; border-style: solid; background-color: #000000; height: 54px;" width="156">
+                <p><span style="font-family: helvetica; color: #ffffff;"><strong>Module</strong></span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; background-color: #000000; height: 54px;" width="302">
+                <p><span style="font-family: helvetica; color: #ffffff;"><strong>Assignment</strong></span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; background-color: #000000; height: 54px;" width="83">
+                <p><span style="font-family: helvetica; color: #ffffff;"><strong>Points</strong></span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; background-color: #000000; height: 54px;" width="83">
+                <p><span style="font-family: helvetica; color: #ffffff;"><strong>Total</strong></span></p>
+            </td>
+        </tr>
+        <tr style="height: 79px;">
+            <td style="border-color: #000000; border-style: solid; height: 79px;" width="156">
+                <p><span style="font-family: helvetica;">Introductory Module: Required First Step</span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 79px;" width="302">
+                <p><span style="font-family: helvetica;">Syllabus &amp; Policy Acknowledgment</span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 79px;" width="83">
+                <p><span style="font-family: helvetica;">10</span></p>
+            </td>
+            <td style="width: 83px; text-align: center; vertical-align: middle; border-color: #000000; border-style: solid; height: 79px;" width="83">
+                <p><span style="font-family: helvetica;">10</span></p>
+            </td>
+        </tr>
+        <tr style="height: 152px;">
+            <td style="border-color: #000000; border-style: solid; height: 152px;" width="156">
+                <p><span style="font-family: helvetica;">Module 1: Career Portfolio</span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 152px;" width="302">
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">Reflection &amp; Direction Journal</span></li>
+                    <li><span style="font-family: helvetica;">Cover Letter</span></li>
+                    <li><span style="font-family: helvetica;">Resume</span><br /><span style="font-family: helvetica;">(Both the resume and cover letter may be revised for the possibility of a higher grade.)</span></li>
+                </ol>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 152px;" width="83">
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">30</span></li>
+                    <li><span style="font-family: helvetica;">100</span></li>
+                    <li><span style="font-family: helvetica;">100</span><br /><br /></li>
+                </ol>
+            </td>
+            <td style="width: 83px; text-align: center; vertical-align: middle; border-color: #000000; border-style: solid; height: 152px;" width="83">
+                <p><span style="font-family: helvetica;">230</span></p>
+            </td>
+        </tr>
+        <tr style="height: 136px;">
+            <td style="border-color: #000000; border-style: solid; height: 136px;" width="156">
+                <p><span style="font-family: helvetica;">Module 2: Labor Market Analysis Report</span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 136px;" width="302">
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">Reflection &amp; Direction Journal</span><br /><span style="font-family: helvetica;">(2 entries)</span></li>
+                    <li><span style="font-family: helvetica;">Quiz: Plagiarism &amp; Paraphrasing</span></li>
+                    <li><span style="font-family: helvetica;">Labor Market Report</span><br /><span style="font-family: helvetica;">(not able to be revised for higher grade)</span></li>
+                </ol>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 136px;" width="83">
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">15 + 15</span></li>
+                    <li><span style="font-family: helvetica;">10</span></li>
+                    <li><span style="font-family: helvetica;">200</span></li>
+                </ol>
+            </td>
+            <td style="width: 83px; text-align: center; vertical-align: middle; border-color: #000000; border-style: solid; height: 136px;" width="83">
+                <p><span style="font-family: helvetica;">240</span></p>
+            </td>
+        </tr>
+        <tr style="height: 134px;">
+            <td style="border-color: #000000; border-style: solid; height: 134px;" width="156">
+                <p><span style="font-family: helvetica;">Module 3: Rhetorical Analysis Paper</span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 134px;" width="302">
+                <p>&nbsp;</p>
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">Reflection &amp; Direction Journal</span></li>
+                    <li><span style="font-family: helvetica;">Rhetorical Analysis Paper</span><br /><span style="font-family: helvetica;">(not able to be revised for a higher grade)</span></li>
+                </ol>
+            </td>
+            <td style="width: 83px; border-color: #000000; border-style: solid; height: 134px;" width="83">
+                <p>&nbsp;</p>
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">30</span></li>
+                    <li><span style="font-family: helvetica;">280</span></li>
+                </ol>
+            </td>
+            <td style="width: 83px; text-align: center; vertical-align: middle; border-color: #000000; border-style: solid; height: 134px;" width="83">
+                <p><span style="font-family: helvetica;">310</span></p>
+            </td>
+        </tr>
+        <tr style="height: 86px;">
+            <td style="border-color: #000000; border-style: solid; height: 86px;" width="156">
+                <p><span style="font-family: helvetica;">Module 4: Public Discourse Assignment</span></p>
+            </td>
+            <td style="bordercolor: #000000; border-style: solid; height: 86px;" width="302">
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">Reflection &amp; Direction Journal</span></li>
+                    <li><span style="font-family: helvetica;">Narrated Presentation and script</span><br /><span style="font-family: helvetica;">(not able be revised for a higher grade)</span></li>
+                </ol>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 86px;" width="83">
+                <ol style="list-style-type: decimal;">
+                    <li><span style="font-family: helvetica;">30</span></li>
+                    <li><span style="font-family: helvetica;">180</span></li>
+                </ol>
+            </td>
+            <td style="width: 83px; text-align: center; vertical-align: middle; border-color: #000000; border-style: solid; height: 86px;" width="83">
+                <p><span style="font-family: helvetica;">210</span></p>
+            </td>
+        </tr>
+        <tr style="height: 54px;">
+            <td style="border-color: #000000; border-style: solid; height: 54px;" width="156">
+                <p><span style="font-family: helvetica;">Course Total</span></p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 54px;" width="302">
+                <p>&nbsp;</p>
+            </td>
+            <td style="border-color: #000000; border-style: solid; height: 54px;" width="83">
+                <p>&nbsp;</p>
+            </td>
+            <td style="width: 83px; text-align: center; vertical-align: middle; border-color: #000000; border-style: solid; height: 54px;" width="83">
+                <p><span style="font-family: helvetica;">1000</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="CourseGrading">Course Grading</h2>
+<table style="border-collapse: collapse; width: 75%; background-color: #ffffff; border-color: #ffffff; border-style: none; margin-left: auto; margin-right: auto;" border="1">
+    <tbody>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Assignment</strong></span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Points</strong></span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">Introductory Module</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">10</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">Career Portfolio</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">230</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">Labor Market Analysis Report</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">240</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">Rhetorical Analysis Paper</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">310</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">Public Discourse Assignment</span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;">210</span></td>
+        </tr>
+        <tr style="height: 29px;">
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>Total</strong></span></td>
+            <td style="width: 24.9746%; height: 29px;"><span style="font-family: helvetica;"><strong>1000</strong></span></td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="CommunicationFeedback">Communication and Feedback</h2>
+<p><span style="font-family: helvetica;">Instructor communication will be conducted via Canvas announcements and email. Students are expected to check their Canvas messages and email daily for updates. Feedback on assignments will be provided within one week of submission.</span></p>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="CourseUniversityPolicies">Course and University Policies</h2>
+<p><strong>Accommodations:</strong> If you are a student with a disability and are in need of accommodations for this class, please contact Student Ability Success Center at (619) 594-6473 as soon as possible. Please know accommodations are not retroactive, and I cannot provide accommodations based upon disability until I have received an accommodation letter from Student Ability Success Center.</p>
+<p><strong>Student Privacy and Intellectual Property:</strong> The Family Educational Rights and Privacy Act (FERPA) mandates the protection of student information, including contact information, grades, and graded assignments. I will use Canvas to communicate with you, and I will not post grades or leave graded assignments in public places. Students will be notified at the time of an assignment if copies of student work will be retained beyond the end of the semester or used as examples for future students or the wider public. Students maintain intellectual property rights to work products they create as part of this course unless they are formally notified otherwise.</p>
+<p><strong>Religious observances:</strong> According to the University Policy File, students should notify the instructors of affected courses of planned absences for religious observances by the end of the second week of classes.</p>
+<p><strong>Academic Honesty:</strong> The University prohibits cheating and plagiarism. Examples of academic dishonesty include but are not limited to:</p>
+<ul>
+  <li>copying, in part or in whole, from another's test or other examination;</li>
+  <li>obtaining copies of a test, an examination, or other course material without the permission of the instructor;</li>
+  <li>collaborating with another or others in work to be presented without the permission of the instructor;</li>
+  <li>falsifying records, laboratory work, or other course data;</li>
+  <li>submitting work previously presented in another course, if contrary to the rules of the course;</li>
+  <li>altering or interfering with grading procedures;</li>
+  <li>assisting another student in any of the above;</li>
+  <li>using sources verbatim or paraphrasing without giving proper attribution (this can include phrases, sentences, paragraphs and/or pages of work);</li>
+  <li>copying and pasting work from an online or offline source directly and calling it your own;</li>
+  <li>using information you find from an online or offline source without giving the author credit;</li>
+  <li>replacing words or phrases from another source and inserting your own words or phrases.</li>
+</ul>
+
+<p><strong>AI-GENERATED CONTENT POLICY:</strong></p>
+<p>Artificial Intelligence (AI) is defined, for the purpose of this course, as any computer system or program that simulates, substitutes, and/or enhances problem-solving that typically requires human intelligence. While students may use simple AI, resembling built-in features of a word processor like spelling and simple grammar checks, they are not permitted to use Generative AI at any stage of completing work (graded or ungraded). Generative AI is defined here as AI which has the capacityto ideate, summarize, generate, rewrite, or validate content; including, but not limited to, tools such as ChatGPT, Bard, and DALL-E.</p>
+<p>To be clear, using AI tools (ChatGPT, Dall-E, Grammarly, Chegg, etc.) to create or aggregate content, including:</p>
+<ul>
+  <li>Course writing</li>
+  <li>Brainstorming</li>
+  <li>Generating drafts</li>
+  <li>Works cited source banks</li>
+  <li>Answering discussion posts</li>
+  <li>Reflective writing</li>
+  <li>Substituting or impersonating you in any class activity</li>
+</ul>
+<p><strong>is considered academic misconduct similar to plagiarism or violations of the honor code</strong>.</p>
+<p>* Students may formally request, in writing, an exception to the above. Such requests must include: (1) which assignment the student is requesting to use AI with, (2) which specific AI tool the student wishes to use, (3) what they plan to use the tool for (e.g., to generate ideas, summarize a longer document, create a visual, etc.), and (4) why, specifically, they are requesting the exception (e.g., to reduce time spent on a tedious task, to identify relevant sources for further investigation, etc.). Requests will be considered on a case-by-case basis.</p>
+<p>The California State University system requires instructors to report all instances of academic misconduct to the Center for Student Rights and Responsibilities. Academic dishonesty will result in disciplinary review by the University and may lead to probation, suspension, or expulsion. Instructors may also, at their discretion, penalize student grades on any assignment or assessment discovered to have been produced in an academically dishonest manner.</p>
+
+<p><strong>Resources for students:</strong> A complete list of all academic support services--including the <a href="https://writingcenter.sdsu.edu" target="_blank">Writing Center</a> and <a href="https://mlc.sdsu.edu/" target="_blank">Math Learning Center</a>--is available on the <a href="http://go.sdsu.edu/student_affairs/academic_success.aspx" target="_blank">Student Affairs’ Academic Success</a> website. <a href="http://go.sdsu.edu/student_affairs/cps/Default.aspx" target="_blank">Counseling and Psychological Services</a> (619-594-5220) offers confidential counseling services by licensed therapists; you can <a href="http://go.sdsu.edu/student_affairs/cps/therapist-consultation.aspx" target="_blank">Live Chat with a counselor</a> between 4:00pm and 10:00pm, or call San Diego Access and Crisis 24-hour Hotline at (888) 724-7240.</p>
+
+<p><strong>Sexual violence / Title IX mandated reporting:</strong> As an instructor, one of my responsibilities is to help create a safe learning environment on our campus. I am a mandated reporter in my role as an SDSU employee. It is my goal that you feel able to share information related to your life experiences in classroom discussions, in your written work, and in our one-on-one meetings. I will seek to keep the information you share private to the greatest extent possible. However, I am required to share information regarding sexual violence on SDSU’s campus with the Title IX coordinator, Jessica Rentto 619-594-6017. She (or her designee) will contact you to let you know about accommodations and support services at SDSU and possibilities for holding accountable the person who harmed you. Know that you will not be forced to share information you do not wish to disclose and your level of involvement will be your choice. If you do not want the Title IX Officer notified, instead of disclosing this information to your instructor, you can speak confidentially with the following people on campus and in the community. They can connect you with support services and discuss options for pursuing a University or criminal investigation. Sexual Violence Victim Advocate 619-594-0210 or Counseling and Psychological Services 619-594-5220, psycserv@sdsu.edu. For more information regarding your university rights and options as a survivor of sexual misconduct or sexual violence, please visit <a href="https://titleix.sdsu.edu" target="_blank">titleix.sdsu.edu</a> or <a href="https://sdsutalks.sdsu.edu" target="_blank">sdsutalks.sdsu.edu</a>.</p>
+
+<p><strong>Classroom Conduct Standards:</strong> SDSU students are expected to abide by the terms of the Student Conduct Code in classrooms and other instructional settings. Prohibited conduct includes:</p>
+<ul>
+  <li>Willful, material and substantial disruption or obstruction of a University-related activity, or any on-campus activity.</li>
+  <li>Participating in an activity that substantially and materially disrupts the normal operations of the University or infringes on the rights of members of the University community.</li>
+  <li>Unauthorized recording, dissemination, or publication (including on websites or social media) of lectures or other course materials.</li>
+  <li>Conduct that threatens or endangers the health or safety of any person within or related to the University community, including</li>
+  <ul>
+    <li>physical abuse, threats, intimidation, or harassment.</li>
+    <li>sexual misconduct.</li>
+  </ul>
+</ul>
+<p>Violation of these standards will result in referral to appropriate campus authorities.</p>
+
+<p><strong>Medical-related absences:</strong> Students are instructed to contact their professor/instructor/coach in the event they need to miss class, etc. due to an illness, injury or emergency. All decisions about the impact of an absence, as well as any arrangements for making up work, rest with the instructors. <a href="http://shs.sdsu.edu/index.asp" target="_blank">Student Health Services (SHS)</a> does not provide medical excuses for short-term absences due to illness or injury. When a medical-related absence persists beyond five days, SHS will work with students to provide appropriate documentation. When a student is hospitalized or has a serious, ongoing illness or injury, SHS will, with the student's consent, communicate with the student’s instructors via the Vice President for Student Affairs and may communicate with the student’s Assistant Dean and/or the <a href="http://go.sdsu.edu/student_affairs/sds/" target="_blank">Student Ability Success Center</a>.</p>
+
+<p><strong>SDSU Economic Crisis Response Team:</strong> If you or a friend are experiencing food or housing insecurity, or any unforeseen financial crisis, visit <a href="https://sdsu.edu/ecrt" target="_blank">sdsu.edu/ecrt</a>, email ecrt@sdsu.edu, or walk-in to Well-being & Health Promotion on the 3rd floor of Calpulli Center.</p>
+
+<p>Suggested: Include information about and encourage students to utilize supplemental instruction, tutoring, or other academic support resources provided by your academic unit.</p>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="AssignmentDescriptions">Assignment Descriptions</h2>
+<p style="font-family: helvetica;">There are four major projects in this class, along with smaller assignments intended to familiarize you with the project principles and content. Below are brief descriptions of these assignments.</p>
+
+<p style="font-family: helvetica;"><strong>Introductory Module: Syllabus and Policy Acknowledgment</strong><br>
+This assignment introduces you to the course and the policies and guidelines we will follow.</p>
+
+<p style="font-family: helvetica;"><strong>Module 1: Career Portfolio</strong><br>
+This module includes three components: a resume and a cover letter, each written in response to a job announcement or description for a position you are interested in applying for, and a reflection on career-related readings that will assist you in writing your resume and cover letter and applying for jobs and internships.</p>
+
+<p style="font-family: helvetica;"><strong>Module 2: Labor Market Analysis Report</strong><br>
+This module contains one major project, the Labor Market Analysis report, along with an online quiz on plagiarism and paraphrasing, and two reflections, one on your strengths and one on areas for development. The Labor Market Analysis assignment requires you to investigate the skills, knowledge, and training required for your future career, including future salary and employment hiring projections.</p>
+
+<p style="font-family: helvetica;"><strong>Module 3: Rhetorical Analysis Paper</strong><br>
+This module includes three components: a discussion board concerning the main arguments and supporting evidence of the authors you will read in preparation for writing your Rhetorical Analysis paper, a reflection on the relevance of the assigned readings to your career choice and preparation, and the Rhetorical Analysis paper, which involves a close analysis and discussion of the persuasive strategies the authors of the assigned readings use to advance their arguments and the relation of the authors’ arguments to those of one another.</p>
+
+<p style="font-family: helvetica;"><strong>Module 4: Public Discourse Project</strong><br>
+This module includes three components: a PowerPoint presentation and accompanying script that discusses what someone should do to build their “identity capital” (the sum total of one’s skills, knowledge, and experience). This module also includes a reflection on a video that discusses the current labor market and how it may influence one’s career preparation.</p>
+
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+<h2 id="Schedule">Schedule</h2>
+<p>Due dates for major assignments and exams, including time and date of final exam from university finals schedule.</p>
+<table style="border-collapse: collapse; width: 100%; border-style: solid; margin-left: auto; margin-right: auto;" width="100%">
+    <tbody>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; background-color: #000000; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><span style="color: #ffffff;">WEEK OF</span></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; background-color: #000000; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;"><strong><span style="color: #ffffff;">TOPIC</span></strong></span></p>
+            </td>
+            <td style="width: 61.3536%; background-color: #000000; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong><span style="color: #ffffff;">ASSIGNMENTS AND DUE DATES</span></strong></span></p>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>8/26</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Introduction to the course</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 9/1: SYLLABUS AND COURSE POLICY ACKNOWLEDGMENT</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Read course syllabus and FAQs</li>
+                    <li>Complete and submit Syllabus and Course Policy Acknowledgment</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>9/2</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Career Portfolio</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Review resume and cover letter guidance (“Resume Design” and “Cover Letter Design”) on Canvas</li>
+                    <li>Read career-related articles in Project 1 Module</li>
+                    <li>Work on Reflection & Direction Journal entry</li>
+                    <li>Research internship or job opportunities and secure a job announcement. Use print-to-PDF function to save the announcement for later submission.</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>9/9</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Career Portfolio</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 9/15: REFLECTION AND DIRECTION JOURNAL ENTRY</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Continue drafting resume; complete education and professional experience according to resume type</li>
+                    <li>Review cover letter guidance and draft cover letter</li>
+                    <li>Read career-related articles and complete Reflection & Direction Journal entry</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>9/16</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Career Portfolio</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 9/22: RESUME AND COVER LETTER AND JOB ANNOUNCEMENT</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Complete resume draft; complete professional experience and polish resume</li>
+                    <li>Complete cover letter; remove wordiness and polish prose</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>9/23</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Labor Market Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Research desired career field on Bureau of Labor Statistics website</li>
+                    <li>Work on Reflection & Direction Journal—Strengths</li>
+                    <li>Work on Reflection & Direction Journal—Weaknesses</li>
+                    <li>Work on Labor Market Analysis report</li>
+                    <li>Revise resume and cover letter</li>
+                    <li>You may revise your resume and cover letter for the possibility of a higher grade. The higher of the two grades are the ones that are counted in your final course grade calculation</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>9/30</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Labor Market Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 10/6: PARAPHRASING QUIZ</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Begin drafting report sections of LMA; paraphrase each section</li>
+                    <li>Review image integration and formatting rules and decide which images you will use to illustrate data</li>
+                    <li>Work on Reflection & Direction Journal—Strengths</li>
+                    <li>Work on Reflection & Direction Journal—Weaknesses</li>
+                    <li>Work on Labor Market Analysis report</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>10/7</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Labor Market Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 10/13: REFLECTION JOURNALS: STRENGTHS AND WEAKNESSES</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Complete drafting report sections of LMA</li>
+                    <li>Integrate images including titles and captions; introduce images before they appear and elaborate subsequently within text</li>
+                    <li>Adapt reflections into conclusion section; format the report according to specifications</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>10/14</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Intro to Rhetorical Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 10/20: LABOR MARKET ANALYSIS</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Read Rhetorical Analysis paper prompt and guidance on Canvas</li>
+                    <li>View supplementary support videos for Rhetorical Analysis Paper: Rhetorical Situation</li>
+                    <li>Read "The Great Prosperity” in course reader</li>
+                    <li>Complete Reading Quiz 1</li>
+                    <li>Revise resume and cover letter</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>10/21</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Rhetorical Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Read "The Three Jobs of the Future" in course reader</li>
+                    <li>Complete Reading Quiz 2</li>
+                    <li>View supplementary support videos for Rhetorical Analysis Paper: Appeals and Strategies</li>
+                    <li>Revise resume and cover letter</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>10/28</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Rhetorical Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 11/3: REFLECTION JOURNAL</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Read "The Big Earners and the Big Losers" in course reader</li>
+                    <li>Complete Reading Quiz 3</li>
+                    <li>Skim "Serving in Florida”</li>
+                    <li>Work on Reflection Journal</li>
+                    <li>Revise resume and cover letter</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>11/4</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Rhetorical Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Read "Created Equal" in course reader</li>
+                    <li>Complete Reading Quiz 4</li>
+                    <li>Complete introduction for Rhetorical Analysis; outline rest of paper</li>
+                    <li>Revise resume and cover letter</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>11/11</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Rhetorical Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Continue drafting rhetorical analysis</li>
+                    <li>Outline comparative analysis section</li>
+                    <li>Revise resume and cover letter</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>11/18</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Rhetorical Analysis</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE: 11/24: PROJECT 3 PAPER</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Continue drafting comparative analysis</li>
+                    <li>Outline final section of paper</li>
+                    <li>Revise resume and cover letter</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>11/25</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Public Discourse Project</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE 12/1: RESUME AND COVER LETTER REVISIONS</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Read Public Discourse Project prompt on Canvas</li>
+                    <li>View recorded video for Public Discourse Project</li>
+                    <li>View "How Useful Is a College or University Degree?" video</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>12/2</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Public Discourse Project</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE 12/6: REFLECTION JOURNAL ON "HOW USEFUL IS A COLLEGE OR UNIVERSITY DEGREE?" VIDEO</strong></span></p>
+                <p><span style="font-family: helvetica;"><strong>Homework:</strong></span></p>
+                <ol>
+                    <li>Review supplementary articles and videos in Project 2 Module</li>
+                    <li>Review career-related readings in Project 1 Module</li>
+                    <li>Review "Document Design Principles" in Project 4 Module</li>
+                    <li>Work on Reflection & Direction Journal for "How Useful Is a College or University Degree?" video</li>
+                    <li>Work on Public Discourse Project PowerPoint presentation and script</li>
+                </ol>
+            </td>
+        </tr>
+        <tr style="height: 53px;">
+            <td style="width: 11.4027%; border-color: #000000; border-style: dotted; height: 53px;" width="71">
+                <p><span style="font-family: helvetica;"><strong><u>12/9</u></strong></span></p>
+            </td>
+            <td style="width: 27.1421%; border-color: #000000; border-style: dotted; height: 53px;" width="169">
+                <p><span style="font-family: helvetica;">Public Discourse Project</span></p>
+            </td>
+            <td style="width: 61.3536%; border-color: #000000; border-style: dotted; height: 53px;" width="382">
+                <p><span style="font-family: helvetica;"><strong>DUE 12/9: POWERPOINT PRESENTATION AND SCRIPT</strong></span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+
+
+<div id="FAQs" class="tabcontent">
+  <h2>FAQs</h2>
+
+  <p><strong><u>QUESTIONS ABOUT GRADING AND AI</u></strong></p>
+
+  <p><strong>QUESTION</strong><br>
+  Why don’t you want me to put my name on my submissions?</p>
+  <p><strong>ANSWER</strong><br>
+  Canvas allows instructors to obscure student names in the grade center and submissions are displayed to me as “Student” along with a number that corresponds with the order of submission. For example, if you were the 8th person to submit a given assignment, I would see your work as “Student 8.” So, if your submission does not have your name on it, I will not know I am grading your work (unless I go out of my way).<br><br>
+  To be sure, my goal is not to keep authorship obscured entirely. I do this only during the evaluation process to mitigate potential bias.</p>
+
+  <p><strong>QUESTION</strong><br>
+  Why can't I use AI to do my work in the class? I'll be using it in the workforce so why can't I use it now?</p>
+  <p><strong>ANSWER</strong><br>
+  Firstly, the question is, on its face, absurd. In order to demonstrate that you're a proficient writer, you actually have to write. As an instructor, I am here to guide and evaluate you, not others and certainly not robots.<br><br>
+  But the question itself assumes that AI is a proficient writer. Is it? If by "proficient" we mean mechanically correct, then sure, AI writing is technically grammatical. But is it readable? Does it produce texts that you want to read? Does it make good arguments? I invite you to raise these questions throughout your study in this class.<br><br>
+  More realistically, if AI offers anything to help your writing process, you will need to first know how to write. After all, how can you discern the good output from the bad if you don't know any better? In this class, I want to see your writing, your thinking. You have to learn to walk before you can run, and right now, you’re just crawling.</p>
+
+  <p><strong>QUESTION</strong><br>
+  What will happen if you suspect me of using AI for one of my assignments?</p>
+  <p><strong>ANSWER</strong><br>
+  In terms of process, I will first evaluate and score your submission according to the rubric. Subsequently, I will gather and document evidence and file a report with SRR with my findings and they will initiate an investigation. You will receive a notice from them indicating the charges and they will undertake a fact-finding process and ultimately find one way or another for academic dishonesty. If you are found responsible for violating course and university policies, and it is your first offense, I will first consider it a learning opportunity (see below). A second offense will automatically result in course failure.</p>
+
+  <p><strong>QUESTION</strong><br>
+  A learning opportunity?</p>
+  <p><strong>ANSWER</strong><br>
+  Yes—a learning opportunity. I want you to understand that your decision to present AI-generated content as your own is problematic. AI-generated content obscures your voice and complicates my ability to evaluate your performance. AI submissions take longer to read, grade, and then report to SRR. In fact, it can take me as much as 10 times longer to grade an AI-generated response than one written by a human. This hurts the entire class community.<br><br>
+  To reinforce these points and in the interest of promoting growth, I will provide you with an opportunity of community service in the form of a well-prepared, thoughtful presentation to the class to supplement course instruction and Student Learning Outcomes. The topic(s) will be selected at my discretion, and I will provide more details if we need to cross this bridge. However, you can expect to make a major contribution for up to a full class period.</p>
+
+  <p><strong>QUESTION</strong><br>
+  Why did you refer me to Student Rights and Responsibilities for academic dishonesty?</p>
+  <p><strong>ANSWER</strong><br>
+  First, I am duty-bound to report instances of academic misconduct to Student Rights and Responsibilities (SRR). I will honor this policy in accordance with Executive Order 1098 to ensure you receive due process.<br><br>
+  Less formally, I can offer a few more reasons:<br><br>
+  1. For reasons noted above, it has no place in a writing class. If you submit AI-generated content, you are, beyond complicating my ability to evaluate your performance, wasting not only my time, but your peers’ time. It takes longer for me to grade non-human responses, and this impacts the entire class. Please know that your choices in the course impact the entire community.<br><br>
+  2. SRR is building a database to better identify, record, and track this kind of content to, among other things, maintain the integrity of the academic process. I want to support this process because it contributes to things like rigor, which is directly connected to SDSU’s reputation.<br><br>
+  3. Finally, unless I am interacting with a chatbot, I dislike reading AI-generated writing. Hence, if it appears in your submissions, you are subjecting me to things I dislike.</p>
+
+  <p><strong><u>Questions about Canvas and Turnitin</u></strong></p>
+
+  <p><strong>QUESTION</strong><br>
+  How do I see feedback on my work?</p>
+  <p><strong>ANSWER</strong><br>
+  First, written feedback on Canvas comes in two forms: comments and annotations. Comments are located under the “comments” section, and they are external to the document. If I commented on your work, it will usually be a summative remark(s) connected to my annotations, which are on the document itself. To view that, you must click on the document itself and hover your mouse over the bubbles that are present.</p>
+
+  <p><strong>QUESTION</strong><br>
+  What does an “originality” score mean?</p>
+  <p><strong>ANSWER</strong><br>
+  Originality shows the percentage of material that is plagiarized or contains errors in punctuation; note that sometimes neither of these problems exist, because the originality percentage may be related to names and titles.<br><br>
+  First, look at the Originality percentage your paper received from Turnitin: if it is somewhere around 0-5%, you can ignore this altogether. If, however, it shows a percentage, you should investigate: click on the Originality tab at the upper left of your document; you will see highlighted passages in various colors, with corresponding color-coded sources listed at the right to show where Turnitin has identified the content to be the same.<br><br>
+  Even if it is not the same exact source, remember that much material is located in many different places on the internet, including papers of former students. Use this highlighting to determine what you may need to do to revise: maybe you just forgot to close out a quotation? Maybe you thought you had paraphrased but didn't adequately do so? Or maybe you included a phrase containing an often-cited person and text, that shows up as "unoriginal" but is just the only way to say it.</p>
+
+  <p><strong><u>Questions about Due Dates</u></strong></p>
+
+  <p><strong>QUESTION</strong><br>
+  My internet went out right when I was about to submit my homework assignment. By the time I got to the library to use their computer, I had missed the deadline for submission. Will this be a problem?</p>
+  <p><strong>ANSWER</strong><br>
+  Sticking to due dates and times is very important in this online course. For some assignments, however, if you are an hour or two late in submitting, you should be able to proceed with the course easily enough and you will not receive a grade reduction. You do not need to email me if you’re within this grace period. (Note: Canvas will label your submission late; but again, if you submit within the above-mentioned timeframe, you may simply ignore the alert.)</p>
+
+  <p><strong><u>Questions about Attendance</u></strong></p>
+
+  <p><strong>QUESTION</strong><br>
+  I cannot attend the live office hours due to my work schedule. Will I be marked down for this?</p>
+  <p><strong>ANSWER</strong><br>
+  Attendance at office hours is optional. All the materials you will need to prepare the course assignments (print documents and video recordings) are in the corresponding project module. You are responsible for reading and viewing all course learning materials to successfully complete the course. Feel free to email me anytime you have questions. I make every attempt to respond to my messages within 24 hours of receiving them during the work week.</p>
+
+  <p><strong>QUESTION</strong><br>
+  I am attending a conference and will be away from my computer to submit assignments. Will this affect my grade?</p>
+  <p><strong>ANSWER</strong><br>
+  Maybe—it depends on several factors. You can do some work in advance of due dates, but some you cannot, because each assignment builds upon the one before. You will need to consider the series of assignments within the module to see how much you will need to complete ahead of your trip. Due dates for submitting assignments through Canvas are firm. Since the video and print materials for each assignment will be available 24/7, if you have internet access during your time away, you should be able to keep up with the course.</p>
+
+  <p><strong>QUESTION</strong><br>
+  I have a family emergency and cannot do anything else for a few days. Will I be able to turn in a few assignments late?</p>
+  <p><strong>ANSWER</strong><br>
+  If you have a true emergency, and can document it, I will work to find a way for you to get back on track with the course. You will need to email me and include documentation to verify your situation, and I will respond accordingly.</p>
+
+  <p><span style="font-family: helvetica; color: #00beff;"><a style="color: #00beff; text-decoration: none;" href="#top">Back to top</a></span></p>
+</div>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+
+</body>
+</html>
