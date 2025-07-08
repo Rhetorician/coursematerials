@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<!-- #1 -->
+<button class="accordion">Module Overview</button>
+<div class="panel">
+  <p><span style="font-size: 14pt;">In this section we focus on how to make effective arguments about our employability through resumes and cover letters, or what are sometimes called letters of application. These documents open employment doors. And so, in this module, we will read and reflect on short articles about constructing effective resumes and how to market ourselves in interviews. As a starting point, we will first consider functional role of professional writing and consider it a transactional process. Next, we'll move into the assignment prompt before heading into the heavy lifting of the module, resume design and execution. After that, we'll go over review some examples of weak and strong qualities in some sample work before concluding with the cover letter and a reflection.</span></p>
+  <p><iframe title="YouTube video player" src="https://www.youtube.com/embed/-Xu_UVVK60U" width="100%" height="360" allowfullscreen></iframe></p>
+</div>
+
+<!-- #2 -->
+<button class="accordion">Writing as a Transactional Process</button>
+<div class="panel">
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;"> In Rhetoric and Writing Studies 305W, we will explore the notion of writing as a transactional, problem-solving process. Written communication is transactional—as writers we are always expressing themselves to an audience, our readers, for a purpose. Likewise, readers are reading for a purpose. When a writer can meet the expectations of his or her audience, successful communication is possible. </span></p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;"> As illustrated below, all communication, whether written or oral, occurs within a socio-cultural context. When we write or speak something, we establish a give-and-take, interactive relationship between ourselves and the reader or listener. Our intent is to communicate a message through means of a text, written or oral. For a message to make sense to the reader or the listener, the writer or speaker must take into account such factors as the gender, language ability, socio-economic status, age, race, and beliefs of the reader or listener. Messages have no meaning apart from their socio-cultural context. </span></p>
+
+  <p style="text-align: center;">
+    <img src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Writing%20as%20a%20Transaction%20Process%20(image).png" alt="Writing as a Transaction Process">
+  </p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;">For example, have you ever been perplexed by the message communicated by a particular piece of art or music? In a particular context, that message is understandable, but if you do not share the creator or author’s beliefs, assumptions, or values, you may miss the point intended by the message. Therefore, as writers, we need to understand who our readers are and what they know about our topic.</span></p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;">We need to write in such way that connects with our audience’s expectations for the message to resonate. We call this reader-sensitive communication.</span></p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;">The type of text we use to communicate a message is called its genre. Embedded within the genre are cultural expectations of what a text should look like. We know a poem when we see one or a credit card statement, right? We wouldn’t confuse the two, would we? Of course not. That’s because each of these texts has certain features that we use to define what these texts are. For example, credit card statements have numbers and percentages. Poetry does not. Poetry often rhymes; the words in a credit card statement do not.</span></p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;">The text we use to communicate a message, then, is tied to our audience’s needs, our purpose for communicating, and the message we are communicating. These are all factors related to genre, and we can say that genre influences what we write and to whom and in what context.</span></p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;">If we want to have a successful transactional relationship with our audience, then we need to give our audience what it expects. Writing, thus, becomes a problem-solving process. In order to successfully deliver a message to our audience, we need to approach writing as a problem to be solved. That is, we need to break down the communicative act into small “equations” that need to be solved as part of a larger solution to a problem. These are the “equations” that relate to our audience’s needs and expectations regarding the message we are sending.</span></p>
+
+  <p><span style="font-size: 14pt; font-family: helvetica; color: #000000;">Interesting stuff! Writing, then, is more than simply putting words on a page. It is thought-driven problem-solving. If I can leave you with one idea that will underlie all we do in the course, it is this: the audience and purpose for our writing drives the text we create.</span></p>
+</div>
+
+<!-- #3 -->
+<button class="accordion">Project 1 Assignment Prompt</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Project%201%20Prompt.pdf" width="100%" height="1000px" style="border:none;"></iframe></p>
+</div>
+
+<!-- #4 -->
+<button class="accordion">Resume Project Grading Descriptions</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Resume%20Project%20Grade%20Descriptions.pdf" width="100%" height="1000px" style="border:none;"></iframe></p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
