@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -13,8 +13,8 @@ body, html {
 }
 
 .collapsible {
-  background-color: whitesmoke;
-  color: black;
+  background-color: #000000;
+  color: white;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -22,12 +22,12 @@ body, html {
   text-align: left;
   outline: none;
   font-size: 18pt;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #303030;
   margin: 0;
 }
 
 .active, .collapsible:hover {
-  background-color: #ddd;
+  background-color: #555;
 }
 
 .content {
@@ -35,19 +35,19 @@ body, html {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
+  background-color: #303030;
   margin: 0;
 }
 
 iframe {
   width: 100%;
-  height: 600px;
+  height: 749px;
   border: none;
-  background-color: white;
+  background-color: #202020;
 }
 
 .arrow::before {
-  content: "►";
+  content: "➤";
   display: inline-block;
   margin-right: 10px;
   transition: transform 0.2s;
@@ -60,14 +60,14 @@ iframe {
 </head>
 <body>
 
-<button class="collapsible"><span class="arrow"></span> Getting a Job in the Age of Optimized Hiring</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Getting%20a%20job%20in%20the%20Age%20of%20Optimized%20Hiring.pdf"></iframe>
-</div>
-
 <button class="collapsible"><span class="arrow"></span> How to Make Your Resume Match the Job Description</button>
 <div class="content">
   <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/How%20to%20Make%20Your%20Resume%20Match%20the%20Job%20Description%20(Schwartzberg).pdf"></iframe>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Getting a Job in the Age of Optimized Hiring</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Getting%20a%20job%20in%20the%20Age%20of%20Optimized%20Hiring.pdf"></iframe>
 </div>
 
 <button class="collapsible"><span class="arrow"></span> Gen Z: Ghosted Generation</button>
