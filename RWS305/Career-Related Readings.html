@@ -12,7 +12,6 @@ body, html {
   background-color: #f5f5f5;
 }
 
-/* Shared Collapsible Styles */
 .collapsible {
   background-color: whitesmoke;
   color: black;
@@ -23,9 +22,8 @@ body, html {
   text-align: left;
   outline: none;
   font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
   border-bottom: 1px solid #ccc;
+  margin: 0;
 }
 
 .active, .collapsible:hover {
@@ -48,7 +46,6 @@ iframe {
   background-color: white;
 }
 
-/* Animation for Arrow Symbol */
 .arrow::before {
   content: "►";
   display: inline-block;
@@ -63,15 +60,9 @@ iframe {
 </head>
 <body>
 
-<!-- Using the Light Style -->
-<button class="collapsible"><span class="arrow"></span> Young Adults Take Longer to Get Good Jobs</button>
+<button class="collapsible"><span class="arrow"></span> Getting a Job in the Age of Optimized Hiring</button>
 <div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Young%20Adults%20Take%20Longer%20to%20Get%20Good%20Jobs%20(Carrasco).pdf"></iframe>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> 4 Resume Mistakes to Avoid When You Don’t Have Much Experience</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/%204%20Resume%20Mistakes%20to%20Avoid%20When%20You%20Don%E2%80%99t%20Have%20Much%20Experience%20(Cozma).pdf"></iframe>
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Getting%20a%20job%20in%20the%20Age%20of%20Optimized%20Hiring.pdf"></iframe>
 </div>
 
 <button class="collapsible"><span class="arrow"></span> How to Make Your Resume Match the Job Description</button>
@@ -79,31 +70,29 @@ iframe {
   <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/How%20to%20Make%20Your%20Resume%20Match%20the%20Job%20Description%20(Schwartzberg).pdf"></iframe>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Should You Use AI To Write Your Resume In 2023?</button>
+<button class="collapsible"><span class="arrow"></span> Gen Z: Ghosted Generation</button>
 <div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Should%20You%20Use%20AI%20To%20Write%20Your%20Resume%20In%202023.pdf"></iframe>
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Gen%20Z%20Ghosted%20Generation.pdf"></iframe>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Getting a Job in the Age of Optimized Hiring</button>
+<button class="collapsible"><span class="arrow"></span> Gen Z Grads Are Right – Degrees Ain’t Shit</button>
 <div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Getting%20a%20job%20in%20the%20Age%20of%20Optimized%20Hiring.pdf"></iframe>
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Gen%20Z%20Grads%20are%20Right-Degrees%20aint%20Shit.pdf"></iframe>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Beat the Robots: How to Get Your Resume Past the System and Into Human Hands</button>
+<button class="collapsible"><span class="arrow"></span> Jobless Gen Zers</button>
 <div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Beat%20the%20Robots-%20How%20to%20Get%20Your%20Resume%20Past%20the%20System%20and%20Into%20Human%20Hands%20(Borsellino).pdf"></iframe>
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Jobless%20Gen%20Zers.pdf"></iframe>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> ChatGPT for Resumes</button>
+<button class="collapsible"><span class="arrow"></span> Young Adults Take Longer to Get Good Jobs</button>
 <div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/ChatGPT%20for%20Resumes%20(Wilson).pdf"></iframe>
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Career%20Related%20Readings/Young%20Adults%20Take%20Longer%20to%20Get%20Good%20Jobs%20(Carrasco).pdf"></iframe>
 </div>
 
 <script>
 var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
+for (var i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
