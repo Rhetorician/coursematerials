@@ -4,111 +4,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {box-sizing: border-box;}
-
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
-}
-
-.collapsible {
-  background-color: #000000;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
-}
-
-.collapsible.first-collapsible {
-  background-color: #000000;
-  color: white;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.active.first-collapsible, .collapsible.first-collapsible:hover {
-  background-color: #222;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #303030;
-  margin: 0;
-}
-
-.content.first-content {
-  background-color: #000000;
-  color: white;
-}
-
-.arrow::before {
-  content: "➤";
-  display: inline-block;
-  margin-right: 10px;
-  transition: transform 0.2s;
-}
-
-.active .arrow::before {
-  transform: rotate(90deg);
-}
-
-iframe {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
-}
-
-p {
-  color: white;
-}
+body, html {height: 100%; margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-color: #ffffff;}
+.collapsible {background-color: #000000; color: white; cursor: pointer; padding: 18px; width: 100%; border: none; text-align: left; outline: none; font-size: 18pt; border-bottom: 1px solid #303030;}
+.collapsible.first-collapsible {background-color: #000000;}
+.active, .collapsible:hover {background-color: #555;}
+.active.first-collapsible, .collapsible.first-collapsible:hover {background-color: #222;}
+.content {padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; background-color: #303030; margin: 0;}
+.content.first-content {background-color: #000000; color: white;}
+.arrow::before {content: "➤"; display: inline-block; margin-right: 10px; transition: transform 0.2s;}
+.active .arrow::before {transform: rotate(90deg);}
+iframe {width: 100%; height: 749px; border: none; background-color: #202020;}
+p, li, span {color: white;}
 </style>
 </head>
 <body>
 
-<!-- Collapsible Sections with Black Styling -->
 <button class="collapsible first-collapsible"><span class="arrow"></span> Module Intro: Preliminary considerations about Rhetoric</button>
 <div class="content first-content">
   <p><iframe title="YouTube video player" src="https://www.youtube.com/embed/SBvPYJmVCu0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></p>
-  <p><span style="font-family: helvetica; font-size: 36pt; color: white;">NOTES ON RHETORIC</span></p>
+  <p><span style="font-family: helvetica; font-size: 36pt;">NOTES ON RHETORIC</span></p>
   <p style="border-top: 3px solid white;">&nbsp;</p>
-  <p style="font-family: helvetica; font-size: 10pt; color: white;"><strong>WHAT IS RHETORIC?</strong></p>
-  <p style="font-family: helvetica Neue, sans-serif; color: white;">Rhetoric is the study and the practice of persuasion. Ancient theorists (such as Aristotle, Isocrates, and Quintilian) pointed out that people are unique among animals in our ability to form large, complicated societies. Left alone, we would fail. People need rhetoric to cooperate without force. Kenneth Burke defined rhetoric as "the use of language as a symbolic means of inducing cooperation in beings that by nature respond to symbols" (A Rhetoric of Motives [Berkeley: University of California Press, 1969], p. 43).</p>
+  <p><span style="font-size: 10pt;"><strong><span style="font-family: helvetica;">WHAT IS RHETORIC?</span></strong></span></p>
+  <p><span style="font-family: helvetica Neue, sans-serif;">Rhetoric is the study and the practice of persuasion. Ancient theorists (such as Aristotle, Isocrates, and Quintilian) pointed out that people are unique among the animals in our ability to form large, complicated societies. Left alone, each of us is in dire straits. In comparison with other creatures, we are not strong or quick, nor do we have furry hides to protect us. We don't even have claws. And our technologies would never exist without sharing, communicating, and building upon other people's discoveries. No one who grows up alone in the wilderness will invent a telephone or a digital camera—probably not even a stone knife or a reliable source of fire. But people can voluntarily organize into cooperative groups. We are, as Aristotle observed, political animals. To paraphrase the great Stagirite himself: Those who live without the company of others are beasts or gods. People live in the company of other people. This company, the social quality of human existence, requires persuasion. We must be able to influence one another without destruction or violence. If we can only form societies through force, then we will destroy one another. But if we can find a way to interact without physically damaging or fettering one another, then we can accomplish more than any other species wandering the planet. And so human existence depends upon the study and practice of this interaction, this persuasion. At least, that's what ancient rhetorical theorists have argued, and we are inclined to agree. If people need rhetoric, then there must be a persuasive dimension to nearly everything that we touch. It would be an overstatement to say that everything is rhetorical, but it seems reasonable to posit that every part of human interaction has a rhetorical dimension. A very famous twentieth-century rhetorical theorist, Kenneth Burke, captured this pervasive domain when he defined rhetoric as "the use of language as a symbolic means of inducing cooperation in beings that by nature respond to symbols" (A Rhetoric of Motives [Berkeley: University of California Press, 1969], p. 43). People need to cooperate, and we do so with symbols. Through rhetoric, we study and practice these symbols and the cooperation that they enjoin.</span></p>
   <p>&nbsp;</p>
-  <p style="font-family: helvetica Neue, sans-serif; font-size: 10pt; color: white;"><strong>WHAT IS RHETORICAL ANALYSIS?</strong></p>
-  <p style="font-family: helvetica Neue, sans-serif; color: white;">Rhetorical analysis studies persuasion to judge effectiveness. We analyze so we can judge better and advocate better. First, we suspend agreement. Then we assess artfulness, quality, decorum, and effects. Analysis prepares us to argue more responsibly and effectively.</p>
+  <p><span style="font-size: 10pt;"><strong><span style="font-family: helvetica Neue, sans-serif;">WHAT IS RHETORICAL ANALYSIS?</span></strong></span></p>
+  <p><span style="font-family: helvetica Neue, sans-serif;">Rhetorical analysis is the study of persuasion in order to understand how people have been and can be persuasive. We analyze rhetorically for two reasons:</span></p>
+  <ol>
+    <li><span style="font-family: helvetica Neue, sans-serif;">so that we can become better judges; and</span></li>
+    <li><span style="font-family: helvetica Neue, sans-serif;">so that we can become better advocates.</span></li>
+  </ol>
+  <p><span style="font-family: helvetica Neue, sans-serif;">The first step toward rhetorical analysis is perhaps the hardest. We have to put off agreement or disagreement. Rhetorically analyzing something requires that we judge its effectiveness. Whether you agree or not, can you see why the argument might or might not appeal to some people? After answering this question, we can use rhetorical analysis to say many other things. We might rhetorically analyze to judge artfulness: Even if an argument failed to convince, was it admirable or useful? We might rhetorically analyze to judge quality: What kind of argument is this? Or decorum and timeliness: Was the argument well suited to the circumstances of its delivery, or would this same argument fare better at another time and in another set of circumstances? Or an argument's effects: Even if the argument was timely, artful, decorous, factually accurate, widely persuasive, and perfectly in line with standards to which all agree, will it encourage people to engage one another in a destructive manner? Regardless of what you decide to say, rhetorical analysis will not immediately answer the questions that most people would like to ask: Do you agree with the argument? Do you like the film? Are you moved by this piece of music? These will need to be put on hold, though rhetorical analysis can prepare us to answer such questions thoughtfully. After analysis, we're more able to say why we agree (or not), and why others should do likewise. Rhetorical analysis therefore prepares us to be better judges and better advocates. If we understand how we have been persuaded, we can more effectively move others. In the end, rhetorical analysis always points outward. We don't analyze to analyze. We analyze to understand, to judge more justly, to speak more effectively, to behave more responsibly. In general, we analyze to become better people ourselves.</span></p>
   <p>&nbsp;</p>
-  <p style="font-family: helvetica Neue, sans-serif; font-size: 10pt; color: white;"><strong>THE RHETORICAL PERSPECTIVE?</strong></p>
-  <p style="font-family: helvetica neue, sans-serif; color: white;">A rhetorical perspective shows uncertainty in our beliefs. It warns against absolute conviction and urges us to see merit in opposing cases. It drives us to refine persuasion methods. Rhetorical analysts become cautious believers, considerate listeners, and careful actors.</p>
+  <p><span style="font-size: 10pt;"><strong><span style="font-family: helvetica Neue, sans-serif;">THE RHETORICAL PERSPECTIVE?</span></strong></span></p>
+  <p><span style="font-family: helvetica Neue, sans-serif;">Constant rhetorical analysis demonstrates that we are often uncertain about our actions and our beliefs. Appreciating the art, the reason, and the merit of a contrary argument should help you to understand that many of your own convictions have been formed through persuasive actions. Many people might disagree with good reason. This isn't to say that you should abandon all principles, standards, morals, and values. Relativism (the belief that all beliefs are equally good and true) and nihilism (the belief that nothing is good or true) are easy escapes, and they're ultimately unsustainable. We must act, we must believe, and we must believe in our actions. A rhetorical perspective, however, cautions us against absolute conviction. A great deal in our lives is unknown, unknowable, and unpredictable. When we cannot absolutely know something for certain, we must elect the best options, and we must defend the best among a series of good (or possibly bad) choices. In these circumstances, we should learn to see the merit in opposing cases and to see why our own case depends on probabilities, gut reactions, appeals to abstractions (such as freedom or justice), and appeals to pragmatic though not guaranteed effects (such as a balanced budget). Part of the rhetorical perspective, therefore, is an acknowledgment that, however much we may believe an argument, it may be flawed (if not wrong) and, however much we may disapprove of an argument, it may be reasonable (if not right). Another part of the rhetorical perspective involves the pragmatic search for ways to become more persuasive in the future, or to find better-more ethical, more productive-ways to persuade. While some manners of analysis focus on the beauty of an object, and others focus on its intricacy, rhetorical analysis focuses on an object's function and its potential utility. How did this thing work, and how can it work better? In sum, the lifelong rhetorical analyst will be a cautious believer; a considerate listener; and a careful, effective actor, speaker, or writer.</span></p>
   <p style="margin: 0; font-size: 16px; font-family: Helvetica Neue, sans-serif;">&nbsp;</p>
-  <p style="margin: 0; font-size: 16px; font-family: Helvetica Neue, sans-serif; color: white;"><strong>Satisfactory completion of this project will meet the following CLOs:</strong></p>
-  <p style="margin: 0; font-size: 16px; font-family: Helvetica Neue, sans-serif; color: white;"><strong>Students will:</strong></p>
-  <ul style="color: white;">
-    <li style="list-style-type: disc; margin-left: 20px;">Identify discourse communities and analyze their texts</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Analyze writing situations by tone, evidence, organization, and diction</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Identify rhetorical strategies in genres</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Interpret and evaluate demanding texts</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Apply critical thinking to student writing</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Reflect on writing progress and strategies</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Develop strategies for creating and editing texts</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Write with audience and purpose in mind</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Identify discourse community conventions</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Integrate sources accurately</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Document sources properly</li>
-    <li style="list-style-type: disc; margin-left: 20px;">Maintain correct grammar and mechanics</li>
+  <p style="margin: 0; font-size: 16px; font-family: Helvetica Neue, sans-serif;"><strong>Satisfactory completion of this project will meet the following CLOs:</strong></p>
+  <p style="margin: 0; font-size: 16px; font-family: Helvetica Neue, sans-serif; padding-left: 40px;"><strong>Students will:</strong></p>
+  <ul>
+    <li style="list-style-type: disc; margin-left: 20px;">Identify individual discourse communities and find and analyze their characteristic texts, evaluate their credibility and principles, and apply relevant aspects of their information to other contexts and arguments</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Analyze the details of a wide variety of writing situations (textual elements such as tone, evidence, organizational patterns, diction, even visuals) according to the author’s purpose as well as the audience’s needs and tastes</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Identify how a writer uses rhetorical strategies in various genres of writing</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Interpret, analyze, and evaluate demanding texts</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Apply critical thinking skills and reading strategies to evaluate their own writing and the writing of fellow students</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Reflect on their own progress as a working writer in relation to critical thinking and reading strategies</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Develop flexible strategies for creating, revising, and editing texts</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Write with an awareness of audience and purpose</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Identify how discourse communities employ particular strategies for conveying, researching, evaluating, and presenting information</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Analyze and choose the appropriate conventions for a range of audience expectations</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Integrate a variety of appropriate sources into their writing in a way that accurately reflects the writer’s meaning and purpose</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Document sources appropriately</li>
+    <li style="list-style-type: disc; margin-left: 20px;">Sustain reasonable correctness in grammar and mechanics to perform well in a variety of writing contexts and professional settings</li>
   </ul>
 </div>
 
