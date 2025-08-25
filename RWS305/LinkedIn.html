@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box;}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.collapsible {
+  background-color: #000000;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18pt;
+  border-radius: 0;
+  margin: 0;
+  border-bottom: 1px solid #303030;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #303030;
+  margin: 0;
+}
+
+iframe {
+  width: 100%;
+  height: 749px;
+  border: none;
+  background-color: #202020;
+}
+
+.arrow::before {
+  content: "➤";
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+.active .arrow::before {
+  transform: rotate(90deg);
+}
+
+.link-block {
+  padding: 18px;
+  color: white;
+  font-size: 14pt;
+  line-height: 1.5;
+}
+
+.link-block a {
+  color: #00aff0;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<!-- Prompt -->
+<button class="collapsible"><span class="arrow"></span> Prompt</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Resume%20and%20Digital%20Profile.pdf"></iframe>
+</div>
+
+<!-- Profile Worksheet -->
+<button class="collapsible"><span class="arrow"></span> Profile Worksheet</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/DIGITAL%20PROFILE%20guidelines.pdf"></iframe>
+</div>
+
+<!-- Best Practices Articles -->
+<button class="collapsible"><span class="arrow"></span> Best Practices for Writing LinkedIn Profiles</button>
+<div class="content">
+  <div class="link-block">
+    <p>This article, written by William Arruda and published on LinkedIn, provides explanations and guidelines for writing an effective "About" profile summary on LinkedIn.</p>
+    <p><a href="https://www.linkedin.com/pulse/how-write-perfect-linkedin-summary-william-arruda" target="_blank">Read Arruda’s Article</a></p>
+
+    <p>Written for LinkedIn by Kate Reilly (March 2022), a writer, content strategist, and marketer, this article provides excellent examples of impactful profile summaries.</p>
+    <p><a href="https://www.linkedin.com/business/talent/blog/product-tips/linkedin-profile-summaries-that-we-love-and-how-to-boost-your-own" target="_blank">Read Reilly’s Article</a></p>
+  </div>
+</div>
+
+<!-- Scholarly Article -->
+<button class="collapsible"><span class="arrow"></span> Scholarly Article on LinkedIn Profiles</button>
+<div class="content">
+  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/LinkedIn%20as%20a%20Phronetic%20Approach%20to%20Digital%20Literacy.pdf"></iframe>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
