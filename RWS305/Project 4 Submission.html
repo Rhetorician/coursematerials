@@ -3,159 +3,317 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
-  font-family: 'Helvetica', sans-serif;
-  background-color: #ffffff;
+* { box-sizing: border-box; }
+
+body, html {
+  height: 100%;
   margin: 0;
-  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #111;
 }
 
 .header {
   background-color: #000000;
-  padding: 2px;
-  text-align: center;
   color: #ffffff;
-  font-size: xx-large;
+  text-align: center;
+  padding: 10px 8px;
+  font-size: 28pt;
+  line-height: 1.2;
 }
 
-.accordion {
-  background-color: #000;
-  color: #fff;
+.subheader {
+  background-color: #303030;
+  color: #ffffff;
+  padding: 14px 22px;
+  font-size: 14pt;
+  line-height: 1.5;
+}
+
+.collapsible {
+  background-color: #000000;
+  color: white;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
-  transition: 0.4s;
+  font-size: 18pt;
+  border-radius: 0;
+  margin: 0;
+  border-bottom: 1px solid #303030;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.accordion:hover, .accordion.active {
-  background-color: #ccc;
+.active, .collapsible:hover {
+  background-color: #555;
 }
 
-.panel {
+.content {
   padding: 0 18px;
-  display: none;
-  background-color: white;
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #303030;
+  margin: 0;
+}
+
+.panel-inner {
+  background-color: #ffffff;
+  color: #111;
+  margin: 18px 0;
+  padding: 20px;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.panel-inner p {
+  margin-top: 0;
+}
+
+.panel-inner h2, .panel-inner h3 {
+  margin-top: 0;
 }
 
 iframe {
   width: 100%;
   height: 600px;
   border: none;
+  background-color: #202020;
+  margin: 0 0 18px 0;
+}
+
+.arrow::before {
+  content: "➤";
+  display: inline-block;
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+.active .arrow::before {
+  transform: rotate(90deg);
 }
 
 .no-select {
-  position: relative;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
 }
 
-.no-select div {
-  position: absolute;
-  top: 0;
-  left: 0;
+.option-table {
   width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0);
-  pointer-events: none;
+  border-collapse: collapse;
+  margin: 12px 0 0 0;
+  font-size: 13pt;
 }
 
-.content {
-  margin: 20px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 14pt;
-  color: #333;
+.option-table th, .option-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.option-table th {
+  background-color: #000;
+  color: #fff;
+  text-align: left;
+}
+
+.note {
+  background-color: #eeeeee;
+  border-left: 5px solid #000000;
+  padding: 12px 14px;
+  margin: 16px 0;
+}
+
+a {
+  color: #000;
 }
 </style>
 </head>
 <body>
 
-<div class="header border-round">
-  <span style="font-family: helvetica, lato, sans-serif;">
-    <span style="font-size: 28pt;">Public Discourse Project Submission</span>
-  </span>
+<div class="header">Project 4: Public Voice Project</div>
+<div class="subheader no-select">
+  Choose one option: the Public Discourse Project or the Future Retirement Speech. Both options ask you to use course materials to communicate with an audience beyond this class.
 </div>
 
-<div class="no-select content">
-  <div></div>
-  <p><strong>Project 4: Public Discourse Project</strong></p>
-  <p>In your RWS 305W class this semester you have read many texts and viewed a variety of video presentations on the labor market and what you can do to broaden your employment opportunities within it. In this project, which we are calling the Public Discourse Project, you are asked to transmit what you have learned to an audience of your peers, that is, fellow students at SDSU who are taking their first steps toward choosing their academic majors.</p>
-  <p><strong>INSTRUCTIONS</strong></p>
-  <p>Using the texts and media you have read or viewed this semester, complete the following tasks:</p>
-  <ol>
-    <li>Write a script for a (roughly) ten-minute PowerPoint presentation you would give to a group of SDSU freshman who are interested in choosing the major you have selected and are interested in developing their skills, knowledge, and experience in this field to improve their (future) employability. Your script should be single-spaced and tied to the text you include on the slides in your presentation.</li>
-    <li>Create a (roughly) ten-minute PowerPoint presentation (consisting of eight to ten slides) in which you highlight the points you have listed in your script.</li>
-    <li>Submit your PowerPoint along with a PDF of the integrated script to the submission link.</li>
-  </ol>
+<button class="collapsible"><span class="arrow"></span> Overview</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>Project 4: Public Voice Project</strong></p>
+    <p>In RWS 305W this semester, you have worked on professional documents, labor market research, rhetorical analysis, and questions about work, identity, and career preparation. For this final project, you will turn that work outward and address an audience beyond this class.</p>
+    <p>You have two options. You may complete the original Public Discourse Project, in which you advise entering SDSU students about a major and career field, or you may complete the Future Retirement Speech, in which you speak from the point of view of your future self looking back on the career, values, choices, and identity you built.</p>
+    <p><strong>Both options require an audience, a purpose, and course materials.</strong></p>
+  </div>
 </div>
 
-<button class="accordion">Guidelines</button>
-<div class="panel no-select">
-  <div></div>
-  <p>1. For the script, write out the words you would say if you were presenting it for a live audience of entering freshmen students. You should discuss things like the labor market projections for your career field, the skills, knowledge, and experience graduates should have in your career field in order to be competitive when seeking employment, and how prospective students can develop their identity capital.</p>
-  <p>In addition to the materials of this module, you may draw from any of the other resources from modules 1-3; all of them are applicable to this project. You do not need to use all of the resources I have mentioned, but you should demonstrate that you have consulted a variety of them.</p>
-  <p>2. Create a PowerPoint presentation consisting of eight to ten slides based on the script you wrote for the first part of this project. Slides should be consistent with Principles of Design, Visual Composition, and Effective Presentations.</p>
+<button class="collapsible"><span class="arrow"></span> Choose One Option</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <table class="option-table">
+      <thead>
+        <tr>
+          <th>Option A: Public Discourse Project</th>
+          <th>Option B: Future Retirement Speech</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Give a presentation to SDSU freshmen who are choosing a major and thinking about future employability.</td>
+          <td>Deliver a retirement speech from the point of view of your future self at the end of a career or major professional chapter.</td>
+        </tr>
+        <tr>
+          <td>Best fit if you want to give practical advice based on labor market research, skills, knowledge, experience, and identity capital.</td>
+          <td>Best fit if you want to think about legacy, values, professional identity, setbacks, relationships, and what kind of career would be worth looking back on.</td>
+        </tr>
+        <tr>
+          <td>Product: PowerPoint presentation and integrated script.</td>
+          <td>Product: speech script and recorded delivery.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<button class="accordion">Outcomes</button>
-<div class="panel no-select">
-  <div></div>
-  <p><strong>OUTCOMES MET WITH THIS ASSIGNMENT</strong></p>
-  <p>Students will:</p>
-  <ul>
-    <li>Analyze the details of a wide variety of writing situations (textual elements such as tone, evidence, organizational patterns, diction, even visuals) according to the author’s purpose as well as the audience’s needs and tastes</li>
-    <li>Respond effectively in writing to issues and arguments raised in a variety of disciplinary, popular, and professional texts and/or contexts</li>
-    <li>Actively read texts using a variety of reading strategies such as annotation, visual organizers, questioning, and discussion</li>
-    <li>Identify how a writer uses rhetorical strategies in various genres of writing</li>
-    <li>Interpret, analyze, and evaluate demanding texts</li>
-    <li>Develop flexible strategies for creating, revising, and editing texts</li>
-    <li>Critique their own and others’ texts</li>
-    <li>Write with an awareness of audience and purpose</li>
-    <li>Identify how discourse communities employ particular strategies for conveying, researching, evaluating, and presenting information</li>
-    <li>Analyze and choose the appropriate conventions for a range of audience expectations</li>
-    <li>Integrate a variety of appropriate sources into their writings in a way that accurately reflects the writer’s meaning and purpose</li>
-    <li>Sustain reasonable correctness in grammar and mechanics to perform well in a variety of writing contexts and professional settings</li>
-    <li>Respect the diverse points of view that characterize our multi-cultural classroom community</li>
-    <li>Critically analyze a variety of texts produced for public and individual readers</li>
-  </ul>
+<button class="collapsible"><span class="arrow"></span> Option A: Public Discourse Project</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>Public Discourse Project</strong></p>
+    <p>In this option, you are asked to transmit what you have learned to an audience of your peers, that is, fellow students at SDSU who are taking their first steps toward choosing their academic majors.</p>
+    <p><strong>Instructions</strong></p>
+    <ol>
+      <li>Write a script for a roughly ten-minute PowerPoint presentation you would give to a group of SDSU freshmen who are interested in choosing the major you have selected and developing their skills, knowledge, and experience in this field to improve their future employability.</li>
+      <li>Create a roughly ten-minute PowerPoint presentation consisting of eight to ten slides that presents the points listed in your script.</li>
+      <li>Submit your PowerPoint along with a PDF of the integrated script to the submission link.</li>
+    </ol>
+    <p>Your script should be single-spaced and should correspond to the text you include on the slides in your presentation.</p>
+  </div>
 </div>
 
-<button class="accordion">Script Integration (How-To)</button>
-<div class="panel no-select">
-  <div></div>
-  <p><strong>Adding Speaker Notes:</strong></p>
-  <ol>
-    <li>Open your PowerPoint presentation.</li>
-    <li>Go to the View tab and select Notes.</li>
-    <li>In the Notes pane, type your script for each slide.</li>
-  </ol>
-  <p><strong>Printing Slides with Notes:</strong></p>
-  <ol>
-    <li>Go to the File menu and select Print.</li>
-    <li>In the Settings section, select Notes Pages to print each slide with its speaker notes.</li>
-    <li>Finally, select Print to PDF. For Mac users, this at the bottom of the print dialog screen. For PC users simply select PDF as your printer.</li>
-  </ol>
+<button class="collapsible"><span class="arrow"></span> Option B: Future Retirement Speech</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>Future Retirement Speech</strong></p>
+    <p>In this option, you will write and record a retirement speech from the point of view of your future self. Imagine that you are at the end of a career or major professional chapter. Your speech should explain what you built, what guided you, what tested you, and what you hope others understand from your example.</p>
+    <p><strong>Instructions</strong></p>
+    <ol>
+      <li>Choose the occasion and audience for the speech. Your audience might include colleagues, family, younger workers, students entering your field, or people who helped shape your career.</li>
+      <li>Write a speech script that looks back on the career, values, choices, setbacks, relationships, and identity you built.</li>
+      <li>Use course materials to support the speech. You may draw on your Labor Market Analysis, Meg Jay's chapters, career readings, or any other relevant course materials.</li>
+      <li>Record yourself delivering the speech. You may use notes, but you should not appear to be reading from a monotone script like a hostage video.</li>
+    </ol>
+    <div class="note"><strong>Focus:</strong> This is not a fantasy job speech. It should show how a person moves from where they are now toward a future worth having.</div>
+  </div>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Shared Guidelines</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>Guidelines</strong></p>
+    <p>Whichever option you choose, your project should address a specific audience and use course materials for a specific purpose. You should discuss work, identity, career preparation, labor market conditions, skills, knowledge, experience, and identity capital where they are relevant to your project.</p>
+    <p>In addition to the materials of this module, you may draw from any other resources from Modules 1-3. You do not need to use every resource, but you should demonstrate that you have consulted a variety of them.</p>
+    <p>Slides, visuals, examples, and stories should support the message.</p>
+  </div>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> What to Submit</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <table class="option-table">
+      <thead>
+        <tr>
+          <th>Option A: Public Discourse Project</th>
+          <th>Option B: Future Retirement Speech</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PowerPoint presentation, roughly eight to ten slides.</td>
+          <td>Speech script.</td>
+        </tr>
+        <tr>
+          <td>PDF of the presentation with integrated speaker notes/script.</td>
+          <td>YouTube link for the recorded speech.</td>
+        </tr>
+        <tr>
+          <td>Script should correspond to the slide content.</td>
+          <td>You may use notes, but the delivery should not look like a monotone script-reading hostage video.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Course Outcomes</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>Course Outcomes</strong></p>
+    <p>This assignment supports the RWS 305W outcomes that ask students to:</p>
+    <ul>
+      <li>analyze and evaluate complex texts and media</li>
+      <li>apply rhetorical principles to specific audiences and purposes</li>
+      <li>adapt conventions to communicate with public and professional audiences</li>
+      <li>integrate sources and strategies appropriate to genre</li>
+      <li>compose and revise texts across written, visual, and spoken formats</li>
+    </ul>
+  </div>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> Script Integration: PowerPoint Notes</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>Adding Speaker Notes</strong></p>
+    <ol>
+      <li>Open your PowerPoint presentation.</li>
+      <li>Go to the View tab and select Notes.</li>
+      <li>In the Notes pane, type your script for each slide.</li>
+    </ol>
+    <p><strong>Printing Slides with Notes</strong></p>
+    <ol>
+      <li>Go to the File menu and select Print.</li>
+      <li>In the Settings section, select Notes Pages to print each slide with its speaker notes.</li>
+      <li>Select Print to PDF. For Mac users, this appears at the bottom of the print dialog screen. For PC users, select PDF as your printer.</li>
+    </ol>
+  </div>
+</div>
+
+<button class="collapsible"><span class="arrow"></span> YouTube Submission Instructions</button>
+<div class="content no-select">
+  <div class="panel-inner">
+    <p><strong>YouTube Submission Instructions</strong></p>
+    <p>You may use any recording tool, but the finished speech must be posted to YouTube.</p>
+    <p><strong>Requirements</strong></p>
+    <ol>
+      <li>You may use notes, but do not submit a monotone script-reading hostage video.</li>
+      <li>Submit only the YouTube link in Canvas.</li>
+      <li>Before submitting, test the link in a private or incognito browser window. If I cannot open the video, I cannot grade it.</li>
+    </ol>
+  </div>
 </div>
 
 <script>
-var acc = document.getElementsByClassName("accordion");
-for (var i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
+var coll = document.getElementsByClassName("collapsible");
+
+for (var i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
+    var content = this.nextElementSibling;
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
     } else {
-      panel.style.display = "block";
+      content.style.maxHeight = content.scrollHeight + "px";
+
+      var button = this;
+      setTimeout(function() {
+        button.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 120);
     }
   });
 }
