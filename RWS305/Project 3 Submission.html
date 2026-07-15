@@ -3,307 +3,267 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* { box-sizing: border-box; }
-
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #111;
-}
-
-.header {
-  background-color: #000000;
-  color: #ffffff;
-  text-align: center;
-  padding: 10px 8px;
-  font-size: 28pt;
-  line-height: 1.2;
-}
-
-.subheader {
-  background-color: #303030;
-  color: #ffffff;
-  padding: 14px 22px;
-  font-size: 14pt;
-  line-height: 1.5;
-}
-
-.collapsible {
-  background-color: #000000;
-  color: white;
+.accordion {
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  transition: 0.4s;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
+.active, .accordion:hover {
+  background-color: #ccc; 
 }
 
-.content {
+.panel {
   padding: 0 18px;
-  max-height: 0;
+  display: none;
+  background-color: white;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #303030;
-  margin: 0;
-}
-
-.panel-inner {
-  background-color: #ffffff;
-  color: #111;
-  margin: 18px 0;
-  padding: 20px;
-  font-size: 14pt;
-  line-height: 1.55;
-}
-
-.panel-inner p {
-  margin-top: 0;
-}
-
-.panel-inner h2, .panel-inner h3 {
-  margin-top: 0;
 }
 
 iframe {
   width: 100%;
   height: 600px;
   border: none;
-  background-color: #202020;
-  margin: 0 0 18px 0;
-}
-
-.arrow::before {
-  content: "➤";
-  display: inline-block;
-  margin-right: 10px;
-  transition: transform 0.2s;
-}
-
-.active .arrow::before {
-  transform: rotate(90deg);
 }
 
 .no-select {
+  position: relative;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
 }
 
-.option-table {
+.no-select div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  pointer-events: none;
+}
+
+table {
   width: 100%;
   border-collapse: collapse;
-  margin: 12px 0 0 0;
-  font-size: 13pt;
+  font-family: helvetica, sans-serif;
 }
 
-.option-table th, .option-table td {
+th, td {
   border: 1px solid #ddd;
-  padding: 10px;
-  vertical-align: top;
-}
-
-.option-table th {
-  background-color: #000;
-  color: #fff;
+  padding: 8px;
   text-align: left;
 }
 
-.note {
-  background-color: #eeeeee;
-  border-left: 5px solid #000000;
-  padding: 12px 14px;
-  margin: 16px 0;
-}
-
-a {
-  color: #000;
+th {
+  background-color: #000;
+  color: white;
 }
 </style>
 </head>
 <body>
 
-<div class="header">Project 4: Public Voice Project</div>
-<div class="subheader no-select">
-  Choose one option: the Public Discourse Project or the Future Retirement Speech. Both options ask you to use course materials to communicate with an audience beyond this class.
+<div class="border border-trbl border-round" style="background-color: #000000; padding: 2px; text-align: center; color: #ffffff; font-size: xx-large;">
+  <span style="font-family: helvetica, lato, sans-serif;">
+    <span style="font-size: 28pt;">Rhetorical Analysis Submission</span>
+  </span>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Overview</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Project 4: Public Voice Project</strong></p>
-    <p>In RWS 305W this semester, you have worked on professional documents, labor market research, rhetorical analysis, and questions about work, identity, and career preparation. For this final project, you will turn that work outward and address an audience beyond this class.</p>
-    <p>You have two options. You may complete the original Public Discourse Project, in which you advise entering SDSU students about a major and career field, or you may complete the Future Retirement Speech, in which you speak from the point of view of your future self looking back on the career, values, choices, and identity you built.</p>
-    <p><strong>Both options require an audience, a purpose, and course materials.</strong></p>
-  </div>
+<div class="no-select">
+  <div></div>
+  <p style="padding-left: 40px;">
+    <span style="font-size: 14pt; font-family: helvetica, lato, sans-serif;">
+      In your RWS 305W class this semester you have read and discussed five texts concerning the labor market and workplace:
+    </span>
+  </p>
+  <ul>
+    <li style="list-style-type: none;">
+      <ol style="list-style-type: decimal;">
+        <li><span style="font-family: helvetica; font-size: 14pt;">“The Great Prosperity” (Reich) </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">“The Three Jobs of the Future” (Reich) </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">“The Big Earners and the Big Losers” (Cowen) </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">“Serving in Florida” (Ehrenreich) </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">“Created Equal" (Friedman)</span></li>
+      </ol>
+    </li>
+  </ul>
+  <p><span style="font-family: helvetica; font-size: 14pt;">These readings give us sociocultural filters through which <em>your</em> soon-to-be workplace can be viewed. But what value do you get from learning about these things? <strong>Answer:</strong> knowledge is power in democratic societies. If you know the theories on which systems are based, not only can you strategize to be a better player, you can also vote to change the rules. In short, the better you understand the game, the better your chances are for winning and being a good, productive, contributing member of society.</span></p>
+  <p><span style="font-size: 14pt;"><strong> <span style="font-family: helvetica;">INSTRUCTIONS</span> </strong></span></p>
+  <ol style="list-style-type: decimal;">
+    <li><span style="font-family: helvetica; font-size: 14pt;">Write a contextualized, rhetorical analysis of Reich’s chapter, “The Three Jobs of the Future:”</span>
+      <ul style="list-style-type: circle;">
+        <li><span style="font-family: helvetica; font-size: 14pt;">Claim centrality and delineate the context of his argument (i.e., the rhetorical situation). </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">Establish a niche; create exigency. </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">Occupy the niche: use metadiscourse to signal your project and outline the structure of your paper. </span></li>
+        <li><span style="font-family: helvetica; font-size: 14pt;">Isolate principal sub-claims and for each one, identify at least two (2) rhetorical strategies he uses to advance his argument and analyze how those strategies might persuade the reader to support his argument by explaining:</span>
+          <ul style="list-style-type: circle;">
+            <li><span style="font-family: helvetica; font-size: 14pt;">how those strategies contribute to his appeals to ethos, pathos, and logos; </span></li>
+            <li><span style="font-family: helvetica; font-size: 14pt;">the assumption(s) on which the argument is based (i.e., premises);</span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <p style="padding-left: 40px;"><span style="font-family: helvetica; font-size: 14pt;">and evaluate the extent to which the reader would find the argument convincing.</span></p>
+  <ol style="list-style-type: decimal;" start="2">
+    <li><span style="font-family: helvetica; font-size: 14pt;">Transition into a comparative analysis of all the authors and delineate the larger discussion of the topic: the changing nature of the global labor market and its influence on the American workplace. What are the main concerns for this issue? Use the other chapters you have read in class to help you understand the context of this topic as you explain each of the other authors’ claims, the supporting ideas they use to develop their arguments, and how their arguments relate to Reich’s arguments. </span></li>
+    <li><span style="font-family: helvetica; font-size: 14pt;">In the final part, evaluate the extent to which all four of these authors have influenced your views about the nature of the global labor market and articulate a discernible position in relation to the authors with respect to the broader topic.&nbsp;</span></li>
+  </ol>
+  <p style="padding-left: 40px;"><span style="font-family: helvetica; font-size: 14pt;"><strong>Note:</strong> Do not merely talk about how you feel about the American labor market. You must explain your views in reference to how they have been influenced—for better or worse—by the arguments posed in the respective readings.</span></p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Choose One Option</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <table class="option-table">
-      <thead>
-        <tr>
-          <th>Option A: Public Discourse Project</th>
-          <th>Option B: Future Retirement Speech</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Give a presentation to SDSU freshmen who are choosing a major and thinking about future employability.</td>
-          <td>Deliver a retirement speech from the point of view of your future self at the end of a career or major professional chapter.</td>
-        </tr>
-        <tr>
-          <td>Best fit if you want to give practical advice based on labor market research, skills, knowledge, experience, and identity capital.</td>
-          <td>Best fit if you want to think about legacy, values, professional identity, setbacks, relationships, and what kind of career would be worth looking back on.</td>
-        </tr>
-        <tr>
-          <td>Product: PowerPoint presentation and integrated script.</td>
-          <td>Product: speech script and recorded delivery.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<button class="accordion">The Great Prosperity (Reich)</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%203/The%20Great%20Propserity.pdf" width="100%" height="600px"></iframe></p>
+  <p>Chapter 6: The Great Prosperity: 1947-1975 from Aftershock, by Robert B. Reich, © 2013 Random House, Inc.</p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Option A: Public Discourse Project</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Public Discourse Project</strong></p>
-    <p>In this option, you are asked to transmit what you have learned to an audience of your peers, that is, fellow students at SDSU who are taking their first steps toward choosing their academic majors.</p>
-    <p><strong>Instructions</strong></p>
-    <ol>
-      <li>Write a script for a roughly ten-minute PowerPoint presentation you would give to a group of SDSU freshmen who are interested in choosing the major you have selected and developing their skills, knowledge, and experience in this field to improve their future employability.</li>
-      <li>Create a roughly ten-minute PowerPoint presentation consisting of eight to ten slides that presents the points listed in your script.</li>
-      <li>Submit your PowerPoint along with a PDF of the integrated script to the submission link.</li>
-    </ol>
-    <p>Your script should be single-spaced and should correspond to the text you include on the slides in your presentation.</p>
-  </div>
+<button class="accordion">The Three Jobs of the Future (Reich)</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%203/The%20Three%20Jobs%20of%20the%20Future.pdf" width="100%" height="600px"></iframe></p>
+  <p>Chapter 14: The Three Jobs of the Future from The Work of Nations: Preparing Ourselves for 21st Century Capitalism, by Robert B. Reich, © 1992 Vintage Books, a division of Random House, Inc.</p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Option B: Future Retirement Speech</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Future Retirement Speech</strong></p>
-    <p>In this option, you will write and record a retirement speech from the point of view of your future self. Imagine that you are at the end of a career or major professional chapter. Your speech should explain what you built, what guided you, what tested you, and what you hope others understand from your example.</p>
-    <p><strong>Instructions</strong></p>
-    <ol>
-      <li>Choose the occasion and audience for the speech. Your audience might include colleagues, family, younger workers, students entering your field, or people who helped shape your career.</li>
-      <li>Write a speech script that looks back on the career, values, choices, setbacks, relationships, and identity you built.</li>
-      <li>Use course materials to support the speech. You may draw on your Labor Market Analysis, Meg Jay's chapters, career readings, or any other relevant course materials.</li>
-      <li>Record yourself delivering the speech. You may use notes, but you should not appear to be reading from a monotone script like a hostage video.</li>
-    </ol>
-    <div class="note"><strong>Focus:</strong> This is not a fantasy job speech. It should show how a person moves from where they are now toward a future worth having.</div>
-  </div>
+<button class="accordion">The Big Earners and the Big Losers (Cowen)</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%203/The%20Big%20Earners%20and%20the%20Big%20Losers.pdf" width="100%" height="600px"></iframe></p>
+  <p>Chapter 2 from Average is Over, by Tyler Cowen, © 2013 Random House, Inc.</p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Shared Guidelines</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Guidelines</strong></p>
-    <p>Whichever option you choose, your project should address a specific audience and use course materials for a specific purpose. You should discuss work, identity, career preparation, labor market conditions, skills, knowledge, experience, and identity capital where they are relevant to your project.</p>
-    <p>In addition to the materials of this module, you may draw from any other resources from Modules 1-3. You do not need to use every resource, but you should demonstrate that you have consulted a variety of them.</p>
-    <p>Slides, visuals, examples, and stories should support the message.</p>
-  </div>
+<button class="accordion">Serving in Florida (Ehrenreich)</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%203/Serving%20in%20Florida.pdf" width="100%" height="600px"></iframe></p>
+  <p>Excerpt from “Serving in Florida” by Barbara Ehrenreich from Nickel and Dimed, © 2011 Henry Holt & Company, LLC.</p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> What to Submit</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <table class="option-table">
-      <thead>
-        <tr>
-          <th>Option A: Public Discourse Project</th>
-          <th>Option B: Future Retirement Speech</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PowerPoint presentation, roughly eight to ten slides.</td>
-          <td>Speech script.</td>
-        </tr>
-        <tr>
-          <td>PDF of the presentation with integrated speaker notes/script.</td>
-          <td>YouTube link for the recorded speech.</td>
-        </tr>
-        <tr>
-          <td>Script should correspond to the slide content.</td>
-          <td>You may use notes, but the delivery should not look like a monotone script-reading hostage video.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<button class="accordion">Class in America (Mantsios)</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%203/Class%20in%20America.pdf" width="100%" height="600px"></iframe></p>
+  <p>"Class in America-- 2006" by Gregory Mantsios from Race, Class and Gender in the United States, © 2007 Gregory Mantsios.</p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Course Outcomes</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Course Outcomes</strong></p>
-    <p>This assignment supports the RWS 305W outcomes that ask students to:</p>
-    <ul>
-      <li>analyze and evaluate complex texts and media</li>
-      <li>apply rhetorical principles to specific audiences and purposes</li>
-      <li>adapt conventions to communicate with public and professional audiences</li>
-      <li>integrate sources and strategies appropriate to genre</li>
-      <li>compose and revise texts across written, visual, and spoken formats</li>
-    </ul>
-  </div>
+<button class="accordion">Created Equal (Friedman)</button>
+<div class="panel">
+  <p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%203/Friedman.pdf" width="100%" height="600px"></iframe></p>
+  <p>"What Does ‘Created Equal’ Mean? <a href="https://www.hoover.org/research/what-does-created-equal-mean">https://www.hoover.org/research/what-does-created-equal-mean</a>" from Milton Friedman on Freedom, by Milton Friedman, © 2017 Hoover Institution Press.</p>
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Script Integration: PowerPoint Notes</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Adding Speaker Notes</strong></p>
-    <ol>
-      <li>Open your PowerPoint presentation.</li>
-      <li>Go to the View tab and select Notes.</li>
-      <li>In the Notes pane, type your script for each slide.</li>
-    </ol>
-    <p><strong>Printing Slides with Notes</strong></p>
-    <ol>
-      <li>Go to the File menu and select Print.</li>
-      <li>In the Settings section, select Notes Pages to print each slide with its speaker notes.</li>
-      <li>Select Print to PDF. For Mac users, this appears at the bottom of the print dialog screen. For PC users, select PDF as your printer.</li>
-    </ol>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> YouTube Submission Instructions</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>YouTube Submission Instructions</strong></p>
-    <p>You may use any recording tool, but the finished speech must be posted to YouTube.</p>
-    <p><strong>Requirements</strong></p>
-    <ol>
-      <li>You may use notes, but do not submit a monotone script-reading hostage video.</li>
-      <li>Submit only the YouTube link in Canvas.</li>
-      <li>Before submitting, test the link in a private or incognito browser window. If I cannot open the video, I cannot grade it.</li>
-    </ol>
-  </div>
+<button class="accordion">Rubric</button>
+<div class="panel no-select">
+  <table>
+    <thead>
+      <tr>
+        <th>Criteria</th>
+        <th>Highly Proficient</th>
+        <th>Proficient</th>
+        <th>Competent</th>
+        <th>Developing</th>
+        <th>Unsatisfactory</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claim Centrality (5 pts)</td>
+        <td>Establishes topic importance, defines relevance within broader context.</td>
+        <td>Establishes topic importance with minor gaps, defines relevance within context.</td>
+        <td>States topic importance with some clarity, provides basic relevance.</td>
+        <td>States topic importance unclearly, provides little indication of relevance.</td>
+        <td>Fails to establish topic importance, provides no relevance.</td>
+      </tr>
+      <tr>
+        <td>Create Exigency (10 pts)</td>
+        <td>Establishes a niche, demonstrates need for analysis, justifies analysis importance.</td>
+        <td>One or more gaps: Establish a niche to some degree, demonstrates analysis, establish analysis importance.</td>
+        <td>Niche unclear, Importance of analysis unclear, Justification for analysis unclear.</td>
+        <td>Attempts to establish a niche, demonstrates insufficient need for analysis, fails to justify analysis importance.</td>
+        <td>Fails to establish a niche, demonstrates no need for analysis, does not justify analysis importance.</td>
+      </tr>
+      <tr>
+        <td>Metadiscourse (10 pts)</td>
+        <td>Uses metadiscourse effectively, outlines structure clearly.</td>
+        <td>Uses metadiscourse adequately, outlines structure to some degree.</td>
+        <td>Uses metadiscourse, provides some indication of paper structure.</td>
+        <td>Attempts metadiscourse, paper structure absent or unclear.</td>
+        <td>Fails to use metadiscourse, provides no indication of structure.</td>
+      </tr>
+      <tr>
+        <td>Reich's Rhetorical Situation (20 pts)</td>
+        <td>Defines Reich’s rhetorical situation effectively, explains rhetor, audience, purpose, and exigency accurately.</td>
+        <td>Defines Reich’s rhetorical situation generally, explains rhetor, audience, purpose, exigency, though one of these may be slighted.</td>
+        <td>Defines rhetorical situation to some degree with minimal accuracy, provides at least a basic explanation of rhetor, audience, purpose, exigency.</td>
+        <td>Attempts to define rhetorical situation, inadequately explains rhetor, audience, purpose, exigency.</td>
+        <td>Fails to define rhetorical situation, rhetor, audience, purpose, exigency not established.</td>
+      </tr>
+      <tr>
+        <td>Sub-Claims and Connection to Thesis (20 pts)</td>
+        <td>Clearly identifies sub-claims, connects sub-claims to thesis.</td>
+        <td>Identifies sub-claims generally, adequately connects sub-claims to thesis.</td>
+        <td>Identifies sub-claims with some clarity, connects sub-claims to thesis with basic clarity.</td>
+        <td>Attempts to identify sub-claims, weak connection to thesis.</td>
+        <td>Fails to identify sub-claims, no connection to thesis.</td>
+      </tr>
+      <tr>
+        <td>Strategies (25 pts)</td>
+        <td>Accurately describes why and how strategies support specific claims, demonstrates clear understanding of strategy purpose.</td>
+        <td>Describes why and how strategies support claims with minor gaps, adequately understands strategy purpose.</td>
+        <td>Makes an attempt to describe strategies, provides basic understanding of strategy purpose.</td>
+        <td>Attempts to describe strategies, inadequately understands strategy purpose.</td>
+        <td>Fails to describe strategies, no understanding of strategy purpose, may conflate strategies and appeals.</td>
+      </tr>
+      <tr>
+        <td>Appeals (25 pts)</td>
+        <td>Connects rhetorical strategies to ethos, logos, pathos; considers audience presuppositions proficiently, analyzes appeal effectively.</td>
+        <td>Connects rhetorical strategies to ethos, logos, pathos with minor gaps; considers audience presuppositions minimally; analyzes appeal effectiveness with general accuracy.</td>
+        <td>Connects rhetorical strategies to ethos, logos, pathos with some clarity; considers audience presuppositions with limited understanding; provides only basic analysis of appeal effectiveness.</td>
+        <td>Attempts to connect rhetorical strategies to ethos, logos, pathos; inadequately considers audience presuppositions; poor analysis of appeal effectiveness.</td>
+        <td>Fails to connect rhetorical strategies to ethos, logos, pathos; does not consider audience presuppositions; analysis of appeal effectiveness is incoherent.</td>
+      </tr>
+      <tr>
+        <td>Comparative Analysis (60 pts)</td>
+        <td>Integrates and compares perspectives of Cowen, Ehrenreich, and Friedman with Reich, demonstrates how each perspective contributes to understanding labor market diversity and changes, provides clear synthesis and complete understanding of labor market dynamics.</td>
+        <td>Integrates and compares perspectives of Cowen, Ehrenreich, and Friedman with minor gaps, shows how each perspective adds to understanding labor market diversity and changes, provides generally accurate synthesis and understanding of labor market dynamics.</td>
+        <td>Integrates and compares perspectives of Cowen, Ehrenreich, and Friedman with some clarity, shows basic understanding of how each perspective contributes to labor market diversity and changes, provides basic synthesis and understanding of labor market dynamics.</td>
+        <td>Attempts to integrate and compare perspectives of Cowen, Ehrenreich, and Friedman, shows limited understanding of how each perspective contributes to labor market diversity and changes, provides minimal synthesis and understanding of labor market dynamics.</td>
+        <td>Fails to integrate and compare perspectives of Cowen, Ehrenreich, and Friedman, shows no understanding of how each perspective contributes to labor market diversity and changes, provides no synthesis or understanding of labor market dynamics.</td>
+      </tr>
+      <tr>
+        <td>Entering the Conversation (60 pts)</td>
+        <td>Articulates a position within the larger conversation, engages with readings to support position, demonstrates strong understanding of broader topic.</td>
+        <td>Articulates a position with minor gaps, engages with readings to support position, shows understanding of broader topic.</td>
+        <td>Articulates a position with some measure of clarity, engages with readings to support position, shows basic understanding of broader topic.</td>
+        <td>Attempts to articulate a position, engages with readings poorly, shows minimal understanding of broader topic.</td>
+        <td>Fails to articulate a position, engages with readings inadequately, demonstrates no understanding of broader topic.</td>
+      </tr>
+      <tr>
+        <td>Style (45 pts)<br><span style="font-size: smaller; text-align: left;">*This category assesses the writing style across all elements. Each of the following must be met to achieve the full points; weakness in any one area requires score adjustment to reflect the weakest aspect.</span></td>
+        <td>-Well-ordered/presented points within body paragraphs; -Readable, varied and interesting sentence structure; -Appropriate transitions between all ideas; -Mature and consistently effective word choice and tone.</td>
+        <td>-Most points well-ordered; -Sentence structure mostly varied and readable; -Transitions mostly appropriate; -Word choice and tone mostly effective.</td>
+        <td>-Some order in points; -Sentence structure somewhat varied and readable; -Some appropriate transitions; -Basic effectiveness in word choice and tone.</td>
+        <td>-Points somewhat disordered; -Sentence structure lacks variety and readability; -Transitions sometimes inappropriate; -Word choice and tone need improvement.</td>
+        <td>-Disordered points; -Robotic sentence structure; -Inappropriate transitions; -Ineffective word choice and tone.</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+var acc = document.getElementsByClassName("accordion");
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
     } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+      panel.style.display = "block";
     }
   });
 }
