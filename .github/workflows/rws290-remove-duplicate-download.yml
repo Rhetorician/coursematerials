@@ -1,0 +1,59 @@
+name: RWS290 remove duplicate syllabus download button
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/rws290-remove-duplicate-download.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix-buttons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Remove duplicate hero download buttons
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          files = [
+              Path("RWS290/Syllabus17Fall2026.html"),
+              Path("RWS290/Syllabus18Fall2026.html"),
+              Path("RWS290/Syllabus30Fall2026.html"),
+              Path("RWS290/Syllabus31Fall2026.html"),
+          ]
+
+          pattern = re.compile(
+              r'(<div class="hero-actions"><a class="button-link" href="#schedule">View schedule</a>)'
+              r'<a class="button-link secondary"[^>]*>Download syllabus</a>'
+              r'(</div>)'
+          )
+
+          for path in files:
+              text = path.read_text(encoding="utf-8")
+              updated, count = pattern.subn(r'\1\2', text)
+              if count != 1:
+                  raise SystemExit(f"Expected exactly one hero download button in {path}; found {count}")
+              if updated.count('class="header-link"') != 1:
+                  raise SystemExit(f"Expected one header download link in {path}")
+              if 'class="button-link secondary"' in updated:
+                  raise SystemExit(f"Hero download button still present in {path}")
+              path.write_text(updated, encoding="utf-8")
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add RWS290/Syllabus17Fall2026.html RWS290/Syllabus18Fall2026.html RWS290/Syllabus30Fall2026.html RWS290/Syllabus31Fall2026.html
+          git diff --cached --check
+          git commit -m "Remove duplicate RWS290 syllabus download buttons"
+          git push origin main
