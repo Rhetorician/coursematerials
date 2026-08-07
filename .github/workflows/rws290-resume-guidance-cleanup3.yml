@@ -1,0 +1,47 @@
+name: RWS290 Resume Guidance cleanup 3
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/rws290-resume-guidance-cleanup3.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Remove extra visible text
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("RWS290/ResumeGuidance.html")
+          text = path.read_text(encoding="utf-8")
+          removals = [
+              '  <p>Resume guidance, examples, and development materials used throughout the resume project.</p>\n',
+              '  <div class="section-label">Resume Guidance</div>\n\n',
+              '  <div class="section-label">Resume Tools and Examples</div>\n\n',
+          ]
+          for item in removals:
+              if item not in text:
+                  raise SystemExit(f"Expected content not found: {item!r}")
+              text = text.replace(item, "", 1)
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add RWS290/ResumeGuidance.html
+          git diff --cached --check
+          git commit -m "Remove extra Resume Guidance labels"
+          git push origin main
