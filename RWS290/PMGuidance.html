@@ -128,12 +128,29 @@
     display: block;
   }
 
-  .pdf-frame {
+  .pdf-frame,
+  .resource-frame {
     display: block;
     width: 100%;
-    height: 780px;
     border: 1px solid var(--line);
     background: #eeeeee;
+  }
+
+  .pdf-frame {
+    height: 780px;
+  }
+
+  .resource-stack {
+    display: grid;
+    gap: 20px;
+  }
+
+  .slideshow-frame {
+    height: 960px;
+  }
+
+  .lab-frame {
+    height: 1080px;
   }
 
   @media (max-width: 700px) {
@@ -161,6 +178,11 @@
     .pdf-frame {
       height: 620px;
     }
+
+    .slideshow-frame,
+    .lab-frame {
+      height: 760px;
+    }
   }
 </style>
 </head>
@@ -179,6 +201,19 @@
     </button>
     <div class="accordion-panel" id="panel-assignment">
       <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/Persuasive%20Message%20Assignment%20Description.pdf" title="Persuasive Message Assignment Description" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-review">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Review of Rhetoric and Project Planning</span>
+    </button>
+    <div class="accordion-panel" id="panel-review">
+      <div class="resource-stack">
+        <iframe class="resource-frame slideshow-frame" src="https://rhetorician.github.io/coursematerials/RWS290/PersuasiveMessages/" title="Writing Persuasive Messages Slideshow" loading="lazy"></iframe>
+        <iframe class="resource-frame lab-frame" src="https://rhetorician.github.io/coursematerials/RWS290/PersuasivePlanningLab.html" title="Persuasion Planning Lab" loading="lazy"></iframe>
+      </div>
     </div>
   </section>
 
