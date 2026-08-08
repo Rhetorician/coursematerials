@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>RWS 290 | Persuasive Message Guidance</title>
+<style>
+  :root {
+    --black: #000000;
+    --red: #a6192e;
+    --white: #ffffff;
+    --paper: #ffffff;
+    --panel: #f3f3f3;
+    --line: #d6d6d6;
+    --shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--black);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: #111111;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .hero {
+    padding: clamp(28px, 5vw, 54px);
+    color: var(--white);
+    background: var(--black);
+    border-top: 8px solid var(--red);
+    border-bottom: 1px solid #333333;
+  }
+
+  .hero-kicker {
+    margin: 0 0 8px;
+    color: #c8b77a;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1;
+  }
+
+  main {
+    width: min(1180px, calc(100% - 34px));
+    margin: 0 auto;
+    padding: 30px 0 60px;
+  }
+
+  .accordion-item {
+    margin: 0 0 12px;
+    background: var(--paper);
+    border-left: 8px solid var(--red);
+    box-shadow: var(--shadow);
+  }
+
+  .accordion-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px 20px;
+    color: #111111;
+    background: var(--panel);
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    font: inherit;
+    font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .accordion-button:hover,
+  .accordion-button:focus-visible {
+    background: #e8e8e8;
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .accordion-button[aria-expanded="true"] {
+    color: var(--white);
+    background: var(--black);
+    border-color: #333333;
+  }
+
+  .arrow {
+    flex: 0 0 auto;
+    color: var(--red);
+    font-size: 1.15em;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+
+  .accordion-button[aria-expanded="true"] .arrow {
+    color: var(--white);
+    transform: rotate(90deg);
+  }
+
+  .accordion-panel {
+    display: none;
+    padding: 20px;
+    background: var(--white);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .accordion-panel.open {
+    display: block;
+  }
+
+  .pdf-frame,
+  .resource-frame {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    background: #eeeeee;
+  }
+
+  .pdf-frame {
+    height: 780px;
+  }
+
+  .resource-stack {
+    display: grid;
+    gap: 20px;
+  }
+
+  .slideshow-frame {
+    height: 960px;
+  }
+
+  .lab-frame {
+    height: 1080px;
+  }
+
+  @media (max-width: 700px) {
+    body {
+      font-size: 16px;
+    }
+
+    main {
+      width: min(100% - 20px, 1180px);
+      padding-top: 18px;
+    }
+
+    .hero {
+      padding: 28px 20px;
+    }
+
+    .accordion-button {
+      padding: 15px 14px;
+    }
+
+    .accordion-panel {
+      padding: 12px;
+    }
+
+    .pdf-frame {
+      height: 620px;
+    }
+
+    .slideshow-frame,
+    .lab-frame {
+      height: 760px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-kicker">RWS 290</p>
+  <h1>Persuasive Message Guidance</h1>
+</header>
+
+<main>
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-assignment">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Assignment Description</span>
+    </button>
+    <div class="accordion-panel" id="panel-assignment">
+      <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/Persuasive%20Message%20Assignment%20Description.pdf" title="Persuasive Message Assignment Description" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-review">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Review of Rhetoric and Project Planning</span>
+    </button>
+    <div class="accordion-panel" id="panel-review">
+      <div class="resource-stack">
+        <iframe class="resource-frame slideshow-frame" src="https://rhetorician.github.io/coursematerials/RWS290/PersuasiveMessages/" title="Writing Persuasive Messages Slideshow" loading="lazy"></iframe>
+        <iframe class="resource-frame lab-frame" src="https://rhetorician.github.io/coursematerials/RWS290/PersuasivePlanningLab.html" title="Persuasion Planning Lab" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-growhealth">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Prompt 1: GrowHealth - Persuasive Request</span>
+    </button>
+    <div class="accordion-panel" id="panel-growhealth">
+      <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/GrowHealth%20-%20Persuasive%20Request.pdf" title="Prompt 1: GrowHealth - Persuasive Request" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-credit-card">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Prompt 2: SDCCU Credit Union Aztec Proud VISA&reg; Card - Sales Letter</span>
+    </button>
+    <div class="accordion-panel" id="panel-credit-card">
+      <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/SDCCU%20Credit%20Union%20Aztec%20Proud%20VISA%C2%AE%20Card%20-%20Sales%20Letter.pdf" title="Prompt 2: SDCCU Credit Union Aztec Proud VISA Card - Sales Letter" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-dress">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Prompt 3: Dress for Success - Persuasive Request</span>
+    </button>
+    <div class="accordion-panel" id="panel-dress">
+      <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/Dress%20for%20Success%20-%20Persuasive%20Request.pdf" title="Prompt 3: Dress for Success - Persuasive Request" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-momentum">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Prompt 4: Momentum Investments Retirement Plan - Sales Email</span>
+    </button>
+    <div class="accordion-panel" id="panel-momentum">
+      <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/Momentum%20Investments%20Retirement%20Plan%20-%20Sales%20Email.pdf" title="Prompt 4: Momentum Investments Retirement Plan - Sales Email" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-chapter7">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Chapter 7 - Writing Persuasive Messages and Proposals</span>
+    </button>
+    <div class="accordion-panel" id="panel-chapter7">
+      <iframe class="pdf-frame" src="https://rhetorician.github.io/coursematerials/RWS290/files/Chapter%207%20-%20Writing%20Persuasive%20Messages%20and%20Proposals.pdf" title="Chapter 7 - Writing Persuasive Messages and Proposals" loading="lazy"></iframe>
+    </div>
+  </section>
+</main>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll('.accordion-button'));
+
+  function closePanel(button) {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    button.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('open');
+  }
+
+  function openPanel(button) {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    button.setAttribute('aria-expanded', 'true');
+    panel.classList.add('open');
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const alreadyOpen = button.getAttribute('aria-expanded') === 'true';
+
+      buttons.forEach((otherButton) => {
+        if (otherButton !== button) {
+          closePanel(otherButton);
+        }
+      });
+
+      if (alreadyOpen) {
+        closePanel(button);
+      } else {
+        openPanel(button);
+        setTimeout(() => {
+          button.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
