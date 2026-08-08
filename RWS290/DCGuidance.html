@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>RWS 290 | Design Charrette Guidance</title>
+<style>
+  :root {
+    --black: #000000;
+    --red: #a6192e;
+    --white: #ffffff;
+    --paper: #ffffff;
+    --panel: #f3f3f3;
+    --line: #d6d6d6;
+    --gold: #c8b77a;
+    --shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--black);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: #111111;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .hero {
+    padding: clamp(28px, 5vw, 54px);
+    color: var(--white);
+    background: var(--black);
+    border-top: 8px solid var(--red);
+    border-bottom: 1px solid #333333;
+  }
+
+  .hero-kicker {
+    margin: 0 0 8px;
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1;
+  }
+
+  main {
+    width: min(1180px, calc(100% - 34px));
+    margin: 0 auto;
+    padding: 30px 0 60px;
+  }
+
+  .accordion-item {
+    margin: 0 0 12px;
+    background: var(--paper);
+    border-left: 8px solid var(--red);
+    box-shadow: var(--shadow);
+  }
+
+  .accordion-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px 20px;
+    color: #111111;
+    background: var(--panel);
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    font: inherit;
+    font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .accordion-button:hover,
+  .accordion-button:focus-visible {
+    background: #e8e8e8;
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .accordion-button[aria-expanded="true"] {
+    color: var(--white);
+    background: var(--black);
+    border-color: #333333;
+  }
+
+  .arrow {
+    flex: 0 0 auto;
+    color: var(--red);
+    font-size: 1.15em;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+
+  .accordion-button[aria-expanded="true"] .arrow {
+    color: var(--white);
+    transform: rotate(90deg);
+  }
+
+  .accordion-panel {
+    display: none;
+    padding: 20px;
+    background: var(--white);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .accordion-panel.open { display: block; }
+
+  .resource-frame,
+  .pdf-frame,
+  .slide-frame {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    background: #eeeeee;
+  }
+
+  .slide-frame {
+    aspect-ratio: 16 / 9;
+    min-height: 520px;
+  }
+
+  .pdf-frame { height: 800px; }
+
+  .video-wrap {
+    width: 100%;
+    background: #000000;
+    border: 1px solid var(--line);
+  }
+
+  .video-wrap video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 78vh;
+    background: #000000;
+  }
+
+  .file-link,
+  .download-link {
+    display: inline-block;
+    padding: 12px 18px;
+    background: var(--red);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid var(--red);
+  }
+
+  .file-link:hover,
+  .file-link:focus-visible,
+  .download-link:hover,
+  .download-link:focus-visible {
+    background: var(--black);
+    border-color: var(--black);
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .center { text-align: center; }
+
+  .slide-actions {
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    body { font-size: 16px; }
+
+    main {
+      width: min(100% - 20px, 1180px);
+      padding-top: 18px;
+    }
+
+    .hero { padding: 28px 20px; }
+    .accordion-button { padding: 15px 14px; }
+    .accordion-panel { padding: 12px; }
+
+    .slide-frame {
+      min-height: 330px;
+    }
+
+    .pdf-frame { height: 620px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-kicker">RWS 290</p>
+  <h1>Design Charrette Guidance</h1>
+</header>
+
+<main>
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-assignment">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Assignment Description</span>
+    </button>
+    <div class="accordion-panel" id="panel-assignment">
+      <div class="center">
+        <a class="file-link" href="files/Design%20Charrette%20Assignment%20Description.docx" download>Design Charrette Assignment Description</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-design">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Six Characteristics of Effective Information Design</span>
+    </button>
+    <div class="accordion-panel" id="panel-design">
+      <iframe class="slide-frame" src="https://docs.google.com/presentation/d/1WyUUjl5Le_enlNfpx_SuHH_g279hBZub/embed?start=false&amp;loop=false&amp;delayms=3000" title="Six Characteristics of Effective Information Design" loading="lazy" allowfullscreen></iframe>
+      <div class="slide-actions">
+        <a class="download-link" href="files/Six%20Characteristics%20of%20Effective%20Information%20Design.pptx" download>Download PowerPoint</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-video">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Design Charrette Guided Video</span>
+    </button>
+    <div class="accordion-panel" id="panel-video">
+      <div class="video-wrap">
+        <video controls playsinline preload="metadata">
+          <source src="files/Design%20Charrette%20Video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-raw">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Design Charrette Report Page (Raw)</span>
+    </button>
+    <div class="accordion-panel" id="panel-raw">
+      <div class="center">
+        <a class="file-link" href="files/Design%20Charette%20Report%20Page%20(Raw).docx" download>Design Charrette Report Page (Raw)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion-item">
+    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="panel-rentz">
+      <span class="arrow" aria-hidden="true">➤</span>
+      <span>Communicating Effectively With Visuals (Rentz)</span>
+    </button>
+    <div class="accordion-panel" id="panel-rentz">
+      <iframe class="pdf-frame" src="files/Communicating%20Effectively%20With%20Visuals%20(Rentz).pdf" title="Communicating Effectively With Visuals (Rentz)" loading="lazy"></iframe>
+    </div>
+  </section>
+</main>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll('.accordion-button'));
+
+  function closePanel(button) {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    button.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('open');
+  }
+
+  function openPanel(button) {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    button.setAttribute('aria-expanded', 'true');
+    panel.classList.add('open');
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const alreadyOpen = button.getAttribute('aria-expanded') === 'true';
+
+      buttons.forEach((otherButton) => {
+        if (otherButton !== button) closePanel(otherButton);
+      });
+
+      if (alreadyOpen) {
+        closePanel(button);
+      } else {
+        openPanel(button);
+        setTimeout(() => {
+          button.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
