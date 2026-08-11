@@ -1,323 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-* { box-sizing: border-box; }
 
-body, html {
-  height: 100%;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #111;
-}
-
-.header {
-  background-color: #000000;
-  color: #ffffff;
-  text-align: center;
-  padding: 10px 8px;
-  font-size: 28pt;
-  line-height: 1.2;
-}
-
-.subheader {
-  background-color: #303030;
-  color: #ffffff;
-  padding: 14px 22px;
-  font-size: 14pt;
-  line-height: 1.5;
-}
-
-.collapsible {
-  background-color: #000000;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #303030;
-  margin: 0;
-}
-
-.panel-inner {
   background-color: #ffffff;
-  color: #111;
-  margin: 18px 0;
-  padding: 20px;
+  color: #111111;
+}
+
+
+/* PAGE HEADER */
+
+.page-header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 28px 30px;
+}
+
+.page-header .course-label {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30pt;
+  line-height: 1.1;
+}
+
+.page-content {
+  padding: 28px 30px;
+}
+
+.introduction {
+  margin: 0 0 24px 0;
   font-size: 14pt;
   line-height: 1.55;
 }
 
-.panel-inner p {
-  margin-top: 0;
-}
 
-.panel-inner h2, .panel-inner h3 {
-  margin-top: 0;
-}
+/* MAIN ACCORDIONS */
 
-iframe {
+.collapsible {
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px 20px;
   width: 100%;
-  height: 600px;
   border: none;
-  background-color: #202020;
-  margin: 0 0 18px 0;
+  border-bottom: 1px solid #ffffff;
+  text-align: left;
+  outline: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.collapsible:hover,
+.collapsible.active {
+  background-color: #333333;
 }
 
 .arrow::before {
   content: "➤";
   display: inline-block;
   margin-right: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.active .arrow::before {
+.collapsible.active .arrow::before {
   transform: rotate(90deg);
 }
 
-.no-select {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  background-color: #ffffff;
 }
+
+.content-inner {
+  padding: 22px;
+  border: 1px solid #000000;
+  border-top: none;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.content-inner > :first-child {
+  margin-top: 0;
+}
+
+.content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* TABLES */
 
 .option-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 12px 0 0 0;
-  font-size: 13pt;
+  margin: 0;
+  font-size: 13.5pt;
 }
 
-.option-table th, .option-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
+.option-table th,
+.option-table td {
+  border: 1px solid #000000;
+  padding: 14px;
   vertical-align: top;
 }
 
 .option-table th {
-  background-color: #000;
-  color: #fff;
+  background-color: #000000;
+  color: #ffffff;
   text-align: left;
 }
 
-.note {
-  background-color: #eeeeee;
-  border-left: 5px solid #000000;
-  padding: 12px 14px;
-  margin: 16px 0;
+.option-table td {
+  background-color: #ffffff;
 }
 
-a {
-  color: #000;
+
+/* NOTES */
+
+.note {
+  background-color: #f2f2f2;
+  border: 1px solid #000000;
+  padding: 16px 18px;
+  margin: 18px 0 0 0;
 }
+
+
+/* LISTS */
+
+.content-inner ol,
+.content-inner ul {
+  padding-left: 28px;
+}
+
+.content-inner li {
+  margin-bottom: 9px;
+}
+
+.content-inner li:last-child {
+  margin-bottom: 0;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="header">Project 4: Public Voice Project</div>
-<div class="subheader no-select">
-  Choose one option: the Public Discourse Project or the Future Retirement Speech. Both options ask you to use course materials to communicate with an audience beyond this class.
+
+<div class="page-header">
+
+  <p class="course-label">
+    RWS 305W
+  </p>
+
+  <h1>
+    Project 4: Public Voice Project
+  </h1>
+
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Overview</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Project 4: Public Voice Project</strong></p>
-    <p>In RWS 305W this semester, you have worked on professional documents, labor market research, rhetorical analysis, and questions about work, identity, and career preparation. For this final project, you will turn that work outward and address an audience beyond this class.</p>
-    <p>You have two options. You may complete the original Public Discourse Project, in which you advise entering SDSU students about a major and career field, or you may complete the Future Retirement Speech, in which you speak from the point of view of your future self looking back on the career, values, choices, and identity you built.</p>
-    <p><strong>Both options require an audience, a purpose, and course materials.</strong></p>
+
+<div class="page-content">
+
+  <p class="introduction">
+    Choose either the Public Discourse Project or the Future Retirement Speech. Both options ask you to communicate with an audience beyond this class.
+  </p>
+
+
+  <!-- OVERVIEW -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Overview
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        In RWS 305W this semester, you have worked on professional documents, labor market research, rhetorical analysis, and questions about work and identity. For this final project, you will turn some of that work outward and address an audience beyond this class.
+      </p>
+
+      <p>
+        You have two options. You may complete the original Public Discourse Project, in which you advise entering SDSU students about a major and career field, or you may complete the Future Retirement Speech, in which you speak from the point of view of your future self looking back on the career you built.
+      </p>
+
+      <p>
+        Whichever option you choose, make the project for the audience you have identified and use course material where it helps you make the point.
+      </p>
+
+    </div>
+
   </div>
+
+
+  <!-- CHOOSE ONE OPTION -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Choose One Option
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <div style="overflow-x: auto;">
+
+        <table class="option-table">
+
+          <thead>
+
+            <tr>
+              <th>Option A: Public Discourse Project</th>
+              <th>Option B: Future Retirement Speech</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>
+                Give a presentation to SDSU freshmen who are choosing a major and thinking about future employability.
+              </td>
+
+              <td>
+                Deliver a retirement speech from the point of view of your future self at the end of a career or major professional chapter.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                This option is built around practical advice drawn from your labor market research and the course material that applies to your field.
+              </td>
+
+              <td>
+                This option asks you to look backward from the future and consider what kind of career would have been worth building.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Product:</strong> PowerPoint presentation and integrated script.
+              </td>
+
+              <td>
+                <strong>Product:</strong> speech script and recorded delivery.
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- OPTION A -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Option A: Public Discourse Project
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        In this option, you are asked to transmit what you have learned to an audience of your peers, that is, fellow students at SDSU who are taking their first steps toward choosing their academic majors.
+      </p>
+
+      <p>
+        <strong>Instructions</strong>
+      </p>
+
+      <ol>
+
+        <li>
+          Write a script for a roughly ten-minute PowerPoint presentation you would give to a group of SDSU freshmen who are interested in choosing the major you have selected and developing their skills, knowledge, and experience in this field to improve their future employability.
+        </li>
+
+        <li>
+          Create a roughly ten-minute PowerPoint presentation consisting of eight to ten slides that presents the points listed in your script.
+        </li>
+
+        <li>
+          Submit your PowerPoint along with a PDF of the integrated script to the submission link.
+        </li>
+
+      </ol>
+
+      <p>
+        Your script should be single-spaced and should correspond to the text you include on the slides in your presentation.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- OPTION B -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Option B: Future Retirement Speech
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        In this option, you will write and record a retirement speech from the point of view of your future self. Imagine that you are at the end of a career or major professional chapter. Look back at the career you built and explain what mattered along the way.
+      </p>
+
+      <p>
+        <strong>Instructions</strong>
+      </p>
+
+      <ol>
+
+        <li>
+          Choose the occasion and audience for the speech. Your audience might include colleagues, family, younger workers, students entering your field, or people who helped shape your career.
+        </li>
+
+        <li>
+          Write a speech script that looks back on the career, values, choices, setbacks, relationships, and identity you built.
+        </li>
+
+        <li>
+          Use course materials to support the speech. You may draw on your Labor Market Analysis, Meg Jay's chapters, career readings, or any other relevant course materials.
+        </li>
+
+        <li>
+          Record yourself delivering the speech. You may use notes, but you should not appear to be reading from a monotone script like a hostage video.
+        </li>
+
+      </ol>
+
+      <div class="note">
+        <strong>Focus:</strong> This is not a fantasy job speech. It should show how a person moves from where they are now toward a future worth having.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SHARED GUIDELINES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Shared Guidelines
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        Build the project around the audience you selected. Use the course material that actually helps you address that audience rather than trying to force every reading into the project.
+      </p>
+
+      <p>
+        You may use material from this module or return to useful material from Modules 1–3. You do not have to use everything.
+      </p>
+
+      <p>
+        Slides, visuals, examples, and stories should support what you are trying to communicate rather than become substitutes for it.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- WHAT TO SUBMIT -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    What to Submit
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <div style="overflow-x: auto;">
+
+        <table class="option-table">
+
+          <thead>
+
+            <tr>
+              <th>Option A: Public Discourse Project</th>
+              <th>Option B: Future Retirement Speech</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>
+                PowerPoint presentation, roughly eight to ten slides.
+              </td>
+
+              <td>
+                Speech script.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                PDF of the presentation with integrated speaker notes/script.
+              </td>
+
+              <td>
+                YouTube link for the recorded speech.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Script should correspond to the slide content.
+              </td>
+
+              <td>
+                You may use notes, but the delivery should not look like a monotone script-reading hostage video.
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COURSE OUTCOMES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Course Outcomes
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        This assignment supports the RWS 305W outcomes that ask students to:
+      </p>
+
+      <ul>
+
+        <li>
+          analyze and evaluate complex texts and media
+        </li>
+
+        <li>
+          apply rhetorical principles to specific audiences and purposes
+        </li>
+
+        <li>
+          adapt conventions to communicate with public and professional audiences
+        </li>
+
+        <li>
+          integrate sources and strategies appropriate to genre
+        </li>
+
+        <li>
+          compose and revise texts across written, visual, and spoken formats
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <!-- POWERPOINT NOTES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Script Integration: PowerPoint Notes
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        <strong>Adding Speaker Notes</strong>
+      </p>
+
+      <ol>
+
+        <li>
+          Open your PowerPoint presentation.
+        </li>
+
+        <li>
+          Go to the View tab and select Notes.
+        </li>
+
+        <li>
+          In the Notes pane, type your script for each slide.
+        </li>
+
+      </ol>
+
+      <p>
+        <strong>Printing Slides with Notes</strong>
+      </p>
+
+      <ol>
+
+        <li>
+          Go to the File menu and select Print.
+        </li>
+
+        <li>
+          In the Settings section, select Notes Pages to print each slide with its speaker notes.
+        </li>
+
+        <li>
+          Select Print to PDF. For Mac users, this appears at the bottom of the print dialog screen. For PC users, select PDF as your printer.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+
+  <!-- YOUTUBE -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    YouTube Submission Instructions
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        You may use any recording tool, but the finished speech must be posted to YouTube.
+      </p>
+
+      <p>
+        <strong>Requirements</strong>
+      </p>
+
+      <ol>
+
+        <li>
+          You may use notes, but do not submit a monotone script-reading hostage video.
+        </li>
+
+        <li>
+          Submit only the YouTube link in Canvas.
+        </li>
+
+        <li>
+          Before submitting, test the link in a private or incognito browser window. If I cannot open the video, I cannot grade it.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Choose One Option</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <table class="option-table">
-      <thead>
-        <tr>
-          <th>Option A: Public Discourse Project</th>
-          <th>Option B: Future Retirement Speech</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Give a presentation to SDSU freshmen who are choosing a major and thinking about future employability.</td>
-          <td>Deliver a retirement speech from the point of view of your future self at the end of a career or major professional chapter.</td>
-        </tr>
-        <tr>
-          <td>Best fit if you want to give practical advice based on labor market research, skills, knowledge, experience, and identity capital.</td>
-          <td>Best fit if you want to think about legacy, values, professional identity, setbacks, relationships, and what kind of career would be worth looking back on.</td>
-        </tr>
-        <tr>
-          <td>Product: PowerPoint presentation and integrated script.</td>
-          <td>Product: speech script and recorded delivery.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Option A: Public Discourse Project</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Public Discourse Project</strong></p>
-    <p>In this option, you are asked to transmit what you have learned to an audience of your peers, that is, fellow students at SDSU who are taking their first steps toward choosing their academic majors.</p>
-    <p><strong>Instructions</strong></p>
-    <ol>
-      <li>Write a script for a roughly ten-minute PowerPoint presentation you would give to a group of SDSU freshmen who are interested in choosing the major you have selected and developing their skills, knowledge, and experience in this field to improve their future employability.</li>
-      <li>Create a roughly ten-minute PowerPoint presentation consisting of eight to ten slides that presents the points listed in your script.</li>
-      <li>Submit your PowerPoint along with a PDF of the integrated script to the submission link.</li>
-    </ol>
-    <p>Your script should be single-spaced and should correspond to the text you include on the slides in your presentation.</p>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Option B: Future Retirement Speech</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Future Retirement Speech</strong></p>
-    <p>In this option, you will write and record a retirement speech from the point of view of your future self. Imagine that you are at the end of a career or major professional chapter. Your speech should explain what you built, what guided you, what tested you, and what you hope others understand from your example.</p>
-    <p><strong>Instructions</strong></p>
-    <ol>
-      <li>Choose the occasion and audience for the speech. Your audience might include colleagues, family, younger workers, students entering your field, or people who helped shape your career.</li>
-      <li>Write a speech script that looks back on the career, values, choices, setbacks, relationships, and identity you built.</li>
-      <li>Use course materials to support the speech. You may draw on your Labor Market Analysis, Meg Jay's chapters, career readings, or any other relevant course materials.</li>
-      <li>Record yourself delivering the speech. You may use notes, but you should not appear to be reading from a monotone script like a hostage video.</li>
-    </ol>
-    <div class="note"><strong>Focus:</strong> This is not a fantasy job speech. It should show how a person moves from where they are now toward a future worth having.</div>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Shared Guidelines</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Guidelines</strong></p>
-    <p>Whichever option you choose, your project should address a specific audience and use course materials for a specific purpose. You should discuss work, identity, career preparation, labor market conditions, skills, knowledge, experience, and identity capital where they are relevant to your project.</p>
-    <p>In addition to the materials of this module, you may draw from any other resources from Modules 1-3. You do not need to use every resource, but you should demonstrate that you have consulted a variety of them.</p>
-    <p>Slides, visuals, examples, and stories should support the message.</p>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> What to Submit</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <table class="option-table">
-      <thead>
-        <tr>
-          <th>Option A: Public Discourse Project</th>
-          <th>Option B: Future Retirement Speech</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PowerPoint presentation, roughly eight to ten slides.</td>
-          <td>Speech script.</td>
-        </tr>
-        <tr>
-          <td>PDF of the presentation with integrated speaker notes/script.</td>
-          <td>YouTube link for the recorded speech.</td>
-        </tr>
-        <tr>
-          <td>Script should correspond to the slide content.</td>
-          <td>You may use notes, but the delivery should not look like a monotone script-reading hostage video.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Course Outcomes</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Course Outcomes</strong></p>
-    <p>This assignment supports the RWS 305W outcomes that ask students to:</p>
-    <ul>
-      <li>analyze and evaluate complex texts and media</li>
-      <li>apply rhetorical principles to specific audiences and purposes</li>
-      <li>adapt conventions to communicate with public and professional audiences</li>
-      <li>integrate sources and strategies appropriate to genre</li>
-      <li>compose and revise texts across written, visual, and spoken formats</li>
-    </ul>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Script Integration: PowerPoint Notes</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>Adding Speaker Notes</strong></p>
-    <ol>
-      <li>Open your PowerPoint presentation.</li>
-      <li>Go to the View tab and select Notes.</li>
-      <li>In the Notes pane, type your script for each slide.</li>
-    </ol>
-    <p><strong>Printing Slides with Notes</strong></p>
-    <ol>
-      <li>Go to the File menu and select Print.</li>
-      <li>In the Settings section, select Notes Pages to print each slide with its speaker notes.</li>
-      <li>Select Print to PDF. For Mac users, this appears at the bottom of the print dialog screen. For PC users, select PDF as your printer.</li>
-    </ol>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> YouTube Submission Instructions</button>
-<div class="content no-select">
-  <div class="panel-inner">
-    <p><strong>YouTube Submission Instructions</strong></p>
-    <p>You may use any recording tool, but the finished speech must be posted to YouTube.</p>
-    <p><strong>Requirements</strong></p>
-    <ol>
-      <li>You may use notes, but do not submit a monotone script-reading hostage video.</li>
-      <li>Submit only the YouTube link in Canvas.</li>
-      <li>Before submitting, test the link in a private or incognito browser window. If I cannot open the video, I cannot grade it.</li>
-    </ol>
-  </div>
-</div>
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
 
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
+const buttons = document.querySelectorAll(".collapsible");
 
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
+
+function updateHeight(content) {
+
+  if (
+    content &&
+    content.previousElementSibling &&
+    content.previousElementSibling.classList.contains("active")
+  ) {
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+
+}
+
+
+buttons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const content = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active");
+
+
+    /*
+      Close every section.
+    */
+
+    buttons.forEach(function(otherButton) {
+
+      const otherContent = otherButton.nextElementSibling;
+
+      otherButton.classList.remove("active");
+      otherButton.setAttribute("aria-expanded", "false");
+
+      if (otherContent) {
+        otherContent.style.maxHeight = null;
+      }
+
+    });
+
+
+    /*
+      Open selected section.
+    */
+
+    if (!wasOpen) {
+
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+
       content.style.maxHeight = content.scrollHeight + "px";
 
-      var button = this;
+
+      /*
+        Recalculate after expansion begins.
+      */
+
       setTimeout(function() {
+
+        updateHeight(content);
+
+      }, 100);
+
+
+      /*
+        Bring the accordion heading into view.
+      */
+
+      setTimeout(function() {
+
         button.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
-      }, 120);
+
+      }, 180);
+
     }
+
   });
-}
+
+});
+
+
+/*
+  Keep the open section accurate if the window changes size.
+*/
+
+window.addEventListener("resize", function() {
+
+  const openButton = document.querySelector(".collapsible.active");
+
+  if (openButton) {
+
+    const openContent = openButton.nextElementSibling;
+
+    updateHeight(openContent);
+
+  }
+
+});
+
 </script>
 
 </body>
+
 </html>
