@@ -1,255 +1,860 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box;}
 
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+* {
+  box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.page-header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 28px 30px;
+  border-top: 8px solid #a6192e;
+}
+
+.page-header .course-label {
+  margin: 0 0 6px 0;
+  color: #c8b77a;
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30pt;
+  line-height: 1.1;
+}
+
+.page-content {
+  padding: 28px 30px;
+}
+
+.introduction {
+  margin: 0 0 24px 0;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+
+/* MAIN ACCORDIONS */
 
 .collapsible {
   background-color: #000000;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
-  padding: 18px;
+  padding: 18px 20px;
   width: 100%;
   border: none;
+  border-left: 8px solid #a6192e;
+  border-bottom: 1px solid #333333;
   text-align: left;
   outline: none;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
+  font-weight: bold;
+  line-height: 1.3;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+.collapsible:hover,
+.collapsible.active {
   background-color: #303030;
-  margin: 0;
-}
-
-.content.white-background {
-  background-color: #ffffff;
-}
-
-iframe {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
 }
 
 .arrow::before {
   content: "➤";
   display: inline-block;
   margin-right: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.active .arrow::before {
+.collapsible.active .arrow::before {
   transform: rotate(90deg);
 }
 
-.accordion {
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  padding: 20px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 17px;
-  transition: 0.4s;
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  background-color: #ffffff;
 }
 
-.accordion:hover, .active-accordion {
-  background-color: #555; 
+.content-inner {
+  padding: 22px;
+  border: 1px solid #cccccc;
+  border-top: none;
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 680px;
+  min-height: 520px;
+  border: 1px solid #cccccc;
+  background-color: #000000;
+}
+
+
+/* INSTRUCTOR COMMENTARY */
+
+.commentary-intro {
+  margin: 22px 0 14px 0;
+  padding: 18px 20px;
+  border-left: 8px solid #a6192e;
+  background-color: #f3f3f3;
+}
+
+.commentary-intro h3 {
+  margin: 0 0 8px 0;
+  color: #000000;
+  font-size: 19pt;
+}
+
+.commentary-intro p {
+  margin: 0;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.accordion {
+  background-color: #f3f3f3;
+  color: #111111;
+  cursor: pointer;
+  padding: 15px 18px;
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-left: 6px solid #a6192e;
+  text-align: left;
+  outline: none;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13.5pt;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.accordion:hover,
+.accordion.active-accordion {
+  background-color: #e7e7e7;
+}
+
+.note-arrow::before {
+  content: "➤";
+  display: inline-block;
+  margin-right: 9px;
+  font-size: 10pt;
+  transition: transform 0.2s ease;
+}
+
+.accordion.active-accordion .note-arrow::before {
+  transform: rotate(90deg);
 }
 
 .panel {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: black;
-  color: white;
-  padding: 0 20px;
-  font-size: 16px;
+  background-color: #ffffff;
 }
+
+.panel-inner {
+  padding: 16px 20px;
+  border: 1px solid #cccccc;
+  border-top: none;
+  font-size: 13.5pt;
+  line-height: 1.55;
+}
+
+.panel-inner p {
+  margin: 0;
+}
+
+
+/* DESIGN PRINCIPLES */
+
+.design-principle {
+  margin: 0 0 20px 0;
+  padding: 18px 20px;
+  border-left: 8px solid #a6192e;
+  background-color: #f3f3f3;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.design-principle:last-child {
+  margin-bottom: 0;
+}
+
+.design-principle h3 {
+  margin: 0 0 8px 0;
+  color: #000000;
+  font-size: 18pt;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<!-- Collapsible Sections with Black Styling -->
-<button class="collapsible"><span class="arrow"></span> Fundamentals of Design</button>
-<div class="content">
-  <iframe title="Beginning Graphic Design: Fundamentals" src="https://www.youtube.com/embed/YqQx75OPRa0" width="100%" height="760" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-</div>
 
-<button class="collapsible"><span class="arrow"></span> Layout and Composition</button>
-<div class="content">
-  <iframe title="Beginning Graphic Design: Layout &amp; Composition" src="https://www.youtube.com/embed/a5KYlHNKQB8" width="100%" height="760" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-</div>
+<div class="page-header">
 
-<button class="collapsible"><span class="arrow"></span> Professional Presentations</button>
-<div class="content">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTa5thF0gO5fvPfHOQI42S0pLNIDrtbvhs-zq49WJuxnP-_8kc2eiR4iJAoAahZIw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  <button class="accordion">Slide 1: This slideshow is concerned with establishing two things:</button>
-  <div class="panel">
-    <p>• most important elements of good slideshows<br>
-       • tips for making a good PPT for this class (and beyond)</p>
-  </div>
-  <button class="accordion">Slide 6: This is the group’s original.</button>
-  <div class="panel">
-    <p>(Actually, theirs was worse than this—the text was overlapping with the image, but you get the point.)</p>
-  </div>
-  <button class="accordion">Slide 7: This is the revision based on the principles of design.</button>
-  <div class="panel">
-    <p>Compared to the previous slide, which was cluttered, confusing, and ugly, there's no doubt about the presenter is going to talk about in this slide.</p>
-  </div>
-  <button class="accordion">Slide 8: Original slide</button>
-  <div class="panel">
-    <p>too much; unclear; boring</p>
-  </div>
-  <button class="accordion">Slide 9: Revisions made</button>
-  <div class="panel">
-    <p>• Added number six in text to the title<br>
-       • Separated bullets out to two slides<br>
-       • Numbered the bullets to show there are six<br>
-       • Added a “cont.” to the title on the second slide</p>
-  </div>
-  <button class="accordion">Slide 10: Layout consistency</button>
-  <div class="panel">
-    <p>Note the layout was an arbitrary matter—I just kept it consistent with layout of the current slideshow. I could have stuck with what they had and it would have been fine. Instead, the point here is to ensure that you're using the principles of design.</p>
-  </div>
-  <button class="accordion">Slide 11: Original</button>
-  <div class="panel">
-    <p>Bad. Not inviting/interesting to read.</p>
-  </div>
-  <button class="accordion">Slide 12: Redesigned</button>
-  <div class="panel">
-    <p>See the difference? It's now readable.</p>
-  </div>
-  <button class="accordion">Slide 16: Summary points</button>
-  <div class="panel">
-    <p>Remember:<br> 
-       • In most cases, slides are meant to summarize points made by the speaker.<br>
-       • The audience should be listening, not reading.</p>
-  </div>
-  <button class="accordion">Slide 17: Integrating visuals</button>
-  <div class="panel">
-    <p>We've looked at how to organize slides with text. Now let’s look at how to integrate visuals on a slide.<br>
-       • This is a good example of what not to do.<br>
-       • Presenter should have spoken the material on the slide. In other words, it should have been their script, not slide content.<br>
-       • Importance of the visual is lost</p>
-  </div>
-  <button class="accordion">Slide 18: Revised Slide</button>
-  <div class="panel">
-    <p>• No text; visual Interaction<br>
-       • The slide now summarizes the importance of the image</p>
-  </div>
-  <button class="accordion">Slide 19: Original Slide</button>
-  <div class="panel">
-    <p>Lots of text<br>
-       • Great graphic, but it has just been dumped in without editing<br>
-       • Text describes a series of effects; the graphic does too<br>
-       • But the text doesn’t relate to the graphic</p>
-  </div>
-  <button class="accordion">Slide 20: Edited text to essential points</button>
-  <div class="panel">
-    <p>• Connected each bulleted point to the drawing<br>
-       • Numbered the bullets for ease of understanding<br>
-       • Had to do some minor editing of the image itself</p>
-  </div>
-  <button class="accordion">Slide 21: Original Slide: Too many visuals</button>
-  <div class="panel">
-    <p>Slide is way too busy, visually<br>
-       • At least two graphics are irrelevant to the slide’s point<br>
-       • The text is lost on the slide</p>
-  </div>
-  <button class="accordion">Slide 22: Revised slide with too many visuals</button>
-  <div class="panel">
-    <p>• Simply deleted graphics that don’t add to the slide<br>
-       • Kept one visual and moved it, since it was an accent, or ornament<br>
-       • Increased text size from 18 to 24</p>
-  </div>
-  <button class="accordion">Slide 27:</button>
-  <div class="panel">
-    <p>VISUALIZE THE PRESENTATION<br>
-       • “Imagine” the entire process, from when you enter the room, to when you field questions<br>
-       • Avoid visualizing presentation failures, which rarely occur<br>
-       <br>
-       CRAFTING<br>
-       • Practicing the presentation is a combination of rehearsing and revising<br>
-       • It is an essential part of the planning/development phase.<br>
-       <br>
-       PLAN AND PRACTICE<br>
-       • Planning: helps reduce nervousness or “Communication Anxiety”<br>
-       • Research: people who plan are less nervous than people who simply rehearse</p>
-  </div>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Four Basic Design Principles</button>
-<div class="content" style="background-color: black; color: white;">
-  <p style="font-size: 16pt; font-family: Helvetica; padding: 20px;">
-    <strong>1. CONTRAST</strong><br>
-    Avoid elements on the page that are merely similar. If the elements (type, color, size, line thickness, shape, space, etc.) are not the same, then make them very different. Contrast is often the most important visual attraction on a page—it’s what makes a reader look at the page in the first place.<br><br>
-
-    <strong>2. REPETITION</strong><br>
-    Repeat visual elements of the design throughout the piece. You can repeat colors, shapes, textures, spatial relationships, line thicknesses, fonts, sizes, graphic concepts, etc. This develops the organization and strengthens the unity.<br><br>
-
-    <strong>3. ALIGNMENT</strong><br>
-    Nothing should be placed on the page arbitrarily. Every element should have some visual connection with another element on the page. This creates a clean, sophisticated, fresh look.<br><br>
-
-    <strong>4. PROXIMITY</strong><br>
-    Items relating to each other should be grouped close together. When several items are in close proximity to each other, they become one visual unit rather than several separate units. This helps organize information, reduces clutter, and gives the reader a clear structure.
+  <p class="course-label">
+    RWS 305W
   </p>
+
+  <h1>
+    Presentation and Design Guidance
+  </h1>
+
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Example PowerPoint</button>
-<div class="content">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR1tN3vqIXrqZM1AKmRDTFk_49W9M7QvTFGhQ7LCkLSVkrVXbFL81SEG72igrmTzg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<div class="page-content">
+
+  <p class="introduction">
+    Use the following materials to review basic principles of visual design, slide development, and professional presentations.
+  </p>
+
+
+  <!-- FUNDAMENTALS OF DESIGN -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Fundamentals of Design
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Beginning Graphic Design: Fundamentals"
+        src="https://www.youtube.com/embed/YqQx75OPRa0"
+        loading="lazy"
+        allowfullscreen="allowfullscreen"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- LAYOUT AND COMPOSITION -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Layout and Composition
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Beginning Graphic Design: Layout and Composition"
+        src="https://www.youtube.com/embed/a5KYlHNKQB8"
+        loading="lazy"
+        allowfullscreen="allowfullscreen"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- PROFESSIONAL PRESENTATIONS -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Professional Presentations
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Professional Presentations"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vTa5thF0gO5fvPfHOQI42S0pLNIDrtbvhs-zq49WJuxnP-_8kc2eiR4iJAoAahZIw/embed?start=false&amp;loop=false&amp;delayms=3000"
+        loading="lazy"
+        allowfullscreen="allowfullscreen">
+      </iframe>
+
+
+      <div class="commentary-intro">
+
+        <h3>
+          Instructor Commentary
+        </h3>
+
+        <p>
+          As you move through the slideshow, open the notes below for my commentary on the examples. I use these notes to explain what is wrong with the original student slides, what I changed in the revised versions, and why those changes improve the presentation.
+        </p>
+
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 1
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            This slideshow is concerned with establishing two things:<br><br>
+            • most important elements of good slideshows<br>
+            • tips for making a good PPT for this class (and beyond)
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 6 — Original
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            This is the group’s original. Actually, theirs was worse than this—the text was overlapping with the image, but you get the point.
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 7 — Revision
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            This is the revision based on the principles of design. Compared to the previous slide, which was cluttered, confusing, and ugly, there's no doubt about the presenter is going to talk about in this slide.
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 8 — Original
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            too much; unclear; boring
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 9 — Revisions Made
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            • Added number six in text to the title<br>
+            • Separated bullets out to two slides<br>
+            • Numbered the bullets to show there are six<br>
+            • Added a “cont.” to the title on the second slide
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 10 — Layout Consistency
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            Note the layout was an arbitrary matter—I just kept it consistent with layout of the current slideshow. I could have stuck with what they had and it would have been fine. Instead, the point here is to ensure that you're using the principles of design.
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 11 — Original
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            Bad. Not inviting/interesting to read.
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 12 — Redesigned
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            See the difference? It's now readable.
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 16 — Summary Points
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            Remember:<br><br>
+            • In most cases, slides are meant to summarize points made by the speaker.<br>
+            • The audience should be listening, not reading.
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 17 — Integrating Visuals
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            We've looked at how to organize slides with text. Now let’s look at how to integrate visuals on a slide.<br><br>
+            • This is a good example of what not to do.<br>
+            • Presenter should have spoken the material on the slide. In other words, it should have been their script, not slide content.<br>
+            • Importance of the visual is lost
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 18 — Revised Slide
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            • No text; visual Interaction<br>
+            • The slide now summarizes the importance of the image
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 19 — Original Slide
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            Lots of text<br><br>
+            • Great graphic, but it has just been dumped in without editing<br>
+            • Text describes a series of effects; the graphic does too<br>
+            • But the text doesn’t relate to the graphic
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 20 — Edited Text
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            • Connected each bulleted point to the drawing<br>
+            • Numbered the bullets for ease of understanding<br>
+            • Had to do some minor editing of the image itself
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 21 — Too Many Visuals
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            Slide is way too busy, visually<br><br>
+            • At least two graphics are irrelevant to the slide’s point<br>
+            • The text is lost on the slide
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 22 — Revised
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            • Simply deleted graphics that don’t add to the slide<br>
+            • Kept one visual and moved it, since it was an accent, or ornament<br>
+            • Increased text size from 18 to 24
+          </p>
+        </div>
+      </div>
+
+
+      <button class="accordion" aria-expanded="false">
+        <span class="note-arrow"></span>
+        Instructor Notes: Slide 27 — Planning and Practice
+      </button>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <p>
+            VISUALIZE THE PRESENTATION<br>
+            • “Imagine” the entire process, from when you enter the room, to when you field questions<br>
+            • Avoid visualizing presentation failures, which rarely occur<br><br>
+
+            CRAFTING<br>
+            • Practicing the presentation is a combination of rehearsing and revising<br>
+            • It is an essential part of the planning/development phase.<br><br>
+
+            PLAN AND PRACTICE<br>
+            • Planning: helps reduce nervousness or “Communication Anxiety”<br>
+            • Research: people who plan are less nervous than people who simply rehearse
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOUR BASIC DESIGN PRINCIPLES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Four Basic Design Principles
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <div class="design-principle">
+
+        <h3>1. Contrast</h3>
+
+        Avoid elements on the page that are merely similar. If the elements (type, color, size, line thickness, shape, space, etc.) are not the same, then make them very different. Contrast is often the most important visual attraction on a page—it’s what makes a reader look at the page in the first place.
+
+      </div>
+
+
+      <div class="design-principle">
+
+        <h3>2. Repetition</h3>
+
+        Repeat visual elements of the design throughout the piece. You can repeat colors, shapes, textures, spatial relationships, line thicknesses, fonts, sizes, graphic concepts, etc. This develops the organization and strengthens the unity.
+
+      </div>
+
+
+      <div class="design-principle">
+
+        <h3>3. Alignment</h3>
+
+        Nothing should be placed on the page arbitrarily. Every element should have some visual connection with another element on the page. This creates a clean, sophisticated, fresh look.
+
+      </div>
+
+
+      <div class="design-principle">
+
+        <h3>4. Proximity</h3>
+
+        Items relating to each other should be grouped close together. When several items are in close proximity to each other, they become one visual unit rather than several separate units. This helps organize information, reduces clutter, and gives the reader a clear structure.
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- EXAMPLE POWERPOINT -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Example PowerPoint
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Example PowerPoint"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vR1tN3vqIXrqZM1AKmRDTFk_49W9M7QvTFGhQ7LCkLSVkrVXbFL81SEG72igrmTzg/embed?start=false&amp;loop=false&amp;delayms=3000"
+        loading="lazy"
+        allowfullscreen="allowfullscreen">
+      </iframe>
+
+    </div>
+
+  </div>
+
 </div>
+
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
+
+/*
+  MAIN ACCORDIONS
+*/
+
+const mainButtons = document.querySelectorAll(".collapsible");
+
+function updateMainHeight(content) {
+
+  if (content && content.previousElementSibling.classList.contains("active")) {
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+
 }
 
-var acc = document.getElementsByClassName("accordion");
-for (var j = 0; j < acc.length; j++) {
-  acc[j].addEventListener("click", function() {
-    this.classList.toggle("active-accordion");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+mainButtons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const content = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active");
+
+    /*
+      Close all main sections.
+    */
+
+    mainButtons.forEach(function(otherButton) {
+
+      const otherContent = otherButton.nextElementSibling;
+
+      otherButton.classList.remove("active");
+      otherButton.setAttribute("aria-expanded", "false");
+
+      if (otherContent) {
+        otherContent.style.maxHeight = null;
+      }
+
+    });
+
+
+    /*
+      Open selected section.
+    */
+
+    if (!wasOpen) {
+
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+
+      content.style.maxHeight = content.scrollHeight + "px";
+
+      setTimeout(function() {
+        updateMainHeight(content);
+      }, 100);
+
+      setTimeout(function() {
+
+        button.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 180);
+
     }
+
   });
-}
+
+});
+
+
+/*
+  INSTRUCTOR COMMENTARY ACCORDIONS
+*/
+
+const noteButtons = document.querySelectorAll(".accordion");
+
+noteButtons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const panel = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active-accordion");
+
+    /*
+      Close other instructor notes.
+    */
+
+    noteButtons.forEach(function(otherButton) {
+
+      if (otherButton !== button) {
+
+        const otherPanel = otherButton.nextElementSibling;
+
+        otherButton.classList.remove("active-accordion");
+        otherButton.setAttribute("aria-expanded", "false");
+
+        if (otherPanel) {
+          otherPanel.style.maxHeight = null;
+        }
+
+      }
+
+    });
+
+
+    /*
+      Toggle selected instructor note.
+    */
+
+    if (wasOpen) {
+
+      button.classList.remove("active-accordion");
+      button.setAttribute("aria-expanded", "false");
+      panel.style.maxHeight = null;
+
+    } else {
+
+      button.classList.add("active-accordion");
+      button.setAttribute("aria-expanded", "true");
+      panel.style.maxHeight = panel.scrollHeight + "px";
+
+    }
+
+
+    /*
+      Recalculate the height of the parent
+      Professional Presentations section.
+    */
+
+    const parentContent = button.closest(".content");
+
+    setTimeout(function() {
+      updateMainHeight(parentContent);
+    }, 25);
+
+    setTimeout(function() {
+      updateMainHeight(parentContent);
+    }, 225);
+
+
+    /*
+      Bring the selected instructor note into view.
+    */
+
+    if (!wasOpen) {
+
+      setTimeout(function() {
+
+        button.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      }, 180);
+
+    }
+
+  });
+
+});
+
+
+/*
+  KEEP OPEN SECTION HEIGHTS ACCURATE
+*/
+
+window.addEventListener("resize", function() {
+
+  const openMain = document.querySelector(".collapsible.active");
+
+  if (openMain) {
+
+    const openContent = openMain.nextElementSibling;
+
+    updateMainHeight(openContent);
+
+  }
+
+});
+
+
+/*
+  RECALCULATE AFTER IFRAMES LOAD
+*/
+
+document.querySelectorAll("iframe").forEach(function(frame) {
+
+  frame.addEventListener("load", function() {
+
+    const parentContent = frame.closest(".content");
+
+    if (parentContent) {
+      updateMainHeight(parentContent);
+    }
+
+  });
+
+});
+
 </script>
 
 </body>
+
 </html>
