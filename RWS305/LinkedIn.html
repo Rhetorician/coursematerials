@@ -1,130 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box;}
 
-body, html {
-  height: 100%;
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  color: #111111;
 }
+
+
+/* PAGE HEADER */
+
+.page-header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 28px 30px;
+}
+
+.page-header .course-label {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30pt;
+  line-height: 1.1;
+}
+
+.page-content {
+  padding: 28px 30px;
+}
+
+
+/* ACCORDIONS */
 
 .collapsible {
   background-color: #000000;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
-  padding: 18px;
+  padding: 18px 20px;
   width: 100%;
   border: none;
+  border-bottom: 1px solid #ffffff;
   text-align: left;
   outline: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #303030;
+  font-weight: bold;
+  line-height: 1.3;
   margin: 0;
 }
 
-iframe {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
+.collapsible:hover,
+.collapsible.active {
+  background-color: #333333;
 }
 
 .arrow::before {
   content: "➤";
   display: inline-block;
   margin-right: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.active .arrow::before {
+.collapsible.active .arrow::before {
   transform: rotate(90deg);
 }
 
-.link-block, .note-block {
-  padding: 18px;
-  color: white;
-  font-size: 14pt;
-  line-height: 1.5;
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  background-color: #ffffff;
 }
 
-.link-block a {
-  color: #00aff0;
+.content-inner {
+  padding: 22px;
+  border: 1px solid #000000;
+  border-top: none;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.content-inner > :first-child {
+  margin-top: 0;
+}
+
+.content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* PDF EMBEDS */
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 760px;
+  min-height: 600px;
+  border: 1px solid #000000;
+  background-color: #eeeeee;
+}
+
+
+/* TEXT BLOCKS */
+
+.link-block,
+.note-block {
+  padding: 18px 20px;
+  border: 1px solid #000000;
+  background-color: #f2f2f2;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.link-block p:first-child,
+.note-block p:first-child {
+  margin-top: 0;
+}
+
+.link-block p:last-child,
+.note-block p:last-child {
+  margin-bottom: 0;
+}
+
+.note-block {
+  margin-bottom: 20px;
+}
+
+.note-block ul {
+  padding-left: 28px;
+  margin-bottom: 0;
+}
+
+.note-block li {
+  margin-bottom: 8px;
+}
+
+.note-block li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* LINKS */
+
+a {
+  color: #000000;
+  font-weight: bold;
   text-decoration: underline;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
+a.external > .external_link_icon {
+  display: none !important;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<!-- Prompt -->
-<button class="collapsible"><span class="arrow"></span> Prompt</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Resume%20and%20Digital%20Profile.pdf"></iframe>
+
+<div class="page-header">
+
+  <p class="course-label">
+    RWS 305W
+  </p>
+
+  <h1>
+    LinkedIn Guidance
+  </h1>
+
 </div>
 
-<!-- Best Practices Articles (now second) -->
-<button class="collapsible"><span class="arrow"></span> Best Practices for Writing LinkedIn Profiles</button>
-<div class="content">
-  <div class="link-block">
-    <p>This article, written by William Arruda and published on LinkedIn, provides explanations and guidelines for writing an effective "About" profile summary on LinkedIn.</p>
-    <p><a href="https://www.linkedin.com/pulse/how-write-perfect-linkedin-summary-william-arruda" target="_blank">Read Arruda’s Article</a></p>
 
-    <p>Written for LinkedIn by Kate Reilly (March 2022), a writer, content strategist, and marketer, this article provides excellent examples of impactful profile summaries.</p>
-    <p><a href="https://www.linkedin.com/business/talent/blog/product-tips/linkedin-profile-summaries-that-we-love-and-how-to-boost-your-own" target="_blank">Read Reilly’s Article</a></p>
+<div class="page-content">
+
+
+  <!-- PROMPT -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Prompt
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Resume and Digital Profile Prompt"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Resume%20and%20Digital%20Profile.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
   </div>
-</div>
 
-<!-- Profile Worksheet (now third) -->
-<button class="collapsible"><span class="arrow"></span> Profile Worksheet</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/DIGITAL%20PROFILE%20guidelines.pdf"></iframe>
-</div>
 
-<!-- Scholarly Article -->
-<button class="collapsible"><span class="arrow"></span> Scholarly Article on LinkedIn Profiles</button>
-<div class="content">
-  <div class="note-block">
-    <p>This is not a required reading but it does provide a rationale for why we include this assignment in the course. If you are interested in learning more, I recommend considering the following sections:</p>
-    <ul>
-      <li>The Rhetorical Situation of LinkedIn</li>
-      <li>Technical Aspects of Composing in LinkedIn</li>
-      <li>Multimodal Affordances and Constraints of the LinkedIn Profile</li>
-    </ul>
+  <!-- BEST PRACTICES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Best Practices for Writing LinkedIn Profiles
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <div class="link-block">
+
+        <p>
+          This article, written by William Arruda and published on LinkedIn, provides explanations and guidelines for writing an effective "About" profile summary on LinkedIn.
+        </p>
+
+        <p>
+          <a
+            class="external"
+            href="https://www.linkedin.com/pulse/how-write-perfect-linkedin-summary-william-arruda"
+            target="_blank"
+            rel="noopener">
+            Read Arruda’s Article
+          </a>
+        </p>
+
+        <p>
+          Written for LinkedIn by Kate Reilly (March 2022), a writer, content strategist, and marketer, this article provides excellent examples of impactful profile summaries.
+        </p>
+
+        <p>
+          <a
+            class="external"
+            href="https://www.linkedin.com/business/talent/blog/product-tips/linkedin-profile-summaries-that-we-love-and-how-to-boost-your-own"
+            target="_blank"
+            rel="noopener">
+            Read Reilly’s Article
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+
   </div>
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/LinkedIn%20as%20a%20Phronetic%20Approach%20to%20Digital%20Literacy.pdf"></iframe>
+
+
+  <!-- PROFILE WORKSHEET -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Profile Worksheet
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Digital Profile Guidelines"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/DIGITAL%20PROFILE%20guidelines.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- SCHOLARLY ARTICLE -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Scholarly Article on LinkedIn Profiles
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <div class="note-block">
+
+        <p>
+          This is not a required reading but it does provide a rationale for why we include this assignment in the course. If you are interested in learning more, I recommend considering the following sections:
+        </p>
+
+        <ul>
+          <li>The Rhetorical Situation of LinkedIn</li>
+          <li>Technical Aspects of Composing in LinkedIn</li>
+          <li>Multimodal Affordances and Constraints of the LinkedIn Profile</li>
+        </ul>
+
+      </div>
+
+      <iframe
+        title="LinkedIn as a Phronetic Approach to Digital Literacy"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/LinkedIn%20as%20a%20Phronetic%20Approach%20to%20Digital%20Literacy.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
 </div>
+
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
+
+const buttons = document.querySelectorAll(".collapsible");
+
+
+function updateHeight(content) {
+
+  if (
+    content &&
+    content.previousElementSibling &&
+    content.previousElementSibling.classList.contains("active")
+  ) {
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+
 }
+
+
+buttons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const content = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active");
+
+
+    /*
+      Close every section.
+    */
+
+    buttons.forEach(function(otherButton) {
+
+      const otherContent = otherButton.nextElementSibling;
+
+      otherButton.classList.remove("active");
+      otherButton.setAttribute("aria-expanded", "false");
+
+      if (otherContent) {
+        otherContent.style.maxHeight = null;
+      }
+
+    });
+
+
+    /*
+      Open selected section.
+    */
+
+    if (!wasOpen) {
+
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+
+      content.style.maxHeight = content.scrollHeight + "px";
+
+
+      setTimeout(function() {
+
+        updateHeight(content);
+
+      }, 100);
+
+
+      setTimeout(function() {
+
+        button.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 180);
+
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate after PDF content loads.
+*/
+
+document.querySelectorAll("iframe").forEach(function(frame) {
+
+  frame.addEventListener("load", function() {
+
+    const content = frame.closest(".content");
+
+    if (content) {
+      updateHeight(content);
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate if browser size changes.
+*/
+
+window.addEventListener("resize", function() {
+
+  const openButton = document.querySelector(".collapsible.active");
+
+  if (openButton) {
+
+    const openContent = openButton.nextElementSibling;
+
+    updateHeight(openContent);
+
+  }
+
+});
+
 </script>
 
+
 </body>
+
 </html>
