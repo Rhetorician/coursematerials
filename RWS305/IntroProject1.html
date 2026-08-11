@@ -1,123 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box;}
 
-body, html {
-  height: 100%;
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  color: #111111;
 }
+
+
+/* PAGE HEADER */
+
+.page-header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 28px 30px;
+}
+
+.page-header .course-label {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30pt;
+  line-height: 1.1;
+}
+
+.page-content {
+  padding: 28px 30px;
+}
+
+
+/* ACCORDIONS */
 
 .collapsible {
   background-color: #000000;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
-  padding: 18px;
+  padding: 18px 20px;
   width: 100%;
   border: none;
+  border-bottom: 1px solid #ffffff;
   text-align: left;
   outline: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #303030;
+  font-weight: bold;
+  line-height: 1.3;
   margin: 0;
 }
 
-.content.white-background {
-  background-color: #ffffff;
-}
-
-iframe {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+.collapsible:hover,
+.collapsible.active {
+  background-color: #333333;
 }
 
 .arrow::before {
   content: "➤";
   display: inline-block;
   margin-right: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.active .arrow::before {
+.collapsible.active .arrow::before {
   transform: rotate(90deg);
 }
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  background-color: #ffffff;
+}
+
+.content-inner {
+  padding: 22px;
+  border: 1px solid #000000;
+  border-top: none;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.content-inner > :first-child {
+  margin-top: 0;
+}
+
+.content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* EMBEDS */
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 760px;
+  min-height: 600px;
+  border: 1px solid #000000;
+  background-color: #eeeeee;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border: 1px solid #000000;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<!-- Section 1 -->
-<button class="collapsible"><span class="arrow"></span> Module Overview</button>
-<div class="content white-background">
-  <p style="font-size: 14pt;">In this section we focus on how to make effective arguments about our employability through resumes and cover letters, or what are sometimes called letters of application. These documents open employment doors. And so, in this module, we will read and reflect on short articles about constructing effective resumes and how to market ourselves in interviews. As a starting point, we will first consider functional role of professional writing and consider it a transactional process. Next, we'll move into the assignment prompt before heading into the heavy lifting of the module, resume design and execution. After that, we'll go over review some examples of weak and strong qualities in some sample work before concluding with the cover letter and a reflection.</p>
+
+<div class="page-header">
+
+  <p class="course-label">
+    RWS 305W
+  </p>
+
+  <h1>
+    Project 1: Resume Project
+  </h1>
+
 </div>
 
-<!-- Section 2 -->
-<button class="collapsible"><span class="arrow"></span> Writing as a Transactional Process</button>
-<div class="content white-background">
-  <p style="font-size: 14pt;">In Rhetoric and Writing Studies 305W, we will explore the notion of writing as a transactional, problem-solving process. Written communication is transactional—as writers we are always expressing ourselves to an audience, our readers, for a purpose. Likewise, readers are reading for a purpose. When a writer can meet the expectations of his or her audience, successful communication is possible.</p>
-  <p style="font-size: 14pt;">All communication, whether written or oral, occurs within a socio-cultural context. When we write or speak something, we establish a give-and-take, interactive relationship between ourselves and the reader or listener. Our intent is to communicate a message through means of a text, written or oral. For a message to make sense to the reader or the listener, the writer or speaker must take into account such factors as the gender, language ability, socio-economic status, age, race, and beliefs of the reader or listener. Messages have no meaning apart from their socio-cultural context.</p>
-  <p style="text-align: center;"><img src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Writing%20as%20a%20Transaction%20Process%20(image).png" alt="Writing as a Transaction Process"></p>
-  <p style="font-size: 14pt;">For example, have you ever been perplexed by the message communicated by a particular piece of art or music? In a particular context, that message is understandable, but if you do not share the creator or author’s beliefs, assumptions, or values, you may miss the point intended by the message. Therefore, as writers, we need to understand who our readers are and what they know about our topic.</p>
-  <p style="font-size: 14pt;">We need to write in such way that connects with our audience’s expectations for the message to resonate. We call this reader-sensitive communication.</p>
-  <p style="font-size: 14pt;">The type of text we use to communicate a message is called its genre. Embedded within the genre are cultural expectations of what a text should look like. We know a poem when we see one or a credit card statement, right? We wouldn’t confuse the two, would we? Of course not. That’s because each of these texts has certain features that we use to define what these texts are. For example, credit card statements have numbers and percentages. Poetry does not. Poetry often rhymes; the words in a credit card statement do not.</p>
-  <p style="font-size: 14pt;">The text we use to communicate a message, then, is tied to our audience’s needs, our purpose for communicating, and the message we are communicating. These are all factors related to genre, and we can say that genre influences what we write and to whom and in what context.</p>
-  <p style="font-size: 14pt;">If we want to have a successful transactional relationship with our audience, then we need to give our audience what it expects. Writing, thus, becomes a problem-solving process. In order to successfully deliver a message to our audience, we need to approach writing as a problem to be solved. That is, we need to break down the communicative act into small “equations” that need to be solved as part of a larger solution to a problem. These are the “equations” that relate to our audience’s needs and expectations regarding the message we are sending.</p>
-  <p style="font-size: 14pt;">Interesting stuff! Writing, then, is more than simply putting words on a page. It is thought-driven problem-solving. If I can leave you with one idea that will underlie all we do in the course, it is this: the audience and purpose for our writing drives the text we create.</p>
+
+<div class="page-content">
+
+
+  <!-- MODULE OVERVIEW -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Module Overview
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        In this section we focus on how to make effective arguments about our employability through resumes and cover letters, or what are sometimes called letters of application. These documents open employment doors. And so, in this module, we will read and reflect on short articles about constructing effective resumes and how to market ourselves in interviews. As a starting point, we will first consider the functional role of professional writing and consider it a transactional process. Next, we'll move into the assignment prompt before heading into the heavy lifting of the module, resume design and execution. After that, we'll review some examples of weak and strong qualities in some sample work before concluding with the cover letter and a reflection.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- WRITING AS A TRANSACTIONAL PROCESS -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Writing as a Transactional Process
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        In Rhetoric and Writing Studies 305W, we will explore the notion of writing as a transactional, problem-solving process. Written communication is transactional—as writers we are always expressing ourselves to an audience, our readers, for a purpose. Likewise, readers are reading for a purpose. When a writer can meet the expectations of his or her audience, successful communication is possible.
+      </p>
+
+      <p>
+        All communication, whether written or oral, occurs within a socio-cultural context. When we write or speak something, we establish a give-and-take, interactive relationship between ourselves and the reader or listener. Our intent is to communicate a message through means of a text, written or oral. For a message to make sense to the reader or the listener, the writer or speaker must take into account such factors as the gender, language ability, socio-economic status, age, race, and beliefs of the reader or listener. Messages have no meaning apart from their socio-cultural context.
+      </p>
+
+      <img
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Writing%20as%20a%20Transaction%20Process%20(image).png"
+        alt="Writing as a Transaction Process">
+
+      <p>
+        For example, have you ever been perplexed by the message communicated by a particular piece of art or music? In a particular context, that message is understandable, but if you do not share the creator or author’s beliefs, assumptions, or values, you may miss the point intended by the message. Therefore, as writers, we need to understand who our readers are and what they know about our topic.
+      </p>
+
+      <p>
+        We need to write in such way that connects with our audience’s expectations for the message to resonate. We call this reader-sensitive communication.
+      </p>
+
+      <p>
+        The type of text we use to communicate a message is called its genre. Embedded within the genre are cultural expectations of what a text should look like. We know a poem when we see one or a credit card statement, right? We wouldn’t confuse the two, would we? Of course not. That’s because each of these texts has certain features that we use to define what these texts are. For example, credit card statements have numbers and percentages. Poetry does not. Poetry often rhymes; the words in a credit card statement do not.
+      </p>
+
+      <p>
+        The text we use to communicate a message, then, is tied to our audience’s needs, our purpose for communicating, and the message we are communicating. These are all factors related to genre, and we can say that genre influences what we write and to whom and in what context.
+      </p>
+
+      <p>
+        If we want to have a successful transactional relationship with our audience, then we need to give our audience what it expects. Writing, thus, becomes a problem-solving process. In order to successfully deliver a message to our audience, we need to approach writing as a problem to be solved. That is, we need to break down the communicative act into small “equations” that need to be solved as part of a larger solution to a problem. These are the “equations” that relate to our audience’s needs and expectations regarding the message we are sending.
+      </p>
+
+      <p>
+        Interesting stuff! Writing, then, is more than simply putting words on a page. It is thought-driven problem-solving. If I can leave you with one idea that will underlie all we do in the course, it is this: the audience and purpose for our writing drives the text we create.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- PROJECT PROMPT -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Project 1 Assignment Prompt
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Project 1 Assignment Prompt"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Project%201%20Prompt.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- GRADING DESCRIPTIONS -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Resume Project Grading Descriptions
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Resume Project Grading Descriptions"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Resume%20Project%20Grade%20Descriptions.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
 </div>
 
-<!-- Section 3 -->
-<button class="collapsible"><span class="arrow"></span> Project 1 Assignment Prompt</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Project%201%20Prompt.pdf"></iframe>
-</div>
-
-<!-- Section 4 -->
-<button class="collapsible"><span class="arrow"></span> Resume Project Grading Descriptions</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Resume%20Project%20Grade%20Descriptions.pdf"></iframe>
-</div>
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
+
+const buttons = document.querySelectorAll(".collapsible");
+
+
+function updateHeight(content) {
+
+  if (
+    content &&
+    content.previousElementSibling &&
+    content.previousElementSibling.classList.contains("active")
+  ) {
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+
 }
+
+
+buttons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const content = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active");
+
+
+    /*
+      Close every section.
+    */
+
+    buttons.forEach(function(otherButton) {
+
+      const otherContent = otherButton.nextElementSibling;
+
+      otherButton.classList.remove("active");
+      otherButton.setAttribute("aria-expanded", "false");
+
+      if (otherContent) {
+        otherContent.style.maxHeight = null;
+      }
+
+    });
+
+
+    /*
+      Open the selected section.
+    */
+
+    if (!wasOpen) {
+
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+
+      content.style.maxHeight = content.scrollHeight + "px";
+
+
+      /*
+        Recalculate after expansion begins.
+    */
+
+      setTimeout(function() {
+
+        updateHeight(content);
+
+      }, 100);
+
+
+      /*
+        Bring the selected accordion into view.
+      */
+
+      setTimeout(function() {
+
+        button.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 180);
+
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate after PDFs finish loading.
+*/
+
+document.querySelectorAll("iframe").forEach(function(frame) {
+
+  frame.addEventListener("load", function() {
+
+    const content = frame.closest(".content");
+
+    if (content) {
+      updateHeight(content);
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate if the window changes size.
+*/
+
+window.addEventListener("resize", function() {
+
+  const openButton = document.querySelector(".collapsible.active");
+
+  if (openButton) {
+
+    const openContent = openButton.nextElementSibling;
+
+    updateHeight(openContent);
+
+  }
+
+});
+
 </script>
 
+
 </body>
+
 </html>
