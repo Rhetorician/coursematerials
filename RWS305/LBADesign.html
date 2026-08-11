@@ -1,305 +1,1089 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box;}
 
-body, html {
-  height: 100%;
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #ffffff;
+  color: #111111;
 }
+
+
+/* PAGE HEADER */
+
+.page-header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 28px 30px;
+}
+
+.page-header .course-label {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30pt;
+  line-height: 1.1;
+}
+
+.page-content {
+  padding: 28px 30px;
+}
+
+
+/* ACCORDIONS */
 
 .collapsible {
+  display: block;
   background-color: #000000;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
-  padding: 18px;
+  padding: 18px 20px;
   width: 100%;
   border: none;
+  border-bottom: 1px solid #ffffff;
   text-align: left;
   outline: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18pt;
-  border-radius: 0;
+  font-weight: bold;
+  line-height: 1.3;
   margin: 0;
-  border-bottom: 1px solid #303030;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #000000;
-  margin: 0;
+.collapsible:hover,
+.collapsible.active {
+  background-color: #333333;
 }
 
 .arrow::before {
   content: "➤";
   display: inline-block;
   margin-right: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.active .arrow::before {
+.collapsible.active .arrow::before {
   transform: rotate(90deg);
 }
 
-iframe {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
+.content {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
 
-ul {
-  color: white;
+.content-inner {
+  padding: 22px;
+  border: 1px solid #000000;
+  border-top: none;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.content-inner > :first-child {
+  margin-top: 0;
+}
+
+.content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* EMBEDS */
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 760px;
+  min-height: 600px;
+  border: 1px solid #000000;
+  background-color: #eeeeee;
+  margin: 0;
+}
+
+.video-frame,
+.slides-frame {
+  height: 680px;
+  min-height: 520px;
+  background-color: #000000;
+}
+
+iframe + iframe {
+  margin-top: 20px;
+}
+
+
+/* TEXT */
+
+p {
+  line-height: 1.55;
+}
+
+a {
+  color: #000000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a.external > .external_link_icon {
+  display: none !important;
+}
+
+
+/* CALLOUT */
+
+.note {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid #000000;
+  background-color: #f2f2f2;
+}
+
+
+/* VISUAL EXAMPLES */
+
+.visual-example {
+  margin: 26px 0;
+  padding: 22px 0 0 0;
+  border-top: 1px solid #000000;
+}
+
+.visual-example:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.visual-example img {
+  display: block;
+  width: 75%;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto 18px auto;
+}
+
+.visual-example h3 {
+  margin: 0 0 12px 0;
+  font-size: 16pt;
+  text-align: center;
+}
+
+.visual-example p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* REPORT STRUCTURE */
+
+.report-structure {
+  padding-left: 28px;
+}
+
+.report-structure > li {
+  margin-bottom: 18px;
+}
+
+.report-structure > li:last-child {
+  margin-bottom: 0;
+}
+
+.report-structure ul {
+  margin-top: 8px;
+  padding-left: 24px;
+}
+
+.report-structure ul li {
+  margin-bottom: 7px;
+}
+
+
+/* COMMON WEAKNESSES */
+
+.weakness-section {
+  margin: 0 0 26px 0;
+}
+
+.weakness-section:last-child {
+  margin-bottom: 0;
+}
+
+.weakness-section h3 {
+  margin: 0 0 12px 0;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #000000;
+  font-size: 17pt;
+}
+
+.weakness-section ul {
+  padding-left: 28px;
+}
+
+.weakness-section li {
+  margin-bottom: 9px;
+}
+
+.weakness-section ul ul {
+  margin-top: 8px;
+}
+
+
+/* SMALL SECTION HEADING */
+
+.resource-heading {
+  margin: 22px 0 12px 0;
+  padding: 10px 12px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16pt;
+  font-weight: bold;
 }
 
 </style>
+
 </head>
+
 <body>
 
-<!-- Collapsible Sections with Black Styling -->
-<button class="collapsible"><span class="arrow"></span> Project Intro/Overview</button>
-<div class="content">
-  <p><span style="font-size: 14pt; font-family: helvetica; color: white;">Many students have only a vague notion of what is required for them to obtain a job in their intended career field, and even more think they will land a position in an organization without relevant industry experience. This is na&iuml;ve. If you don't prepare yourself for work in your desired career until after you graduate, you'll be too late. The labor market is very competitive. There are not nearly enough jobs for the number of people graduating each year with bachelor's degrees. Indeed, numerous surveys demonstrate that anywhere between 48-53% of new college and university graduates are unemployed or underemployed in jobs that do not require a bachelor's degree a year after graduation. Furthermore, the average amount of student loan debt is over $40,000. </span></p>
-  <p><span style="font-size: 14pt; font-family: helvetica; color: white;">This project is intended to help you discover what you need to do to prepare yourself for the labor market--before you graduate. I hope you will find it informative and useful to you as you move closer to graduation.</span></p>
-  <p><iframe width="100%" height="960" src="https://www.youtube.com/embed/jLxCkxKogfM?si=ECOJt4EqmklbXSOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-  <div class="border border-trbl border-round" style="background-color: #000000; padding: 0px; text-align: center; color: #ffffff; font-size: large;"><span style="font-family: helvetica; font-size: 18pt;">Old Video Guide</span></div>
-  <p><iframe title="YouTube video player" src="https://www.youtube.com/embed/HhrZL94F94w" width="100%" height="960" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></p>
+
+<div class="page-header">
+
+  <p class="course-label">
+    RWS 305W
+  </p>
+
+  <h1>
+    Labor Market Analysis Guidance
+  </h1>
+
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Project Description (Prompt)</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Project%202%20Prompt.pdf" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-</div>
 
-<button class="collapsible"><span class="arrow"></span> Notes Concerning the Labor Market Analysis Report</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Notes%20Concerning%20the%20Labor%20Market%20Analysis%20Report.pdf" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-</div>
+<div class="page-content">
 
-<button class="collapsible"><span class="arrow"></span> Footnotes</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Style%20Rules%20(Footnotes).pdf" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-</div>
 
-<button class="collapsible"><span class="arrow"></span> Integrating Visuals</button>
-<div class="content">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTfnfzdiZ4I-ghDj7QcYqPKTFtkFIy1YkaETbCBos-JVPaagA2EOiCzf67jGfi7Ug/embed?start=true&amp;loop=false&amp;delayms=3000" width="100%" height="749" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-</div>
+  <!-- PROJECT INTRO / OVERVIEW -->
 
-<button class="collapsible"><span class="arrow"></span> Visual Examples</button>
-<div class="content">
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;">First, if you're not familiar with how to create visual with Excel MS Office I think <span style="color: #3598db; text-decoration: none;"><a class="inline_disabled" style="color: #3598db; text-decoration: none;" href="https://www.canva.com/newsroom/news/flourish-integration/" target="_blank" rel="noopener">Canva</a></span> might offer the most straight-forward visual generator and the images it produces appear to be quite good.</span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;">Just for the hell of it, I asked ChatGPT to make some images and I think they leave much to desire. Nevertheless, they capture the kinds of visuals that one could use to supplement their report and I've included them below.</span></p>
-  
-  <p style="text-align: left;"><br /><span style="font-size: 14pt;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/files/Project%202/Projected%20Employment%20Growth%20for%20Financial%20Managers%20vs.%20GDP%20Growth.png?raw=true" alt="Projected Employment Growth for Financial Managers vs. GDP Growth" width="75%" height="75%" /></span><strong></strong></p>
-  <p style="text-align: center;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>Projected Employment Growth for Financial Managers vs. GDP Growth</strong></span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;">This dual-axis line graph shows projected employment growth for financial managers against a simulated trend in GDP growth from 2022 to 2032. The red line represents the employment growth of financial managers and as indicated in the image, is projected to increase by 16% over the period. The blue line simulates GDP growth and increases from 100% to 110% and suggests moderate economic growth.</span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>What it shows</strong>: it illustrates the correlation between the demand for financial managers and the overall health of the economy. It turns out that the better the economy is, the more consumers demand services from wealth managers. This might seem commonsensical but you might be surprised by how many jobs are negatively correlated with economic outlook.</span></p>
-  <hr />
-  
-  <p style="text-align: left;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/files/Project%202/Salary%20Distribution%20by%20Industry.png?raw=true" alt="Salary Distribution by Industry" width="75%" height="75%" /></p>
-  <p style="text-align: center;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>Salary Distribution by Industry</strong></span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;">The box-and-whisker plots above display a simulated distribution of annual salaries for financial managers across four different industries: Finance, Government, Manufacturing, and Healthcare.</span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>What it shows</strong>: It illustrates the variability and range of salaries within each industry, but also brings into focus the disparities in earning potential. The point, here, would be to help people decide which industries offer higher compensation.</span></p>
-  <hr />
-  
-  <p style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/files/Project%202/Employment%20Growth%20of%20Financial%20Managers%20vs.%20GDP%20Growth%20Rate.png?raw=true" alt="Employment Growth of Financial Managers vs. GDP Growth Rate" width="75%" height="75%" /></p>
-  <p style="text-align: center;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>Job Openings vs. Qualifications</strong></span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;">This scatter plot provides a simulated visualization of job openings based on the level of education (Bachelor, Master, PhD) and years of experience (1, 5, 10 years). Each dot represents a combination of qualifications, with its size corresponding to the number of job openings.</span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>What it shows</strong>: the relationship between qualifications and job availability. As education and experience levels increase, so does the number of job opportunities. One might opt for something like this to show where the majority of employment opportunities lie.</span></p>
-  <hr />
-  
-  <p style="text-align: center;"><img src="https://sdsu.instructure.com/files/13477410/download?download_frd=1" alt="Image 4" width="75%" height="75%" /></p>
-  <p style="text-align: center;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>Employment Growth of Financial Managers vs. GDP Growth Rate</strong></span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;">The line graph compares the employment growth of financial managers with the GDP growth rate from 2022 to 2032. Financial manager employment growth, shown with circles, rises from 0% to 16%. GDP growth, shown with crosses, increases from 2% to 3%.</span></p>
-  <p style="text-align: left;"><span style="font-family: helvetica; font-size: 14pt; color: white;"><strong>What it shows</strong>: </span></p>
-  <ul>
-    <li style="text-align: left; color: white;"><span style="font-family: helvetica; font-size: 14pt; color: white;">Financial manager employment growth increases steadily.</span></li>
-    <li style="text-align: left; color: white;"><span style="font-family: helvetica; font-size: 14pt; color: white;">GDP growth also rises, though at a slower rate.</span></li>
-    <li style="text-align: left; color: white;"><span style="font-family: helvetica; font-size: 14pt; color: white;">Possible correlation between economic growth and demand for financial managers.</span></li>
-    <li style="text-align: left; color: white;"><span style="font-family: helvetica; font-size: 14pt; color: white;">Demonstrates the link between economic health and job opportunities in this sector.</span></li>
-  </ul>
-  <p style="text-align: center;">&nbsp;</p>
-</div>
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Project Intro/Overview
+  </button>
 
-<button class="collapsible"><span class="arrow"></span> More Example Visuals</button>
-<div class="content">
-  <p><span style="font-size: 14pt; font-family: helvetica; color: white;">This article illustrates more visual examples that do a good job supplementing their argument. Remember, the goal as a writer is to enable the reader to visualize the data and a good, well placed image can go a long way rhetorically.</span></p>
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Young%20Americans%2C%20Student%20Debtors%2C%20See%20Less%20Value%20in%20College%20(BLS%20Visual%20Example).pdf" width="100%" height="600px"></iframe>
-</div>
+  <div class="content">
 
-<button class="collapsible"><span class="arrow"></span> Report Structure</button>
-<div class="content">
-  <ol>
-    <li style="list-style-type: none;">
-      <ol style="list-style-type: decimal;">
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Title Page</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Clearly state the report's title, your full name, and the date of submission.</span></li>
+    <div class="content-inner">
+
+      <p>
+        Many students have only a vague notion of what is required for them to obtain a job in their intended career field, and even more think they will land a position in an organization without relevant industry experience. This is naïve. If you don't prepare yourself for work in your desired career until after you graduate, you'll be too late. The labor market is very competitive. There are not nearly enough jobs for the number of people graduating each year with bachelor's degrees. Indeed, numerous surveys demonstrate that anywhere between 48-53% of new college and university graduates are unemployed or underemployed in jobs that do not require a bachelor's degree a year after graduation. Furthermore, the average amount of student loan debt is over $40,000.
+      </p>
+
+      <p>
+        This project is intended to help you discover what you need to do to prepare yourself for the labor market--before you graduate. I hope you will find it informative and useful to you as you move closer to graduation.
+      </p>
+
+      <iframe
+        class="video-frame"
+        title="Labor Market Analysis Project Overview"
+        src="https://www.youtube.com/embed/jLxCkxKogfM?si=ECOJt4EqmklbXSOM"
+        loading="lazy"
+        allowfullscreen="allowfullscreen"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+      </iframe>
+
+      <div class="resource-heading">
+        Old Video Guide
+      </div>
+
+      <iframe
+        class="video-frame"
+        title="Old Labor Market Analysis Video Guide"
+        src="https://www.youtube.com/embed/HhrZL94F94w"
+        loading="lazy"
+        allowfullscreen="allowfullscreen"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- PROJECT DESCRIPTION -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Project Description (Prompt)
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Project 2 Prompt"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Project%202%20Prompt.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- NOTES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Notes Concerning the Labor Market Analysis Report
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Notes Concerning the Labor Market Analysis Report"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Notes%20Concerning%20the%20Labor%20Market%20Analysis%20Report.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTNOTES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Footnotes
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Style Rules for Footnotes"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Style%20Rules%20(Footnotes).pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- INTEGRATING VISUALS -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Integrating Visuals
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        class="slides-frame"
+        title="Integrating Visuals"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vTfnfzdiZ4I-ghDj7QcYqPKTFtkFIy1YkaETbCBos-JVPaagA2EOiCzf67jGfi7Ug/embed?start=true&amp;loop=false&amp;delayms=3000"
+        loading="lazy"
+        allowfullscreen="allowfullscreen">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- VISUAL EXAMPLES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Visual Examples
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        First, if you're not familiar with how to create visual with Excel MS Office I think
+        <a
+          class="external"
+          href="https://www.canva.com/newsroom/news/flourish-integration/"
+          target="_blank"
+          rel="noopener">
+          Canva
+        </a>
+        might offer the most straight-forward visual generator and the images it produces appear to be quite good.
+      </p>
+
+      <p>
+        Just for the hell of it, I asked ChatGPT to make some images and I think they leave much to desire. Nevertheless, they capture the kinds of visuals that one could use to supplement their report and I've included them below.
+      </p>
+
+
+      <div class="visual-example">
+
+        <img
+          src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/files/Project%202/Projected%20Employment%20Growth%20for%20Financial%20Managers%20vs.%20GDP%20Growth.png?raw=true"
+          alt="Projected Employment Growth for Financial Managers vs. GDP Growth">
+
+        <h3>
+          Projected Employment Growth for Financial Managers vs. GDP Growth
+        </h3>
+
+        <p>
+          This dual-axis line graph shows projected employment growth for financial managers against a simulated trend in GDP growth from 2022 to 2032. The red line represents the employment growth of financial managers and as indicated in the image, is projected to increase by 16% over the period. The blue line simulates GDP growth and increases from 100% to 110% and suggests moderate economic growth.
+        </p>
+
+        <p>
+          <strong>What it shows:</strong> it illustrates the correlation between the demand for financial managers and the overall health of the economy. It turns out that the better the economy is, the more consumers demand services from wealth managers. This might seem commonsensical but you might be surprised by how many jobs are negatively correlated with economic outlook.
+        </p>
+
+      </div>
+
+
+      <div class="visual-example">
+
+        <img
+          src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/files/Project%202/Salary%20Distribution%20by%20Industry.png?raw=true"
+          alt="Salary Distribution by Industry">
+
+        <h3>
+          Salary Distribution by Industry
+        </h3>
+
+        <p>
+          The box-and-whisker plots above display a simulated distribution of annual salaries for financial managers across four different industries: Finance, Government, Manufacturing, and Healthcare.
+        </p>
+
+        <p>
+          <strong>What it shows:</strong> It illustrates the variability and range of salaries within each industry, but also brings into focus the disparities in earning potential. The point, here, would be to help people decide which industries offer higher compensation.
+        </p>
+
+      </div>
+
+
+      <div class="visual-example">
+
+        <img
+          src="https://github.com/Rhetorician/coursematerials/blob/main/RWS305/files/Project%202/Employment%20Growth%20of%20Financial%20Managers%20vs.%20GDP%20Growth%20Rate.png?raw=true"
+          alt="Job Openings vs. Qualifications">
+
+        <h3>
+          Job Openings vs. Qualifications
+        </h3>
+
+        <p>
+          This scatter plot provides a simulated visualization of job openings based on the level of education (Bachelor, Master, PhD) and years of experience (1, 5, 10 years). Each dot represents a combination of qualifications, with its size corresponding to the number of job openings.
+        </p>
+
+        <p>
+          <strong>What it shows:</strong> the relationship between qualifications and job availability. As education and experience levels increase, so does the number of job opportunities. One might opt for something like this to show where the majority of employment opportunities lie.
+        </p>
+
+      </div>
+
+
+      <div class="visual-example">
+
+        <img
+          src="https://sdsu.instructure.com/files/13477410/download?download_frd=1"
+          alt="Employment Growth of Financial Managers vs. GDP Growth Rate">
+
+        <h3>
+          Employment Growth of Financial Managers vs. GDP Growth Rate
+        </h3>
+
+        <p>
+          The line graph compares the employment growth of financial managers with the GDP growth rate from 2022 to 2032. Financial manager employment growth, shown with circles, rises from 0% to 16%. GDP growth, shown with crosses, increases from 2% to 3%.
+        </p>
+
+        <p>
+          <strong>What it shows:</strong>
+        </p>
+
+        <ul>
+          <li>Financial manager employment growth increases steadily.</li>
+          <li>GDP growth also rises, though at a slower rate.</li>
+          <li>Possible correlation between economic growth and demand for financial managers.</li>
+          <li>Demonstrates the link between economic health and job opportunities in this sector.</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MORE EXAMPLE VISUALS -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    More Example Visuals
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <p>
+        This article illustrates more visual examples that do a good job supplementing their argument. Remember, the goal as a writer is to enable the reader to visualize the data and a good, well placed image can go a long way rhetorically.
+      </p>
+
+      <iframe
+        title="Young Americans, Student Debtors, See Less Value in College"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Young%20Americans%2C%20Student%20Debtors%2C%20See%20Less%20Value%20in%20College%20(BLS%20Visual%20Example).pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- REPORT STRUCTURE -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Report Structure
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <ol class="report-structure">
+
+        <li>
+          <strong>Title Page</strong>
+          <ul>
+            <li>
+              Clearly state the report's title, your full name, and the date of submission.
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Nature of the Work</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Description the profession; include principal responsibilities and typical work environments.</span></li>
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Illustrate with examples of the skills/knowledge required for this (and later, the related occupations).<br /></span></li>
+
+        <li>
+          <strong>Nature of the Work</strong>
+          <ul>
+            <li>
+              Description the profession; include principal responsibilities and typical work environments.
+            </li>
+            <li>
+              Illustrate with examples of the skills/knowledge required for this (and later, the related occupations).
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Training, Qualifications, and Advancement</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Present the education and training necessary for entry into this career, including degrees, certifications, and requisite skills. </span></li>
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Discuss process of career advancement: how one progresses to higher roles and the experiences or achievements that facilitate this growth.</span></li>
+
+        <li>
+          <strong>Training, Qualifications, and Advancement</strong>
+          <ul>
+            <li>
+              Present the education and training necessary for entry into this career, including degrees, certifications, and requisite skills.
+            </li>
+            <li>
+              Discuss process of career advancement: how one progresses to higher roles and the experiences or achievements that facilitate this growth.
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Job Outlook</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Present current trends and future projections for this career. </span></li>
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Analyze how changes in the industry, technology advancements, and shifts in regulatory landscapes impact employment opportunities. Provide data or evidence to support your analysis.</span></li>
+
+        <li>
+          <strong>Job Outlook</strong>
+          <ul>
+            <li>
+              Present current trends and future projections for this career.
+            </li>
+            <li>
+              Analyze how changes in the industry, technology advancements, and shifts in regulatory landscapes impact employment opportunities. Provide data or evidence to support your analysis.
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Earnings and Wage Projections</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Explore the range of earnings within this career, from entry-level to experienced positions. Discuss factors that influence wage levels, like industry demand, job complexity, geographic location, and educational background. Be sure to provide a comparative analysis of salary expectations across different sectors within the field.</span></li>
+
+        <li>
+          <strong>Earnings and Wage Projections</strong>
+          <ul>
+            <li>
+              Explore the range of earnings within this career, from entry-level to experienced positions. Discuss factors that influence wage levels, like industry demand, job complexity, geographic location, and educational background. Be sure to provide a comparative analysis of salary expectations across different sectors within the field.
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Alternative Occupations</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Compare this career with at least three related occupations. Discuss the similarities and differences in job duties, required qualifications, and earnings potential. Assess the feasibility and implications of transitioning between these careers, and be sure to consider factors like job satisfaction and career trajectory.</span></li>
+
+        <li>
+          <strong>Alternative Occupations</strong>
+          <ul>
+            <li>
+              Compare this career with at least three related occupations. Discuss the similarities and differences in job duties, required qualifications, and earnings potential. Assess the feasibility and implications of transitioning between these careers, and be sure to consider factors like job satisfaction and career trajectory.
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Effective Visuals</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Integrate visuals (charts, graphs, or tables) to illuminate your analysis. Each visual should be introduced and explained, illustrate and simplify complex data, trends, or relationships. That is, your visuals should provide clarity into trends, comparisons, or projections relevant to your report.<br /><strong>NOTE: do not use BLS images or you will receive a zero for this part of the assignment.</strong><br /></span></li>
+
+        <li>
+          <strong>Effective Visuals</strong>
+          <ul>
+            <li>
+              Integrate visuals (charts, graphs, or tables) to illuminate your analysis. Each visual should be introduced and explained, illustrate and simplify complex data, trends, or relationships. That is, your visuals should provide clarity into trends, comparisons, or projections relevant to your report.
+              <br><br>
+              <strong>NOTE: do not use BLS images or you will receive a zero for this part of the assignment.</strong>
+            </li>
           </ul>
         </li>
-        <li><strong><span style="font-family: helvetica; font-size: 14pt; color: white;">Conclusion</span></strong>
-          <ul style="list-style-type: circle;">
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Assess how this career is consistent with your strengths, weaknesses, and professional aspirations as described in the guidance/videos. </span></li>
-            <li><span style="font-family: helvetica; font-size: 14pt; color: white;">Outline a substantive plan for personal and professional development (see Growth Plan)</span></li>
+
+        <li>
+          <strong>Conclusion</strong>
+          <ul>
+            <li>
+              Assess how this career is consistent with your strengths, weaknesses, and professional aspirations as described in the guidance/videos.
+            </li>
+            <li>
+              Outline a substantive plan for personal and professional development (see Growth Plan)
+            </li>
           </ul>
         </li>
+
       </ol>
-    </li>
-  </ol>
-</div>
 
-<button class="collapsible"><span class="arrow"></span> Growth Plan (How-To)</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Growth%20Plan%20(How-To).pdf" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-</div>
+    </div>
 
-<button class="collapsible"><span class="arrow"></span> Personal Goal Setting</button>
-<div class="content">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Personal%20Goal%20Setting.pdf" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
-</div>
+  </div>
 
-<button class="collapsible"><span class="arrow"></span> Example</button>
-<div class="content">
-<p><iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Example%20Labor%20Market%20Analysis%20Report.pdf" width="100%" height="600px"></iframe></p>
-</div>
 
-<button class="collapsible"><span class="arrow"></span> Common Weaknesses</button>
-<div class="content">
-  <ul>
-    <li><strong>MECHANICS</strong></li>
-    <ul>
-      <li>Missing or weak transitional words and phrases. I recommend everyone become familiar with these sources and use them in all of your writing for the rest of your life:
+  <!-- GROWTH PLAN -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Growth Plan (How-To)
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Growth Plan How-To"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Growth%20Plan%20(How-To).pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- PERSONAL GOAL SETTING -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Personal Goal Setting
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Personal Goal Setting"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Personal%20Goal%20Setting.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- EXAMPLE -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Example
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        title="Example Labor Market Analysis Report"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%202/Example%20Labor%20Market%20Analysis%20Report.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- COMMON WEAKNESSES -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Common Weaknesses
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+
+      <div class="weakness-section">
+
+        <h3>
+          MECHANICS
+        </h3>
+
         <ul>
-          <li><a style="color: #3598db; text-decoration: none;" href="https://writing.wisc.edu/handbook/style/connectingideas/">https://writing.wisc.edu/handbook/style/connectingideas/</a></li>
-          <li><a style="color: #3598db; text-decoration: none;" href="https://writing.wisc.edu/handbook/style/transitions/">https://writing.wisc.edu/handbook/style/transitions/</a></li>
+
+          <li>
+            Missing or weak transitional words and phrases. I recommend everyone become familiar with these sources and use them in all of your writing for the rest of your life:
+
+            <ul>
+              <li>
+                <a
+                  class="external"
+                  href="https://writing.wisc.edu/handbook/style/connectingideas/"
+                  target="_blank"
+                  rel="noopener">
+                  Connecting Ideas
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="external"
+                  href="https://writing.wisc.edu/handbook/style/transitions/"
+                  target="_blank"
+                  rel="noopener">
+                  Transitions
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            Format: Errors in whitespace, length, line-spacing, and alignment
+          </li>
+
+          <li>
+            Format: In professional writing, block format is used, without indenting, single-spaced, and left-aligned text. Each paragraph should be writing by a line space.
+          </li>
+
+          <li>
+            In professional discourse it is unconventional to indent paragraphs. This actually disrupts the reading process and is inappropriate outside of academic essays.
+          </li>
+
+          <li>
+            Formatting and Aesthetics: There should be consistency in terms of proper heading styles, fonts, margins, and white space. This should be a polished, professional document.
+          </li>
+
+          <li>
+            Chunking: describes the process splitting paragraphs into small, digestible pieces or "chunks" of information to make reading easier.
+          </li>
+
+          <li>
+            Professionalism/objectivity: In profession writing, don’t use inclusive language—e.g., "we," "us," "our," or second person "you" statements.
+          </li>
+
+          <li>
+            Diction and sentence structure
+          </li>
+
+          <li>
+            Wordiness
+          </li>
+
+          <li>
+            Passive voice
+          </li>
+
+          <li>
+            Insincere Tone—usually connected to wordiness and inflated diction
+          </li>
+
+          <li>
+            Recall that you should insert a parenthetical and subsequently reference the "BLS." Applied, it would look something like: “…the Bureau of Labor Statistics (BLS), …”
+          </li>
+
+          <li>
+            Always ground your claims in authoritative sources. Citations should be used to validate technical claims.
+          </li>
+
         </ul>
-      </li>
-      <li>Format: Errors in whitespace, length, line-spacing, and alignment</li>
-      <li>Format: In professional writing, block format is used, without indenting, single-spaced, and left-aligned text. Each paragraph should be writing by a line space.</li>
-      <li>In professional discourse it is unconventional to indent paragraphs. This actually disrupts the reading process and is inappropriate outside of academic essays.</li>
-      <li>Formatting and Aesthetics: There should be consistency in terms of proper heading styles, fonts, margins, and white space. This should be a polished, professional document.</li>
-      <li>Chunking: describes the process splitting paragraphs into small, digestible pieces or "chunks" of information to make reading easier.</li>
-      <li>Professionalism/objectivity: In profession writing, don’t use inclusive language—e.g., "we," "us," "our," or second person "you" statements.</li>
-      <li>Diction and sentence structure</li>
-      <li>Wordiness</li>
-      <li>Passive voice:</li>
-      <li>Insincere Tone—usually connected to wordiness and inflated diction</li>
-      <li>Recall that you should insert a parenthetical and subsequently reference the "BLS." Applied, it would look something like: “…the Bureau of Labor Statistics (BLS), …”</li>
-      <li>Always ground your claims in authoritative sources. Citations should be used to validate technical claims.</li>
-    </ul>
-    <li><strong>CONTENT DEVELOPMENT AND ANALYSIS</strong></li>
-    <ul>
-      <li>Examples of skills/knowledge required for this and related occupations. So, for example, instead of just stating they require analytical, communication, interpersonal, etc., skills, you needed to demonstrate HOW these skills are connected to the field.</li>
-      <li>Job outlook: should consider factors that influence growth or decline. This means accounting for things like industry trends, technology, or even regulations, all of which would lend more credibility to your analysis.</li>
-      <ul>
-        <li>No analysis of the factors that influence earning and wage projections for the job in different industries.</li>
-        <li>No consideration of trends and/or driving factors that affect earning and wage projections</li>
-      </ul>
-      <li>Weak discussion of potential for advancement: Should discuss typical career paths along with skills or experience that can lead to more opportunities for growth.</li>
-      <li>Weak earnings and wage projections: should include range of salaries across different experience levels or geographic locations.</li>
-    </ul>
-    <li><strong>IMAGES</strong></li>
-    <ul>
-      <li>Bad/inadequate images.
+
+      </div>
+
+
+      <div class="weakness-section">
+
+        <h3>
+          CONTENT DEVELOPMENT AND ANALYSIS
+        </h3>
+
         <ul>
-          <li>A visual should clarify trends, relationships, establish correlation, or visualize things that are either difficult to conceptualize or would be otherwise tedious to read.</li>
+
+          <li>
+            Examples of skills/knowledge required for this and related occupations. So, for example, instead of just stating they require analytical, communication, interpersonal, etc., skills, you needed to demonstrate HOW these skills are connected to the field.
+          </li>
+
+          <li>
+            Job outlook: should consider factors that influence growth or decline. This means accounting for things like industry trends, technology, or even regulations, all of which would lend more credibility to your analysis.
+          </li>
+
+          <li>
+            No analysis of the factors that influence earning and wage projections for the job in different industries.
+          </li>
+
+          <li>
+            No consideration of trends and/or driving factors that affect earning and wage projections.
+          </li>
+
+          <li>
+            Weak discussion of potential for advancement: Should discuss typical career paths along with skills or experience that can lead to more opportunities for growth.
+          </li>
+
+          <li>
+            Weak earnings and wage projections: should include range of salaries across different experience levels or geographic locations.
+          </li>
+
         </ul>
-      </li>
-      <li>Always introduce, explain, or interpret a visual, and place it for maximum effect.</li>
-      <ul>
-        <li>Use visuals with—not as a substitute for—written work.</li>
-        <li>Refer to a visual before it appears, on the same page if possible.</li>
-        <li>State what you want the readers to learn from it.</li>
-      </ul>
-      <li>Data Presentation and Analysis: must interpret and discuss the figures, graphs, and tables.</li>
-    </ul>
-    <li><strong>CONCLUSION</strong></li>
-    <ul>
-      <li>Weak growth plan: this is by far the #1 weakness I see in reports. In the last two years they have only gotten worse with the rise of AI. Write it yourself and follow the posted guidance.</li>
-    </ul>
-  </ul>
+
+      </div>
+
+
+      <div class="weakness-section">
+
+        <h3>
+          IMAGES
+        </h3>
+
+        <ul>
+
+          <li>
+            Bad/inadequate images.
+
+            <ul>
+              <li>
+                A visual should clarify trends, relationships, establish correlation, or visualize things that are either difficult to conceptualize or would be otherwise tedious to read.
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            Always introduce, explain, or interpret a visual, and place it for maximum effect.
+
+            <ul>
+              <li>
+                Use visuals with—not as a substitute for—written work.
+              </li>
+
+              <li>
+                Refer to a visual before it appears, on the same page if possible.
+              </li>
+
+              <li>
+                State what you want the readers to learn from it.
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            Data Presentation and Analysis: must interpret and discuss the figures, graphs, and tables.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="weakness-section">
+
+        <h3>
+          CONCLUSION
+        </h3>
+
+        <ul>
+
+          <li>
+            Weak growth plan: this is by far the #1 weakness I see in reports. In the last two years they have only gotten worse with the rise of AI. Write it yourself and follow the posted guidance.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
 
-function refreshOpenPanels() {
-  for (var i = 0; i < coll.length; i++) {
-    var content = coll[i].nextElementSibling;
-    if (content && content.style.maxHeight) {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
+const buttons = document.querySelectorAll(".collapsible");
+
+
+function resizeOpenPanel(content) {
+
+  if (
+    content &&
+    content.previousElementSibling &&
+    content.previousElementSibling.classList.contains("active")
+  ) {
+    content.style.maxHeight = content.scrollHeight + "px";
   }
+
 }
 
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
 
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
+buttons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const content = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active");
+
+
+    /*
+      Close every accordion.
+    */
+
+    buttons.forEach(function(otherButton) {
+
+      const otherContent = otherButton.nextElementSibling;
+
+      otherButton.classList.remove("active");
+      otherButton.setAttribute("aria-expanded", "false");
+
+      if (otherContent) {
+        otherContent.style.maxHeight = null;
+      }
+
+    });
+
+
+    /*
+      Open selected accordion.
+    */
+
+    if (!wasOpen) {
+
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+
       content.style.maxHeight = content.scrollHeight + "px";
 
-      var button = this;
+
       setTimeout(function() {
+
+        resizeOpenPanel(content);
+
+      }, 100);
+
+
+      setTimeout(function() {
+
         button.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
-      }, 120);
-    }
-  });
-}
 
-window.addEventListener("load", refreshOpenPanels);
-window.addEventListener("resize", refreshOpenPanels);
+      }, 180);
+
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate after iframes load.
+*/
+
+document.querySelectorAll("iframe").forEach(function(frame) {
+
+  frame.addEventListener("load", function() {
+
+    const content = frame.closest(".content");
+
+    resizeOpenPanel(content);
+
+  });
+
+});
+
+
+/*
+  Recalculate after images load.
+*/
+
+document.querySelectorAll("img").forEach(function(image) {
+
+  image.addEventListener("load", function() {
+
+    const content = image.closest(".content");
+
+    resizeOpenPanel(content);
+
+  });
+
+});
+
+
+/*
+  Recalculate after window resize.
+*/
+
+window.addEventListener("resize", function() {
+
+  const openButton = document.querySelector(".collapsible.active");
+
+  if (openButton) {
+
+    resizeOpenPanel(openButton.nextElementSibling);
+
+  }
+
+});
+
 </script>
 
+
 </body>
+
 </html>
