@@ -1,255 +1,722 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box;}
 
-body, html {
-  height: 100%;
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  color: #111111;
 }
+
+
+/* PAGE HEADER */
+
+.page-header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 28px 30px;
+}
+
+.page-header .course-label {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30pt;
+  line-height: 1.1;
+}
+
+.page-content {
+  padding: 28px 30px;
+}
+
+.introduction {
+  margin: 0 0 24px 0;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+
+/* MAIN ACCORDIONS */
 
 .collapsible {
   background-color: #000000;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
-  padding: 18px;
+  padding: 18px 20px;
   width: 100%;
   border: none;
+  border-bottom: 1px solid #ffffff;
   text-align: left;
   outline: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18pt;
-  border-radius: 0;
-  margin: 0;
-  border-bottom: 1px solid #303030;
-}
-
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #303030;
+  font-weight: bold;
+  line-height: 1.3;
   margin: 0;
 }
 
-iframe {
-  width: 100%;
-  height: 749px;
-  border: none;
-  background-color: #202020;
+.collapsible:hover,
+.collapsible.active {
+  background-color: #333333;
 }
 
 .arrow::before {
   content: "➤";
   display: inline-block;
   margin-right: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.active .arrow::before {
+.collapsible.active .arrow::before {
   transform: rotate(90deg);
 }
 
-.lecture-notes {
-  margin: 1in;
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  background-color: #ffffff;
+}
+
+.content-inner {
+  padding: 22px;
+  border: 1px solid #000000;
+  border-top: none;
+  font-size: 14pt;
+  line-height: 1.55;
+}
+
+.content-inner > :first-child {
+  margin-top: 0;
+}
+
+.content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* EMBEDS */
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 680px;
+  min-height: 520px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+.pdf-frame {
+  height: 760px;
+  min-height: 600px;
+  background-color: #eeeeee;
+}
+
+.slides-frame {
+  background-color: #000000;
+}
+
+
+/* COMMENTARY */
+
+.commentary-intro {
+  margin: 0 0 18px 0;
+  padding: 18px 20px;
+  border: 1px solid #000000;
+  background-color: #f2f2f2;
+}
+
+.commentary-intro h3 {
+  margin: 0 0 8px 0;
+  font-size: 19pt;
+  color: #000000;
+}
+
+.commentary-intro p {
+  margin: 0;
 }
 
 .card {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 0 18px 0;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+.card:last-child {
+  margin-bottom: 0;
 }
 
 .card-header {
-  background-color: #f7f7f7;
-  padding: 10px;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 12px 16px;
+  font-size: 15pt;
+  font-weight: bold;
 }
 
 .card-body {
-  padding: 10px;
+  padding: 16px 18px;
 }
 
-.ExampleCoverLetter p {
-  margin: 1in; /* 1 inch margins */
+.card-body p {
+  margin-top: 0;
 }
 
-/* Fix bullet points and paragraph spacing issues */
-.ExampleCoverLetter ul {
-  margin-top: 0; /* Remove default margin */
-  padding-left: 40px; /* Add padding to indent bullets */
+.card-body p:last-child {
+  margin-bottom: 0;
 }
 
-.ExampleCoverLetter li {
-  margin-left: 0; /* Reset margin for list items */
+.card-body ul {
+  padding-left: 28px;
 }
 
-.ExampleCoverLetter p {
-  margin-bottom: 1em; /* Set a smaller margin for tighter spacing */
+.card-body li {
+  margin-bottom: 8px;
 }
+
+.card-body li:last-child {
+  margin-bottom: 0;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<!-- Collapsible Sections with Black Styling -->
-<button class="collapsible"><span class="arrow"></span> Employment Cover Letters</button>
-<div class="content">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&amp;loop=false&amp;delayms=60000" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
+
+<div class="page-header">
+
+  <p class="course-label">
+    RWS 305W
+  </p>
+
+  <h1>
+    Cover Letter Guidance
+  </h1>
+
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Lecture Notes</button>
-<div class="content">
-  <div class="lecture-notes">
-    <h3>Lecture Notes</h3>
-    <h4>Cover Letter: Design and Execution</h4>
-    <div class="card">
-      <div class="card-header">Beginning caveat</div>
-      <div class="card-body">
-        <p>Research has consistently shown that at least 1/3 but probably closer to ½ of recruiters and hiring managers do not read cover letters, preferring to go right to the resume. Does that mean that you should not write one? Absolutely not. Employment cover letters help you as a candidate to frame your skills, experiences and goals.</p>
-      </div>
+
+<div class="page-content">
+
+  <p class="introduction">
+    Use these materials as you develop the cover letter that accompanies your resume.
+  </p>
+
+
+  <!-- EMPLOYMENT COVER LETTERS -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Employment Cover Letters
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        class="slides-frame"
+        title="Employment Cover Letters"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vRRIGQ18gB_eDNQDpPockW0GcYJg79l9i4UcmOl7tIyC8UNbwNLoI9SXXlMzI7dIQ/embed?start=false&amp;loop=false&amp;delayms=60000"
+        loading="lazy"
+        allowfullscreen="allowfullscreen">
+      </iframe>
+
     </div>
-    <div class="card">
-      <div class="card-header">Employment Cover Letter Introduction</div>
-      <div class="card-body">
-        <p>There are generally two cover letter families in professional and business writing: Simple “transmittal-based letters” that may cover a report or proposal, and summarize the document’s contents. Employment based cover letters. The most common kinds of cover letters are those associated with resumes or other job-search documents. A cover letter accompanying a report or proposal for example may just be a summary of that document. But an employment cover letter is more as it serves as part of a marketing package—like the resume cover letters must be persuasive as well. Their purpose is not to summarize what lies beneath them but among other things to persuade a reader to turn to the resume.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Rhetoric and Employment Cover Letters</div>
-      <div class="card-body">
-        <p>Audience = The person who makes hiring decisions But how do you identify that person? → Informational Interview Research Identify the contact suggest a brief meeting use your SDSU status buy a thank you card and prepare a highlighted version of your resume. You’d be surprised how many prospective employers will agree to an informal meeting or interview particularly from students.</p>
-        <p>Consider Taking the time to create such an opportunity and ask questions like: “What was your career path? How did you get involved in this field?” “What is the biggest issue this industry faces at the moment?” “How is your company reacting to this issue?” “What do you look for in a potential candidate?” “I’m near graduation. What would you do in my position?’ “I’m interested in getting more information. Can you suggest someone else I can talk to and is it OK to keep you updated on my progress?”</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Purpose of the Cover Letter</div>
-      <div class="card-body">
-        <p>Generally the purpose of all cover letters is to introduce the subject as it is manifested in the document it covers. Employment cover letters specifically generate interest in your skills education and experience And serve as a bridge between job posting and the resume It can be tempting just to generate interest by content. Afterall perhaps:</p>
-        <ul>
-          <li>Have done your work reviewed the samples</li>
-          <li>Have great experience you studied abroad you had great internships etc.</li>
-          <li>Have more information that can fit on your resume.</li>
-        </ul>
-        <p>But good cover letter writers use effective visual design as well. They understand that how a cover letter looks is almost as important as what it says. You need to tell the reader’s eyes where to go. For example before we review the Purdy letter notice the way the letter looks. An important component of professional writing is visual and information design: Chunked information bullet pointed clear simple language Several short paragraphs between 4 and 5 lines that are interrupted by two short bulleted passages But cover letters do more than introduce your resume. In addition to the functions listed on the screen, employment cover letters are important because they:</p>
-        <ul>
-          <li>Explain your experiences in a story-like format that works with the information provided in your resume</li>
-          <li>Show the employer that you are individualizing (tailoring) this job application</li>
-          <li>Provide a sample of your written communication skills</li>
-        </ul>
-        <p>It is the first document an employer sees, so it is often the first impression you will make.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Exigency/Genre: Part of an integrated, focused campaign</div>
-      <div class="card-body">
-        <p>One overriding fact about the context of employment cover letters—and you need to remember this, perhaps more than any other professional document—readers look to disqualify cover letters and resumes, especially in competitive job climates (like now).</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Employment Cover Letter Readers</div>
-      <div class="card-body">
-        <p>Because they are read to disqualify, audience is important for employment document because employment documents must be able to convince the reader very quickly that what you are saying is true in order to be effective. So you must have done your homework about the company because only then are you prepared to directly communicate with the organization. That means you need to know as much as you can about how people read resumes so here are some general characteristics of your audience:</p>
-        <ul>
-          <li>Read job letters in stacks.</li>
-          <li>Are tired.</li>
-          <li>Often do reading late in the day, less patient with flowery diction and hard to read type or other poor design elements.</li>
-          <li>Are impatient.</li>
-          <li>Will not dig for information. They expect it to jump right out at them.</li>
-          <li>Suddenly become very picky proofreaders.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Step-by-Step Guide</div>
-      <div class="card-body">
-        <p>Contact Info [Refer directly to the contact information in the Purdy Letter] Then summarize using these points: Provide your contact Include the date you are writing the letter. Include the address of the company.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Introduction</div>
-      <div class="card-body">
-        <p>[Read the first paragraph aloud: what do you notice about the paragraph specifically what works in the paragraph?] The first paragraph offers the way into the letter Identifies who you are, what your purpose is, what posting you are responding to, where you saw the posting, anyone you know in the organization who has referred you, etc. or it will offer a reason that captures your inspiration for applying. Most important information should be summarized here That is provide a quick overview of your qualifications Greet the specific person with whom you are corresponding. You MUST find this person’s name for the final resume you turn in, even if it’s the CEO. If you don’t know the person make a name up for the purposes of this class.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Employment Cover Letter Body</div>
-      <div class="card-body">
-        <p>[Read each of the Purdy letter paragraphs and after each one refer to my annotated textbox copy for clarification. Then review using these points] Remember that the body of the letter which consists of more than one paragraph is the most important part of the letter: Be very aware of the letter’s purpose The purpose of an employment cover letter is to amplify and explain and skills and experience from the resume and match them to the job requirements in declarative statements Focus each paragraph on one qualification that shows you are a good match for the job and organization. Tell a story; do not just list your skills. Show Give specific examples to prove where you got these skills and how you have used them before. Refer to your resume; do not repeat Interrupt with block paragraph format with bullets if appropriate Let them know subtly that you know something about the company And definitely use keywords from the job description.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Conclusion</div>
-      <div class="card-body">
-        <p>[Read the last paragraph: what do you notice about the paragraph specifically what works in the paragraph?] Exit with confidence Close with a strong reminder of why you are a good match for the job and the organization. Present information how employer can contact applicant Request an interview in some way or at the very least make scheduling an interview easy Thank the person for reading your material. Sign your name and print it underneath.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Summary: Employment Cover Letters</div>
-      <div class="card-body">
-        <p>Consider the cover letter as part of a marketing package. Do your homework about the company, about discipline-specific communication types, and as much as you can about the reader. Consider yourself vital and let this come through with humility.</p>
-      </div>
-    </div>
+
   </div>
+
+
+  <!-- INSTRUCTOR COMMENTARY -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Instructor Commentary
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <div class="commentary-intro">
+
+        <h3>
+          Cover Letter: Design and Execution
+        </h3>
+
+        <p>
+          The notes below explain the ideas I emphasize when discussing employment cover letters.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Beginning Caveat
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Research has consistently shown that at least 1/3 but probably closer to ½ of recruiters and hiring managers do not read cover letters, preferring to go right to the resume. Does that mean that you should not write one? Absolutely not. Employment cover letters help you as a candidate to frame your skills, experiences and goals.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Employment Cover Letter Introduction
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            There are generally two cover letter families in professional and business writing: simple “transmittal-based letters” that may cover a report or proposal and summarize the document’s contents, and employment-based cover letters.
+          </p>
+
+          <p>
+            The most common kinds of cover letters are those associated with resumes or other job-search documents. A cover letter accompanying a report or proposal, for example, may just be a summary of that document. But an employment cover letter is more because it serves as part of a marketing package. Like the resume, employment cover letters must be persuasive as well. Their purpose is not to summarize what lies beneath them but, among other things, to persuade a reader to turn to the resume.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Rhetoric and Employment Cover Letters
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Audience = the person who makes hiring decisions. But how do you identify that person?
+          </p>
+
+          <p>
+            One way is informational interview research. Identify the contact, suggest a brief meeting, use your SDSU status, buy a thank-you card, and prepare a highlighted version of your resume. You’d be surprised how many prospective employers will agree to an informal meeting or interview, particularly from students.
+          </p>
+
+          <p>
+            Consider taking the time to create such an opportunity and ask questions like:
+          </p>
+
+          <ul>
+            <li>What was your career path? How did you get involved in this field?</li>
+            <li>What is the biggest issue this industry faces at the moment?</li>
+            <li>How is your company reacting to this issue?</li>
+            <li>What do you look for in a potential candidate?</li>
+            <li>I’m near graduation. What would you do in my position?</li>
+            <li>I’m interested in getting more information. Can you suggest someone else I can talk to, and is it OK to keep you updated on my progress?</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Purpose of the Cover Letter
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Generally, the purpose of all cover letters is to introduce the subject as it is manifested in the document it covers. Employment cover letters specifically generate interest in your skills, education and experience and serve as a bridge between the job posting and the resume.
+          </p>
+
+          <p>
+            It can be tempting just to generate interest by content. Perhaps you have done your work and reviewed the samples. Perhaps you have great experience, studied abroad, or had great internships. You may also have more information than can fit on your resume.
+          </p>
+
+          <p>
+            But good cover letter writers use effective visual design as well. They understand that how a cover letter looks is almost as important as what it says. You need to tell the reader’s eyes where to go.
+          </p>
+
+          <p>
+            An important component of professional writing is visual and information design. Information can be chunked, bullet pointed when appropriate, and written in short paragraphs rather than presented as a wall of text.
+          </p>
+
+          <p>
+            Cover letters also:
+          </p>
+
+          <ul>
+            <li>Explain your experiences in a story-like format that works with the information provided in your resume</li>
+            <li>Show the employer that you are individualizing, or tailoring, the job application</li>
+            <li>Provide a sample of your written communication skills</li>
+          </ul>
+
+          <p>
+            It is the first document an employer sees, so it is often the first impression you will make.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Exigency/Genre: Part of an Integrated, Focused Campaign
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            One overriding fact about the context of employment cover letters—and you need to remember this, perhaps more than any other professional document—is that readers look to disqualify cover letters and resumes, especially in competitive job climates.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Employment Cover Letter Readers
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Because they are read to disqualify, audience is important for employment documents. Employment documents must be able to convince the reader very quickly that what you are saying is true in order to be effective.
+          </p>
+
+          <p>
+            You must have done your homework about the company because only then are you prepared to directly communicate with the organization. You also need to understand something about how people read employment documents.
+          </p>
+
+          <ul>
+            <li>They read job letters in stacks.</li>
+            <li>They are tired.</li>
+            <li>They often do this reading late in the day and are less patient with flowery diction, hard-to-read type, or other poor design choices.</li>
+            <li>They are impatient.</li>
+            <li>They will not dig for information. They expect it to jump right out at them.</li>
+            <li>They suddenly become very picky proofreaders.</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Contact Information
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Provide your contact information. Include the date you are writing the letter and the address of the company.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Introduction
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            The first paragraph offers the way into the letter. It identifies who you are, what your purpose is, what posting you are responding to, where you saw the posting, anyone you know in the organization who has referred you, or it may offer a reason that captures your inspiration for applying.
+          </p>
+
+          <p>
+            The most important information should be summarized here. Provide a quick overview of your qualifications.
+          </p>
+
+          <p>
+            Greet the specific person with whom you are corresponding. You MUST find this person’s name for the final resume you turn in, even if it’s the CEO. If you don’t know the person, make a name up for the purposes of this class.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Employment Cover Letter Body
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            The body of the letter, which consists of more than one paragraph, is the most important part of the letter.
+          </p>
+
+          <p>
+            Be very aware of the letter’s purpose. The purpose of an employment cover letter is to amplify and explain skills and experience from the resume and match them to the job requirements in declarative statements.
+          </p>
+
+          <p>
+            Focus each paragraph on one qualification that shows you are a good match for the job and organization. Tell a story; do not just list your skills. Give specific examples to prove where you got these skills and how you have used them before.
+          </p>
+
+          <p>
+            Refer to your resume; do not repeat it. Use block paragraph format with bullets if appropriate. Let them know subtly that you know something about the company. Definitely use keywords from the job description.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Conclusion
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Exit with confidence. Close with a strong reminder of why you are a good match for the job and the organization.
+          </p>
+
+          <p>
+            Present information about how the employer can contact you. Request an interview in some way or at the very least make scheduling an interview easy. Thank the person for reading your material. Sign your name and print it underneath.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-header">
+          Summary: Employment Cover Letters
+        </div>
+
+        <div class="card-body">
+
+          <p>
+            Consider the cover letter as part of a marketing package. Do your homework about the company, about discipline-specific communication types, and as much as you can about the reader. Consider yourself vital and let this come through with humility.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COVER LETTER EXAMPLE -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Cover Letter Example
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        class="pdf-frame"
+        title="Cover Letter Example"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Angela%20Riggs%20Cover%20Letter.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+
+  <!-- CRITIQUED EXAMPLE -->
+
+  <button class="collapsible" aria-expanded="false">
+    <span class="arrow"></span>
+    Cover Letter Example: Critiqued
+  </button>
+
+  <div class="content">
+
+    <div class="content-inner">
+
+      <iframe
+        class="pdf-frame"
+        title="Cover Letter Example: Critiqued"
+        src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Angela%20Riggs%20Cover%20Letter%20Annotated.docx.pdf"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
 </div>
 
-<button class="collapsible"><span class="arrow"></span> Cover Letter Example</button>
-<div class="content ExampleCoverLetter">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Angela%20Riggs%20Cover%20Letter.pdf" width="100%" height="600px"></iframe>
-</div>
-
-<button class="collapsible"><span class="arrow"></span> Cover Letter Example: Critiqued</button>
-<div class="content ExampleCoverLetter">
-  <iframe src="https://rhetorician.github.io/coursematerials/RWS305/files/Project%201/Angela%20Riggs%20Cover%20Letter%20Annotated.docx.pdf" width="100%" height="600px"></iframe>
-</div>
 
 <script>
-var coll = document.getElementsByClassName("collapsible");
 
-function refreshOpenPanels() {
-  for (var j = 0; j < coll.length; j++) {
-    var openContent = coll[j].nextElementSibling;
-    if (openContent && openContent.style.maxHeight) {
-      openContent.style.maxHeight = openContent.scrollHeight + "px";
-    }
+const buttons = document.querySelectorAll(".collapsible");
+
+
+function updateHeight(content) {
+
+  if (
+    content &&
+    content.previousElementSibling &&
+    content.previousElementSibling.classList.contains("active")
+  ) {
+    content.style.maxHeight = content.scrollHeight + "px";
   }
+
 }
 
-for (var i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
 
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
+buttons.forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const content = button.nextElementSibling;
+    const wasOpen = button.classList.contains("active");
+
+
+    /*
+      Close every section.
+    */
+
+    buttons.forEach(function(otherButton) {
+
+      const otherContent = otherButton.nextElementSibling;
+
+      otherButton.classList.remove("active");
+      otherButton.setAttribute("aria-expanded", "false");
+
+      if (otherContent) {
+        otherContent.style.maxHeight = null;
+      }
+
+    });
+
+
+    /*
+      Open the selected section.
+    */
+
+    if (!wasOpen) {
+
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+
       content.style.maxHeight = content.scrollHeight + "px";
 
-      var button = this;
+
       setTimeout(function() {
+
+        updateHeight(content);
+
+      }, 100);
+
+
+      setTimeout(function() {
+
         button.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
-        refreshOpenPanels();
-      }, 120);
-    }
-  });
-}
 
-window.addEventListener("load", refreshOpenPanels);
-window.addEventListener("resize", refreshOpenPanels);
+      }, 180);
+
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate after embedded content loads.
+*/
+
+document.querySelectorAll("iframe").forEach(function(frame) {
+
+  frame.addEventListener("load", function() {
+
+    const content = frame.closest(".content");
+
+    if (content) {
+      updateHeight(content);
+    }
+
+  });
+
+});
+
+
+/*
+  Recalculate if the browser size changes.
+*/
+
+window.addEventListener("resize", function() {
+
+  const openButton = document.querySelector(".collapsible.active");
+
+  if (openButton) {
+
+    const openContent = openButton.nextElementSibling;
+
+    updateHeight(openContent);
+
+  }
+
+});
+
 </script>
 
 </body>
+
 </html>
