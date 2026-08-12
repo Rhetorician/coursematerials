@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWS 305W, Section A1 | Fall 2026 Syllabus</title>
+</head>
+<body>
+<p style="font-family: Helvetica, Arial, sans-serif; padding: 24px;">Loading syllabus...</p>
+<script>
+(async function () {
+  try {
+    let html = await fetch('./SyllabusA1Base.html?v=20260811a1', { cache: 'no-store' }).then(function (response) {
+      if (!response.ok) {
+        throw new Error('Unable to load syllabus base.');
+      }
+      return response.text();
+    });
+
+    const replacements = [
+      ['RWS 305W, Section 57 | Fall 2026 Syllabus', 'RWS 305W, Section A1 | Fall 2026 Syllabus'],
+      ['RWS 305W</strong> · Section 57 · Fall 2026', 'RWS 305W</strong> · Section A1 · Fall 2026'],
+      ['Fall 2026 · Class 3410', 'Fall 2026 · Class 12690'],
+      ['Section 57 · Professional Writing · Asynchronous Online', 'Section A1 · Professional Writing · Hybrid'],
+      ['<dt>Class days</dt>\n<dd>Asynchronous</dd>\n<dt>Class time</dt>\n<dd>N/A</dd>\n<dt>Class location</dt>\n<dd>Online through Canvas</dd>', '<dt>Class days</dt>\n<dd>Tuesday</dd>\n<dt>Class time</dt>\n<dd>2:00 PM to 3:15 PM</dd>\n<dt>Class location</dt>\n<dd>LH 247</dd>'],
+      ['<dt>Section</dt>\n<dd>57</dd>', '<dt>Section</dt>\n<dd>A1</dd>'],
+      ['<dt>Class number</dt>\n<dd>3410</dd>', '<dt>Class number</dt>\n<dd>12690</dd>'],
+      ['This module includes the Labor Market Analysis Report, an online quiz on plagiarism and paraphrasing, and two reflections:', 'This module includes the Labor Market Analysis Report, an in-class quiz on plagiarism and paraphrasing, and two reflections:'],
+      ['This module includes three chapter quizzes, a reflection, and a rhetorical analysis paper.', 'This module includes three in-class chapter quizzes, a reflection, and a rhetorical analysis paper.'],
+      ['Begin working on the plagiarism/paraphrasing quiz.', 'Review the plagiarism and paraphrasing material before the in-class quiz.'],
+      ['DUE: 9/27: Reflection Journals: Strengths and Weaknesses; Plagiarism/Paraphrasing Quiz', 'IN CLASS: 9/22: Plagiarism/Paraphrasing Quiz</strong></p><p><strong>DUE: 9/27: Reflection Journals: Strengths and Weaknesses'],
+      ['DUE: 10/18: "Identity Capital" Quiz', 'IN CLASS: 10/13: "Identity Capital" Quiz'],
+      ['Complete the "Identity Capital" quiz.', 'Come to class prepared to take the "Identity Capital" quiz.'],
+      ['DUE: 10/25: "My Life Should Look Better on Facebook" Quiz', 'IN CLASS: 10/20: "My Life Should Look Better on Facebook" Quiz'],
+      ['DUE: 11/1: "Weak Ties" Quiz', 'IN CLASS: 10/27: "Weak Ties" Quiz'],
+      ['Complete the chapter quiz.', 'Come to class prepared to take the chapter quiz.'],
+      ['Sticking to due dates and times is very important in this online course.', 'Sticking to due dates and times is very important in this hybrid course.'],
+      ['RWS 305W · Section 57 · Fall 2026 · Matt Feigner', 'RWS 305W · Section A1 · Fall 2026 · Matt Feigner']
+    ];
+
+    replacements.forEach(function (pair) {
+      html = html.split(pair[0]).join(pair[1]);
+    });
+
+    html = html.replace(
+      '<span>Canvas based</span>',
+      '<span>Hybrid</span>'
+    );
+
+    html = html.replace(
+      '<a class="header-link" href="PASTE_HARD_COPY_SYLLABUS_URL_HERE" rel="noopener" target="_blank">Download Syllabus PDF</a>',
+      ''
+    );
+
+    html = html.replace(
+      '<a class="button-link secondary" href="https://docs.google.com/document/d/1DOuYgrYXY5O5Fu5UqXOF_-kxemkxCS1z/edit?usp=sharing&ouid=107529234861990850793&rtpof=true&sd=true" rel="noopener" target="_blank">Download Syllabus PDF</a>',
+      ''
+    );
+
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (error) {
+    document.body.innerHTML = '<p style="font-family: Helvetica, Arial, sans-serif; padding: 24px;"><strong>The syllabus could not be loaded.</strong></p>';
+    console.error(error);
+  }
+}());
+</script>
+</body>
+</html>
