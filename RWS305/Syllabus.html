@@ -737,6 +737,703 @@
         text-decoration: none;
       }
     }
+
+    /* ===== Interactive course-app enhancements ===== */
+    .app-dashboard {
+      color: #fff;
+      background: linear-gradient(135deg, #111 0%, #1b1b1b 58%, #2a0a10 100%);
+      border-left-color: var(--sdsu-red);
+      border-top: 8px solid var(--sdsu-red);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .app-dashboard::after {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -130px;
+      top: -180px;
+      border: 55px solid rgba(166, 25, 46, 0.16);
+      transform: rotate(18deg);
+      pointer-events: none;
+    }
+
+    .app-dashboard h2 {
+      color: #fff;
+      border-bottom-color: var(--sdsu-red);
+    }
+
+    .dashboard-eyebrow {
+      margin: 0 0 7px;
+      color: var(--sand);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .dashboard-lede {
+      max-width: 800px;
+      color: #e7e7e7;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dash-card {
+      min-height: 132px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid #444;
+      border-top: 5px solid var(--sdsu-red);
+    }
+
+    .dash-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #bbb;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+    }
+
+    .dash-value {
+      display: block;
+      color: #fff;
+      font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+      font-weight: 800;
+      line-height: 1.16;
+    }
+
+    .dash-note {
+      display: block;
+      margin-top: 8px;
+      color: #ccc;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .semester-progress {
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+
+    .progress-track {
+      height: 13px;
+      background: #393939;
+      border: 1px solid #555;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: var(--sdsu-red);
+      transition: width 0.55s ease;
+    }
+
+    .phase-rail {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phase-chip {
+      padding: 10px 11px;
+      color: #aaa;
+      background: #161616;
+      border: 1px solid #3b3b3b;
+      border-bottom: 4px solid #555;
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .phase-chip.active {
+      color: #fff;
+      background: #2a0a10;
+      border-color: #66303a;
+      border-bottom-color: var(--sdsu-red);
+    }
+
+    .phase-chip.complete {
+      color: #d7d7d7;
+      border-bottom-color: var(--sand);
+    }
+
+    .dashboard-actions,
+    .tool-actions,
+    .schedule-controls,
+    .grade-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .dashboard-actions {
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .app-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 13px;
+      color: #fff;
+      background: var(--sdsu-red);
+      border: 2px solid #fff;
+      border-radius: 0;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .app-button:hover,
+    .app-button:focus-visible {
+      color: #fff;
+      background: var(--sdsu-red-dark);
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .app-button.secondary {
+      color: #111;
+      background: #fff;
+      border-color: #111;
+    }
+
+    .app-button.secondary:hover,
+    .app-button.secondary:focus-visible {
+      color: #fff;
+      background: #111;
+    }
+
+    .app-button.ghost {
+      color: #fff;
+      background: #222;
+      border-color: #777;
+    }
+
+    .deadline-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .deadline-mini {
+      padding: 12px 13px;
+      color: #eee;
+      background: #181818;
+      border-left: 5px solid var(--sdsu-red);
+    }
+
+    .deadline-mini strong {
+      display: block;
+      color: #fff;
+    }
+
+    .deadline-mini span {
+      color: #bbb;
+      font-size: 0.85rem;
+    }
+
+    .tool-panel {
+      margin: 18px 0 0;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--sdsu-red);
+    }
+
+    .tool-panel h3 {
+      margin-top: 0;
+    }
+
+    .tool-panel label {
+      display: block;
+      margin: 0 0 6px;
+      font-weight: 700;
+    }
+
+    .tool-panel select,
+    .tool-panel input[type='text'],
+    .tool-panel input[type='number'],
+    .faq-search input {
+      width: 100%;
+      min-height: 44px;
+      padding: 9px 10px;
+      color: #111;
+      background: #fff;
+      border: 2px solid #777;
+      border-radius: 0;
+      font: inherit;
+    }
+
+    .tool-panel select:focus,
+    .tool-panel input:focus,
+    .faq-search input:focus {
+      border-color: var(--sdsu-red);
+      outline: 3px solid rgba(166, 25, 46, 0.2);
+      outline-offset: 1px;
+    }
+
+    .before-email-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .helper-result {
+      min-height: 120px;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--sdsu-red);
+    }
+
+    .helper-result strong {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .helper-result p:last-child {
+      margin-bottom: 0;
+    }
+
+    .schedule-controls {
+      align-items: center;
+      margin: 12px 0 16px;
+      padding: 12px;
+      background: var(--panel);
+      border-left: 6px solid var(--sdsu-red);
+    }
+
+    .schedule-status {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    #schedule tbody tr.week-past {
+      opacity: .58;
+    }
+
+    #schedule tbody tr.week-current {
+      opacity: 1;
+      background: #fff0f2 !important;
+      box-shadow: inset 7px 0 0 var(--sdsu-red);
+    }
+
+    #schedule tbody tr.week-current td:first-child::after {
+      content: 'CURRENT WEEK';
+      display: block;
+      width: fit-content;
+      margin-top: 8px;
+      padding: 3px 6px;
+      color: #fff;
+      background: var(--sdsu-red);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    #schedule.only-upcoming tbody tr.week-past {
+      display: none;
+    }
+
+    .grade-sandbox {
+      margin-top: 24px;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      border-top: 8px solid var(--sdsu-red);
+    }
+
+    .grade-sandbox h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+
+    .grade-sandbox p {
+      color: #ddd;
+    }
+
+    .grade-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .grade-stat {
+      padding: 13px;
+      background: #202020;
+      border-top: 5px solid var(--sdsu-red);
+    }
+
+    .grade-stat span {
+      display: block;
+      color: #bbb;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .grade-stat strong {
+      display: block;
+      margin-top: 5px;
+      color: #fff;
+      font-size: 1.35rem;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .score-item {
+      padding: 12px;
+      background: #f5f5f5;
+      color: #111;
+      border-left: 5px solid var(--sdsu-red);
+    }
+
+    .score-item label {
+      min-height: 44px;
+      font-size: .91rem;
+      line-height: 1.3;
+    }
+
+    .score-line {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .score-item input {
+      width: 100%;
+      min-height: 40px;
+      padding: 7px 9px;
+      border: 2px solid #999;
+      font: inherit;
+    }
+
+    .score-max {
+      min-width: 54px;
+      color: #555;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .target-row {
+      display: grid;
+      grid-template-columns: minmax(160px, 240px) 1fr;
+      gap: 12px;
+      align-items: end;
+      margin: 17px 0;
+    }
+
+    .target-result {
+      min-height: 44px;
+      padding: 10px 12px;
+      background: #2b2b2b;
+      border-left: 5px solid var(--sand);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .faq-search {
+      position: sticky;
+      top: calc(var(--header-height) + 6px);
+      z-index: 12;
+      margin: -4px 0 18px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 7px solid var(--sdsu-red);
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    }
+
+    .faq-search-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .faq-count {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    #faqs details.faq-hidden,
+    #faqs .faq-group-title.faq-group-hidden {
+      display: none;
+    }
+
+    mark.faq-mark {
+      color: #111;
+      background: #ffe08a;
+      padding: 0 2px;
+    }
+
+    .week-fab {
+      position: fixed;
+      right: 18px;
+      bottom: 70px;
+      z-index: 41;
+      padding: 10px 13px;
+      color: #fff;
+      background: #111;
+      border: 2px solid #fff;
+      border-bottom: 5px solid var(--sdsu-red);
+      box-shadow: 0 4px 12px rgba(0,0,0,.35);
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .week-fab:hover,
+    .week-fab:focus-visible {
+      background: var(--sdsu-red);
+      outline: 2px solid #111;
+      outline-offset: 2px;
+    }
+
+    .week-drawer {
+      position: fixed;
+      inset: 0 0 0 auto;
+      z-index: 130;
+      width: min(92vw, 430px);
+      padding: 20px;
+      color: #fff;
+      background: #111;
+      border-left: 8px solid var(--sdsu-red);
+      box-shadow: -10px 0 30px rgba(0,0,0,.38);
+      transform: translateX(105%);
+      transition: transform .24s ease;
+      overflow-y: auto;
+    }
+
+    .week-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--sdsu-red);
+    }
+
+    .drawer-head h2 {
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      border: 0;
+      font-size: 1.35rem;
+    }
+
+    .drawer-close {
+      width: 42px;
+      height: 42px;
+      color: #fff;
+      background: #222;
+      border: 2px solid #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .drawer-kicker {
+      margin: 18px 0 5px;
+      color: var(--sand);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .drawer-topic {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .drawer-content {
+      color: #ddd;
+    }
+
+    .drawer-content ol,
+    .drawer-content ul {
+      padding-left: 1.2rem;
+    }
+
+    .drawer-content strong {
+      color: #fff;
+    }
+
+    .drawer-deadline {
+      margin: 14px 0;
+      padding: 12px;
+      color: #fff;
+      background: #2a0a10;
+      border-left: 5px solid var(--sdsu-red);
+    }
+
+    .app-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      background: rgba(0,0,0,.7);
+    }
+
+    .app-overlay.show {
+      display: block;
+    }
+
+    .celebration {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .celebration.show {
+      opacity: 1;
+    }
+
+    .celebration-card {
+      padding: 28px 34px;
+      color: #fff;
+      background: #111;
+      border: 6px solid var(--sdsu-red);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      text-align: center;
+      transform: rotate(-1deg);
+    }
+
+    .celebration-card strong {
+      display: block;
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      line-height: 1;
+    }
+
+    .celebration-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--sand);
+      font-weight: 700;
+    }
+
+    @media (max-width: 850px) {
+      .dashboard-grid,
+      .grade-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .before-email-grid,
+      .target-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .dashboard-grid,
+      .grade-summary,
+      .phase-rail {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-status {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .faq-search {
+        top: calc(var(--header-height) + 2px);
+      }
+
+      .week-fab {
+        right: 10px;
+        bottom: 68px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+        animation-duration: .001ms !important;
+      }
+    }
+
+    @media print {
+      .app-dashboard .dashboard-actions,
+      .semester-progress,
+      .deadline-strip,
+      .tool-panel,
+      .grade-sandbox,
+      .faq-search,
+      .schedule-controls,
+      .week-fab,
+      .week-drawer,
+      .app-overlay,
+      .celebration {
+        display: none !important;
+      }
+
+      #schedule tbody tr.week-past {
+        opacity: 1;
+      }
+    }
+
   </style>
 </head>
 <body id="top">
@@ -750,7 +1447,7 @@
 <span class="menu-label">Sections</span>
 </button>
 <p class="site-title"><strong>RWS 305W</strong> · Section 57 · Fall 2026</p>
-<a class="header-link" href="PASTE_HARD_COPY_SYLLABUS_URL_HERE" rel="noopener" target="_blank">Download Syllabus PDF</a>
+<a class="header-link" href="https://rhetorician.github.io/coursematerials/RWS305/files/Admin/Feigner%2C%20RWS%20305W_%2057%20(3410)%20Fall%202026.pdf" rel="noopener" target="_blank">Download Syllabus PDF</a>
 <a class="header-link" href="https://rhetorician.github.io/coursematerials/RWS305/files/Admin/RWS%20305W%20Online%20Syllabus%20and%20Policy%20Acknowledgment.pdf" rel="noopener" target="_blank">Acknowledgment PDF</a>
 </header>
 <aside aria-hidden="true" class="sidebar" id="sidebar">
@@ -759,6 +1456,7 @@
 <button aria-label="Close section menu" class="sidebar-close" id="closeButton" type="button">×</button>
 </div>
 <nav aria-label="Syllabus sections">
+<a href="#dashboard">Course Dashboard</a>
 <a href="#course-information">Course Information</a>
 <a href="#credits-prerequisites">Credits and Prerequisites</a>
 <a href="#course-requirements">Course Requirements</a>
@@ -788,8 +1486,30 @@
 </div>
 <div class="hero-actions">
 <a class="button-link" href="#schedule">View schedule</a>
-<a class="button-link secondary" href="https://docs.google.com/document/d/1DOuYgrYXY5O5Fu5UqXOF_-kxemkxCS1z/edit?usp=sharing&ouid=107529234861990850793&rtpof=true&sd=true" rel="noopener" target="_blank">Download Syllabus PDF</a>
-<a class="button-link secondary" href="https://rhetorician.github.io/coursematerials/RWS305/files/Admin/RWS%20305W%20Online%20Syllabus%20and%20Policy%20Acknowledgment.pdf" rel="noopener" target="_blank">Open acknowledgment form</a>
+</div>
+</section>
+<section class="app-dashboard" id="dashboard" aria-labelledby="dashboard-title">
+<p class="dashboard-eyebrow">Live semester dashboard</p>
+<h2 id="dashboard-title">Where am I, and what do I need to do next?</h2>
+<p class="dashboard-lede">This panel reads the schedule below and updates itself based on the date. It does not connect to Canvas or know whether you personally submitted something.</p>
+<div class="dashboard-grid" aria-live="polite">
+<div class="dash-card"><span class="dash-label">Semester status</span><strong class="dash-value" id="dashStatus">Loading…</strong><span class="dash-note" id="dashStatusNote"></span></div>
+<div class="dash-card"><span class="dash-label">Current project</span><strong class="dash-value" id="dashProject">Loading…</strong><span class="dash-note" id="dashWeek"></span></div>
+<div class="dash-card"><span class="dash-label">Next deadline</span><strong class="dash-value" id="dashDeadline">Loading…</strong><span class="dash-note" id="dashDeadlineDate"></span></div>
+<div class="dash-card"><span class="dash-label">Countdown</span><strong class="dash-value" id="dashCountdown">Loading…</strong><span class="dash-note">Based on the dates published in this syllabus.</span></div>
+</div>
+<div class="semester-progress" aria-label="Semester calendar progress">
+<div class="progress-meta"><span id="progressLabel">Semester progress</span><strong id="progressPercent">0%</strong></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="phase-rail" id="phaseRail"></div>
+</div>
+<div class="deadline-strip" id="deadlineStrip" aria-label="Upcoming deadlines"></div>
+<div class="dashboard-actions">
+<button class="app-button" id="jumpCurrentWeek" type="button">Jump to this week</button>
+<button class="app-button ghost" id="openWeekDrawerTop" type="button">Open this week</button>
+<button class="app-button ghost" id="downloadCalendar" type="button">Download deadlines (.ics)</button>
+<a class="app-button ghost" href="#course-grading">Grade sandbox</a>
+<a class="app-button ghost" href="#faqs">Search FAQs</a>
 </div>
 </section>
 <section id="course-information">
@@ -979,6 +1699,31 @@
 <div class="grade-box"><strong>D−</strong>600 to 629.9</div>
 <div class="grade-box"><strong>F</strong>Below 600</div>
 </div>
+
+<div class="grade-sandbox" id="grade-sandbox">
+<h3>Grade Sandbox</h3>
+<p>Enter only scores that have actually been graded. Blank assignments are treated as remaining work. Everything stays in this browser; nothing is sent anywhere.</p>
+<div class="grade-summary" aria-live="polite">
+<div class="grade-stat"><span>Points entered</span><strong id="gradeEarned">0</strong></div>
+<div class="grade-stat"><span>Points graded</span><strong id="gradePossible">0</strong></div>
+<div class="grade-stat"><span>Current average</span><strong id="gradeAverage">—</strong></div>
+<div class="grade-stat"><span>Current letter</span><strong id="gradeLetter">—</strong></div>
+</div>
+<div class="target-row">
+<div>
+<label for="targetGrade">Target final grade</label>
+<select id="targetGrade">
+<option value="933">A</option><option value="900">A−</option><option value="877.6">B+</option><option value="830">B</option><option value="800">B−</option><option value="777.6">C+</option><option value="730">C</option><option value="700">C−</option><option value="677.6">D+</option><option value="630">D</option><option value="600">D−</option>
+</select>
+</div>
+<div class="target-result" id="targetResult">Enter some scores to see what you need.</div>
+</div>
+<div class="score-grid" id="scoreGrid"></div>
+<div class="grade-actions" style="margin-top:14px;">
+<button class="app-button" id="resetScores" type="button">Reset sandbox</button>
+</div>
+</div>
+
 <div aria-label="Grade descriptions" class="table-wrap" role="region" tabindex="0">
 <table>
 <thead>
@@ -1013,10 +1758,36 @@
 </div>
 <p>By submitting work in this course, you acknowledge and agree to comply with this policy.</p>
 </section>
-<section id="communication"><h2>Communication and Feedback</h2><p>Please follow these protocols for optimal communication:</p><ul><li>Check Canvas announcements daily.</li><li>Use email for individual, personal matters. Email me directly at <a href="mailto:mfeigner@sdsu.edu">mfeigner@sdsu.edu</a> or use the Canvas messaging tool. I will respond to your messages as soon as I can, usually in less than 24 hours.</li><li>Check the course assignment schedule, syllabus, and FAQs for any questions about assignments, procedures, and policies before emailing me. This saves time for both of us if your question has already been addressed. For current assignments, read the supporting documents or watch the video recordings to see if your concern is covered. If you still can't find the answer, then email me.</li><li>Come to office hours: I am happy to discuss any questions or concerns you have about the course or assignments or anything else for the matter.</li><li>Review the feedback I leave directly on your documents using the Canvas grade review and feedback functions. My frank commentary should help you to see areas for improvement.</li><li>Notify me of special circumstances: If serious illness or personal catastrophe threatens to compromise your ability to meet course criteria, please let me know in a timely manner. Usually, adjustments can be made and solutions can be reached, unless you wait too long to deal with your situation.</li></ul></section>
+<section id="communication"><h2>Communication and Feedback</h2>
+<div class="tool-panel" id="before-email">
+<h3>Before You Email Me…</h3>
+<p>Pick the problem. The syllabus will point you toward the policy or FAQ that probably answers it first.</p>
+<div class="before-email-grid">
+<div>
+<label for="emailProblem">What is going on?</label>
+<select id="emailProblem">
+<option value="">Choose a problem…</option>
+<option value="late">My work is late / I missed a deadline</option>
+<option value="zero">I got a zero</option>
+<option value="feedback">I cannot find your feedback</option>
+<option value="google">I have a Google Doc problem</option>
+<option value="revise">Can I revise an assignment?</option>
+<option value="ai">I have a question about AI</option>
+</select>
+</div>
+<div class="helper-result" id="emailHelperResult" aria-live="polite"><strong>Start here.</strong><p>Select the issue that best matches your question.</p></div>
+</div>
+</div>
+<p>Please follow these protocols for optimal communication:</p><ul><li>Check Canvas announcements daily.</li><li>Use email for individual, personal matters. Email me directly at <a href="mailto:mfeigner@sdsu.edu">mfeigner@sdsu.edu</a> or use the Canvas messaging tool. I will respond to your messages as soon as I can, usually in less than 24 hours.</li><li>Check the course assignment schedule, syllabus, and FAQs for any questions about assignments, procedures, and policies before emailing me. This saves time for both of us if your question has already been addressed. For current assignments, read the supporting documents or watch the video recordings to see if your concern is covered. If you still can't find the answer, then email me.</li><li>Come to office hours: I am happy to discuss any questions or concerns you have about the course or assignments or anything else for the matter.</li><li>Review the feedback I leave directly on your documents using the Canvas grade review and feedback functions. My frank commentary should help you to see areas for improvement.</li><li>Notify me of special circumstances: If serious illness or personal catastrophe threatens to compromise your ability to meet course criteria, please let me know in a timely manner. Usually, adjustments can be made and solutions can be reached, unless you wait too long to deal with your situation.</li></ul></section>
 <section id="university-policies"><h2>Course and University Policies</h2><details><summary>Accommodations</summary><div class="details-body"><p><strong>Accommodations:</strong> If you are a student with a disability and are in need of accommodations for this class, please contact Student Ability Success Center at (619) 594-6473 as soon as possible. Please know accommodations are not retroactive, and I cannot provide accommodations based upon disability until I have received an accommodation letter from Student Ability Success Center.</p></div></details><details><summary>Student Privacy and Intellectual Property</summary><div class="details-body"><p><strong>Student Privacy and Intellectual Property:</strong> The Family Educational Rights and Privacy Act (FERPA) mandates the protection of student information, including contact information, grades, and graded assignments. I will use Canvas to communicate with you, and I will not post grades or leave graded assignments in public places. Students will be notified at the time of an assignment if copies of student work will be retained beyond the end of the semester or used as examples for future students or the wider public. Students maintain intellectual property rights to work products they create as part of this course unless they are formally notified otherwise.</p></div></details><details><summary>Religious observances</summary><div class="details-body"><p><strong>Religious observances:</strong> According to the University Policy File, students should notify the instructors of affected courses of planned absences for religious observances by the end of the second week of classes.</p></div></details><details><summary>Academic Honesty</summary><div class="details-body"><p><strong>Academic Honesty:</strong> The University prohibits cheating and plagiarism.</p><p>Examples of academic dishonesty include but are not limited to:</p><ul><li>copying, in part or in whole, from another's test or other examination;</li><li>obtaining copies of a test, an examination, or other course material without the permission of the instructor;</li><li>collaborating with another or others in work to be presented without the permission of the instructor;</li><li>falsifying records, laboratory work, or other course data;</li><li>submitting work previously presented in another course, if contrary to the rules of the course;</li><li>altering or interfering with grading procedures;</li><li>assisting another student in any of the above; using sources verbatim or paraphrasing without giving proper attribution (this can include phrases, sentences, paragraphs and/or pages of work);</li><li>copying and pasting work from an online or offline source directly and calling it your own;</li><li>using information you find from an online or offline source without giving the author credit;</li><li>replacing words or phrases from another source and inserting your own words or phrases.</li></ul></div></details><details><summary>AI-Generated Content Policy</summary><div class="details-body"><p>Artificial Intelligence (AI) is defined, for the purpose of this course, as any computer system or program that simulates, substitutes, and/or enhances problem-solving that typically requires human intelligence. While students may use simple AI, resembling built-in features of a word processor like spelling and simple grammar checks, they are not permitted to use Generative AI at any stage of completing work (graded or ungraded). Generative AI is defined here as AI which has the capacity to ideate, summarize, generate, rewrite, or validate content; including, but not limited to, tools such as ChatGPT, Bard, and DALL-E.</p><p>To be clear, using AI tools (ChatGPT, Dall-E, Grammarly, Chegg, etc.) to create or aggregate content, including:</p><ul><li>Course writing</li><li>Reflective writing</li><li>Substituting or impersonating you in any class activity</li></ul><p>is considered academic misconduct similar to plagiarism or violations of the honor code.</p><p>* Students may formally request, in writing, an exception to the above. Such requests must include: (1) which assignment the student is requesting to use AI with, (2) which specific AI tool the student wishes to use, (3) what they plan to use the tool for (e.g., to generate ideas, summarize a longer document, create a visual, etc.), and (4) why, specifically, they are requesting the exception (e.g., to reduce time spent on a tedious task, to identify relevant sources for further investigation, etc.). Requests will be considered on a case-by-case basis.</p><p>The California State University system requires instructors to report all instances of academic misconduct to the Center for Student Rights and Responsibilities. Academic dishonesty will result in disciplinary review by the University and may lead to probation, suspension, or expulsion.</p><p>Instructors may also, at their discretion, penalize student grades on any assignment or assessment discovered to have been produced in an academically dishonest manner.</p></div></details><details><summary>Resources for students</summary><div class="details-body"><p><strong>Resources for students:</strong> A complete list of all academic support services--including the Writing Center and Math Learning Center--is available on the Student Affairs’ Academic Success website. Counseling and Psychological Services (619-594-5220) offers confidential counseling services by licensed therapists; you can Live Chat with a counselor at <a href="http://go.sdsu.edu/student_affairs/cps/therapist-consultation.aspx" rel="noopener" target="_blank">http://go.sdsu.edu/student_affairs/cps/therapist-consultation.aspx</a> between 4:00pm and 10:00pm, or call San Diego Access and Crisis 24-hour Hotline at (888) 724-7240.</p></div></details><details><summary>Sexual violence / Title IX mandated reporting</summary><div class="details-body"><p><strong>Sexual violence / Title IX mandated reporting:</strong> As an instructor, one of my responsibilities is to help create a safe learning environment on our campus. I am a mandated reporter in my role as an SDSU employee. It is my goal that you feel able to share information related to your life experiences in classroom discussions, in your written work, and in our one-on-one meetings. I will seek to keep the information you share private to the greatest extent possible. However, I am required to share information regarding sexual violence on SDSU’s campus with the Title IX coordinator, Jessica Rentto 619-594-6017. She (or her designee) will contact you to let you know about accommodations and support services at SDSU and possibilities for holding accountable the person who harmed you. Know that you will not be forced to share information you do not wish to disclose and your level of involvement will be your choice. If you do not want the Title IX Officer notified, instead of disclosing this information to your instructor, you can speak confidentially with the following people on campus and in the community. They can connect you with support services and discuss options for pursuing a University or criminal investigation. Sexual Violence Victim Advocate 619-594-0210 or Counseling and Psychological Services 619-594-5220, <a href="mailto:psycserv@sdsu.edu">psycserv@sdsu.edu</a>. For more information regarding your university rights and options as a survivor of sexual misconduct or sexual violence, please visit <a href="https://titleix.sdsu.edu" rel="noopener" target="_blank">titleix.sdsu.edu</a> or <a href="https://sdsutalks.sdsu.edu" rel="noopener" target="_blank">sdsutalks.sdsu.edu</a>.</p></div></details><details><summary>Classroom Conduct Standards</summary><div class="details-body"><p><strong>Classroom Conduct Standards:</strong> SDSU students are expected to abide by the terms of the Student Conduct Code in classrooms and other instructional settings. Prohibited conduct includes:</p><ul><li>Willful, material and substantial disruption or obstruction of a University-related activity, or any on-campus activity.</li><li>Participating in an activity that substantially and materially disrupts the normal operations of the University or infringes on the rights of members of the University community.</li><li>Unauthorized recording, dissemination, or publication (including on websites or social media) of lectures or other course materials.</li><li>Conduct that threatens or endangers the health or safety of any person within or related to the University community, including<ul><li>physical abuse, threats, intimidation, or harassment.</li><li>sexual misconduct.</li></ul></li></ul><p>Violation of these standards will result in referral to appropriate campus authorities.</p></div></details><details><summary>Medical-related absences</summary><div class="details-body"><p><strong>Medical-related absences:</strong> Students are instructed to contact their professor/instructor/coach in the event they need to miss class, etc. due to an illness, injury or emergency. All decisions about the impact of an absence, as well as any arrangements for making up work, rest with the instructors. Student Health Services (SHS) does not provide medical excuses for short-term absences due to illness or injury. When a medical-related absence persists beyond five days, SHS will work with students to provide appropriate documentation. When a student is hospitalized or has a serious, ongoing illness or injury, SHS will, at the student's request and with the student’s consent, communicate with the student’s instructors via the Vice President for Student Affairs and may communicate with the student’s Assistant Dean and/or the Student Ability Success Center.</p></div></details><details><summary>SDSU Economic Crisis Response Team</summary><div class="details-body"><p><strong>SDSU Economic Crisis Response Team:</strong> If you or a friend are experiencing food or housing insecurity, or any unforeseen financial crisis, visit <a href="https://sdsu.edu/ecrt" rel="noopener" target="_blank">sdsu.edu/ecrt</a>, email <a href="mailto:ecrt@sdsu.edu">ecrt@sdsu.edu</a>, or walk-in to Well-being &amp; Health Promotion on the 3rd floor of Calpulli Center.</p></div></details></section>
 <section id="schedule">
 <h2>Schedule</h2>
+<div class="schedule-controls" aria-label="Schedule controls">
+<button class="app-button secondary" id="scheduleToday" type="button">Jump to current week</button>
+<button class="app-button secondary" id="togglePastWeeks" type="button" aria-pressed="false">Hide past weeks</button>
+<button class="app-button secondary" id="scheduleCalendar" type="button">Download deadlines</button>
+<span class="schedule-status" id="scheduleStatus">Calendar-aware view loading…</span>
+</div>
 <div aria-label="Schedule month links" class="month-links">
 <a href="#august">August</a>
 <a href="#september">September</a>
@@ -1039,6 +1810,11 @@
 </section>
 <section id="faqs">
 <h2>Frequently Asked Questions</h2>
+<div class="faq-search">
+<label for="faqSearch"><strong>Search the FAQs</strong> <span style="color:#666;font-weight:400;">(press / anywhere)</span></label>
+<div class="faq-search-row"><input id="faqSearch" type="text" autocomplete="off" placeholder="Try: AI, late, zero, feedback, Canvas…"/><button class="app-button secondary" id="clearFaq" type="button">Clear</button></div>
+<div class="faq-count" id="faqCount" aria-live="polite">Showing all questions.</div>
+</div>
 <h3 class="faq-group-title">Questions About AI and Grading</h3>
 <details>
 <summary>Why did I get a zero on my work?</summary>
@@ -1137,6 +1913,18 @@
   </details>
 </section>
 </main>
+<button class="week-fab" id="weekFab" type="button">This Week</button>
+<div class="app-overlay" id="appOverlay" hidden></div>
+<aside class="week-drawer" id="weekDrawer" aria-hidden="true" aria-labelledby="weekDrawerTitle">
+<div class="drawer-head"><h2 id="weekDrawerTitle">This Week</h2><button class="drawer-close" id="weekDrawerClose" type="button" aria-label="Close this week panel">×</button></div>
+<p class="drawer-kicker" id="drawerDate">Current week</p>
+<h3 class="drawer-topic" id="drawerTopic">Loading…</h3>
+<div class="drawer-deadline" id="drawerDeadline">Loading deadline information…</div>
+<div class="drawer-content" id="drawerContent"></div>
+<div class="tool-actions" style="margin-top:18px;"><button class="app-button" id="drawerJump" type="button">Open in full schedule</button></div>
+</aside>
+<div class="celebration" id="celebration" aria-hidden="true"><div class="celebration-card"><strong>YOU SURVIVED RWS 305W</strong><span>That deserves at least one unnecessarily dramatic screen.</span></div></div>
+
 <button aria-label="Back to top" class="back-to-top" id="backToTop" type="button">↑ Top</button>
 <footer>
 <p>RWS 305W · Section 57 · Fall 2026 · Matt Feigner</p>
@@ -1225,5 +2013,525 @@
       }
     }());
   </script>
+
+<script>
+(function () {
+  'use strict';
+
+  const YEAR = 2026;
+  const DAY = 86400000;
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+  function localDate(month, day) {
+    return new Date(YEAR, month - 1, day, 12, 0, 0, 0);
+  }
+
+  function dateOnly(date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0, 0);
+  }
+
+  function parseMD(text) {
+    const match = String(text || '').match(/(\d{1,2})\/(\d{1,2})/);
+    return match ? localDate(Number(match[1]), Number(match[2])) : null;
+  }
+
+  function fmt(date, options) {
+    return new Intl.DateTimeFormat('en-US', options || { month: 'short', day: 'numeric' }).format(date);
+  }
+
+  function daysBetween(a, b) {
+    return Math.ceil((dateOnly(b) - dateOnly(a)) / DAY);
+  }
+
+  function safeStorageGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function safeStorageSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* storage optional */ }
+  }
+
+  const schedule = $('#schedule');
+  const scheduleRows = schedule ? $$('tbody tr', schedule) : [];
+  const weeks = scheduleRows.map(function (row, index) {
+    const cells = $$('td', row);
+    const dateStrong = cells[0] ? $('strong', cells[0]) : null;
+    const start = dateStrong ? parseMD(dateStrong.textContent) : null;
+    const topic = cells[1] ? cells[1].textContent.replace(/\s+/g, ' ').trim() : 'Course work';
+    const workCell = cells[2] || null;
+    return { row, index, start, topic, workCell };
+  }).filter(w => w.start);
+
+  function extractDeadlines() {
+    const deadlines = [];
+    $$('#schedule strong').forEach(function (node) {
+      const text = node.textContent.replace(/\s+/g, ' ').trim();
+      const match = text.match(/^DUE:\s*(\d{1,2})\/(\d{1,2}):\s*(.+)$/i);
+      if (!match) return;
+      const date = localDate(Number(match[1]), Number(match[2]));
+      const titles = match[3].split(/;\s*/).map(t => t.trim()).filter(Boolean);
+      titles.forEach(function (title) { deadlines.push({ date, title, source: node }); });
+    });
+    return deadlines.sort((a, b) => a.date - b.date);
+  }
+
+  const deadlines = extractDeadlines();
+  const today = dateOnly(new Date());
+  const semesterStart = weeks.length ? weeks[0].start : localDate(8, 24);
+  const semesterEnd = deadlines.length ? deadlines[deadlines.length - 1].date : localDate(12, 11);
+
+  function getCurrentWeek(referenceDate) {
+    if (!weeks.length) return null;
+    if (referenceDate < weeks[0].start) return weeks[0];
+    for (let i = 0; i < weeks.length; i += 1) {
+      const next = weeks[i + 1];
+      if (!next || referenceDate < next.start) return weeks[i];
+    }
+    return weeks[weeks.length - 1];
+  }
+
+  function projectName(topic) {
+    const t = topic.toLowerCase();
+    if (t.includes('labor market')) return 'Labor Market Analysis';
+    if (t.includes('rhetorical')) return 'Rhetorical Analysis';
+    if (t.includes('public voice')) return 'Public Voice Project';
+    if (t.includes('career portfolio')) return 'Career Portfolio';
+    if (t.includes('introduction')) return 'Career Portfolio / Course Launch';
+    return topic;
+  }
+
+  function nextDeadline(referenceDate) {
+    return deadlines.find(d => dateOnly(d.date) >= referenceDate) || null;
+  }
+
+  function deadlineCountdown(deadline, referenceDate) {
+    if (!deadline) return 'No deadlines left';
+    const d = daysBetween(referenceDate, deadline.date);
+    if (d < 0) return 'Past due';
+    if (d === 0) return 'Due today';
+    if (d === 1) return 'Due tomorrow';
+    return d + ' days';
+  }
+
+  function getPhaseDefinitions() {
+    const defs = [
+      { name: 'Career Portfolio', matcher: /introduction|career portfolio/i },
+      { name: 'Labor Market Analysis', matcher: /labor market/i },
+      { name: 'Rhetorical Analysis', matcher: /rhetorical/i },
+      { name: 'Public Voice', matcher: /public voice/i }
+    ];
+    return defs.map(function (def, idx) {
+      const matching = weeks.filter(w => def.matcher.test(w.topic));
+      const start = matching.length ? matching[0].start : semesterStart;
+      const nextDef = defs[idx + 1];
+      const nextMatch = nextDef ? weeks.find(w => nextDef.matcher.test(w.topic)) : null;
+      const end = nextMatch ? new Date(nextMatch.start.getTime() - DAY) : semesterEnd;
+      return { name: def.name, start, end };
+    });
+  }
+
+  const phases = getPhaseDefinitions();
+
+  function renderDashboard() {
+    const currentWeek = getCurrentWeek(today);
+    const next = nextDeadline(today);
+    const before = today < semesterStart;
+    const after = today > semesterEnd;
+    const within = !before && !after;
+
+    if ($('#dashStatus')) {
+      if (before) {
+        $('#dashStatus').textContent = 'Course begins ' + fmt(semesterStart, { month: 'long', day: 'numeric' });
+        $('#dashStatusNote').textContent = daysBetween(today, semesterStart) + ' days until the first scheduled week.';
+      } else if (after) {
+        $('#dashStatus').textContent = 'Semester complete';
+        $('#dashStatusNote').textContent = 'The published schedule ended ' + fmt(semesterEnd, { month: 'long', day: 'numeric' }) + '.';
+      } else {
+        $('#dashStatus').textContent = 'Week of ' + fmt(currentWeek.start, { month: 'long', day: 'numeric' });
+        $('#dashStatusNote').textContent = 'You are inside the published Fall 2026 schedule.';
+      }
+    }
+
+    if ($('#dashProject')) {
+      $('#dashProject').textContent = before ? 'Course Launch' : after ? 'Done' : projectName(currentWeek.topic);
+      $('#dashWeek').textContent = before ? 'First topic: ' + currentWeek.topic : after ? 'Final project deadline has passed.' : currentWeek.topic;
+    }
+
+    if ($('#dashDeadline')) {
+      $('#dashDeadline').textContent = next ? next.title : 'Nothing left';
+      $('#dashDeadlineDate').textContent = next ? fmt(next.date, { weekday: 'long', month: 'long', day: 'numeric' }) : 'All published deadlines have passed.';
+      $('#dashCountdown').textContent = deadlineCountdown(next, today);
+    }
+
+    let pct = 0;
+    if (after) pct = 100;
+    else if (within) pct = Math.max(0, Math.min(100, ((today - semesterStart) / (semesterEnd - semesterStart)) * 100));
+    $('#progressPercent').textContent = Math.round(pct) + '%';
+    $('#progressFill').style.width = pct + '%';
+    $('#progressLabel').textContent = fmt(semesterStart, { month: 'short', day: 'numeric' }) + ' → ' + fmt(semesterEnd, { month: 'short', day: 'numeric' });
+
+    const rail = $('#phaseRail');
+    rail.innerHTML = '';
+    phases.forEach(function (phase) {
+      const el = document.createElement('div');
+      const isComplete = today > phase.end;
+      const isActive = today >= phase.start && today <= phase.end;
+      el.className = 'phase-chip' + (isActive ? ' active' : '') + (isComplete ? ' complete' : '');
+      el.innerHTML = '<strong>' + phase.name + '</strong><br><span>' + fmt(phase.start) + '–' + fmt(phase.end) + '</span>';
+      rail.appendChild(el);
+    });
+
+    const strip = $('#deadlineStrip');
+    strip.innerHTML = '';
+    const upcoming = deadlines.filter(d => d.date >= today).slice(0, 3);
+    if (!upcoming.length) {
+      strip.innerHTML = '<div class="deadline-mini"><strong>No upcoming deadlines</strong><span>The published schedule is complete.</span></div>';
+    } else {
+      upcoming.forEach(function (d) {
+        const el = document.createElement('div');
+        el.className = 'deadline-mini';
+        el.innerHTML = '<strong>' + d.title + '</strong><span>' + fmt(d.date, { weekday: 'short', month: 'short', day: 'numeric' }) + ' · ' + deadlineCountdown(d, today) + '</span>';
+        strip.appendChild(el);
+      });
+    }
+  }
+
+  function markScheduleWeeks() {
+    const current = getCurrentWeek(today);
+    weeks.forEach(function (week, i) {
+      const next = weeks[i + 1];
+      const end = next ? new Date(next.start.getTime() - DAY) : semesterEnd;
+      week.row.classList.remove('week-past', 'week-current', 'week-upcoming');
+      if (today > end) week.row.classList.add('week-past');
+      else if (today >= week.start && today <= end) week.row.classList.add('week-current');
+      else week.row.classList.add('week-upcoming');
+    });
+    if ($('#scheduleStatus')) {
+      if (today < semesterStart) $('#scheduleStatus').textContent = 'Course has not started yet.';
+      else if (today > semesterEnd) $('#scheduleStatus').textContent = 'Published semester schedule is complete.';
+      else $('#scheduleStatus').textContent = 'Current: week of ' + fmt(current.start, { month: 'long', day: 'numeric' });
+    }
+  }
+
+  function jumpToCurrentWeek() {
+    const week = getCurrentWeek(today);
+    if (!week) return;
+    week.row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  ['#jumpCurrentWeek', '#scheduleToday'].forEach(function (selector) {
+    const button = $(selector);
+    if (button) button.addEventListener('click', jumpToCurrentWeek);
+  });
+
+  const togglePast = $('#togglePastWeeks');
+  if (togglePast) {
+    togglePast.addEventListener('click', function () {
+      const hidden = schedule.classList.toggle('only-upcoming');
+      togglePast.setAttribute('aria-pressed', String(hidden));
+      togglePast.textContent = hidden ? 'Show past weeks' : 'Hide past weeks';
+    });
+  }
+
+  function icsEscape(text) {
+    return String(text).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  }
+
+  function dateStamp(date) {
+    return String(date.getFullYear()) + String(date.getMonth() + 1).padStart(2, '0') + String(date.getDate()).padStart(2, '0');
+  }
+
+  function downloadCalendarFile() {
+    const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//RWS 305W//Fall 2026 Syllabus//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:RWS 305W Fall 2026 Deadlines'];
+    deadlines.forEach(function (d, idx) {
+      const end = new Date(d.date.getTime() + DAY);
+      lines.push('BEGIN:VEVENT');
+      lines.push('UID:rws305w-' + dateStamp(d.date) + '-' + idx + '@syllabus.local');
+      lines.push('DTSTART;VALUE=DATE:' + dateStamp(d.date));
+      lines.push('DTEND;VALUE=DATE:' + dateStamp(end));
+      lines.push('SUMMARY:' + icsEscape('RWS 305W — ' + d.title));
+      lines.push('DESCRIPTION:' + icsEscape('Deadline from the Fall 2026 RWS 305W syllabus. Confirm submission details in Canvas.'));
+      lines.push('END:VEVENT');
+    });
+    lines.push('END:VCALENDAR');
+    const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'RWS305W_Fall2026_Deadlines.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+  }
+
+  ['#downloadCalendar', '#scheduleCalendar'].forEach(function (selector) {
+    const button = $(selector);
+    if (button) button.addEventListener('click', downloadCalendarFile);
+  });
+
+  function buildGradeSandbox() {
+    const assessment = $('#assessment');
+    const grid = $('#scoreGrid');
+    if (!assessment || !grid) return;
+
+    const items = $$('.points', assessment).map(function (pointsCell, idx) {
+      const row = pointsCell.closest('tr');
+      const assignmentCell = pointsCell.previousElementSibling;
+      const max = Number(pointsCell.textContent.trim());
+      if (!assignmentCell || !Number.isFinite(max)) return null;
+      return { id: 'score-' + idx, title: assignmentCell.textContent.replace(/\s+/g, ' ').trim(), max };
+    }).filter(Boolean);
+
+    const total = items.reduce((sum, item) => sum + item.max, 0);
+    grid.innerHTML = '';
+    items.forEach(function (item) {
+      const box = document.createElement('div');
+      box.className = 'score-item';
+      box.innerHTML = '<label for="' + item.id + '">' + item.title + '</label><div class="score-line"><input id="' + item.id + '" type="number" min="0" max="' + item.max + '" step="0.1" inputmode="decimal" placeholder="score"><span class="score-max">/ ' + item.max + '</span></div>';
+      grid.appendChild(box);
+      const input = $('#' + item.id);
+      const saved = safeStorageGet('rws305w-' + item.id);
+      if (saved !== null && saved !== '') input.value = saved;
+      input.addEventListener('input', function () {
+        if (input.value !== '') {
+          let v = Number(input.value);
+          if (Number.isFinite(v)) {
+            if (v < 0) v = 0;
+            if (v > item.max) v = item.max;
+            input.value = v;
+          }
+        }
+        safeStorageSet('rws305w-' + item.id, input.value);
+        updateGrades();
+      });
+    });
+
+    const gradeBands = [
+      ['A', 933], ['A−', 900], ['B+', 877.6], ['B', 830], ['B−', 800], ['C+', 777.6], ['C', 730], ['C−', 700], ['D+', 677.6], ['D', 630], ['D−', 600], ['F', 0]
+    ];
+
+    function currentLetterByPercent(percent) {
+      if (!Number.isFinite(percent)) return '—';
+      const scaled = percent * 10;
+      return gradeBands.find(b => scaled >= b[1])[0];
+    }
+
+    function updateGrades() {
+      let earned = 0;
+      let gradedPossible = 0;
+      items.forEach(function (item) {
+        const input = $('#' + item.id);
+        if (input.value === '') return;
+        const value = Number(input.value);
+        if (!Number.isFinite(value)) return;
+        earned += value;
+        gradedPossible += item.max;
+      });
+      const remaining = total - gradedPossible;
+      const average = gradedPossible ? (earned / gradedPossible) * 100 : null;
+      $('#gradeEarned').textContent = earned.toFixed(earned % 1 ? 1 : 0);
+      $('#gradePossible').textContent = gradedPossible.toFixed(gradedPossible % 1 ? 1 : 0) + ' / ' + total;
+      $('#gradeAverage').textContent = average === null ? '—' : average.toFixed(1) + '%';
+      $('#gradeLetter').textContent = currentLetterByPercent(average);
+
+      const target = Number($('#targetGrade').value);
+      const targetLabel = $('#targetGrade').selectedOptions[0].textContent;
+      const needed = Math.max(0, target - earned);
+      const result = $('#targetResult');
+      if (needed === 0) {
+        result.textContent = 'You already have enough raw course points to meet the ' + targetLabel + ' threshold.';
+      } else if (remaining <= 0) {
+        result.textContent = 'No ungraded points remain in this sandbox. You are ' + needed.toFixed(1) + ' points short of ' + targetLabel + '.';
+      } else if (needed > remaining) {
+        result.textContent = targetLabel + ' is no longer mathematically reachable with the remaining ' + remaining + ' points.';
+      } else {
+        result.textContent = 'Need ' + needed.toFixed(needed % 1 ? 1 : 0) + ' of the remaining ' + remaining + ' points (' + ((needed / remaining) * 100).toFixed(1) + '%) to reach ' + targetLabel + '.';
+      }
+    }
+
+    $('#targetGrade').addEventListener('change', updateGrades);
+    $('#resetScores').addEventListener('click', function () {
+      items.forEach(function (item) {
+        const input = $('#' + item.id);
+        input.value = '';
+        safeStorageSet('rws305w-' + item.id, '');
+      });
+      updateGrades();
+    });
+    updateGrades();
+  }
+
+  function findFaqBySummary(fragment) {
+    return $$('#faqs details').find(function (detail) {
+      const summary = $('summary', detail);
+      return summary && summary.textContent.toLowerCase().includes(fragment.toLowerCase());
+    });
+  }
+
+  function truncate(text, length) {
+    const clean = String(text).replace(/\s+/g, ' ').trim();
+    return clean.length > length ? clean.slice(0, length - 1).trim() + '…' : clean;
+  }
+
+  function buildEmailHelper() {
+    const select = $('#emailProblem');
+    const result = $('#emailHelperResult');
+    if (!select || !result) return;
+    const config = {
+      late: { label: 'Due-date FAQ', target: () => findFaqBySummary('internet went out'), text: null },
+      zero: { label: 'Why did I get a zero?', target: () => findFaqBySummary('why did i get a zero'), text: null },
+      feedback: { label: 'Canvas feedback FAQ', target: () => findFaqBySummary('how do i see feedback'), text: null },
+      google: { label: 'Google Doc Policy', target: () => $('#google-doc-policy'), text: null },
+      revise: { label: 'Revision policy', target: () => $('#assessment'), text: 'The resume and cover letter may be revised for the possibility of a higher grade. The Labor Market Analysis Report and Rhetorical Analysis Paper are identified as not eligible for revision for a higher grade.' },
+      ai: { label: 'AI-Generated Content Policy', target: () => findFaqBySummary('suspect me of using ai') || $$('#university-policies details').find(d => $('summary', d)?.textContent.includes('AI-Generated')), text: null }
+    };
+
+    select.addEventListener('change', function () {
+      const item = config[select.value];
+      if (!item) {
+        result.innerHTML = '<strong>Start here.</strong><p>Select the issue that best matches your question.</p>';
+        return;
+      }
+      const target = item.target();
+      let text = item.text;
+      if (!text && target) {
+        const body = $('.details-body', target) || $('.callout', target) || target;
+        text = truncate(body.textContent, 480);
+      }
+      result.innerHTML = '<strong>' + item.label + '</strong><p>' + (text || 'The relevant syllabus section is available below.') + '</p><button class="app-button secondary" type="button" id="helperJump">Take me there</button>';
+      const jump = $('#helperJump');
+      if (jump && target) jump.addEventListener('click', function () {
+        if (target.tagName === 'DETAILS') target.open = true;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  }
+
+  function buildFaqSearch() {
+    const input = $('#faqSearch');
+    const clear = $('#clearFaq');
+    const count = $('#faqCount');
+    const details = $$('#faqs details');
+    const groups = $$('#faqs .faq-group-title');
+    if (!input) return;
+
+    const originalSummaries = new Map();
+    details.forEach(function (detail) {
+      const summary = $('summary', detail);
+      if (summary) originalSummaries.set(summary, summary.textContent);
+    });
+
+    function escapeRegex(text) {
+      return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function update() {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      details.forEach(function (detail) {
+        const summary = $('summary', detail);
+        const original = originalSummaries.get(summary) || summary.textContent;
+        summary.textContent = original;
+        const match = !q || detail.textContent.toLowerCase().includes(q);
+        detail.classList.toggle('faq-hidden', !match);
+        if (match) {
+          visible += 1;
+          if (q.length >= 2) {
+            const re = new RegExp('(' + escapeRegex(q) + ')', 'ig');
+            summary.innerHTML = original.replace(re, '<mark class="faq-mark">$1</mark>');
+          }
+        }
+      });
+
+      groups.forEach(function (group) {
+        let node = group.nextElementSibling;
+        let any = false;
+        while (node && !node.classList.contains('faq-group-title')) {
+          if (node.tagName === 'DETAILS' && !node.classList.contains('faq-hidden')) any = true;
+          node = node.nextElementSibling;
+        }
+        group.classList.toggle('faq-group-hidden', !any);
+      });
+      count.textContent = q ? visible + ' matching question' + (visible === 1 ? '' : 's') + '.' : 'Showing all ' + details.length + ' questions.';
+    }
+
+    input.addEventListener('input', update);
+    clear.addEventListener('click', function () { input.value = ''; update(); input.focus(); });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+    update();
+  }
+
+  function buildWeekDrawer() {
+    const drawer = $('#weekDrawer');
+    const overlay = $('#appOverlay');
+    const openButtons = [$('#weekFab'), $('#openWeekDrawerTop')].filter(Boolean);
+    const close = $('#weekDrawerClose');
+    if (!drawer || !overlay) return;
+
+    function populate() {
+      const week = getCurrentWeek(today);
+      if (!week) return;
+      $('#drawerDate').textContent = today < semesterStart ? 'First scheduled week · ' + fmt(week.start, { month: 'long', day: 'numeric' }) : 'Week of ' + fmt(week.start, { month: 'long', day: 'numeric' });
+      $('#drawerTopic').textContent = week.topic;
+      const weekDeadline = deadlines.find(d => d.source.closest('tr') === week.row);
+      $('#drawerDeadline').textContent = weekDeadline ? 'Deadline: ' + fmt(weekDeadline.date, { weekday: 'long', month: 'long', day: 'numeric' }) + ' — ' + weekDeadline.title : 'No explicit deadline is listed in this week’s schedule row.';
+      $('#drawerContent').innerHTML = week.workCell ? week.workCell.innerHTML : '<p>See the full schedule for this week.</p>';
+    }
+
+    function openDrawer() {
+      populate();
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      overlay.hidden = false;
+      overlay.classList.add('show');
+      document.body.classList.add('nav-open');
+      close.focus();
+    }
+
+    function closeDrawer(returnFocus) {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('show');
+      document.body.classList.remove('nav-open');
+      setTimeout(() => { overlay.hidden = true; }, 240);
+      if (returnFocus && openButtons[0]) openButtons[0].focus();
+    }
+
+    openButtons.forEach(b => b.addEventListener('click', openDrawer));
+    close.addEventListener('click', () => closeDrawer(true));
+    overlay.addEventListener('click', () => closeDrawer(false));
+    $('#drawerJump').addEventListener('click', function () { closeDrawer(false); jumpToCurrentWeek(); });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && drawer.classList.contains('open')) closeDrawer(true); });
+    populate();
+  }
+
+  function maybeCelebrate() {
+    if (today < semesterEnd) return;
+    if (safeStorageGet('rws305w-celebrated') === 'yes') return;
+    const c = $('#celebration');
+    if (!c) return;
+    c.classList.add('show');
+    c.setAttribute('aria-hidden', 'false');
+    safeStorageSet('rws305w-celebrated', 'yes');
+    setTimeout(function () { c.classList.remove('show'); c.setAttribute('aria-hidden', 'true'); }, 3200);
+  }
+
+  renderDashboard();
+  markScheduleWeeks();
+  buildGradeSandbox();
+  buildEmailHelper();
+  buildFaqSearch();
+  buildWeekDrawer();
+  maybeCelebrate();
+}());
+</script>
+
 </body>
 </html>
