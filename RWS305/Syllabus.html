@@ -988,8 +988,7 @@
 
     .tool-panel select,
     .tool-panel input[type='text'],
-    .tool-panel input[type='number'],
-    .faq-search input {
+    .tool-panel input[type='number'] {
       width: 100%;
       min-height: 44px;
       padding: 9px 10px;
@@ -1001,8 +1000,7 @@
     }
 
     .tool-panel select:focus,
-    .tool-panel input:focus,
-    .faq-search input:focus {
+    .tool-panel input:focus {
       border-color: var(--sdsu-red);
       outline: 3px solid rgba(166, 25, 46, 0.2);
       outline-offset: 1px;
@@ -1177,42 +1175,6 @@
       border-left: 5px solid var(--sand);
       color: #fff;
       font-weight: 700;
-    }
-
-    .faq-search {
-      position: sticky;
-      top: calc(var(--header-height) + 6px);
-      z-index: 12;
-      margin: -4px 0 18px;
-      padding: 12px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-left: 7px solid var(--sdsu-red);
-      box-shadow: 0 4px 12px rgba(0,0,0,.12);
-    }
-
-    .faq-search-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .faq-count {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: .86rem;
-    }
-
-    #faqs details.faq-hidden,
-    #faqs .faq-group-title.faq-group-hidden {
-      display: none;
-    }
-
-    mark.faq-mark {
-      color: #111;
-      background: #ffe08a;
-      padding: 0 2px;
     }
 
     .week-fab {
@@ -1395,10 +1357,6 @@
         margin-left: 0;
       }
 
-      .faq-search {
-        top: calc(var(--header-height) + 2px);
-      }
-
       .week-fab {
         right: 10px;
         bottom: 68px;
@@ -1420,7 +1378,6 @@
       .deadline-strip,
       .tool-panel,
       .grade-sandbox,
-      .faq-search,
       .schedule-controls,
       .week-fab,
       .week-drawer,
@@ -1509,7 +1466,6 @@
 <button class="app-button ghost" id="openWeekDrawerTop" type="button">Open this week</button>
 <button class="app-button ghost" id="downloadCalendar" type="button">Download deadlines (.ics)</button>
 <a class="app-button ghost" href="#course-grading">Grade sandbox</a>
-<a class="app-button ghost" href="#faqs">Search FAQs</a>
 </div>
 </section>
 <section id="course-information">
@@ -1656,7 +1612,7 @@
 </tr>
 <tr>
 <td>Public Voice Project</td>
-<td>Public Discourse Project or Future Retirement Speech</td>
+<td>Public Discourse Project or Future Retirement Speech<br/><small>Not eligible for revision for a higher grade.</small></td>
 <td class="points">200</td>
 <td class="total">200</td>
 </tr>
@@ -1772,7 +1728,6 @@
 <option value="feedback">I cannot find your feedback</option>
 <option value="google">I have a Google Doc problem</option>
 <option value="revise">Can I revise an assignment?</option>
-<option value="ai">I have a question about AI</option>
 </select>
 </div>
 <div class="helper-result" id="emailHelperResult" aria-live="polite"><strong>Start here.</strong><p>Select the issue that best matches your question.</p></div>
@@ -1810,11 +1765,6 @@
 </section>
 <section id="faqs">
 <h2>Frequently Asked Questions</h2>
-<div class="faq-search">
-<label for="faqSearch"><strong>Search the FAQs</strong> <span style="color:#666;font-weight:400;">(press / anywhere)</span></label>
-<div class="faq-search-row"><input id="faqSearch" type="text" autocomplete="off" placeholder="Try: AI, late, zero, feedback, Canvas…"/><button class="app-button secondary" id="clearFaq" type="button">Clear</button></div>
-<div class="faq-count" id="faqCount" aria-live="polite">Showing all questions.</div>
-</div>
 <h3 class="faq-group-title">Questions About AI and Grading</h3>
 <details>
 <summary>Why did I get a zero on my work?</summary>
@@ -2384,8 +2334,7 @@
       zero: { label: 'Why did I get a zero?', target: () => findFaqBySummary('why did i get a zero'), text: null },
       feedback: { label: 'Canvas feedback FAQ', target: () => findFaqBySummary('how do i see feedback'), text: null },
       google: { label: 'Google Doc Policy', target: () => $('#google-doc-policy'), text: null },
-      revise: { label: 'Revision policy', target: () => $('#assessment'), text: 'The resume and cover letter may be revised for the possibility of a higher grade. The Labor Market Analysis Report and Rhetorical Analysis Paper are identified as not eligible for revision for a higher grade.' },
-      ai: { label: 'AI-Generated Content Policy', target: () => findFaqBySummary('suspect me of using ai') || $$('#university-policies details').find(d => $('summary', d)?.textContent.includes('AI-Generated')), text: null }
+      revise: { label: 'Revision policy', target: () => $('#assessment'), text: 'The resume and cover letter may be revised for the possibility of a higher grade. The Labor Market Analysis Report, Rhetorical Analysis Paper, and the Public Voice Project are not eligible for revision for a higher grade.' }
     };
 
     select.addEventListener('change', function () {
@@ -2407,65 +2356,6 @@
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
-  }
-
-  function buildFaqSearch() {
-    const input = $('#faqSearch');
-    const clear = $('#clearFaq');
-    const count = $('#faqCount');
-    const details = $$('#faqs details');
-    const groups = $$('#faqs .faq-group-title');
-    if (!input) return;
-
-    const originalSummaries = new Map();
-    details.forEach(function (detail) {
-      const summary = $('summary', detail);
-      if (summary) originalSummaries.set(summary, summary.textContent);
-    });
-
-    function escapeRegex(text) {
-      return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-
-    function update() {
-      const q = input.value.trim().toLowerCase();
-      let visible = 0;
-      details.forEach(function (detail) {
-        const summary = $('summary', detail);
-        const original = originalSummaries.get(summary) || summary.textContent;
-        summary.textContent = original;
-        const match = !q || detail.textContent.toLowerCase().includes(q);
-        detail.classList.toggle('faq-hidden', !match);
-        if (match) {
-          visible += 1;
-          if (q.length >= 2) {
-            const re = new RegExp('(' + escapeRegex(q) + ')', 'ig');
-            summary.innerHTML = original.replace(re, '<mark class="faq-mark">$1</mark>');
-          }
-        }
-      });
-
-      groups.forEach(function (group) {
-        let node = group.nextElementSibling;
-        let any = false;
-        while (node && !node.classList.contains('faq-group-title')) {
-          if (node.tagName === 'DETAILS' && !node.classList.contains('faq-hidden')) any = true;
-          node = node.nextElementSibling;
-        }
-        group.classList.toggle('faq-group-hidden', !any);
-      });
-      count.textContent = q ? visible + ' matching question' + (visible === 1 ? '' : 's') + '.' : 'Showing all ' + details.length + ' questions.';
-    }
-
-    input.addEventListener('input', update);
-    clear.addEventListener('click', function () { input.value = ''; update(); input.focus(); });
-    document.addEventListener('keydown', function (event) {
-      if (event.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {
-        event.preventDefault();
-        input.focus();
-      }
-    });
-    update();
   }
 
   function buildWeekDrawer() {
@@ -2527,7 +2417,6 @@
   markScheduleWeeks();
   buildGradeSandbox();
   buildEmailHelper();
-  buildFaqSearch();
   buildWeekDrawer();
   maybeCelebrate();
 }());
