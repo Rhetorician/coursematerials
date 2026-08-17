@@ -761,11 +761,6 @@
       pointer-events: none;
     }
 
-    .app-dashboard h2 {
-      color: #fff;
-      border-bottom-color: var(--sdsu-red);
-    }
-
     .dashboard-eyebrow {
       margin: 0 0 7px;
       color: var(--sand);
@@ -773,11 +768,6 @@
       font-weight: 800;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-    }
-
-    .dashboard-lede {
-      max-width: 800px;
-      color: #e7e7e7;
     }
 
     .dashboard-grid {
@@ -887,8 +877,7 @@
 
     .dashboard-actions,
     .tool-actions,
-    .schedule-controls,
-    .grade-actions {
+    .schedule-controls {
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
@@ -1072,111 +1061,6 @@
       display: none;
     }
 
-    .grade-sandbox {
-      margin-top: 24px;
-      padding: 20px;
-      background: #111;
-      color: #fff;
-      border-top: 8px solid var(--sdsu-red);
-    }
-
-    .grade-sandbox h3 {
-      margin-top: 0;
-      color: #fff;
-    }
-
-    .grade-sandbox p {
-      color: #ddd;
-    }
-
-    .grade-summary {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .grade-stat {
-      padding: 13px;
-      background: #202020;
-      border-top: 5px solid var(--sdsu-red);
-    }
-
-    .grade-stat span {
-      display: block;
-      color: #bbb;
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .grade-stat strong {
-      display: block;
-      margin-top: 5px;
-      color: #fff;
-      font-size: 1.35rem;
-    }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .score-item {
-      padding: 12px;
-      background: #f5f5f5;
-      color: #111;
-      border-left: 5px solid var(--sdsu-red);
-    }
-
-    .score-item label {
-      min-height: 44px;
-      font-size: .91rem;
-      line-height: 1.3;
-    }
-
-    .score-line {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .score-item input {
-      width: 100%;
-      min-height: 40px;
-      padding: 7px 9px;
-      border: 2px solid #999;
-      font: inherit;
-    }
-
-    .score-max {
-      min-width: 54px;
-      color: #555;
-      font-weight: 700;
-      text-align: right;
-    }
-
-    .target-row {
-      display: grid;
-      grid-template-columns: minmax(160px, 240px) 1fr;
-      gap: 12px;
-      align-items: end;
-      margin: 17px 0;
-    }
-
-    .target-result {
-      min-height: 44px;
-      padding: 10px 12px;
-      background: #2b2b2b;
-      border-left: 5px solid var(--sand);
-      color: #fff;
-      font-weight: 700;
-    }
-
     .week-fab {
       position: fixed;
       right: 18px;
@@ -1335,19 +1219,12 @@
 
     @media (max-width: 850px) {
       .dashboard-grid,
-      .grade-summary {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
 
       .before-email-grid,
-      .target-row {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 620px) {
       .dashboard-grid,
-      .grade-summary,
       .phase-rail {
         grid-template-columns: 1fr;
       }
@@ -1377,7 +1254,6 @@
       .semester-progress,
       .deadline-strip,
       .tool-panel,
-      .grade-sandbox,
       .schedule-controls,
       .week-fab,
       .week-drawer,
@@ -1445,10 +1321,8 @@
 <a class="button-link" href="#schedule">View schedule</a>
 </div>
 </section>
-<section class="app-dashboard" id="dashboard" aria-labelledby="dashboard-title">
-<p class="dashboard-eyebrow">Live semester dashboard</p>
-<h2 id="dashboard-title">Where am I, and what do I need to do next?</h2>
-<p class="dashboard-lede">This panel reads the schedule below and updates itself based on the date. It does not connect to Canvas or know whether you personally submitted something.</p>
+<section class="app-dashboard" id="dashboard" aria-label="Semester dashboard">
+<p class="dashboard-eyebrow">Semester dashboard</p>
 <div class="dashboard-grid" aria-live="polite">
 <div class="dash-card"><span class="dash-label">Semester status</span><strong class="dash-value" id="dashStatus">Loading…</strong><span class="dash-note" id="dashStatusNote"></span></div>
 <div class="dash-card"><span class="dash-label">Current project</span><strong class="dash-value" id="dashProject">Loading…</strong><span class="dash-note" id="dashWeek"></span></div>
@@ -1465,7 +1339,6 @@
 <button class="app-button" id="jumpCurrentWeek" type="button">Jump to this week</button>
 <button class="app-button ghost" id="openWeekDrawerTop" type="button">Open this week</button>
 <button class="app-button ghost" id="downloadCalendar" type="button">Download deadlines (.ics)</button>
-<a class="app-button ghost" href="#course-grading">Grade sandbox</a>
 </div>
 </section>
 <section id="course-information">
@@ -1654,30 +1527,6 @@
 <div class="grade-box"><strong>D</strong>630 to 677.5</div>
 <div class="grade-box"><strong>D−</strong>600 to 629.9</div>
 <div class="grade-box"><strong>F</strong>Below 600</div>
-</div>
-
-<div class="grade-sandbox" id="grade-sandbox">
-<h3>Grade Sandbox</h3>
-<p>Enter only scores that have actually been graded. Blank assignments are treated as remaining work. Everything stays in this browser; nothing is sent anywhere.</p>
-<div class="grade-summary" aria-live="polite">
-<div class="grade-stat"><span>Points entered</span><strong id="gradeEarned">0</strong></div>
-<div class="grade-stat"><span>Points graded</span><strong id="gradePossible">0</strong></div>
-<div class="grade-stat"><span>Current average</span><strong id="gradeAverage">—</strong></div>
-<div class="grade-stat"><span>Current letter</span><strong id="gradeLetter">—</strong></div>
-</div>
-<div class="target-row">
-<div>
-<label for="targetGrade">Target final grade</label>
-<select id="targetGrade">
-<option value="933">A</option><option value="900">A−</option><option value="877.6">B+</option><option value="830">B</option><option value="800">B−</option><option value="777.6">C+</option><option value="730">C</option><option value="700">C−</option><option value="677.6">D+</option><option value="630">D</option><option value="600">D−</option>
-</select>
-</div>
-<div class="target-result" id="targetResult">Enter some scores to see what you need.</div>
-</div>
-<div class="score-grid" id="scoreGrid"></div>
-<div class="grade-actions" style="margin-top:14px;">
-<button class="app-button" id="resetScores" type="button">Reset sandbox</button>
-</div>
 </div>
 
 <div aria-label="Grade descriptions" class="table-wrap" role="region" tabindex="0">
@@ -2220,99 +2069,6 @@
     const button = $(selector);
     if (button) button.addEventListener('click', downloadCalendarFile);
   });
-
-  function buildGradeSandbox() {
-    const assessment = $('#assessment');
-    const grid = $('#scoreGrid');
-    if (!assessment || !grid) return;
-
-    const items = $$('.points', assessment).map(function (pointsCell, idx) {
-      const row = pointsCell.closest('tr');
-      const assignmentCell = pointsCell.previousElementSibling;
-      const max = Number(pointsCell.textContent.trim());
-      if (!assignmentCell || !Number.isFinite(max)) return null;
-      return { id: 'score-' + idx, title: assignmentCell.textContent.replace(/\s+/g, ' ').trim(), max };
-    }).filter(Boolean);
-
-    const total = items.reduce((sum, item) => sum + item.max, 0);
-    grid.innerHTML = '';
-    items.forEach(function (item) {
-      const box = document.createElement('div');
-      box.className = 'score-item';
-      box.innerHTML = '<label for="' + item.id + '">' + item.title + '</label><div class="score-line"><input id="' + item.id + '" type="number" min="0" max="' + item.max + '" step="0.1" inputmode="decimal" placeholder="score"><span class="score-max">/ ' + item.max + '</span></div>';
-      grid.appendChild(box);
-      const input = $('#' + item.id);
-      const saved = safeStorageGet('rws305w-' + item.id);
-      if (saved !== null && saved !== '') input.value = saved;
-      input.addEventListener('input', function () {
-        if (input.value !== '') {
-          let v = Number(input.value);
-          if (Number.isFinite(v)) {
-            if (v < 0) v = 0;
-            if (v > item.max) v = item.max;
-            input.value = v;
-          }
-        }
-        safeStorageSet('rws305w-' + item.id, input.value);
-        updateGrades();
-      });
-    });
-
-    const gradeBands = [
-      ['A', 933], ['A−', 900], ['B+', 877.6], ['B', 830], ['B−', 800], ['C+', 777.6], ['C', 730], ['C−', 700], ['D+', 677.6], ['D', 630], ['D−', 600], ['F', 0]
-    ];
-
-    function currentLetterByPercent(percent) {
-      if (!Number.isFinite(percent)) return '—';
-      const scaled = percent * 10;
-      return gradeBands.find(b => scaled >= b[1])[0];
-    }
-
-    function updateGrades() {
-      let earned = 0;
-      let gradedPossible = 0;
-      items.forEach(function (item) {
-        const input = $('#' + item.id);
-        if (input.value === '') return;
-        const value = Number(input.value);
-        if (!Number.isFinite(value)) return;
-        earned += value;
-        gradedPossible += item.max;
-      });
-      const remaining = total - gradedPossible;
-      const average = gradedPossible ? (earned / gradedPossible) * 100 : null;
-      $('#gradeEarned').textContent = earned.toFixed(earned % 1 ? 1 : 0);
-      $('#gradePossible').textContent = gradedPossible.toFixed(gradedPossible % 1 ? 1 : 0) + ' / ' + total;
-      $('#gradeAverage').textContent = average === null ? '—' : average.toFixed(1) + '%';
-      $('#gradeLetter').textContent = currentLetterByPercent(average);
-
-      const target = Number($('#targetGrade').value);
-      const targetLabel = $('#targetGrade').selectedOptions[0].textContent;
-      const needed = Math.max(0, target - earned);
-      const result = $('#targetResult');
-      if (needed === 0) {
-        result.textContent = 'You already have enough raw course points to meet the ' + targetLabel + ' threshold.';
-      } else if (remaining <= 0) {
-        result.textContent = 'No ungraded points remain in this sandbox. You are ' + needed.toFixed(1) + ' points short of ' + targetLabel + '.';
-      } else if (needed > remaining) {
-        result.textContent = targetLabel + ' is no longer mathematically reachable with the remaining ' + remaining + ' points.';
-      } else {
-        result.textContent = 'Need ' + needed.toFixed(needed % 1 ? 1 : 0) + ' of the remaining ' + remaining + ' points (' + ((needed / remaining) * 100).toFixed(1) + '%) to reach ' + targetLabel + '.';
-      }
-    }
-
-    $('#targetGrade').addEventListener('change', updateGrades);
-    $('#resetScores').addEventListener('click', function () {
-      items.forEach(function (item) {
-        const input = $('#' + item.id);
-        input.value = '';
-        safeStorageSet('rws305w-' + item.id, '');
-      });
-      updateGrades();
-    });
-    updateGrades();
-  }
-
   function findFaqBySummary(fragment) {
     return $$('#faqs details').find(function (detail) {
       const summary = $('summary', detail);
@@ -2415,7 +2171,6 @@
 
   renderDashboard();
   markScheduleWeeks();
-  buildGradeSandbox();
   buildEmailHelper();
   buildWeekDrawer();
   maybeCelebrate();
