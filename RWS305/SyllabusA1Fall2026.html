@@ -10,9 +10,9 @@
 <script>
 (async function () {
   try {
-    let html = await fetch('./SyllabusA1Base.html?v=20260811a1', { cache: 'no-store' }).then(function (response) {
+    let html = await fetch('./Syllabus.html?v=20260817a1', { cache: 'no-store' }).then(function (response) {
       if (!response.ok) {
-        throw new Error('Unable to load syllabus base.');
+        throw new Error('Unable to load syllabus source.');
       }
       return response.text();
     });
@@ -22,6 +22,7 @@
       ['RWS 305W</strong> · Section 57 · Fall 2026', 'RWS 305W</strong> · Section A1 · Fall 2026'],
       ['Fall 2026 · Class 3410', 'Fall 2026 · Class 12690'],
       ['Section 57 · Professional Writing · Asynchronous Online', 'Section A1 · Professional Writing · Hybrid'],
+      ['<span>Canvas based</span>', '<span>Hybrid</span>'],
       ['<dt>Class days</dt>\n<dd>Asynchronous</dd>\n<dt>Class time</dt>\n<dd>N/A</dd>\n<dt>Class location</dt>\n<dd>Online through Canvas</dd>', '<dt>Class days</dt>\n<dd>Tuesday</dd>\n<dt>Class time</dt>\n<dd>2:00 PM to 3:15 PM</dd>\n<dt>Class location</dt>\n<dd>LH 247</dd>'],
       ['<dt>Section</dt>\n<dd>57</dd>', '<dt>Section</dt>\n<dd>A1</dd>'],
       ['<dt>Class number</dt>\n<dd>3410</dd>', '<dt>Class number</dt>\n<dd>12690</dd>'],
@@ -35,27 +36,13 @@
       ['DUE: 11/1: "Weak Ties" Quiz', 'IN CLASS: 10/27: "Weak Ties" Quiz'],
       ['Complete the chapter quiz.', 'Come to class prepared to take the chapter quiz.'],
       ['Sticking to due dates and times is very important in this online course.', 'Sticking to due dates and times is very important in this hybrid course.'],
+      ['https://rhetorician.github.io/coursematerials/RWS305/files/Admin/Feigner%2C%20RWS%20305W_%2057%20(3410)%20Fall%202026.pdf', 'https://rhetorician.github.io/coursematerials/RWS305/files/Admin/Feigner%2C%20RWS%20305W_%20A1%20(12690)%20Fall%202026.pdf'],
       ['RWS 305W · Section 57 · Fall 2026 · Matt Feigner', 'RWS 305W · Section A1 · Fall 2026 · Matt Feigner']
     ];
 
     replacements.forEach(function (pair) {
       html = html.split(pair[0]).join(pair[1]);
     });
-
-    html = html.replace(
-      '<span>Canvas based</span>',
-      '<span>Hybrid</span>'
-    );
-
-    html = html.replace(
-      '<a class="header-link" href="PASTE_HARD_COPY_SYLLABUS_URL_HERE" rel="noopener" target="_blank">Download Syllabus PDF</a>',
-      ''
-    );
-
-    html = html.replace(
-      '<a class="button-link secondary" href="https://docs.google.com/document/d/1DOuYgrYXY5O5Fu5UqXOF_-kxemkxCS1z/edit?usp=sharing&ouid=107529234861990850793&rtpof=true&sd=true" rel="noopener" target="_blank">Download Syllabus PDF</a>',
-      ''
-    );
 
     document.open();
     document.write(html);
