@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>RWS 290 | William Zinsser, On Writing Well</title>
+<style>
+  :root {
+    --black: #000000;
+    --charcoal: #1b1b1b;
+    --red: #a6192e;
+    --red-dark: #761022;
+    --white: #ffffff;
+    --panel: #f3f3f3;
+    --line: #d6d6d6;
+    --sand: #c8b77a;
+    --shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--black);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: #111111;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+  }
+
+  .hero {
+    padding: clamp(30px, 6vw, 64px) max(20px, calc((100vw - 980px) / 2));
+    color: var(--white);
+    background: var(--black);
+    border-top: 8px solid var(--red);
+    border-bottom: 1px solid #333333;
+  }
+
+  .hero-kicker {
+    margin: 0 0 8px;
+    color: var(--sand);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+    margin: 14px 0 0;
+    color: var(--white);
+    font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+  }
+
+  main {
+    width: min(980px, calc(100% - 34px));
+    margin: 0 auto;
+    padding: 28px 0 64px;
+  }
+
+  .reading-tools {
+    margin-bottom: 18px;
+    padding: 18px;
+    background: var(--white);
+    border-left: 8px solid var(--red);
+    box-shadow: var(--shadow);
+  }
+
+  .chapter-nav,
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chapter-nav { margin-bottom: 14px; }
+
+  .chapter-link,
+  .control-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 9px 12px;
+    border-radius: 0;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .chapter-link {
+    color: #111111;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--red);
+  }
+
+  .chapter-link:hover,
+  .chapter-link:focus-visible {
+    color: var(--white);
+    background: var(--black);
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .control-button {
+    color: var(--white);
+    background: var(--red);
+    border: 2px solid var(--red);
+  }
+
+  .control-button.secondary {
+    color: #111111;
+    background: var(--white);
+    border-color: #111111;
+  }
+
+  .control-button:hover,
+  .control-button:focus-visible {
+    color: var(--white);
+    background: var(--red-dark);
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .control-button.secondary:hover,
+  .control-button.secondary:focus-visible {
+    color: var(--white);
+    background: var(--black);
+  }
+
+  .reading-section {
+    scroll-margin-top: 18px;
+    margin: 0 0 13px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 8px solid var(--red);
+    box-shadow: var(--shadow);
+  }
+
+  .reading-section summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 17px 20px;
+    list-style: none;
+    background: var(--panel);
+    font-size: clamp(1.08rem, 2.6vw, 1.35rem);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .reading-section summary::-webkit-details-marker { display: none; }
+
+  .reading-section summary:hover,
+  .reading-section summary:focus-visible {
+    background: #e8e8e8;
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .reading-section[open] summary {
+    color: var(--white);
+    background: var(--black);
+    border-bottom: 5px solid var(--red);
+  }
+
+  .summary-icon {
+    flex: 0 0 auto;
+    color: var(--red);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .reading-section[open] .summary-icon {
+    color: var(--white);
+    transform: rotate(45deg);
+  }
+
+  .reading-body {
+    padding: clamp(18px, 4vw, 34px);
+    background: var(--white);
+  }
+
+  .reading-body > :first-child { margin-top: 0; }
+  .reading-body > :last-child { margin-bottom: 0; }
+  .reading-body p { margin: 0 0 1.05em; }
+  .reading-body ul,
+  .reading-body ol { padding-left: 1.45rem; }
+
+  .manuscript-image {
+    display: block;
+    width: min(100%, 760px);
+    height: auto;
+    margin: 18px auto;
+    background: #eeeeee;
+    border: 1px solid var(--line);
+  }
+
+  .loading,
+  .error {
+    padding: 22px;
+    background: var(--white);
+    border-left: 8px solid var(--red);
+    box-shadow: var(--shadow);
+  }
+
+  footer {
+    padding: 22px 18px 30px;
+    color: #dddddd;
+    background: var(--black);
+    border-top: 6px solid var(--red);
+    text-align: center;
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 700px) {
+    body { font-size: 16px; }
+    main { width: min(100% - 20px, 980px); padding-top: 18px; }
+    .hero { padding: 30px 20px; }
+    .reading-tools { padding: 14px; }
+    .chapter-link,
+    .control-button { flex: 1 1 calc(50% - 8px); justify-content: center; }
+    .reading-section summary { padding: 15px 14px; }
+    .reading-body { padding: 18px 15px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <p class="hero-kicker">RWS 290 Reading</p>
+  <h1>William Zinsser</h1>
+  <p class="hero-subtitle"><em>On Writing Well</em> · Introduction and Chapters 1–7</p>
+</header>
+
+<main>
+  <section class="reading-tools" id="readingTools" hidden>
+    <nav class="chapter-nav" id="chapterNav" aria-label="Jump to reading section"></nav>
+    <div class="controls">
+      <button class="control-button" id="expandAll" type="button">Expand all</button>
+      <button class="control-button secondary" id="collapseAll" type="button">Collapse all</button>
+    </div>
+  </section>
+  <div class="loading" id="loading">Loading reading…</div>
+  <div id="readings"></div>
+</main>
+
+<footer>
+  <p>RWS 290 · William Zinsser · <em>On Writing Well</em></p>
+</footer>
+
+<script>
+(async function () {
+  const sourceUrl = '../RWS305/Zinsser.html?v=20260817';
+  const loading = document.getElementById('loading');
+  const readings = document.getElementById('readings');
+  const tools = document.getElementById('readingTools');
+  const chapterNav = document.getElementById('chapterNav');
+
+  function makeId(title) {
+    if (title === 'Introduction') return 'introduction';
+    const match = title.match(/^Chapter\s+(\d+)/i);
+    return match ? 'chapter-' + match[1] : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  function shortLabel(title) {
+    if (title === 'Introduction') return 'Introduction';
+    const match = title.match(/^Chapter\s+(\d+)/i);
+    return match ? 'Chapter ' + match[1] : title;
+  }
+
+  function convertImages(panel) {
+    panel.querySelectorAll('iframe').forEach(function (frame) {
+      const src = frame.getAttribute('src') || '';
+      if (!/\.(jpe?g|png|webp)(\?.*)?$/i.test(src)) return;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = "Marked manuscript page from Zinsser's chapter on simplicity and revision.";
+      img.loading = 'lazy';
+      img.className = 'manuscript-image';
+      frame.replaceWith(img);
+    });
+    panel.querySelectorAll('div[style*="text-align: center"]').forEach(function (div) {
+      div.removeAttribute('style');
+    });
+  }
+
+  function openHashTarget() {
+    if (!window.location.hash) return;
+    const target = document.querySelector(window.location.hash);
+    if (target && target.matches('.reading-section')) {
+      target.open = true;
+      setTimeout(function () { target.scrollIntoView({ block: 'start' }); }, 0);
+    }
+  }
+
+  try {
+    const response = await fetch(sourceUrl, { cache: 'no-store' });
+    if (!response.ok) throw new Error('Unable to load the reading source.');
+
+    const sourceHtml = await response.text();
+    const sourceDoc = new DOMParser().parseFromString(sourceHtml, 'text/html');
+    const buttons = Array.from(sourceDoc.querySelectorAll('button.accordion'));
+
+    if (!buttons.length) throw new Error('No reading sections were found.');
+
+    buttons.forEach(function (button) {
+      const panel = button.nextElementSibling;
+      if (!panel || !panel.classList.contains('panel')) return;
+
+      const title = button.textContent.trim();
+      const id = makeId(title);
+      const details = document.createElement('details');
+      details.className = 'reading-section';
+      details.id = id;
+
+      const summary = document.createElement('summary');
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'summary-title';
+      titleSpan.textContent = title;
+      const icon = document.createElement('span');
+      icon.className = 'summary-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = '+';
+      summary.append(titleSpan, icon);
+
+      const body = document.createElement('div');
+      body.className = 'reading-body';
+      body.innerHTML = panel.innerHTML;
+      convertImages(body);
+
+      details.append(summary, body);
+      readings.appendChild(details);
+
+      const link = document.createElement('a');
+      link.className = 'chapter-link';
+      link.href = '#' + id;
+      link.textContent = shortLabel(title);
+      link.addEventListener('click', function () { details.open = true; });
+      chapterNav.appendChild(link);
+    });
+
+    loading.remove();
+    tools.hidden = false;
+
+    const sections = Array.from(document.querySelectorAll('.reading-section'));
+    document.getElementById('expandAll').addEventListener('click', function () {
+      sections.forEach(function (section) { section.open = true; });
+    });
+
+    document.getElementById('collapseAll').addEventListener('click', function () {
+      sections.forEach(function (section) { section.open = false; });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('hashchange', openHashTarget);
+    openHashTarget();
+  } catch (error) {
+    loading.className = 'error';
+    loading.innerHTML = '<strong>The reading could not be loaded.</strong><p>Please use the PDF copy in Canvas.</p>';
+    console.error(error);
+  }
+}());
+</script>
+</body>
+</html>
