@@ -12,6 +12,7 @@
     --red: #a6192e;
     --red-dark: #761022;
     --white: #ffffff;
+    --paper: #ffffff;
     --panel: #f3f3f3;
     --line: #d6d6d6;
     --sand: #c8b77a;
@@ -73,7 +74,7 @@
   .reading-tools {
     margin-bottom: 18px;
     padding: 18px;
-    background: var(--white);
+    background: var(--paper);
     border-left: 8px solid var(--red);
     box-shadow: var(--shadow);
   }
@@ -91,6 +92,7 @@
   .control-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     min-height: 42px;
     padding: 9px 12px;
     border-radius: 0;
@@ -144,7 +146,7 @@
   .reading-section {
     scroll-margin-top: 18px;
     margin: 0 0 13px;
-    background: var(--white);
+    background: var(--paper);
     border: 1px solid var(--line);
     border-left: 8px solid var(--red);
     box-shadow: var(--shadow);
@@ -218,6 +220,11 @@
     box-shadow: var(--shadow);
   }
 
+  .error a {
+    color: var(--red-dark);
+    font-weight: 700;
+  }
+
   footer {
     padding: 22px 18px 30px;
     color: #dddddd;
@@ -234,7 +241,7 @@
     .hero { padding: 30px 20px; }
     .reading-tools { padding: 14px; }
     .chapter-link,
-    .control-button { flex: 1 1 calc(50% - 8px); justify-content: center; }
+    .control-button { flex: 1 1 calc(50% - 8px); }
     .reading-section summary { padding: 15px 14px; }
     .reading-body { padding: 18px 15px; }
   }
@@ -255,10 +262,12 @@
   <section class="reading-tools" id="readingTools" hidden>
     <nav class="chapter-nav" id="chapterNav" aria-label="Jump to reading section"></nav>
     <div class="controls">
-      <button class="control-button" id="expandAll" type="button">Expand all</button>
+      <a class="control-button" href="https://rhetorician.github.io/coursematerials/RWS305/files/Zinsser/On-Writing-Well-30th-Anniversa-Zinsser-William.pdf" target="_blank" rel="noopener">Download PDF</a>
+      <button class="control-button secondary" id="expandAll" type="button">Expand all</button>
       <button class="control-button secondary" id="collapseAll" type="button">Collapse all</button>
     </div>
   </section>
+
   <div class="loading" id="loading">Loading reading…</div>
   <div id="readings"></div>
 </main>
@@ -270,6 +279,7 @@
 <script>
 (async function () {
   const sourceUrl = '../RWS305/Zinsser.html?v=20260817';
+  const pdfUrl = 'https://rhetorician.github.io/coursematerials/RWS305/files/Zinsser/On-Writing-Well-30th-Anniversa-Zinsser-William.pdf';
   const loading = document.getElementById('loading');
   const readings = document.getElementById('readings');
   const tools = document.getElementById('readingTools');
@@ -298,6 +308,7 @@
       img.className = 'manuscript-image';
       frame.replaceWith(img);
     });
+
     panel.querySelectorAll('div[style*="text-align: center"]').forEach(function (div) {
       div.removeAttribute('style');
     });
@@ -308,7 +319,9 @@
     const target = document.querySelector(window.location.hash);
     if (target && target.matches('.reading-section')) {
       target.open = true;
-      setTimeout(function () { target.scrollIntoView({ block: 'start' }); }, 0);
+      setTimeout(function () {
+        target.scrollIntoView({ block: 'start' });
+      }, 0);
     }
   }
 
@@ -336,6 +349,7 @@
       const titleSpan = document.createElement('span');
       titleSpan.className = 'summary-title';
       titleSpan.textContent = title;
+
       const icon = document.createElement('span');
       icon.className = 'summary-icon';
       icon.setAttribute('aria-hidden', 'true');
@@ -354,7 +368,9 @@
       link.className = 'chapter-link';
       link.href = '#' + id;
       link.textContent = shortLabel(title);
-      link.addEventListener('click', function () { details.open = true; });
+      link.addEventListener('click', function () {
+        details.open = true;
+      });
       chapterNav.appendChild(link);
     });
 
@@ -362,12 +378,17 @@
     tools.hidden = false;
 
     const sections = Array.from(document.querySelectorAll('.reading-section'));
+
     document.getElementById('expandAll').addEventListener('click', function () {
-      sections.forEach(function (section) { section.open = true; });
+      sections.forEach(function (section) {
+        section.open = true;
+      });
     });
 
     document.getElementById('collapseAll').addEventListener('click', function () {
-      sections.forEach(function (section) { section.open = false; });
+      sections.forEach(function (section) {
+        section.open = false;
+      });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -375,7 +396,7 @@
     openHashTarget();
   } catch (error) {
     loading.className = 'error';
-    loading.innerHTML = '<strong>The reading could not be loaded.</strong><p>Please use the PDF copy in Canvas.</p>';
+    loading.innerHTML = '<strong>The reading could not be loaded.</strong><p><a href="' + pdfUrl + '" target="_blank" rel="noopener">Open the PDF copy instead.</a></p>';
     console.error(error);
   }
 }());
