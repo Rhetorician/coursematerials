@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWS 290 | Finding Business Articles</title>
+<style>
+:root{
+  --black:#000000;
+  --ink:#111111;
+  --red:#a6192e;
+  --red-dark:#761022;
+  --white:#ffffff;
+  --panel:#f3f3f3;
+  --line:#d6d6d6;
+  --muted:#616161;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:var(--ink);font-family:Helvetica,Arial,sans-serif;line-height:1.55}
+button,input,textarea,select{font:inherit}
+button{touch-action:manipulation}
+a{color:inherit}
+.shell{width:min(1180px,calc(100% - 32px));margin:0 auto;background:var(--white);min-height:100vh}
+.hero{padding:34px 34px 30px;background:var(--black);color:var(--white);border-top:8px solid var(--red)}
+.kicker{margin:0 0 7px;font-size:11pt;font-weight:700;letter-spacing:.04em}
+.hero h1{margin:0;max-width:900px;font-size:clamp(2rem,5vw,3.7rem);line-height:1.04}
+.hero p:last-child{max-width:860px;margin:16px 0 0;color:#e8e8e8;font-size:1.08rem}
+main{padding:30px 34px 60px}
+.jump-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:14px;background:var(--panel);border-left:6px solid var(--red)}
+.jump-nav a{display:inline-block;padding:8px 11px;background:#fff;border:1px solid #aaa;text-decoration:none;font-weight:700}
+.jump-nav a:hover,.jump-nav a:focus-visible{border-color:var(--red);color:var(--red-dark)}
+.section{scroll-margin-top:18px;padding:28px 0;border-bottom:1px solid var(--line)}
+.section:first-of-type{padding-top:4px}
+.section h2{margin:0 0 8px;font-size:1.65rem}
+.section-intro{max-width:900px;margin:0 0 18px;color:#414141}
+.callout{margin:0 0 20px;padding:15px 17px;background:var(--panel);border-left:6px solid var(--red)}
+.callout strong{display:block;margin-bottom:3px}
+.callout p{margin:0}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.start-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:14px}
+.also-useful{margin-top:14px;padding:14px 16px;background:var(--panel);border-left:5px solid #111}
+.also-useful strong{display:block;margin-bottom:4px}
+.also-useful p{margin:0 0 9px;color:#444}
+.also-useful a{font-weight:700}
+.card{display:flex;flex-direction:column;min-height:210px;padding:17px;border:1px solid var(--line);border-top:5px solid var(--red);background:#fff}
+.card h3{margin:0 0 8px;font-size:1.08rem}
+.card p{margin:0 0 10px;color:#444}
+.card ul{margin:0;padding-left:21px}
+.card li{margin:0 0 6px}
+.card .button-link{align-self:flex-start;margin-top:auto}
+.button-link{display:inline-block;padding:9px 12px;background:#111;color:#fff;text-decoration:none;font-weight:700}
+.button-link:hover,.button-link:focus-visible{background:var(--red)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.operator-list{display:grid;gap:10px}
+.operator{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:13px 14px;background:var(--panel);border-left:5px solid #111}
+.operator code{font-weight:700;font-size:1rem}
+.operator p{margin:0;color:#3d3d3d}
+.example-box{padding:17px;background:#111;color:#fff}
+.example-box h3{margin:0 0 10px}
+.example-box pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#fff}
+.example-box p{margin:12px 0 0;color:#e3e3e3}
+.resource-row{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:start}
+.resource-panel{padding:18px;border:1px solid var(--line);background:#fff}
+.resource-panel h3{margin:0 0 8px}
+.resource-panel p{margin:0 0 11px;color:#444}
+.resource-panel ul{margin:0 0 16px;padding-left:22px}
+.resource-panel li{margin:0 0 7px}
+.repair-lab{border:1px solid var(--line);background:#fff}
+.repair-head{padding:18px 20px 15px;background:var(--panel);border-bottom:1px solid var(--line)}
+.repair-head h3{margin:0}
+.repair-head p{margin:6px 0 0;color:#444}
+.repair-body{padding:20px}
+.field{margin:0 0 17px}
+.field label{display:block;margin-bottom:6px;font-weight:700}
+.field textarea,.field select{width:100%;padding:11px 12px;border:1px solid #999;border-radius:0;background:#fff;color:#111}
+.field textarea{min-height:100px;resize:vertical}
+.symptom-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.symptom-fieldset{margin:0;padding:0;border:0}
+.symptom-fieldset legend{margin:0 0 7px;padding:0;font-weight:700}
+.symptom{min-height:62px;padding:11px 12px;border:1px solid #999;background:#fff;color:#111;text-align:left;cursor:pointer}
+.symptom strong{display:block}
+.symptom span{display:block;margin-top:2px;color:#555;font-size:.9rem}
+.symptom:hover{border-color:var(--red)}
+.symptom:focus-visible{border-color:var(--red);outline:3px solid #111;outline-offset:2px}
+.symptom.selected{border-color:var(--red);box-shadow:inset 6px 0 0 var(--red);background:#fafafa}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.action{padding:10px 14px;border:0;font-weight:700;cursor:pointer}
+.action.primary{background:var(--red);color:#fff}
+.action.secondary{background:#fff;color:#111;border:2px solid #111}
+.action:disabled{opacity:.45;cursor:not-allowed}
+.repair-output{display:none;margin-top:20px;padding:17px;background:#111;color:#fff;border-top:6px solid var(--red)}
+.repair-output.show{display:block}
+.repair-rule{margin:0 0 17px;padding:11px 13px;background:#fff7e6;border-left:5px solid var(--red)}
+.repair-rule strong{display:inline}
+.operator-caution{margin-top:10px;padding:12px 14px;background:#fff7e6;border-left:5px solid var(--red)}
+.operator-caution p{margin:0;color:#3d3d3d}
+.keep-test{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.keep-item{padding:13px 14px;background:var(--panel);border-left:5px solid var(--red)}
+.keep-item strong{display:block;margin-bottom:3px}
+.keep-item p{margin:0;color:#444}
+.finish-test{margin-top:16px;padding:17px;background:#111;color:#fff;border-top:6px solid var(--red)}
+.finish-test p{margin:0}
+.finish-test strong{color:#fff}
+.repair-output h4{margin:0 0 9px}
+.repair-output ul{margin:0 0 14px;padding-left:22px}
+.repair-output li{margin:0 0 7px}
+.repair-query{margin:0;padding:12px 13px;background:#fff;color:#111;white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.video-wrap{position:relative;width:100%;padding-top:56.25%;background:#000}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.checklist{display:grid;gap:9px}
+.check{padding:12px 14px;background:var(--panel);border-left:5px solid var(--red)}
+.check strong{display:block}
+.check p{margin:3px 0 0;color:#444}
+footer{padding:22px 34px 34px;background:#000;color:#ddd;border-top:8px solid var(--red)}
+footer p{margin:0}
+@media(max-width:900px){.card-grid{grid-template-columns:1fr 1fr}.two-col,.resource-row,.start-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.shell{width:100%}.hero{padding:26px 20px 23px}main{padding:22px 18px 45px}.card-grid,.symptom-grid,.keep-test{grid-template-columns:1fr}.operator{grid-template-columns:1fr;gap:4px}}
+@media print{body,.shell{background:#fff}.hero,.jump-nav,.repair-lab .actions,.video-wrap{display:none!important}main{padding:0}.section{break-inside:avoid}.button-link{display:none}.repair-output{display:none!important}.repair-output.show{display:block!important;background:#fff;color:#000;border:1px solid #000}.repair-query{border:1px solid #000}.finish-test{background:#fff;color:#000;border:2px solid #000}.finish-test strong{color:#000}footer{background:#fff;color:#000;border-top:2px solid #000;padding:20px 0}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <p class="kicker">RWS 290 &middot; Recommendation Report Research</p>
+    <h1>Finding Business Articles</h1>
+    <p>Use business, trade, and scholarly articles to find current evidence about the issue, industry, organization, customers, competitors, and pressures shaping your recommendation.</p>
+  </header>
+
+  <main>
+    <nav class="jump-nav" aria-label="Page sections">
+      <a href="#start">Start here</a>
+      <a href="#article-types">Article types</a>
+      <a href="#search-language">Search language</a>
+      <a href="#repair">Repair a search</a>
+      <a href="#advanced">Advanced searching</a>
+      <a href="#keep">Keep the article?</a>
+    </nav>
+
+    <section class="section" id="start">
+      <h2>Start with the SDSU Business Guide</h2>
+      <p class="section-intro">The Business Guide is the main doorway to SDSU business databases. When the Research Navigator recommends <strong>Business Articles</strong>, start there rather than trying to guess which database contains the source you need.</p>
+
+      <div class="callout">
+        <strong>Use the search your Navigator gave you.</strong>
+        <p>Copy one search starter at a time into an article database. Search the factor you are investigating now instead of trying to cram the entire Recommendation Report into one search box.</p>
+      </div>
+
+      <div class="start-grid">
+        <article class="card">
+          <h3>SDSU Business Guide</h3>
+          <p>Use the guide to reach business article databases and move into company, industry, consumer, or other specialized business research when needed.</p>
+          <a class="button-link" href="https://libguides.sdsu.edu/business" target="_blank" rel="noopener">Open Business Guide ↗</a>
+        </article>
+
+        <article class="card">
+          <h3>Business article databases</h3>
+          <p>The Business Guide includes article databases such as ABI/INFORM, Business Source Premier, and Business: Insights. Different databases index different publications, so a weak result in one database does not mean the evidence does not exist.</p>
+          <a class="button-link" href="https://libguides.sdsu.edu/business" target="_blank" rel="noopener">Find article databases ↗</a>
+        </article>
+      </div>
+
+      <div class="also-useful">
+        <strong>Also useful: BrowZine</strong>
+        <p>Use BrowZine when you want to browse recent issues of journals and publications rather than beginning with a keyword search.</p>
+        <a href="https://libguides.sdsu.edu/browzine" target="_blank" rel="noopener">Open BrowZine guide ↗</a>
+      </div>
+    </section>
+
+    <section class="section" id="article-types">
+      <h2>Choose the kind of article that can answer the question</h2>
+      <p class="section-intro">“Article” is not one source type. The useful distinction is what the source can actually tell you.</p>
+
+      <div class="callout"><strong>Scholarly does not automatically mean “better.”</strong><p>Choose the type that can answer the factor you are investigating. A current trade or business article may be more useful than an older scholarly article when the question is about what is happening now.</p></div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Business news and reporting</h3>
+          <p>Best for what is happening now: a company decision, controversy, regulation, market change, competitor move, labor problem, lawsuit, customer reaction, or other current development.</p>
+          <ul>
+            <li>Current events and recent changes</li>
+            <li>Independent reporting</li>
+            <li>Quotes from companies, workers, regulators, analysts, or customers</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Trade and industry articles</h3>
+          <p>Best for what people inside an industry are seeing, doing, debating, or preparing for.</p>
+          <ul>
+            <li>Industry practices and operating problems</li>
+            <li>Technology, labor, regulation, and market trends</li>
+            <li>Examples from comparable organizations</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Scholarly articles</h3>
+          <p>Best when the factor needs research evidence rather than only current reporting.</p>
+          <ul>
+            <li>Studies, data, methods, and findings</li>
+            <li>Customer or employee behavior</li>
+            <li>Longer-term evidence about effects, attitudes, access, risk, or outcomes</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="search-language">
+      <h2>Read the database language</h2>
+      <p class="section-intro">The Navigator's searches use ordinary Boolean search tools. You do not need to memorize a secret librarian dialect. You do need to know what the pieces are doing so you can change them when the results suck.</p>
+
+      <div class="two-col">
+        <div class="operator-list">
+          <div class="operator"><code>AND</code><p>Requires both ideas. Use it to connect different concepts: <strong>Starbucks AND homelessness</strong>.</p></div>
+          <div class="operator"><code>OR</code><p>Connects alternatives or synonyms: <strong>(homelessness OR "unhoused people")</strong>.</p></div>
+          <div class="operator"><code>" "</code><p>Searches a phrase as a phrase: <strong>"customer service"</strong>.</p></div>
+          <div class="operator"><code>( )</code><p>Keeps alternatives together: <strong>(regulation OR policy OR compliance)</strong>.</p></div>
+          <div class="operator"><code>*</code><p>Searches a word stem. <strong>consumer*</strong> can retrieve consumer and consumers. Databases vary slightly in how truncation works.</p></div>
+          <div class="operator-caution"><p><strong>Use NOT carefully.</strong> It removes a term, but it can eliminate useful results along with the junk you were trying to remove. Treat it as a cleanup tool, not a default search operator.</p></div>
+        </div>
+
+        <div class="example-box">
+          <h3>Example from the Navigator</h3>
+          <pre>("McDonald's" OR "fast food restaurant" OR "quick service restaurant")
+AND ("plant-based meat" OR "meat alternatives" OR "vegetarian menu options")
+AND (consumer* OR customer* OR demand)</pre>
+          <p>The first group identifies the organization or industry. The second identifies the change or issue. The third tells the database what kind of evidence the student wants for the selected factor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="repair">
+      <h2>Repair a search that is not working</h2>
+      <p class="section-intro">Database searching is iterative. A bad first result is information about the search, not evidence that your topic is impossible.</p>
+
+      <div class="repair-lab">
+        <div class="repair-head">
+          <h3>Search Repair Lab</h3>
+          <p>Paste the search you are using, then choose the problem you are having.</p>
+        </div>
+
+        <div class="repair-body">
+          <div class="field">
+            <label for="repair-query">Current search</label>
+            <textarea id="repair-query" placeholder='Example: Starbucks AND "late-night service" AND (consumer* OR customer* OR demand)'></textarea>
+          </div>
+
+          <p class="repair-rule"><strong>Operating rule:</strong> Change one thing at a time. If you rewrite the whole search after every weak result, you will not know which change helped.</p>
+
+          <fieldset class="symptom-fieldset">
+            <legend>What is wrong with the results?</legend>
+            <div class="symptom-grid" id="symptom-grid">
+              <button class="symptom" type="button" data-symptom="too-many" aria-pressed="false"><strong>Too many results</strong><span>The search is broad or noisy.</span></button>
+              <button class="symptom" type="button" data-symptom="too-few" aria-pressed="false"><strong>Too few results</strong><span>The search is too restrictive.</span></button>
+              <button class="symptom" type="button" data-symptom="wrong" aria-pressed="false"><strong>Wrong kind of results</strong><span>The words are matching the wrong meaning.</span></button>
+              <button class="symptom" type="button" data-symptom="old" aria-pressed="false"><strong>Results are too old</strong><span>The topic needs more current evidence.</span></button>
+            </div>
+          </fieldset>
+
+          <div class="actions">
+            <button class="action primary" id="repair-button" type="button" disabled>Show Repair Moves</button>
+            <button class="action secondary" id="repair-reset" type="button">Reset</button>
+          </div>
+
+          <div class="repair-output" id="repair-output" aria-live="polite">
+            <h4 id="repair-title"></h4>
+            <ul id="repair-list"></ul>
+            <p style="margin:0 0 7px;"><strong>Try revising the search:</strong></p>
+            <pre class="repair-query" id="repair-example"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="advanced">
+      <h2>Advanced article searching</h2>
+      <p class="section-intro">Once the basic search is working, database filters and careful keyword changes can make the results much more useful.</p>
+
+      <div class="resource-row">
+        <div>
+          <div class="checklist">
+            <div class="check"><strong>Use the database filters after you have useful keywords.</strong><p>Publication date, subject, publication type, peer review, and other filters can narrow a strong search. They cannot rescue meaningless search terms.</p></div>
+            <div class="check"><strong>Read useful result records for better vocabulary.</strong><p>Subject terms, keywords, headlines, abstracts, and industry language can give you better search terms than the words you started with.</p></div>
+            <div class="check"><strong>Run more than one search.</strong><p>Your Recommendation Report has multiple factors. One giant search is usually worse than several focused searches aimed at different evidence.</p></div>
+          </div>
+        </div>
+
+        <div class="resource-panel">
+          <h3>Advanced Search Strategies</h3>
+          <p>This short walkthrough covers the search moves used on this page, including Boolean operators, phrase searching, truncation, and grouping terms.</p>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/Yw9Djl_0vK4" title="Advanced article search strategies" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="keep">
+      <h2>Before you keep the article</h2>
+      <p class="section-intro">An article is useful when it gives you evidence for the factor you are investigating. Mentioning your company, industry, or topic is not enough.</p>
+
+      <div class="keep-test">
+        <div class="keep-item"><strong>Which factor does it help investigate?</strong><p>You should be able to connect the article to one of the factors your group is actually researching.</p></div>
+        <div class="keep-item"><strong>What evidence does it give you?</strong><p>Name the fact, finding, example, comparison, data point, or expert information you could actually use.</p></div>
+        <div class="keep-item"><strong>Is it current enough for the claim?</strong><p>Recent developments usually need recent evidence. Older research can still be useful when it explains a pattern that remains relevant.</p></div>
+        <div class="keep-item"><strong>Does it answer the question?</strong><p>An article that merely mentions the topic is not automatically evidence for the factor you are investigating.</p></div>
+      </div>
+
+      <div class="finish-test">
+        <p><strong>Finish this sentence:</strong> “This article helps us investigate ______ because it shows ______.” If you cannot fill in both blanks specifically, keep searching.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>RWS 290 &middot; Recommendation Report Research</p></footer>
+</div>
+
+<script>
+const symptomButtons=[...document.querySelectorAll('[data-symptom]')];
+const repairButton=document.getElementById('repair-button');
+const repairReset=document.getElementById('repair-reset');
+const repairQuery=document.getElementById('repair-query');
+const repairOutput=document.getElementById('repair-output');
+const repairTitle=document.getElementById('repair-title');
+const repairList=document.getElementById('repair-list');
+const repairExample=document.getElementById('repair-example');
+let selectedSymptom='';
+
+const repairs={
+  'too-many':{
+    title:'Narrow the search without strangling it.',
+    moves:[
+      'Add the specific organization, industry, location, or proposed change that matters to your factor.',
+      'Put important multiword ideas in quotation marks.',
+      'Add one evidence concept with AND, such as regulation, demand, labor, cost, customer behavior, or implementation.',
+      'Use date or publication-type filters after the keywords are working.'
+    ]
+  },
+  'too-few':{
+    title:'Remove restrictions and add alternatives.',
+    moves:[
+      'Delete the least important AND concept and search again.',
+      'Replace one narrow phrase with two or three alternatives joined by OR.',
+      'Remove quotation marks from wording that may vary across publications.',
+      'Search the broader industry or problem first, then add the specific organization after you learn the vocabulary.'
+    ]
+  },
+  'wrong':{
+    title:'Find the concept producing the wrong meaning, then rebuild that part.',
+    moves:[
+      'Search each major concept by itself. The concept that produces the irrelevant results is the concept you need to repair.',
+      'Keep the concept that is working. Replace only the bad concept with a more specific phrase, broader category, industry term, or useful synonym.',
+      'Look at the headlines, abstracts, and subject terms in the closest useful results. Borrow the vocabulary the publications are actually using.',
+      'Use NOT only when one unwanted meaning completely dominates the results. If the search is trying to answer two different questions, split it into two searches.'
+    ]
+  },
+  'old':{
+    title:'Make the search current without throwing away useful background.',
+    moves:[
+      'Use the database publication-date filter to emphasize the most recent years.',
+      'Add a current issue term such as regulation, adoption, pricing, labor, expansion, policy, or another change relevant to the factor.',
+      'Search recent business and trade reporting for current developments.',
+      'Keep older scholarly or background evidence when it explains a pattern that is still relevant.'
+    ]
+  }
+};
+
+function clearRepairOutput(){
+  repairOutput.classList.remove('show');
+  repairTitle.textContent='';
+  repairList.innerHTML='';
+  repairExample.textContent='';
+}
+
+function updateRepairButton(){
+  repairButton.disabled=!(selectedSymptom&&repairQuery.value.trim());
+}
+
+symptomButtons.forEach(button=>{
+  button.addEventListener('click',()=>{
+    symptomButtons.forEach(b=>{
+      b.classList.remove('selected');
+      b.setAttribute('aria-pressed','false');
+    });
+    button.classList.add('selected');
+    button.setAttribute('aria-pressed','true');
+    selectedSymptom=button.dataset.symptom;
+    clearRepairOutput();
+    updateRepairButton();
+  });
+});
+
+repairQuery.addEventListener('input',()=>{
+  clearRepairOutput();
+  updateRepairButton();
+});
+
+
+function booleanStructureProblems(query){
+  const value=(query||'').trim();
+  const problems=[];
+
+  const quoteCount=(value.match(/"/g)||[]).length;
+  if(quoteCount%2!==0) problems.push('an unmatched quotation mark');
+
+  let depth=0;
+  let negative=false;
+  let inQuote=false;
+  for(const ch of value){
+    if(ch==='"'){
+      inQuote=!inQuote;
+      continue;
+    }
+    if(inQuote) continue;
+    if(ch==='(') depth++;
+    if(ch===')'){
+      depth--;
+      if(depth<0) negative=true;
+    }
+  }
+  if(depth!==0||negative) problems.push('unbalanced parentheses');
+
+  if(/\b(?:AND|OR)\s+(?:AND|OR)\b/i.test(value)){
+    problems.push('consecutive Boolean operators');
+  }
+
+  if(/^\s*(?:AND|OR)\b/i.test(value)||/\b(?:AND|OR)\s*$/i.test(value)){
+    problems.push('a Boolean operator at the beginning or end');
+  }
+
+  if(/\(\s*\)/.test(value)){
+    problems.push('empty parentheses');
+  }
+
+  if(/\(\s*(?:AND|OR)\b/i.test(value)||/\b(?:AND|OR)\s*\)/i.test(value)){
+    problems.push('an incomplete expression inside parentheses');
+  }
+
+  return [...new Set(problems)];
+}
+
+function showBooleanStructureWarning(query,problems){
+  repairTitle.textContent='Fix the search structure first.';
+  repairList.innerHTML='';
+
+  const moves=[
+    'Repair the Boolean syntax before changing the keywords.',
+    'Make sure quotation marks are paired and every opening parenthesis has a closing parenthesis.',
+    'Use AND or OR once between complete concepts. Do not begin or end the search with an operator.',
+    'Run the repaired search first. Then use the Repair Lab again if the results are still too broad, too narrow, wrong, or old.'
+  ];
+
+  moves.forEach(move=>{
+    const li=document.createElement('li');
+    li.textContent=move;
+    repairList.appendChild(li);
+  });
+
+  repairExample.textContent=query.trim()+'\\n\\nDetected: '+problems.join('; ')+'.';
+  repairOutput.classList.add('show');
+}
+
+function suggestedQuery(query,symptom){
+  const value=query.trim()||'[your current search]';
+
+  if(symptom==='too-many'){
+    if(/\bAND\b/i.test(value)) return value+' AND [one specific evidence concept]';
+    return value+' AND [specific factor term]';
+  }
+
+  if(symptom==='too-few'){
+    const quoted=[...value.matchAll(/"([^"]+)"/g)];
+    if(quoted.length){
+      const target=quoted[0][0];
+      return value.replace(target,'('+target+' OR [alternative term])');
+    }
+    return value+'\n\nBroaden ONE concept with this pattern: ([current narrow term] OR [alternative term])';
+  }
+
+  if(symptom==='wrong'){
+    if(/\b(?:AND|OR)\b/i.test(value)){
+      return '[keep the concept that is working] AND ([replace the bad concept] OR [better synonym])';
+    }
+    return '([specific topic term] OR [broader category / industry term]) AND [factor or evidence term]';
+  }
+
+  if(symptom==='old'){
+    return value+'\n\nThen apply a recent publication-date filter in the database.';
+  }
+
+  return value;
+}
+
+repairButton.addEventListener('click',()=>{
+  if(!selectedSymptom||!repairQuery.value.trim()) return;
+
+  const structureProblems=booleanStructureProblems(repairQuery.value);
+  if(structureProblems.length){
+    showBooleanStructureWarning(repairQuery.value,structureProblems);
+    return;
+  }
+
+  const data=repairs[selectedSymptom];
+  repairTitle.textContent=data.title;
+  repairList.innerHTML='';
+
+  data.moves.forEach(move=>{
+    const li=document.createElement('li');
+    li.textContent=move;
+    repairList.appendChild(li);
+  });
+
+  repairExample.textContent=suggestedQuery(repairQuery.value,selectedSymptom);
+  repairOutput.classList.add('show');
+});
+
+repairReset.addEventListener('click',()=>{
+  selectedSymptom='';
+  symptomButtons.forEach(b=>{
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed','false');
+  });
+  repairQuery.value='';
+  clearRepairOutput();
+  updateRepairButton();
+});
+</script>
+</body>
+</html>
