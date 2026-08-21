@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWS 290 | Recommendation Report Research Navigator</title>
+<style>
+:root{
+  --black:#000000;
+  --ink:#111111;
+  --red:#a6192e;
+  --white:#ffffff;
+  --panel:#f3f3f3;
+  --line:#d6d6d6;
+  --muted:#666666;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:var(--ink);font-family:Helvetica,Arial,sans-serif;line-height:1.55}
+button,input,textarea{font:inherit}
+textarea{resize:vertical}
+button{touch-action:manipulation}
+a{color:inherit}
+.shell{width:min(1180px,calc(100% - 32px));margin:0 auto;background:var(--white);min-height:100vh}
+.hero{background:var(--black);color:var(--white);padding:34px 34px 30px;border-top:8px solid var(--red)}
+.kicker{margin:0 0 7px;color:#fff;font-size:11pt;font-weight:700;letter-spacing:.04em}
+.hero h1{margin:0;max-width:900px;font-size:clamp(2rem,5vw,3.8rem);line-height:1.04}
+.hero p:last-child{max-width:850px;margin:16px 0 0;font-size:1.08rem;color:#e8e8e8}
+main{padding:30px 34px 60px}
+.nav-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.panel{border:1px solid var(--line);background:#fff}
+.panel-head{padding:18px 20px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+.panel-head h2{margin:0;font-size:1.35rem}
+.panel-head p{margin:6px 0 0;color:#444}
+.panel-body{padding:18px 20px 20px}
+.field-block+.field-block{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.field-label{display:block;margin:0 0 7px;font-weight:700}
+.topic-input,.concept-input{width:100%;padding:12px 13px;border:1px solid #999;border-radius:0;background:#fff;color:#111}
+.memo-reminder{margin:0 0 22px;padding:15px 17px;background:var(--panel);border-left:6px solid var(--red)}
+.memo-reminder strong{display:block;margin-bottom:3px}
+.memo-reminder p{margin:0;color:#333}
+.concept-editor{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:12px;margin:14px 0}
+.concept-field label{display:block;font-weight:700;margin-bottom:6px}
+.concept-field small{display:block;color:#666;margin-top:5px}
+.concept-warning{display:none;margin:10px 0 0;padding:12px 14px;background:#fff7e6;border-left:5px solid var(--red)}
+.concept-warning.show{display:block}
+.topic-help{margin:7px 0 0;color:var(--muted);font-size:.92rem}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.choice,.situation,.problem{border:1px solid #9e9e9e;background:#fff;color:#111;text-align:left;cursor:pointer}
+.choice{min-height:62px;padding:11px 12px;font-weight:700}
+.situation{min-height:66px;padding:11px 12px}
+.situation strong,.problem strong{display:block;font-size:1rem}
+.situation span,.problem span{display:block;margin-top:3px;color:#555;font-size:.9rem}
+.choice:hover,.choice:focus-visible,.situation:hover,.situation:focus-visible,.problem:hover,.problem:focus-visible{border-color:var(--red);outline:2px solid transparent}
+.choice.selected{background:var(--black);border-color:var(--black);color:#fff;box-shadow:inset 5px 0 0 var(--red)}
+.situation.selected,.problem.selected{border-color:var(--red);box-shadow:inset 6px 0 0 var(--red);background:#fafafa}
+.situation.selected span,.problem.selected span{color:#333}
+.situation-grid,.problem-grid{display:grid;grid-template-columns:1fr;gap:9px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+.action{border:0;padding:11px 16px;font-weight:700;cursor:pointer}
+.action.primary{background:var(--red);color:#fff}
+.action.secondary{background:#fff;color:#111;border:2px solid #111}
+.action:disabled{opacity:.45;cursor:not-allowed}
+.status{min-height:22px;margin-top:9px;color:var(--muted);font-size:.92rem}
+.results{display:none;margin-top:32px;border-top:8px solid var(--red)}
+.results.show{display:block}
+.result-hero{background:var(--black);color:#fff;padding:24px}
+.result-hero h2{margin:0;font-size:1.75rem}
+.result-hero p{margin:8px 0 0;color:#e7e7e7}
+.result-section{padding:24px 0;border-bottom:1px solid var(--line)}
+.result-section h3{margin:0 0 14px;font-size:1.35rem}
+.lens-grid,.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lens-card,.resource-card{border:1px solid var(--line);background:#fff;padding:16px}
+.lens-card{border-top:5px solid var(--red)}
+.lens-card h4,.resource-card h4{margin:0 0 7px;font-size:1.05rem}
+.lens-card p,.resource-card p{margin:0;color:#444}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.list-box{background:var(--panel);border-left:6px solid var(--red);padding:17px 18px}
+.list-box h4{margin:0 0 8px;font-size:1.05rem}
+.list-box ul{margin:0;padding-left:22px}
+.list-box li{margin:0 0 8px}
+.list-box li:last-child{margin-bottom:0}
+.resource-card{display:flex;flex-direction:column;min-height:190px}
+.resource-card .resource-type{margin-bottom:6px;color:var(--red);font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.resource-card p{flex:1}
+.resource-card a{display:inline-block;margin-top:14px;padding:9px 11px;background:#111;color:#fff;text-decoration:none;font-weight:700;align-self:flex-start}
+.resource-card a:hover,.resource-card a:focus-visible{background:var(--red)}
+.secondary-resources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.secondary-card{padding:13px 14px;background:var(--panel);border-left:4px solid #111}
+.secondary-card strong{display:block;margin-bottom:4px}
+.secondary-card p{margin:0 0 8px;color:#444;font-size:.92rem}
+.secondary-card a{font-weight:700;color:#111}
+.search-translation{padding:14px 16px;background:var(--panel);border-left:6px solid var(--red);margin-bottom:13px}
+.search-translation strong{display:block;margin-bottom:5px}
+.search-concepts{display:flex;flex-wrap:wrap;gap:7px}
+.search-chip{display:inline-block;padding:5px 8px;background:#fff;border:1px solid #aaa;font-size:.9rem}
+.search-list{display:grid;gap:9px}
+.search-string{margin:0;padding:12px 14px;background:#111;color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.plan-box{background:#111;color:#fff;border-top:7px solid var(--red);padding:18px}
+.plan-box pre{margin:0;color:#fff;font:inherit;white-space:pre-wrap}
+@media(max-width:900px){
+  .nav-grid,.two-col{grid-template-columns:1fr}
+  .lens-grid,.resource-grid,.secondary-resources{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .shell{width:100%}
+  .hero{padding:26px 20px 23px}
+  main{padding:22px 18px 45px}
+  .choice-grid,.lens-grid,.resource-grid,.secondary-resources,.concept-editor{grid-template-columns:1fr}
+}
+@media print{
+  body,.shell{background:#fff}
+  .hero,.nav-grid,.actions,.status{display:none!important}
+  main{padding:0}
+  .results{display:block!important;margin:0;border:0}
+  .result-hero{background:#fff;color:#000;padding:0 0 16px;border-bottom:3px solid #000}
+  .result-hero p{color:#000}
+  .result-section{break-inside:avoid}
+  .resource-card a,.secondary-card a{display:none}
+  .plan-box{background:#fff;color:#000;border:2px solid #000}
+  .plan-box pre{color:#000}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <p class="kicker">RWS 290 &middot; Recommendation Report</p>
+    <h1>Research Navigator</h1>
+    <p>Choose one factor from your Recommendation Report and build a research path for it.</p>
+  </header>
+
+  <main>
+    <div class="memo-reminder">
+      <strong>Before you begin</strong>
+      <p>Your Kickoff Memo establishes the problem statement, purpose statement, and factors to investigate. Use one of those factors here to plan your research.</p>
+    </div>
+
+    <div class="nav-grid">
+      <section class="panel" aria-labelledby="setup-heading">
+        <div class="panel-head">
+          <h2 id="setup-heading">Your group and topic</h2>
+        </div>
+        <div class="panel-body">
+          <div class="field-block">
+            <label class="field-label" for="topic">What issue or change is your group researching?</label>
+            <input class="topic-input" id="topic" type="text" placeholder="Example: Should Marriott build another hotel near Snapdragon Stadium?">
+            <p class="topic-help">Write the report idea in normal language.</p>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">What kind of situation is this?</span>
+            <div class="situation-grid" id="situation-choices">
+              <button class="situation" type="button" data-situation="new"><strong>New business or idea</strong><span>A venture, location, service, product, or concept that does not exist yet.</span></button>
+              <button class="situation" type="button" data-situation="public"><strong>Existing public company</strong><span>A company with public reporting and SEC filings.</span></button>
+              <button class="situation" type="button" data-situation="private"><strong>Existing private company</strong><span>A company that does not have the same public reporting requirements.</span></button>
+              <button class="situation" type="button" data-situation="nonprofit"><strong>Nonprofit or association</strong><span>A nonprofit, charity, trade association, or tax-exempt organization.</span></button>
+              <button class="situation" type="button" data-situation="publicorg"><strong>Public institution or government</strong><span>A public university, city, agency, school district, or other government institution.</span></button>
+              <button class="situation" type="button" data-situation="market"><strong>Industry or market</strong><span>The problem is about a market or industry rather than one company.</span></button>
+              <button class="situation" type="button" data-situation="unsure"><strong>Not sure</strong><span>Choose this if you do not know whether the organization is public, private, nonprofit, or another type.</span></button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label">Who is in your group?</span>
+            <div class="choice-grid" id="lens-choices">
+              <button class="choice" type="button" data-lens="finance">Finance</button>
+              <button class="choice" type="button" data-lens="accounting">Accounting</button>
+              <button class="choice" type="button" data-lens="marketing">Marketing</button>
+              <button class="choice" type="button" data-lens="hospitality">Hospitality / Tourism</button>
+              <button class="choice" type="button" data-lens="mis">MIS / Information Systems</button>
+              <button class="choice" type="button" data-lens="management">Management / Entrepreneurship</button>
+              <button class="choice" type="button" data-lens="mixed">Mixed / Not Sure</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="problem-heading">
+        <div class="panel-head">
+          <h2 id="problem-heading">Which factor are you researching?</h2>
+          <p>Choose the factor you want to investigate right now.</p>
+        </div>
+        <div class="panel-body">
+          <div class="problem-grid" id="problem-choices">
+            <button class="problem" type="button" data-problem="financial"><strong>Financial health or feasibility</strong><span>Can it pay for itself? Does the money make sense?</span></button>
+            <button class="problem" type="button" data-problem="customers"><strong>Customers or demand</strong><span>Who would buy it, use it, visit it, or care?</span></button>
+            <button class="problem" type="button" data-problem="industry"><strong>Industry conditions or competition</strong><span>What market or competitive forces shape the problem?</span></button>
+            <button class="problem" type="button" data-problem="location"><strong>Location or geographic market</strong><span>Where would the idea have the best chance?</span></button>
+            <button class="problem" type="button" data-problem="technology"><strong>Technology or digital behavior</strong><span>Is adoption growing? What would implementation involve?</span></button>
+            <button class="problem" type="button" data-problem="strategy"><strong>Strategy, expansion, or a new initiative</strong><span>Should the organization move forward, change direction, or launch?</span></button>
+            <button class="problem" type="button" data-problem="risk"><strong>Risk, regulation, or external pressure</strong><span>What could derail the recommendation?</span></button>
+            <button class="problem" type="button" data-problem="broad"><strong>I am still figuring out the factor</strong><span>Start with the major research areas that could change the recommendation.</span></button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="actions">
+      <button class="action primary" id="build" type="button" disabled>Build Research Path</button>
+      <button class="action secondary" id="reset" type="button">Reset</button>
+    </div>
+    <div class="status" id="status" aria-live="polite"></div>
+
+    <section class="results" id="results" aria-live="polite">
+      <div class="result-hero">
+        <h2 id="result-title">Research Path</h2>
+        <p id="result-summary"></p>
+      </div>
+
+      <div class="result-section" id="lens-section">
+        <h3>How your group can split the research</h3>
+        <div class="lens-grid" id="lens-output"></div>
+      </div>
+
+      <div class="result-section">
+        <h3>Questions and evidence for this factor</h3>
+        <div class="two-col">
+          <div class="list-box">
+            <h4>Questions to answer</h4>
+            <ul id="question-output"></ul>
+          </div>
+          <div class="list-box">
+            <h4>Evidence to look for</h4>
+            <ul id="evidence-output"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <h3>Start here</h3>
+        <div class="resource-grid" id="resource-output"></div>
+        <div id="secondary-wrap" hidden>
+          <h3 style="margin-top:22px;">Also useful if...</h3>
+          <div class="secondary-resources" id="secondary-output"></div>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <h3>Turn the issue into database language</h3>
+        <p>The navigator makes a first pass. Edit the terms before searching when its wording misses the mark.</p>
+
+        <div class="concept-editor">
+          <div class="concept-field">
+            <label for="subject-terms">Subject / organization / industry terms</label>
+            <input class="concept-input" id="subject-terms" type="text" placeholder="Example: Marriott, hotel, lodging">
+            <small>Separate alternatives with commas.</small>
+          </div>
+          <div class="concept-field">
+            <label for="issue-terms">Issue / change terms</label>
+            <input class="concept-input" id="issue-terms" type="text" placeholder="Example: expansion, new hotel">
+            <small>Use terms that describe the change being considered.</small>
+          </div>
+          <div class="concept-field">
+            <label for="location-terms">Location terms</label>
+            <input class="concept-input" id="location-terms" type="text" placeholder="Example: San Diego, Snapdragon Stadium">
+            <small>Leave blank when geography does not matter.</small>
+          </div>
+        </div>
+
+        <div class="concept-warning" id="concept-warning">
+          The navigator could not identify a useful subject, organization, or industry term. Enter one above before using the searches.
+        </div>
+        <div class="concept-warning" id="generic-concept-warning">
+          That term is too broad to help much. Use the actual organization, subject, industry, or market instead of words like product, service, business, company, or market.
+        </div>
+
+        <div class="search-translation">
+          <strong>Factor area</strong>
+          <div class="search-concepts" id="concept-output"></div>
+        </div>
+
+        <div class="actions" style="margin-top:12px;">
+          <button class="action secondary" id="update-searches" type="button">Update Searches</button>
+        </div>
+        <div class="search-list" id="search-output"></div>
+      </div>
+
+      <div class="result-section">
+        <h3>Research plan</h3>
+        <div class="plan-box"><pre id="plan-output"></pre></div>
+        <div class="actions">
+          <button class="action primary" id="copy" type="button">Copy Research Plan</button>
+          <button class="action secondary" id="print" type="button">Print</button>
+        </div>
+        <div class="status" id="copy-status" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const resources={
+  mergent:{name:'Mergent Market Atlas',type:'Company / Finance',url:'https://libguides.sdsu.edu/business',reason:'Use it for public company financials, ratios, business segments, management, and related market data.',useWhen:'your recommendation depends on the financial position of a public company'},
+  sec:{name:'SEC EDGAR',type:'Company / Finance',url:'https://www.sec.gov/edgar/search/',reason:'Use company filings to verify financial results, risks, major events, and what a public company officially reports.',useWhen:'you need the company\'s own public filings'},
+  ibis:{name:'IBISWorld',type:'Industry',url:'https://libguides.sdsu.edu/c.php?g=253156&p=6367847',reason:'Use it for industry size, growth, competition, external drivers, forecasts, and financial benchmarks.',useWhen:'industry conditions could change the recommendation'},
+  statista:{name:'Statista',type:'Market / Consumer',url:'https://libguides.sdsu.edu/business',reason:'Use it for market statistics, forecasts, surveys, consumer data, and charts.',useWhen:'you need market size, consumer data, or survey evidence'},
+  emarketer:{name:'EMARKETER',type:'Digital Consumer',url:'https://libguides.sdsu.edu/business',reason:'Use it for ecommerce, advertising, media use, technology adoption, forecasts, and digital consumer behavior.',useWhen:'digital behavior or technology adoption matters'},
+  simply:{name:'SimplyAnalytics',type:'Local Market / Consumer',url:'https://libguides.sdsu.edu/business/simplyanalytics',reason:'Use it to compare local demographics, spending, consumer behavior, ZIP Codes, Census Tracts, and geographic markets.',useWhen:'location or the local customer base matters'},
+  privco:{name:'PrivCo',type:'Private Company',url:'https://libguides.sdsu.edu/business',reason:'Use it for private company profiles, funding, investors, ownership, estimates, and growth information.',useWhen:'you are researching an existing private company'},
+  articles:{name:'Business Articles',type:'News / Trade / Scholarly',url:'https://libguides.sdsu.edu/business',reason:'Use current reporting, trade coverage, and research to find what is changing, disputed, regulated, or happening now.',useWhen:'you need current events, conflict, regulation, or independent reporting'},
+  census:{name:'Census / American Community Survey',type:'Government Data',url:'https://www.census.gov/programs-surveys/acs/',reason:'Use it for population, household, income, education, housing, employment, and demographic data by geography.',useWhen:'you need demographic evidence for a place or population'},
+  bls:{name:'Consumer Expenditure Surveys',type:'Government Consumer Data',url:'https://www.bls.gov/cex/',reason:'Use it for household spending, income, and demographic information.',useWhen:'consumer spending patterns matter'},
+  hospitality:{name:'Hospitality, Tourism & Recreation Guide',type:'Hospitality',url:'https://libguides.sdsu.edu/hospitality',reason:'Use SDSU\'s hospitality guide to find sources focused on lodging, tourism, recreation, restaurants, and related markets.',useWhen:'the problem involves hospitality, tourism, nightlife, food service, or guest experience'},
+  trade:{name:'Trade Associations',type:'Industry Perspective',url:'https://libguides.sdsu.edu/business',reason:'Use industry organizations for statistics, member data, reports, regulatory issues, and the industry\'s own perspective.',useWhen:'an industry organization tracks the issue or regulation'},
+  newsroom:{name:'Company Newsroom / Investor Relations',type:'Company Source',url:'https://libguides.sdsu.edu/business',reason:'Use it to find what an existing company has announced, planned, claimed, or reported.',useWhen:'the company\'s own explanation or announcement matters'},
+  irs:{name:'IRS Tax Exempt Organization Search',type:'Nonprofit / Organization',url:'https://www.irs.gov/charities-non-profits/tax-exempt-organization-search',reason:'Use it to locate tax-exempt organization records and Form 990 information when available.',useWhen:'you are researching a nonprofit or tax-exempt organization'},
+  sandiego:{name:'City of San Diego',type:'Local Government',url:'https://www.sandiego.gov/',reason:'Use the City\'s business, zoning, permit, and development-code pages to check local operating rules.',useWhen:'the idea would operate in San Diego and permits, zoning, or local rules matter'},
+  government:{name:'State & Local Government Sources',type:'Official Sources',url:'https://www.usa.gov/state-local-governments',reason:'Use official state and local government sites for permits, zoning, licensing, taxes, and operating rules.',useWhen:'the recommendation depends on local or state regulation'},
+  calaw:{name:'California Legislative Information',type:'Law / Regulation',url:'https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?article=3.&chapter=2.&division=5.&lawCode=EDC&part=40.&title=3.',reason:'Use the current California Education Code and enacted legislation to verify legal requirements that apply to public colleges and universities.',useWhen:'California law could shape the recommendation'},
+  csupolicy:{name:'CSU Policy Library',type:'Institution / Policy',url:'https://www.calstate.edu/policies',reason:'Use official CSU systemwide policies to verify rules, responsibilities, and requirements that may apply across CSU campuses.',useWhen:'the recommendation involves a CSU campus or systemwide policy'},
+  sanitation:{name:'Project for Sanitation Justice',type:'SDSU Research',url:'https://bathrooms.sdsu.edu/',reason:'Use SDSU research on public restrooms, sanitation access, menstrual hygiene products, and related equity questions.',useWhen:'the issue involves restrooms, sanitation, menstrual products, or access'},
+  sdsuresources:{name:'SDSU Campus Sources',type:'Institution / Campus',url:'https://www.sdsu.edu/',reason:'Use current SDSU pages to verify existing campus programs, facilities, policies, and practices before defining the problem.',useWhen:'the recommendation concerns what SDSU currently does'}
+};
+
+const situations={
+  new:{name:'New business or idea',exclude:['mergent','sec','privco','newsroom','irs','csupolicy','sanitation','sdsuresources'],boost:{ibis:5,articles:4,simply:3,statista:2,trade:2,government:2}},
+  public:{name:'Existing public company',exclude:['privco','irs','csupolicy','sanitation','sdsuresources'],boost:{mergent:2,sec:2,newsroom:2,ibis:2,articles:3}},
+  private:{name:'Existing private company',exclude:['mergent','sec','irs','csupolicy','sanitation','sdsuresources'],boost:{privco:7,articles:4,ibis:3,statista:1}},
+  nonprofit:{name:'Nonprofit or association',exclude:['mergent','sec','privco','calaw','csupolicy','sanitation','sdsuresources'],boost:{irs:7,articles:4,census:2,trade:2,newsroom:2}},
+  publicorg:{name:'Public institution or government',exclude:['mergent','sec','privco','irs','newsroom'],boost:{articles:6,government:5,calaw:4,csupolicy:4,sdsuresources:4,census:2}},
+  market:{name:'Industry or market',exclude:['mergent','sec','privco','newsroom','irs','csupolicy','sanitation','sdsuresources'],boost:{ibis:7,statista:4,trade:4,articles:4}},
+  unsure:{name:'Not sure',exclude:['mergent','sec','privco','newsroom','irs'],boost:{ibis:4,articles:4,statista:3,simply:2}}
+};
+
+const lenses={
+  finance:{name:'Finance',contributions:{
+    financial:'Pull the numbers that can make or break the idea: revenue, margins, cash, debt, financing, startup costs, operating costs, break-even, and expected return.',
+    customers:'Translate demand into money. Estimate what customers spend, how many customers the idea would need, what pricing looks realistic, and what the market could support.',
+    industry:'Compare industry growth, margins, capital demands, cost pressures, and competitor performance to see whether the economics are attractive.',
+    location:'Compare rent or real estate, labor, local spending, taxes and fees, startup costs, and the revenue needed to make the site work.',
+    technology:'Test whether the technology pays for itself through lower costs, higher revenue, productivity, or another measurable return.',
+    strategy:'Estimate what the move would cost, how it would be financed, what return it could produce, and how much downside the organization can absorb.',
+    risk:'Put numbers on the exposure where possible: labor, insurance, regulation, financing, supply problems, or demand changes.',
+    broad:'Find the financial question that could kill the idea or justify it, then get the numbers needed to answer it.'
+  },boost:{mergent:3,sec:3,privco:3,ibis:3,articles:1}},
+  accounting:{name:'Accounting',contributions:{
+    financial:'Verify the revenue, expenses, margins, assets, liabilities, cash flow, taxes, and other reported numbers that matter to the problem.',
+    customers:'Check how sales turn into revenue and costs. Look at payment patterns, cost per customer, receivables, taxes, and other accounting issues behind the model.',
+    industry:'Use industry ratios and reporting data to see whether margins, costs, assets, or liabilities look normal for the business.',
+    location:'Map the fixed and variable costs of the site, including lease costs, payroll, taxes, cash handling, and controls.',
+    technology:'Track purchase or subscription costs, implementation, depreciation, data controls, cybersecurity, and compliance.',
+    strategy:'Trace how the proposal would affect costs, liabilities, reporting, internal controls, and financial statements.',
+    risk:'Look for contingencies, lawsuits, control weaknesses, compliance costs, taxes, or other liabilities that could change the recommendation.',
+    broad:'Figure out which reported numbers, costs, liabilities, or controls matter most to the problem and verify them from records.'
+  },boost:{sec:4,mergent:3,privco:2,articles:2,irs:2}},
+  marketing:{name:'Marketing',contributions:{
+    financial:'Test whether the revenue assumptions make sense by looking at likely customers, pricing, demand, customer volume, and the cost of reaching them.',
+    customers:'Identify the likely customer, how large that audience is, what they spend, what they care about, what alternatives they have, and how they make the choice.',
+    industry:'Compare competitors, market share, positioning, customer trends, and changes in demand that could create an opening or make the idea harder.',
+    location:'Study the local audience: demographics, spending, nearby competitors, customer behavior, and whether the location puts the business near the people it wants.',
+    technology:'Look at adoption, digital behavior, media use, customer expectations, and whether the technology changes how the business reaches or serves customers.',
+    strategy:'Test the market side of the proposal: target customers, demand, positioning, competitors, pricing, channels, and likely customer response.',
+    risk:'Look for customer backlash, reputation problems, changing preferences, weak demand, or competitor moves that could undermine the idea.',
+    broad:'Identify who has to want this for the idea to work, then find evidence about that audience instead of guessing.'
+  },boost:{statista:4,emarketer:3,simply:4,census:2,bls:2}},
+  hospitality:{name:'Hospitality / Tourism',contributions:{
+    financial:'Test the operating economics through customer volume, average spending, seasonality, labor, location costs, and the level of business needed to cover expenses.',
+    customers:'Separate residents, visitors, business travelers, students, or other customer groups and look at when they come, what they spend, and what they expect.',
+    industry:'Check local and industry trends, seasonality, labor conditions, competition, tourism patterns, and operating pressures affecting the concept.',
+    location:'Test the site itself: nearby demand, traffic, visitor and resident mix, competitors, parking or transit, surrounding businesses, and local operating restrictions.',
+    technology:'Look at systems shaping the guest experience and operation, such as reservations, POS, mobile ordering, payments, security, customer data, or automation.',
+    strategy:'Test whether the concept fits the market, location, staffing reality, customer experience, competitive environment, and operating model.',
+    risk:'Investigate permits, alcohol or food rules when relevant, liability, staffing, seasonality, neighborhood pressure, insurance, and other operating risks.',
+    broad:'Start with the guest or customer experience and the local operating reality, then find the evidence that would show whether the idea can work there.'
+  },boost:{hospitality:5,simply:3,ibis:3,statista:2,articles:2}},
+  mis:{name:'MIS / Information Systems',contributions:{
+    financial:'Check the technology and systems costs behind the numbers: implementation, licensing, maintenance, integration, security, staffing, and expected productivity gains.',
+    customers:'Look at how customers use the relevant technology, where adoption is growing, what channels they use, and what data the organization would need to serve them.',
+    industry:'Track technology adoption, digital competition, cybersecurity, platform changes, automation, and systems becoming standard in the industry.',
+    location:'Ask whether the location creates technology or infrastructure problems involving connectivity, payments, security, data, delivery, reservations, or logistics.',
+    technology:'Research adoption, vendors, integration, cybersecurity, privacy, implementation cost, workflow changes, and evidence that the technology solves the actual business problem.',
+    strategy:'Test whether the systems can support the proposal: vendors, data, integration, security, scalability, implementation time, and employee or customer adoption.',
+    risk:'Look for cybersecurity, privacy, vendor dependence, outages, data governance, compliance, integration failure, and implementation risk.',
+    broad:'Find the systems or technology assumption hiding inside the proposal and test whether the organization can actually implement it.'
+  },boost:{emarketer:3,statista:2,articles:4,ibis:2}},
+  management:{name:'Management / Entrepreneurship',contributions:{
+    financial:'Connect the money to execution: staffing, pricing, suppliers, timeline, operating model, ownership, and the assumptions management would have to hit.',
+    customers:'Turn customer demand into an operating plan: who is served, what is offered, how the business reaches them, and what the organization has to do consistently.',
+    industry:'Look at competitors, barriers to entry, suppliers, labor, regulation, partnerships, and the management choices separating successful firms from weak ones.',
+    location:'Treat the location as an operating decision: staffing, suppliers, rent, access, customers, competition, regulation, and local constraints.',
+    technology:'Focus on implementation: who owns the project, how work changes, what training is required, which vendors matter, and what happens if adoption fails.',
+    strategy:'Map the execution problem: staffing, operations, partners, timeline, competitors, resources, and organizational changes required to make the proposal real.',
+    risk:'Identify operational failure points: staffing, vendors, permits, compliance, supply, leadership, reputation, safety, and contingency planning.',
+    broad:'Break the idea into the things the organization would actually have to do, then research the hardest assumptions.'
+  },boost:{ibis:3,articles:3,trade:2,statista:2}},
+  mixed:{name:'Mixed / Not Sure',contributions:{
+    financial:'Start with the money, the market, and the operating assumptions. The first big contradiction you find will usually tell the group where to divide the work.',
+    customers:'Start with who would use or buy it, whether enough demand exists, and whether the economics and operation can support that demand.',
+    industry:'Start with industry conditions, competitors, customers, and the organization\'s ability to compete. Divide the research once the weak point becomes obvious.',
+    location:'Start with local demand, competitors, costs, and operating constraints. Those usually expose which perspective the group needs next.',
+    technology:'Start with the business problem, adoption evidence, implementation cost, and operational risk before getting buried in features.',
+    strategy:'Start with the proposal itself, then test money, market demand, competition, and execution.',
+    risk:'Start with the biggest way the idea could fail, then test different parts of that risk.',
+    broad:'Start with the problem or opportunity and identify the assumption most likely to change the recommendation.'
+  },boost:{ibis:2,articles:2,statista:2}}
+};
+
+const problemData={
+  financial:{title:'Financial health or feasibility',baseQuestions:['What would make the recommendation financially work or fail?','Which revenue, cost, margin, cash, debt, or funding measures matter most?','What assumptions drive the financial case?','How do the numbers compare with competitors or industry benchmarks?','What financial risk could change the recommendation?'],baseEvidence:['financial statements, estimates, or operating numbers','cost and revenue assumptions','industry financial benchmarks','competitor performance','current reporting on costs, financing, or market conditions'],boost:{mergent:5,sec:4,privco:5,ibis:4,articles:2}},
+  customers:{title:'Customers or demand',baseQuestions:['Which customers or users are most affected by this problem or opportunity?','How large is the potential market?','What do those people currently buy, do, value, or avoid?','Where are the likely customers or users located?','Is behavior moving toward or away from the recommendation?'],baseEvidence:['consumer surveys','demographic and spending data','market size and forecast data','digital and media behavior','local market and geographic data'],boost:{statista:6,simply:6,emarketer:5,census:4,bls:3,articles:2}},
+  industry:{title:'Industry conditions or competition',baseQuestions:['How large is the industry and is it growing or shrinking?','Who are the major competitors and how concentrated is the market?','What trends are changing how the industry operates?','What economic, regulatory, technological, or consumer forces matter?','What would make the industry attractive or difficult for the recommendation?'],baseEvidence:['industry reports and forecasts','market share and competitor information','trade association reports','industry news and trade publications','external drivers and regulatory information'],boost:{ibis:7,trade:4,articles:4,statista:3}},
+  location:{title:'Location or geographic market',baseQuestions:['Who lives, works, visits, or spends money in the target area?','What does local demand look like?','How does this area compare with alternative locations?','Where are competitors already concentrated?','What local conditions or rules could support or weaken the recommendation?'],baseEvidence:['local demographic data','consumer spending and behavior by geography','population and household characteristics','local competitor information','zoning, permits, local rules, and regional reporting'],boost:{simply:7,census:6,articles:3,ibis:3,statista:2,government:4}},
+  technology:{title:'Technology or digital behavior',baseQuestions:['How widely is the technology being adopted?','What customer or employee behavior is driving adoption?','What business problem would the technology solve?','What would implementation require?','What security, privacy, cost, integration, or operational risks matter?'],baseEvidence:['technology adoption data','digital consumer behavior','industry and competitor use cases','trade and business reporting','implementation cost, security, and operational information'],boost:{emarketer:8,articles:5,statista:4,ibis:3,trade:2}},
+  strategy:{title:'Strategy, expansion, or a new initiative',baseQuestions:['What exactly is being proposed?','What resources would it take to execute?','Do industry conditions support the move?','Is there evidence of customer or user demand?','What competitors, costs, risks, or operating problems could change the recommendation?'],baseEvidence:['strategy, operating plan, or business model information','industry forecasts and competition','consumer or market demand','cost and resource requirements','independent business reporting'],boost:{ibis:5,articles:5,statista:3,simply:2,trade:2,newsroom:3}},
+  risk:{title:'Risk, regulation, or external pressure',baseQuestions:['What could make the recommendation fail?','What industry forces create the biggest exposure?','What regulations, permits, licensing rules, or legal changes matter?','What labor, insurance, supply, technology, economic, safety, or consumer pressures matter?','Which risks can be managed and which could change the recommendation?'],baseEvidence:['official regulatory or government information','industry external drivers and operating risks','current business and local reporting','trade association or professional guidance','evidence about competitors facing the same pressures'],boost:{articles:6,ibis:5,trade:4,government:5}},
+  broad:{title:'Major factors to investigate',baseQuestions:['What problem or opportunity is the group actually investigating?','What do we need to know about the organization, idea, or market?','What do we need to know about the industry?','What do we need to know about customers or users?','Which unanswered question would most change the recommendation?'],baseEvidence:['company or organization information when relevant','industry reports','consumer or market data','business and trade articles','cost, risk, and competitor information'],boost:{ibis:4,articles:4,statista:3,simply:2}}
+};
+
+const situationOverrides={
+  publicorg:{
+    broad:{questions:['What current policy or practice is actually in place?','Who is affected by the current practice and how?','What laws, regulations, governing policies, accessibility requirements, or public responsibilities matter?','What would the proposed change cost and what would implementation require?','What are comparable agencies, institutions, or jurisdictions doing?'],evidence:['current policies and official practices','applicable laws, regulations, and governing policies','research on affected residents, students, users, or stakeholders','cost and implementation information','evidence from comparable agencies, institutions, or jurisdictions']},
+    customers:{questions:['Which residents, students, employees, visitors, users, or other stakeholders are affected?','How large is the affected population?','What evidence exists about access, use, need, attitudes, or barriers?','Are some groups affected differently by the current practice?','What evidence would show whether the proposed change solves the identified problem?'],evidence:['resident, student, user, or stakeholder research','surveys, administrative data, or public records','scholarly research on access, behavior, need, or inclusion','current official practice','evidence from comparable agencies, institutions, or jurisdictions']},
+    financial:{questions:['What would the proposed change cost to implement and maintain?','Which agency, department, unit, program, or budget would bear the cost?','Are there purchasing, staffing, maintenance, replacement, or administrative costs?','What costs are already being incurred under the current practice?','How do comparable agencies, institutions, or jurisdictions pay for similar programs?'],evidence:['budget, purchasing, or public finance information','vendor or supply costs','staffing, administration, and maintenance requirements','current program costs when available','cost evidence from comparable agencies, institutions, or jurisdictions']},
+    risk:{questions:['What laws, regulations, governing policies, or accessibility requirements apply?','What operational, safety, privacy, equity, legal, or implementation risks matter?','Could the current practice itself create legal, access, operational, or public risk?','Which agencies, departments, units, or officials would be responsible for implementation?','What evidence from comparable agencies, institutions, or jurisdictions shows likely problems or solutions?'],evidence:['current law and regulation','governing policies and official guidance','official current practice','scholarly and professional research','comparable agency, institution, or jurisdiction policies and outcomes']}
+  },
+  new:{
+    customers:{questions:['Who is most likely to buy, use, visit, or adopt the idea?','How large is that potential market?','What do those customers currently buy, do, value, or avoid?','Where are the likely customers located?','Is customer behavior moving toward or away from the idea?'],evidence:['consumer surveys','demographic and spending data','market size and forecast data','customer behavior and preferences','local market and geographic data']},
+    financial:{questions:['What would it cost to start and operate the idea?','How much revenue or customer volume would it need to break even?','What pricing and cost assumptions drive the model?','How much startup capital or financing would it require?','What industry margins or cost pressures make the idea easier or harder?'],evidence:['startup and operating cost estimates','pricing and customer-volume assumptions','industry margins and financial benchmarks','local labor, rent, insurance, tax, or supplier costs','market demand evidence']},
+    strategy:{questions:['What exactly would the new business, service, location, or product offer?','Is there enough demand to justify launching it?','What would it cost and what resources would it require?','Who already competes for the same customers?','What permits, staffing, suppliers, or operating problems could block the idea?'],evidence:['market and customer demand','industry conditions and competitors','startup and operating requirements','location or distribution evidence','permits, regulation, and current reporting']},
+    risk:{questions:['What permits, licenses, zoning rules, or other regulations affect the idea?','What industry conditions could make the idea hard to operate?','What labor, insurance, safety, supply, economic, or reputation risks matter?','Could the location or surrounding community create operating problems?','Which risks are deal breakers and which can be managed?'],evidence:['official zoning, licensing, permit, and regulatory information','industry operating risks and external drivers','local and business reporting','insurance, labor, safety, and supplier information','local market and competitor evidence']},
+    broad:{questions:['Is there enough demand for the proposed business, service, product, or location?','What industry conditions and competitors shape the opportunity?','What would it cost to start and operate?','What location, staffing, supplier, or technology requirements matter?','What permits, regulations, or other risks could change the recommendation?'],evidence:['customer and market demand','industry size, growth, and competitor information','startup and operating costs','location and operating requirements','official regulatory information and current reporting']}
+  },
+  public:{
+    financial:{questions:['How has the company been performing financially?','What do revenue, margins, cash flow, debt, and other relevant measures show?','What does the company report about the issue or proposal?','How does performance compare with competitors or industry benchmarks?','What financial risks could change the recommendation?'],evidence:['10-Ks, 10-Qs, annual reports, and financial statements','company ratios and segment data','industry financial benchmarks','competitor performance','current reporting on costs, financing, or market conditions']},
+    risk:{questions:['What risks does the company report in its filings?','Which industry forces could make the recommendation fail?','What regulations or legal changes matter?','How are competitors responding to the same pressure?','Which risks could materially change the company\'s position?'],evidence:['company risk disclosures and SEC filings','industry external drivers','regulatory and trade association information','current business reporting','competitor responses']}
+  },
+  private:{
+    financial:{questions:['What reliable financial information is available about the private company?','What revenue, funding, ownership, growth, or cost estimates are available?','How does the company compare with industry benchmarks?','What recent financing or investor activity matters?','What uncertainty in the available estimates could change the recommendation?'],evidence:['private company profiles and estimates','funding and investor information','industry financial benchmarks','business and trade reporting','competitor information']},
+    risk:{questions:['What risks appear in reporting about the private company?','What industry forces could make the recommendation fail?','What regulations or legal changes matter?','What funding, labor, supply, technology, or customer pressures matter?','How are competitors responding?'],evidence:['private company profiles and funding information','industry external drivers','regulatory and trade association information','current business reporting','competitor responses']}
+  },
+  nonprofit:{
+    financial:{questions:['Where does the organization\'s money come from and where does it go?','What do available Form 990 records show about revenue, expenses, assets, and compensation?','Is the funding model sustainable?','What programs or operations consume the largest resources?','What financial risks could change the recommendation?'],evidence:['Form 990 and tax-exempt organization records','revenue and expense information','program and operating costs','funding sources and grants','current reporting about the organization']},
+    risk:{questions:['What regulatory, funding, governance, or operating risks affect the organization?','What do tax-exempt records or public documents reveal?','What external funding or policy changes matter?','What reputation or stakeholder pressures matter?','Which risks could change the recommendation?'],evidence:['Form 990 and tax-exempt records','official policy or regulatory sources','funding and grant information','current reporting','stakeholder or association information']}
+  },
+  market:{
+    financial:{questions:['What do industry margins, costs, growth, and financial benchmarks show?','How capital-intensive is the market?','What cost pressures affect firms in the industry?','How do leading competitors perform?','What market conditions could change the financial case?'],evidence:['industry financial benchmarks','market growth and revenue data','competitor performance','cost and external-driver data','business and trade reporting']},
+    risk:{questions:['What external forces create the biggest risk for firms in this market?','What regulations or policy changes affect the industry?','What labor, supply, technology, economic, or consumer pressures matter?','How are major firms responding?','Which risks appear structural rather than temporary?'],evidence:['industry external drivers','regulatory and trade association information','business and trade reporting','competitor responses','market forecasts']}
+  }
+};
+
+
+const topicNormalizationRules=[
+  // Common geographic variants used by SDSU students.
+  [/\bsan\s+deigo\b/gi,'San Diego'],
+  [/\bsandiego\b/gi,'San Diego'],
+  [/\bS\.?\s*D\.?(?=\s|$|[?!,;:])/gi,'San Diego'],
+  [/\bby\s+SDSU\b/gi,'near SDSU'],
+  [/\baround\s+SDSU\b/gi,'near SDSU'],
+  [/\bnear\s+State\b/gi,'near SDSU'],
+
+  // Structural sentence typos that otherwise break subject extraction.
+  [/\bshuld\b/gi,'should'],
+  [/\bshoud\b/gi,'should'],
+  [/\bcoud\b/gi,'could'],
+  [/\bcuold\b/gi,'could'],
+  [/\bwhould\b/gi,'would'],
+  [/\bwoud\b/gi,'would'],
+  [/\bdoez\b/gi,'does'],
+  [/\bdose\b/gi,'does'],
+  [/\bues\b/gi,'use'],
+  [/\busee\b/gi,'use'],
+  [/\bimproove\b/gi,'improve'],
+  [/\bimrpove\b/gi,'improve'],
+  [/\badvertize\b/gi,'advertise'],
+  [/\badvirtise\b/gi,'advertise'],
+  [/\breccomend\b/gi,'recommend'],
+  [/\brecomend\b/gi,'recommend'],
+
+  // Common social-media spelling variants and abbreviations.
+  [/\bsocail\s+media\b/gi,'social media'],
+  [/\bsocial\s+medeia\b/gi,'social media'],
+  [/\bsocial\s+mediaa\b/gi,'social media'],
+  [/\bsoshul\s+media\b/gi,'social media'],
+  [/\bsocials\b/gi,'social media'],
+  [/\bshop\s+on\s+social\s+media\b/gi,'social commerce'],
+  [/\bgoogle\s+ads\b/gi,'search advertising'],
+  [/\badwords\b/gi,'search advertising'],
+  [/\binsta\s+gram\b/gi,'Instagram'],
+  [/\binstagrm\b/gi,'Instagram'],
+  [/\binstgram\b/gi,'Instagram'],
+  [/\binstragram\b/gi,'Instagram'],
+  [/\binsta\b/gi,'Instagram'],
+  [/\btik\s+tok\b/gi,'TikTok'],
+  [/\btiktoc\b/gi,'TikTok'],
+  [/\bticktok\b/gi,'TikTok'],
+  [/\btiktak\b/gi,'TikTok'],
+  [/\byou\s+tube\b/gi,'YouTube'],
+  [/\byoutbe\b/gi,'YouTube'],
+  [/\bface\s+book\b/gi,'Facebook'],
+  [/\bfacebok\b/gi,'Facebook'],
+  [/\blinked\s+in\b/gi,'LinkedIn'],
+  [/\blinkdin\b/gi,'LinkedIn'],
+  [/\blnkedin\b/gi,'LinkedIn'],
+  [/\bredit\b/gi,'Reddit'],
+  [/\breditt\b/gi,'Reddit'],
+  [/\bsnap\s+chat\b/gi,'Snapchat'],
+  [/\bsnapchatt\b/gi,'Snapchat'],
+  [/\bpinterst\b/gi,'Pinterest'],
+  [/\bpintrest\b/gi,'Pinterest'],
+  [/\bthreadz\b/gi,'Threads'],
+  [/\bthreds\b/gi,'Threads'],
+  [/\binfluancer\s+marketing\b/gi,'influencer marketing'],
+  [/\binfluencer\s+markting\b/gi,'influencer marketing'],
+  [/\binfluenser\s+marketing\b/gi,'influencer marketing'],
+  [/\bsearch\s+advertizing\b/gi,'search advertising'],
+  [/\bsocial[- ]comerce\b/gi,'social commerce'],
+  [/\buser[- ]generatd\s+content\b/gi,'user-generated content'],
+  [/\buser\s+gen\s+content\b/gi,'user-generated content'],
+
+  // AI/model spelling variants. These are exact known corrections, not fuzzy guesses.
+  [/\bchat\s+bot\b/gi,'chatbot'],
+  [/\bgen\s+ai\b/gi,'generative AI'],
+  [/\bgenai\b/gi,'generative AI'],
+  [/\bcyber\s+security\b/gi,'cybersecurity'],
+  [/\bA\.?I\.?\b/g,'AI'],
+  [/\bchat\s*gpt\b/gi,'ChatGPT'],
+  [/\bchatgbt\b/gi,'ChatGPT'],
+  [/\bchatgtp\b/gi,'ChatGPT'],
+  [/\bclaud\b/gi,'Claude'],
+  [/\bcluade\b/gi,'Claude'],
+  [/\bgemeni\b/gi,'Gemini'],
+  [/\bgimini\b/gi,'Gemini'],
+  [/\bcopliot\b/gi,'Copilot'],
+  [/\bdeep\s+seek\b/gi,'DeepSeek'],
+  [/\bdeepseak\b/gi,'DeepSeek'],
+  [/\bgrokk\b/gi,'Grok'],
+  [/\blamma\b/gi,'Llama'],
+  [/\bmistrial\b/gi,'Mistral'],
+  [/\bperpelxity\b/gi,'Perplexity'],
+  [/\bmeta\s+a\.?i\.?\b/gi,'Meta AI'],
+  [/\bmetaai\b/gi,'Meta AI'],
+  [/\bopen\s+a\.?i\.?\b/gi,'OpenAI'],
+  [/\bopenai\b/gi,'OpenAI'],
+  [/\banthopic\b/gi,'Anthropic'],
+  [/\banthorpic\b/gi,'Anthropic'],
+  [/\bx\s+a\.?i\.?\b/gi,'xAI'],
+
+  // Common AI-concept typos found in the torture battery.
+  [/\bartifical\s+intelligence\b/gi,'artificial intelligence'],
+  [/\bartificial\s+inteligence\b/gi,'artificial intelligence'],
+  [/\bgeneratve\s+ai\b/gi,'generative AI'],
+  [/\bmachine\s+learnig\b/gi,'machine learning'],
+  [/\bmachne\s+learning\b/gi,'machine learning'],
+  [/\bpredicitive\s+analytics\b/gi,'predictive analytics'],
+  [/\bpredictive\s+analtyics\b/gi,'predictive analytics'],
+  [/\brecomendation\s+algorithm\b/gi,'recommendation algorithm'],
+  [/\bautomatoin\b/gi,'automation'],
+  [/\bautomtion\b/gi,'automation'],
+  [/\bcyber\s+securty\b/gi,'cybersecurity'],
+  [/\bcybersecurty\b/gi,'cybersecurity'],
+  [/\bdata\s+privcy\b/gi,'data privacy'],
+  [/\bcomputer\s+vison\b/gi,'computer vision']
+];
+
+function normalizeTopic(raw){
+  let value=(raw||'').replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/[—–]/g,'-');
+
+  // Strip a few common conversational wrappers without interpreting the slang itself.
+  value=value.replace(/^\s*(?:okay\s+so|ok\s+so|ngl|lowkey|fr)\b[\s,:-]*/i,'');
+  value=value.replace(/\bgotta\s+lock\s+in\s+on\b/gi,'should use');
+  value=value.replace(/\bgotta\s+get\s+on\b/gi,'should use');
+  value=value.replace(/\bget\s+on\b/gi,'use');
+
+  topicNormalizationRules.forEach(([pattern,replacement])=>{
+    value=value.replace(pattern,replacement);
+  });
+
+  value=normalizeShortSocialAliases(value);
+  return value.replace(/\s+/g,' ').trim();
+}
+
+function normalizeShortSocialAliases(value){
+  const aliases={IG:'Instagram',FB:'Facebook',YT:'YouTube',TT:'TikTok'};
+  const organizationSuffix=/^\s+(?:Group|Financial|Industries|Electronics|Design|Brands|Holdings|Bank|Capital|Partners|Systems|Technologies|Technology|Media|Networks|Labs|Inc|Corp|Corporation|Company|Co|LLC|Ltd|PLC)\b/i;
+  const useBefore=/(?:\b(?:use|using|via|through|on|advertise|advertising|market|marketing|post|posting|promote|promoting|join|reach|target|be|being|get|getting|invest\s+in)\s+)$/i;
+  const useAfter=/^\s+(?:ads?|marketing|content|posts?|campaigns?|strategy|for\s+(?:marketing|advertising|customers?|gen\s*z))\b/i;
+
+  return (value||'').replace(/\b(IG|FB|YT|TT)\b/gi,(match,alias,offset,whole)=>{
+    const key=alias.toUpperCase();
+    const before=whole.slice(0,offset);
+    const after=whole.slice(offset+match.length);
+    if(organizationSuffix.test(after)) return match;
+    if(useBefore.test(before)||useAfter.test(after)) return aliases[key]||match;
+    return match;
+  });
+}
+
+const topicConcepts=[
+  {id:'mcdonalds',group:'subject',patterns:[/mcdonald'?s/i,/mcdonalds/i],terms:["McDonald's",'fast food restaurant','quick service restaurant'],label:"McDonald's / fast food / quick service restaurant"},
+  {id:'plantbased',group:'issue',patterns:[/vegetarian\s+meat/i,/veggie\s+(burger|meat|patty)/i,/plant[- ]based\s+(meat|burger|patty|protein)/i,/meat\s+alternative/i,/meatless/i],terms:['plant-based meat','meat alternatives','vegetarian menu options'],label:'plant-based meat / meat alternatives'},
+  {id:'socialmedia',group:'digital',patterns:[/social\s+media/i,/social[- ]media/i],terms:['social media','social media marketing'],label:'social media / social media marketing'},
+  {id:'instagram',group:'digital',patterns:[/instagram/i],terms:['Instagram','social media marketing'],label:'Instagram / social media marketing'},
+  {id:'youtube',group:'digital',patterns:[/youtube/i],terms:['YouTube','social media marketing'],label:'YouTube / social media marketing'},
+  {id:'youtubeshorts',group:'digital',patterns:[/youtube\s+shorts?/i],terms:['YouTube Shorts','short-form video'],label:'YouTube Shorts / short-form video'},
+  {id:'facebook',group:'digital',patterns:[/facebook/i],terms:['Facebook','social media marketing'],label:'Facebook / social media marketing'},
+  {id:'linkedin',group:'digital',patterns:[/linkedin/i],terms:['LinkedIn'],label:'LinkedIn'},
+  {id:'reddit',group:'digital',patterns:[/reddit/i],terms:['Reddit'],label:'Reddit'},
+  {id:'snapchat',group:'digital',patterns:[/snapchat/i],terms:['Snapchat'],label:'Snapchat'},
+  {id:'pinterest',group:'digital',patterns:[/pinterest/i],terms:['Pinterest'],label:'Pinterest'},
+  {id:'threads',group:'digital',patterns:[/\bthreads\b/i],terms:['Threads'],label:'Threads'},
+  {id:'influencer',group:'digital',patterns:[/influencer/i,/micro[- ]influencer/i,/creator\s+marketing/i],terms:['influencer marketing','influencers'],label:'influencer marketing'},
+  {id:'socialcommerce',group:'digital',patterns:[/social\s+commerce/i,/sell\s+(?:directly\s+)?through\s+social/i],terms:['social commerce','social media shopping'],label:'social commerce'},
+  {id:'ugc',group:'digital',patterns:[/user[- ]generated\s+content/i,/\bugc\b/i],terms:['user-generated content','UGC'],label:'user-generated content'},
+  {id:'community',group:'digital',patterns:[/online\s+community\s+engagement/i,/community\s+engagement/i],terms:['online community engagement','customer engagement'],label:'online community engagement'},
+  {id:'searchads',group:'digital',patterns:[/search\s+ads?/i,/paid\s+search/i,/search\s+advertising/i],terms:['search ads','search advertising','paid search'],label:'search advertising'},
+  {id:'openai',group:'technology',patterns:[/\bOpenAI\b/i],terms:['OpenAI','generative AI'],label:'OpenAI / generative AI'},
+  {id:'anthropic',group:'technology',patterns:[/\bAnthropic\b/i],terms:['Anthropic','generative AI'],label:'Anthropic / generative AI'},
+  {id:'claude',group:'technology',patterns:[/\bClaude\b/i,/\bAnthropic\s+Claude\b/i],terms:['Claude','generative AI'],label:'Claude / generative AI'},
+  {id:'gemini',group:'technology',patterns:[/\bGemini\b/i,/\bGoogle\s+Gemini\b/i],terms:['Gemini','generative AI'],label:'Gemini / generative AI'},
+  {id:'copilot',group:'technology',patterns:[/\bCopilot\b/i,/\bMicrosoft\s+Copilot\b/i],terms:['Copilot','generative AI'],label:'Copilot / generative AI'},
+  {id:'grok',group:'technology',patterns:[/\bGrok\b/i],terms:['Grok','generative AI'],label:'Grok / generative AI'},
+  {id:'perplexity',group:'technology',patterns:[/\bPerplexity\b/i],terms:['Perplexity','generative AI'],label:'Perplexity / generative AI'},
+  {id:'deepseek',group:'technology',patterns:[/\bDeepSeek\b/i],terms:['DeepSeek','generative AI'],label:'DeepSeek / generative AI'},
+  {id:'metaai',group:'technology',patterns:[/\bMeta\s+AI\b/i],terms:['Meta AI','generative AI'],label:'Meta AI / generative AI'},
+  {id:'llama',group:'technology',patterns:[/\bLlama\b/i],terms:['Llama','large language models','generative AI'],label:'Llama / large language model'},
+  {id:'mistral',group:'technology',patterns:[/\bMistral\b/i],terms:['Mistral','large language models','generative AI'],label:'Mistral / large language model'},
+  {id:'xai',group:'technology',patterns:[/\bxAI\b/i],terms:['xAI','generative AI'],label:'xAI / generative AI'},
+  {id:'chatgpt',group:'technology',patterns:[/chatgpt/i,/chat\s*gpt/i],terms:['ChatGPT','generative AI'],label:'ChatGPT / generative AI'},
+  {id:'llm',group:'technology',patterns:[/large\s+language\s+models?/i,/\bllms?\b/i],terms:['large language models','LLM'],label:'large language models / LLM'},
+  {id:'machinelearning',group:'technology',patterns:[/machine\s+learning/i,/\bML\b/],terms:['machine learning'],label:'machine learning'},
+  {id:'aiagents',group:'technology',patterns:[/\bAI\s+agents?\b/i,/\bagentic\s+AI\b/i],terms:['AI agents','agentic AI'],label:'AI agents / agentic AI'},
+  {id:'rag',group:'technology',patterns:[/\bRAG\b/,/retrieval[- ]augmented\s+generation/i],terms:['RAG','retrieval-augmented generation'],label:'RAG / retrieval-augmented generation'},
+  {id:'computervision',group:'technology',patterns:[/computer\s+vision/i],terms:['computer vision'],label:'computer vision'},
+  {id:'voiceai',group:'technology',patterns:[/voice\s+AI/i,/AI\s+voice\s+agent/i,/voice\s+bot/i],terms:['voice AI','AI voice agents'],label:'voice AI'},
+  {id:'chatbot',group:'technology',patterns:[/chatbots?/i,/conversational\s+ai/i],terms:['chatbots','conversational AI'],label:'chatbots / conversational AI'},
+  {id:'predictive',group:'technology',patterns:[/predictive\s+analytics/i],terms:['predictive analytics'],label:'predictive analytics'},
+  {id:'recommender',group:'technology',patterns:[/recommendation\s+algorithms?/i,/recommender\s+systems?/i],terms:['recommendation algorithms','recommender systems'],label:'recommendation algorithms'},
+  {id:'generativeai',group:'technology',patterns:[/generative\s+ai/i,/ai[- ]generated/i],terms:['generative AI'],label:'generative AI'},
+  {id:'privacy',group:'policy',patterns:[/data\s+privacy/i,/privacy/i],terms:['data privacy','privacy'],label:'data privacy / privacy'},
+  {id:'automation',group:'technology',patterns:[/\bautomation\b/i],terms:['automation','business process automation'],label:'automation'},
+  {id:'automate',group:'technology',patterns:[/\bautomat(?:e|ed|es|ing)\b/i],terms:['automation','business process automation'],label:'automation'},
+  {id:'sdsuorg',group:'organization',patterns:[/san\s+diego\s+state\s+university/i,/\bsdsu\b/i],terms:['San Diego State University','SDSU'],label:'San Diego State University / SDSU'},
+  {id:'menstrual',group:'issue',patterns:[/tampon/i,/menstrual\s+product/i,/period\s+product/i,/period\s+suppl/i],terms:['menstrual products','tampons','period products'],label:'menstrual products / tampons'},
+  {id:'restroom',group:'operations',patterns:[/men'?s\s+(bathroom|restroom)/i,/bathroom/i,/restroom/i],terms:["men's restrooms",'restroom access','gender-inclusive restrooms'],label:"men's restrooms / restroom access"},
+  {id:'inclusion',group:'policy',patterns:[/trans\s+(people|student|person)/i,/transgender/i,/inclusi/i,/menstrual\s+equity/i,/gender\s+equity/i],terms:['transgender inclusion','gender inclusion','menstrual equity'],label:'transgender inclusion / menstrual equity'},
+  {id:'innout',group:'subject',patterns:[/\bin\s*[-&]?\s*n\s*[-&]?\s*out\b/i,/\bin\s+and\s+out\b/i],terms:['In-N-Out','fast food restaurant','quick service restaurant'],label:'In-N-Out / fast food / quick service restaurant'},
+  {id:'petgrooming',group:'subject',patterns:[/dog\s+groom/i,/pet\s+groom/i,/groomer/i],terms:['dog grooming','pet grooming'],label:'dog grooming / pet grooming'},
+  {id:'bathhouse',group:'subject',patterns:[/gay\s+bath\s*house/i,/gay\s+bathhouse/i,/\bbath\s*house\b/i,/\bbathhouse\b/i],terms:['gay bathhouse','bathhouse',"men's bathhouse"],label:'gay bathhouse / bathhouse'},
+  {id:'adult',group:'subject',patterns:[/titty\s*bar/i,/strip\s*club/i,/gentlemen'?s\s*club/i,/adult\s*entertainment/i,/adult\s*club/i],terms:['strip club','adult entertainment'],label:'adult entertainment / strip club'},
+  {id:'bar',group:'subject',patterns:[/\bbar\b/i,/night\s*club/i,/nightclub/i,/nightlife/i,/\bpub\b/i],terms:['bar','nightclub','nightlife'],label:'bar / nightclub / nightlife'},
+  {id:'hotel',group:'subject',patterns:[/\bhotel/i,/\blodging\b/i,/\bresort/i],terms:['hotel','lodging'],label:'hotel / lodging'},
+  {id:'restaurant',group:'subject',patterns:[/restaurant/i,/restaeurant/i,/resturant/i,/taco\s*shop/i,/coffee\s*shop/i,/food\s*service/i,/fast\s*food/i,/quick[- ]service/i,/cafe/i],terms:['restaurant','food service'],label:'restaurant / food service'},
+  {id:'brewery',group:'subject',patterns:[/brewery/i,/brewpub/i],terms:['brewery','brewpub'],label:'brewery / brewpub'},
+  {id:'tutoring',group:'subject',patterns:[/tutor/i],terms:['tutoring','educational services'],label:'tutoring / educational services'},
+  {id:'ordering',group:'operations',patterns:[/ordering\s+system/i,/mobile\s+ordering/i,/online\s+ordering/i,/ordering\s+kiosk/i],terms:['ordering system','restaurant technology'],label:'ordering systems / restaurant technology'},
+  {id:'ai',group:'technology',patterns:[/\bai\b/i,/artificial\s+intelligence/i],terms:['artificial intelligence','AI'],label:'artificial intelligence / AI'},
+  {id:'robot',group:'technology',patterns:[/robot/i],terms:['robot*','robotics'],label:'robots / robotics'},
+  {id:'kiosk',group:'technology',patterns:[/kiosk/i,/self[- ]service/i],terms:['self-service kiosk','ordering kiosk','self-service technology'],label:'self service / kiosks'},
+  {id:'facial',group:'technology',patterns:[/facial\s+recognition/i],terms:['facial recognition','biometric technology'],label:'facial recognition / biometrics'},
+  {id:'crypto',group:'technology',patterns:[/crypto/i,/bitcoin/i,/cryptocurrency/i],terms:['cryptocurrency','digital payments'],label:'cryptocurrency / digital payments'},
+  {id:'remote',group:'technology',patterns:[/remote\s+work/i,/work\s+from\s+home/i,/telework/i],terms:['remote work','telework'],label:'remote work / telework'},
+  {id:'tiktok',group:'technology',patterns:[/tiktok/i],terms:['TikTok','social media advertising'],label:'TikTok / social media advertising'},
+  {id:'cyber',group:'technology',patterns:[/cybersecurity/i,/information\s+security/i],terms:['cybersecurity','information security'],label:'cybersecurity / information security'},
+  {id:'hours',group:'operations',patterns:[/24\s*\/\s*7/i,/24[- ]hour/i,/open\s+24\s+hours/i,/overnight\s+hours/i,/extended\s+hours/i],terms:['24-hour operations','extended hours','overnight operations'],label:'24-hour operations / extended hours'},
+  {id:'housekeeping',group:'operations',patterns:[/housekeeping/i,/room\s+cleaning/i],terms:['hotel housekeeping','room cleaning'],label:'hotel housekeeping / room cleaning'},
+  {id:'ipo',group:'strategy',patterns:[/go\s+public/i,/\bipo\b/i,/initial\s+public\s+offering/i],terms:['IPO','initial public offering'],label:'IPO / going public'}
+];
+
+const locationConcepts=[
+  {patterns:[/\bsantee\b/i],terms:['Santee','San Diego County'],query:'(Santee OR "San Diego County")',label:'Santee / San Diego County',key:'santee'},
+  {patterns:[/snapdragon\s+stadium/i],terms:['San Diego','Snapdragon Stadium'],query:'("San Diego" OR "Snapdragon Stadium")',label:'San Diego / Snapdragon Stadium',key:'sandiego'},
+  {patterns:[/near\s+(?:the\s+)?(?:sdsu|san\s+diego\s+state)/i],terms:['San Diego','College Area'],query:'("San Diego" OR "College Area")',label:'San Diego / College Area',key:'sandiego'},
+  {patterns:[/\bchula\s+vista\b/i],terms:['Chula Vista'],query:'"Chula Vista"',label:'Chula Vista',key:'generic'},
+  {patterns:[/\bla\s+mesa\b/i],terms:['La Mesa'],query:'"La Mesa"',label:'La Mesa',key:'generic'},
+  {patterns:[/\bel\s+cajon\b/i],terms:['El Cajon'],query:'"El Cajon"',label:'El Cajon',key:'generic'},
+  {patterns:[/\bnational\s+city\b/i],terms:['National City'],query:'"National City"',label:'National City',key:'generic'},
+  {patterns:[/\boceanside\b/i],terms:['Oceanside'],query:'Oceanside',label:'Oceanside',key:'generic'},
+  {patterns:[/\bcarlsbad\b/i],terms:['Carlsbad'],query:'Carlsbad',label:'Carlsbad',key:'generic'},
+  {patterns:[/\bnorth\s+park\b/i],terms:['North Park'],query:'"North Park"',label:'North Park',key:'generic'},
+  {patterns:[/\bhillcrest\b/i],terms:['Hillcrest'],query:'Hillcrest',label:'Hillcrest',key:'generic'},
+  {patterns:[/\bmission\s+valley\b/i],terms:['Mission Valley'],query:'"Mission Valley"',label:'Mission Valley',key:'generic'},
+  {patterns:[/\bcollege\s+area\b/i],terms:['College Area'],query:'"College Area"',label:'College Area',key:'generic'},
+  {patterns:[/\blos\s+angeles\b/i],terms:['Los Angeles'],query:'"Los Angeles"',label:'Los Angeles',key:'generic'},
+  {patterns:[/\borange\s+county\b/i],terms:['Orange County'],query:'"Orange County"',label:'Orange County',key:'generic'},
+  {patterns:[/\btijuana\b/i],terms:['Tijuana'],query:'Tijuana',label:'Tijuana',key:'generic'},
+  {patterns:[/\bphoenix\b/i],terms:['Phoenix'],query:'Phoenix',label:'Phoenix',key:'generic'},
+  {patterns:[/san\s+diego/i],terms:['San Diego'],query:'"San Diego"',label:'San Diego',key:'sandiego'},
+  {patterns:[/\bcalifornia\b/i],terms:['California'],query:'California',label:'California',key:'california'}
+];
+
+
+// Generic geography is intentionally conservative. Unknown terms are accepted
+// only when the text itself has an unmistakable geographic shape or a ZIP code.
+function looksExplicitlyPlaceShaped(value){
+  const term=(value||'').trim();
+
+  if(/^City\s+of\s+[A-Z][A-Za-z.'-]*(?:\s+[A-Z][A-Za-z.'-]*){0,3}$/i.test(term)) return true;
+
+  if(/\b(?:City|County|Valley|Beach|Park|Mesa|Vista|Heights|Village|Grove|Hills|Springs|Quarter|Area|District)$/i.test(term)) return true;
+
+  return false;
+}
+
+function cleanGenericLocation(value){
+  let term=(value||'').trim().replace(/^[\s,;:'"“”]+|[\s,;:'"“”]+$/g,'');
+  term=term.replace(/\b(?:today|now|currently)$/i,'').trim();
+  term=term.replace(/\s+/g,' ').trim();
+
+  if(!term) return '';
+  if(/^\d{5}$/.test(term)) return term;
+
+  // Place shape wins before any topical vocabulary can reject it.
+  if(looksExplicitlyPlaceShaped(term)) return term.replace(/\b\w/g,ch=>ch.toUpperCase());
+
+  return '';
+}
+
+function extractGenericLocation(raw){
+  const value=(raw||'').trim().replace(/[?!]+$/,'');
+  const patterns=[
+    /\b(?:in|near|around|by)\s+(\d{5})\b/i,
+    /\b(?:in|near|around|by)\s+(City\s+of\s+[A-Za-z][A-Za-z.'-]*(?:\s+[A-Za-z][A-Za-z.'-]*){0,3})(?=\s*(?:$|[,.!?;:]|\s+(?:on|for|about|with|using)\b))/i,
+    /\b(?:in|near|around|by)\s+([A-Za-z][A-Za-z.'-]*(?:\s+[A-Za-z][A-Za-z.'-]*){0,4}\s+(?:City|County|Valley|Beach|Park|Mesa|Vista|Heights|Village|Grove|Hills|Springs|Quarter|Area|District))(?=\s*(?:$|[,.!?;:]|\s+(?:on|for|about|with|using)\b))/i,
+    /\b(?:located\s+in|based\s+in)\s+(City\s+of\s+[A-Za-z][A-Za-z.'-]*(?:\s+[A-Za-z][A-Za-z.'-]*){0,3})(?=\s*(?:$|[,.!?;:]))/i,
+    /\b(?:located\s+in|based\s+in)\s+([A-Za-z][A-Za-z.'-]*(?:\s+[A-Za-z][A-Za-z.'-]*){0,4}\s+(?:City|County|Valley|Beach|Park|Mesa|Vista|Heights|Village|Grove|Hills|Springs|Quarter|Area|District))(?=\s*(?:$|[,.!?;:]))/i
+  ];
+
+  for(const pattern of patterns){
+    const match=value.match(pattern);
+    if(!match) continue;
+    const term=cleanGenericLocation(match[1]);
+    if(term){
+      return {patterns:[],terms:[term],query:quoteTerm(term),label:term,key:'generic'};
+    }
+  }
+  return null;
+}
+
+function stripLocationSuffix(term,location){
+  if(!term||!location?.terms?.length) return term;
+  let value=term;
+  location.terms.forEach(loc=>{
+    const escaped=loc.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    value=value.replace(new RegExp('\\s+(?:in|near|around|by|at)\\s+'+escaped+'\\b.*$','i'),'');
+  });
+  return value.trim();
+}
+
+const stopWords=new Set(['open','opening','start','starting','launch','launching','recommend','recommends','recommendation','that','should','could','would','can','how','why','whether','evaluate','consider','near','next','at','on','in','for','with','and','or','of','to','a','an','the','my','our','their','new','business','company','idea','service','product','use','using','replace','workers','employees','staff','people','make','making','get','getting','go','build','building','another','daily','eliminate','eliminating','private','public','existing','nonprofit','organization']);
+
+function quoteTerm(term){
+  if(term.includes('*')) return term;
+  return /\s/.test(term) ? '"'+term+'"' : term;
+}
+function groupQuery(terms){
+  const unique=[...new Set(terms)];
+  if(unique.length===1) return quoteTerm(unique[0]);
+  return '('+unique.map(quoteTerm).join(' OR ')+')';
+}
+const fallbackActionWords='expand|increase|add|deploy|use|uses|used|invest|introduce|open|adopt|allow|accept|require|create|operate|launch|offer|build|replace|reduce|change|develop|install|implement|move|switch|provide|start|enter|buy|sell|charge|extend|make|put|improve|establish|advertise|promote|benefit|need|be|shift|automate|screen|forecast|write|personalize|post|posting|hire|hiring|focus|focusing|handle|handles|handling|host|hosting|fund|funding|defund|defunding|legalize|legalizing|decriminalize|decriminalizing|regulate|regulating|tax|taxing|subsidize|subsidizing|abolish|abolishing|privatize|privatizing|municipalize|municipalizing|ban|banning|prohibit|prohibiting|restrict|restricting|exclude|excluding|deny|denying|refuse|refusing|permit|permitting|remove|removing|slide';
+const fallbackSubjectReject=new Set(['business','company','organization','idea','product','service','market','industry','thing','stuff','how','what','why','who','where','when','we','they','it']);
+
+
+function cleanComparisonLeftEntity(value){
+  let term=(value||'').trim().replace(/^[\s,;:'"“”?.!-]+|[\s,;:'"“”?.!-]+$/g,'');
+  if(!term) return '';
+
+  if(term.includes(':')) term=term.split(':').pop().trim();
+  if(term.includes(',')) term=term.split(',').pop().trim();
+
+  term=term.replace(/^(?:compare|with|to|between|and|or)\s+/i,'');
+  term=term.replace(/^(?:how\s+(?:(?:do|does|would|should)\s+)?|does\s+|is\s+|would\s+|should\s+we\s+choose\s+|should\s+|could\s+|can\s+|which\s+)/i,'');
+  term=term.replace(/\s+(?:performs?|would\s+perform|could\s+perform)$/i,'');
+  term=term.replace(/^(?:for\s+.+?,\s*compare\s+|when\s+it\s+comes\s+to\s+.+?,\s*)/i,'');
+  term=term.replace(/^(?:a|an|the)\s+/i,'');
+  term=term.replace(/\s+/g,' ').trim();
+
+  if(!term || term.split(/\s+/).length>7) return '';
+  if(/^(?:who|what|which|how|why|it|they|we|better)$/i.test(term)) return '';
+  return term;
+}
+
+function cleanComparisonRightEntity(value){
+  let term=(value||'').trim().replace(/^[\s,;:'"“”?.!-]+|[\s,;:'"“”?.!-]+$/g,'');
+  if(!term) return '';
+
+  // The right entity ends where the comparison dimension/boilerplate begins.
+  term=term.split(/\s*(?::|,|\s+-\s)\s*/,1)[0].trim();
+  term=term.replace(/\s+(?:on|for|at|about|regarding|with|using|based\s+on|when\s+it\s+comes\s+to)\b.*$/i,'');
+  term=term.replace(/\s+(?:has|have|use|uses|offer|offers|does|do|handle|handles|handling|is|would|should|could|can)\b.*$/i,'');
+  term=term.replace(/'s\s+.*$/i,'');
+  term=term.replace(/^(?:a|an|the)\s+/i,'');
+  term=term.replace(/\s+/g,' ').trim();
+
+  if(!term || term.split(/\s+/).length>7) return '';
+  if(/^(?:who|what|which|how|why|it|they|we|better)$/i.test(term)) return '';
+  return term;
+}
+
+function cleanStructuralComparisonIssue(value,location){
+  let term=(value||'').trim().replace(/^[\s,;:'"“”?.!-]+|[\s,;:'"“”?.!-]+$/g,'');
+  term=term.replace(/\s+-\s+which\s+(?:one\s+)?is\s+better$/i,'');
+  term=term.replace(/\s+which\s+(?:one\s+)?is\s+better$/i,'');
+  term=term.replace(/\s+/g,' ').trim();
+
+  if(location?.terms?.length){
+    for(const loc of location.terms){
+      const escaped=loc.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+      term=term.replace(new RegExp('^'+escaped+'\\s+(?:on|for|about|with|using)\\s+','i'),'');
+      if(new RegExp('^'+escaped+'$','i').test(term)) return '';
+    }
+  }
+
+  term=cleanFallbackIssue(term,location);
+  if(!term || /^(?:who|which|one|company|business|better)$/i.test(term)) return '';
+  return term;
+}
+
+function parseComparisonStructure(raw,location){
+  const value=(raw||'').trim().replace(/[?!\.]+$/,'');
+  const cue=/\b(?:compare|comparison|compared|versus|vs\.?|v|against|better|stronger|stack\s+up\s+against|differ|differs|different(?:ly)?|outperform|outperforms|beat|beats|between|which|wins?|choose|copy|when\s+it\s+comes|head\s+to\s+head)\b/i;
+  const colonOr=/^[^:]+\bor\b[^:]*:\s*.+$|^[^:]+:\s*[^:]+\bor\b[^:]+$/i;
+  if(!cue.test(value)&&!/\s\/\s/.test(value)&&!colonOr.test(value)) return {subjects:[],issue:''};
+
+  const pair=(a,b)=>{
+    const subjects=[cleanComparisonLeftEntity(a),cleanComparisonRightEntity(b)].filter(Boolean);
+    return subjects.length>=2?[...new Set(subjects)]:[];
+  };
+
+  let subjects=[];
+  let match;
+
+  // Entity-pair operators. These identify the relationship between organizations,
+  // not a complete sentence template.
+  match=value.match(/(.+?)\s+(?:stack\s+up\s+against|compared\s+(?:against|to|with)|differs?\s+from|performs?\s+better\s+than|better\s+than|outperforms?|beats?|against)\s+(.+)/i);
+  if(match) subjects=pair(match[1],match[2]);
+
+  if(!subjects.length){
+    match=value.match(/(.+?)\s+(?:vs\.?|versus|v)\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/^(.+?)\s*\/\s*(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/(.+?)\s+stack\s+up\s+against\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/(.+?)\s+compared\s+(?:against|to|with)\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/(.+?)\s+better\s+than\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/(.+?)\s+outperform\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/(.+?)\s+(?:vs\.?|versus)\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/\bbetween\s+(.+?)\s+and\s+(.+?)(?:,|;|\s+-\s|$)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length){
+    match=value.match(/^(?:should|could|would|can)\s+(.+?)\s+copy\s+(.+?)(?:'s\b|\s+(?:on|for|in|with|using)\b)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  const compareMatch=value.match(/\bcompare\b/i);
+  if(!subjects.length&&compareMatch){
+    const before=value.slice(0,compareMatch.index).trim();
+    const after=value.slice(compareMatch.index+compareMatch[0].length).trim();
+
+    // How does A compare with B...
+    match=after.match(/^(?:with|to)\s+(.+)/i);
+    if(match) subjects=pair(before,match[1]);
+
+    // "Compare the X of A and B" has a dimension before the organizations.
+    // Require the leading "the ..." so company names such as Bank of America
+    // are not split at their own "of".
+    if(!subjects.length){
+      match=after.match(/^the\s+.+?\s+of\s+(.+?)\s+and\s+(.+)$/i);
+      if(match) subjects=pair(match[1],match[2]);
+    }
+
+    // Compare A and/versus/with/to B.
+    if(!subjects.length){
+      match=after.match(/^(.+?)\s+(?:and|vs\.?|versus|with|to)\s+(.+)/i);
+      if(match) subjects=pair(match[1],match[2]);
+    }
+
+    // How do A and B compare...
+    if(!subjects.length){
+      match=before.match(/(.+?)\s+and\s+(.+?)$/i);
+      if(match) subjects=pair(match[1],match[2]);
+    }
+  }
+
+  if(!subjects.length){
+    match=value.match(/^(.+?)\s+and\s+(.+?)\s+differ\b/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length&&/\bdifferently\b/i.test(value)){
+    const action='(?:'+fallbackActionWords+')';
+    match=value.match(new RegExp('^(?:should|could|would|can)\\s+(.+?)\\s+and\\s+(.+?)\\s+'+action+'\\b','i'));
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  // A colon gives us enough structure to distinguish a comparison pair from
+  // ordinary prose: "A or B: pricing" and "For pricing: A or B".
+  if(!subjects.length&&value.includes(':')){
+    const parts=value.split(':');
+    const left=parts.shift().trim();
+    const right=parts.join(':').trim();
+    const pairSegment=/\bor\b/i.test(left)?left:(/\bor\b/i.test(right)?right:'');
+    if(pairSegment){
+      match=pairSegment.match(/(.+?)\s+or\s+(.+)/i);
+      if(match) subjects=pair(match[1],match[2]);
+    }
+  }
+
+  // "or" is only treated as an entity operator when comparison language is present.
+  if(!subjects.length&&/\b(?:better|choose|wins?|which|when\s+it\s+comes|based\s+on)\b/i.test(value)){
+    let segment=value;
+
+    if(value.includes(':')){
+      const pieces=value.split(':');
+      const beforeColon=pieces.shift();
+      const afterColon=pieces.join(':');
+      if(/\bor\b/i.test(beforeColon)) segment=beforeColon;
+      else if(/\bor\b/i.test(afterColon)) segment=afterColon;
+    }else if(value.includes(',')){
+      const last=value.split(',').pop();
+      if(/\bor\b/i.test(last)) segment=last;
+    }
+
+    match=segment.match(/(.+?)\s+or\s+(.+)/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  // Coordinating operators are accepted only when the sentence already
+  // contains comparison language. This avoids treating an ordinary "A and B"
+  // phrase as a comparison.
+  if(!subjects.length&&cue.test(value)){
+    // "between A and B" and "which of A and B"
+    match=value.match(/\b(?:between|of)\s+(.+?)\s+and\s+(.+?)(?=\s*(?:,|;|:|\?|$|\bis\b|\bare\b|\bfor\b|\bon\b|\bat\b|\bregarding\b))/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length&&cue.test(value)){
+    // Comparison pair before a colon or before compare/differ/handle language.
+    match=value.match(/(?:^|[:,]\s*|\bcompare\s+(?:how\s+)?)(.+?)\s+and\s+(.+?)(?=\s*(?::|,|\bcompare\b|\bcomparison\b|\bdiffer\b|\bdiffers\b|\bhandle\b|\bhandles\b|\bon\b|\bfor\b|\bregarding\b|$))/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  if(!subjects.length&&cue.test(value)){
+    // "A or B" comparison structures.
+    match=value.match(/(?:^|[:,]\s*|\bchoose\s+)(.+?)\s+or\s+(.+?)(?=\s*(?:,|;|:|\?|$|\bfor\b|\bon\b|\bat\b|\bbased\b|\bwhich\b))/i);
+    if(match) subjects=pair(match[1],match[2]);
+  }
+
+  let issue='';
+
+  // Dimension-first structures.
+  match=value.match(/^for\s+(.+?),\s*compare\b/i);
+  if(match) issue=match[1];
+
+  if(!issue){
+    match=value.match(/^when\s+it\s+comes\s+to\s+(.+?),/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/^who\s+wins?\s+on\s+(.+?)\s*:/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/^which(?:\s+company)?\s+is\s+better\s+at\s+(.+?)[,:]/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/^which\s+is\s+better\s+for\s+(.+?),/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/^compare\s+the\s+(.+?)\s+of\b/i);
+    if(match) issue=match[1];
+  }
+
+  // Possessive copy: A copy B's X.
+  if(!issue){
+    match=value.match(/\bcopy\s+.+?'s\s+(.+?)(?:\s+strategy)?$/i);
+    if(match) issue=match[1];
+  }
+
+  // Shared action performed differently: A and B handle X differently.
+  if(!issue){
+    match=value.match(/\b(?:use|adopt|offer|provide|price|market|handle)\s+(.+?)\s+differently$/i);
+    if(match) issue=match[1];
+  }
+
+  // "who has/does/handles X better".
+  if(!issue){
+    match=value.match(/\b(?:has|have|uses?|offers?|does|handles?)\s+(?:the\s+)?better\s+(.+)$/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/\b(?:does|handles?|uses?|offers?)\s+(.+?)\s+better$/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/\bbased\s+on\s+(.+)$/i);
+    if(match) issue=match[1];
+  }
+
+  if(!issue){
+    match=value.match(/\bdiffer\s+on\s+(.+?)(?:;|$)/i);
+    if(match) issue=match[1];
+  }
+
+  // Dimension before the pair: "pricing: A vs B".
+  if(!issue&&value.includes(':')){
+    const parts=value.split(':');
+    const left=parts.shift().trim();
+    const right=parts.join(':').trim();
+    if(/\b(?:vs\.?|versus|or)\b/i.test(right)&&!/\b(?:better|wins?)\b/i.test(left)){
+      issue=left;
+    }
+  }
+
+  // A vs B - X.
+  if(!issue){
+    match=value.match(/\b(?:vs\.?|versus)\b.+?\s+-\s+(.+)$/i);
+    if(match) issue=match[1];
+  }
+
+  // A and B: compare X.
+  if(!issue){
+    match=value.match(/:\s*compare\s+(.+)$/i);
+    if(match) issue=match[1];
+  }
+
+  // Entity pair followed by on/for/about X.
+  if(!issue){
+    const matches=[...value.matchAll(/\b(?:on|for|about)\s+(.+)$/gi)];
+    if(matches.length) issue=matches[matches.length-1][1];
+  }
+
+  issue=cleanStructuralComparisonIssue(issue,location);
+  return {subjects,issue};
+}
+
+function cleanFallbackSubject(value){
+  let term=(value||'').trim().replace(/^[\s,;:'"“”]+|[\s,;:'"“”]+$/g,'');
+  term=term.replace(/^(?:(?:a|an|the|my|our)\s+)+/i,'');
+  term=term.replace(/^(?:company|business|organization)\s+like\s+/i,'');
+  term=term.replace(/^(?:(?:a|an|the)\s+)+/i,'');
+  term=term.replace(/^(?:new|existing)\s+/i,'');
+  term=term.replace(/\s+(?:in|near)\s+(?:San Diego|Santee|California|SDSU|San Diego State University|the College Area)\b.*$/i,'');
+  term=term.replace(/\s+(?:brand)\s*$/i,'');
+  term=term.replace(/\s+really\s*$/i,'');
+  term=term.replace(/\s+/g,' ').trim();
+  if(!term) return '';
+  const words=term.split(/\s+/);
+  if(words.length>7) return '';
+  if(fallbackSubjectReject.has(term.toLowerCase())) return '';
+  if(/^(?:how|what|why|who|where|when)\b/i.test(term)) return '';
+  return term;
+}
+
+
+function isMarketDemandQuestion(value){
+  const text=(value||'').trim().replace(/[?!\.]+$/,'');
+  return /^is\s+there\s+(?:enough\s+)?(?:a\s+)?(?:market|demand)\s+for\s+.+$/i.test(text)
+    || /^is\s+there\s+(?:space|room)\s+(?:in\s+the\s+market\s+)?for\s+.+$/i.test(text)
+    || /^is\s+there\s+(?:market\s+)?demand\s+for\s+.+$/i.test(text);
+}
+
+function extractFallbackSubject(raw){
+  const cleaned=(raw||'').trim().replace(/[?!\.]+$/,'').replace(/[—–]/g,'-');
+  const action='(?:'+fallbackActionWords+')';
+
+  const patterns=[
+    /^is\s+there\s+(?:enough\s+)?(?:a\s+)?(?:market|demand)\s+for\s+(.+)$/i,
+    /^is\s+there\s+(?:space|room)\s+(?:in\s+the\s+market\s+)?for\s+(.+)$/i,
+    /^is\s+there\s+(?:market\s+)?demand\s+for\s+(.+)$/i,
+    /^is\s+.+?\s+worth\s+it\s+for\s+(.+?)(?:\s+or\s+is\s+that\b.*)?$/i,
+    /^(.+?)\s+needs?\b/i,
+    /^(.+?)\s+marketing\s+(?:is|looks|feels)\b/i,
+    /^(.+?)\s+social\s+media\s+(?:is|are|looks|feels)\b/i,
+    /^(.+?)\s+has\b.*\bshould\s+it\b/i,
+    /^can\s+(.+?)\s+get\b/i,
+    /^would\s+(.+?)\s+cook\s+on\b/i,
+    /^can\s+.+?\s+make\s+(.+?)\s+(?:ads?|content|campaigns?|marketing)\b/i,
+    new RegExp('^would\\s+(.+?)\\s+\\w+\\s+on\\s+(?:Instagram|TikTok|YouTube|Facebook|LinkedIn|Reddit|Snapchat|Pinterest|Threads)\\b','i'),
+    new RegExp('^would\\s+it\\s+make\\s+sense\\s+for\\s+(.+?)\\s+to\\s+'+action+'\\b','i'),
+    /^we\s+think\s+(.+?)\s+needs?\b/i,
+    new RegExp('^our\\s+group\\s+is\\s+asking\\s+(?:whether|if)\\s+(.+?)\\s+(?:should\\s+)?'+action+'\\b','i'),
+    new RegExp('^should\\s+we\\s+recommend\\s+(.+?)\\s+'+action+'\\b','i'),
+    new RegExp('^(?:we\\s+are\\s+researching|we\\s+are\\s+studying|our\\s+group\\s+is\\s+researching)\\s+(?:whether|if)\\s+(.+?)\\s+(?:should\\s+)?'+action+'\\b','i'),
+    new RegExp('^(?:my\\s+group\\s+wants\\s+to\\s+know|we\\s+want\\s+to\\s+know)\\s+(?:whether|if)\\s+(.+?)\\s+(?:should\\s+)?'+action+'\\b','i'),
+    new RegExp('^how\\s+(?:can|could|should|would)\\s+(.+?)\\s+'+action+'\\b','i'),
+    /^(?:Should|should|Whether|whether|Could|could|Can|can|Would|would|Will|will)\s+(.+?)\s+target\b/,
+    new RegExp('^(?:does|do|did)\\s+(.+?)\\s+'+action+'\\b','i'),
+    new RegExp('^what\\s+if\\s+(.+?)\\s+'+action+'\\b','i'),
+    new RegExp('^(?:should|whether|could|can|would|will)\\s+(.+?)\\s+(?:should\\s+)?'+action+'\\b','i'),
+    new RegExp('^(.+?)\\s+(?:should|could|can|would|will)\\s+'+action+'\\b','i'),
+    new RegExp('\\b(?:whether|if)\\s+(.+?)\\s+should\\s+'+action+'\\b','i'),
+    /^(.+?)\s+on\s+(?:TikTok|Instagram|YouTube|Facebook|LinkedIn|Reddit|Snapchat|Pinterest|Threads)\b/i,
+    /^(.+?)\s*:\s*(?:TikTok|Instagram|YouTube|Facebook|LinkedIn|Reddit|Snapchat|Pinterest|Threads|AI|ChatGPT)\b/i
+  ];
+
+  for(const pattern of patterns){
+    const match=cleaned.match(pattern);
+    const term=cleanFallbackSubject(match?.[1]||'');
+    if(term) return [term];
+  }
+  return [];
+}
+
+function extractGenericSubject(raw){
+  const value=(raw||'').toLowerCase();
+  if(/\b(?:my\s+|private\s+|public\s+|a\s+|the\s+)?company\b/.test(value)) return ['company'];
+  if(/\bbusiness\b/.test(value)) return ['business'];
+  return [];
+}
+
+function cleanFallbackIssue(value,location){
+  let term=(value||'').trim().replace(/^[\s,;:'"“”]+|[\s,;:'"“”]+$/g,'');
+  if(location?.terms?.length){
+    location.terms.forEach(loc=>{
+      const escaped=loc.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+      term=term.replace(new RegExp('^(?:in|near|around|by|at)\\s+'+escaped+'$','i'),'');
+      term=term.replace(new RegExp('\\s+(?:in|near|around|by|at)\\s+'+escaped+'\\b.*$','i'),'');
+    });
+  }
+  term=term.replace(/^(?:more|another|new)\s+/i,'');
+  term=term.replace(/^(?:on|around|in|at|near|by|with|about|for)\s+/i,'');
+  term=term.replace(/\s+differently$/i,'');
+  term=term.replace(/\s+(?:in|near)\s+(?:San Diego|Santee|California|SDSU|San Diego State University|the College Area)\b.*$/i,'');
+  term=term.replace(/\s+at\s+(?:California\s+)?(?:stores?|warehouses?|locations?|campus)\b.*$/i,'');
+  term=term.replace(/\s+(?:for|to)\s+(?:customers?|users?|students?|employees?|staff|marketing|customer service|employee training|recruiting|younger customers?|Gen Z)\b.*$/i,'');
+  term=term.replace(/\s+/g,' ').trim();
+  if(!term) return '';
+  if(term.split(/\s+/).length>7) return '';
+  if(/^(?:it|this|that|something|anything|the idea|the proposal)$/i.test(term)) return '';
+  return term;
+}
+
+function extractFallbackIssue(raw,subjectTerms,location){
+  const cleaned=(raw||'').trim().replace(/[?!\.]+$/,'').replace(/[—–]/g,'-');
+  const action='(?:'+fallbackActionWords+')';
+  const patterns=[
+    new RegExp('^should\\s+we\\s+recommend\\s+.+?\\s+'+action+'\\s+(.+)$','i'),
+    new RegExp('^(?:we\\s+are\\s+researching|we\\s+are\\s+studying|our\\s+group\\s+is\\s+researching)\\s+(?:whether|if)\\s+.+?\\s+(?:should\\s+)?'+action+'\\s+(.+)$','i'),
+    new RegExp('^(?:my\\s+group\\s+wants\\s+to\\s+know|we\\s+want\\s+to\\s+know)\\s+(?:whether|if)\\s+.+?\\s+(?:should\\s+)?'+action+'\\s+(.+)$','i'),
+    new RegExp('^how\\s+(?:can|could|should|would)\\s+.+?\\s+'+action+'\\s+(.+)$','i'),
+    new RegExp('^(?:does|do|did)\\s+.+?\\s+'+action+'\\s+(.+)$','i'),
+    new RegExp('^what\\s+if\\s+.+?\\s+'+action+'\\s+(.+)$','i'),
+    new RegExp('^(?:should|whether|could|can|would|will)\\s+.+?\\s+(?:should\\s+)?'+action+'\\s+(.+)$','i'),
+    new RegExp('^.+?\\s+(?:should|could|can|would|will)\\s+'+action+'\\s+(.+)$','i'),
+    new RegExp('\\b(?:whether|if)\\s+.+?\\s+should\\s+'+action+'\\s+(.+)$','i')
+  ];
+
+  for(const pattern of patterns){
+    const match=cleaned.match(pattern);
+    const rawTerm=(match?.[1]||'').trim();
+
+    // A leading location/context preposition is usually not the proposal itself.
+    if(/^(?:in|near|around|by|at)\s+/i.test(rawTerm)) continue;
+
+    const term=cleanFallbackIssue(rawTerm,location);
+    if(!term) continue;
+
+    if(location?.terms?.some(loc=>term.toLowerCase()===loc.toLowerCase())) continue;
+    const lower=term.toLowerCase();
+    const overlapsSubject=(subjectTerms||[]).some(s=>{
+      const sl=s.toLowerCase();
+      return lower===sl || (sl.length>4 && lower===('another '+sl));
+    });
+    if(!overlapsSubject) return [term];
+  }
+  return [];
+}
+
+
+function removeLiteralTerm(text,term){
+  if(!term) return text;
+  const escaped=term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  return text.replace(new RegExp('(?:^|\\b)'+escaped+'(?:\\b|$)','gi'),' ');
+}
+
+function issueTermOverlaps(a,b){
+  const x=(a||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  const y=(b||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  if(!x||!y) return false;
+  return x===y || x.includes(y) || y.includes(x);
+}
+
+function extractComparisonDimension(raw,subjects,location,recognizedIssueTerms=[]){
+  let work=(raw||'').trim();
+  if(!work || !(subjects||[]).length) return '';
+
+  // Remove the organizations first. Whatever remains is the comparison language,
+  // the comparison dimension, locations, and any already-recognized side concepts.
+  (subjects||[]).forEach(term=>{work=removeLiteralTerm(work,term)});
+
+  // A geographic term is context, not the thing being compared.
+  (location?.terms||[]).forEach(term=>{work=removeLiteralTerm(work,term)});
+
+  // If AI/TikTok/etc. has already been recognized, remove its literal wording from
+  // the residue so the independent comparison dimension can survive beside it.
+  (recognizedIssueTerms||[]).forEach(term=>{
+    if(new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i').test(work)){
+      work=removeLiteralTerm(work,term);
+    }
+  });
+
+  // Remove comparison operators and grammatical scaffolding. This is deliberately
+  // token/phrase based rather than one regex per sentence frame.
+  work=work
+    .replace(/\bhead\s+to\s+head\b/gi,' ')
+    .replace(/\bstack\s+up\s+against\b/gi,' ')
+    .replace(/\bcompared\s+(?:against|to|with)\b/gi,' ')
+    .replace(/\bwhen\s+it\s+comes\s+to\b/gi,' ')
+    .replace(/\bperforms?\s+better\s+than\b/gi,' ')
+    .replace(/\bbetter\s+than\b/gi,' ')
+    .replace(/\bbased\s+on\b/gi,' ')
+    .replace(/\b(?:compare|comparison|compared|versus|vs|v|against|between|outperform|outperforms|beat|beats|wins|win|choose|copy|differ|differs|different|differently|stronger|better|perform|performs|handle|handles)\b/gi,' ')
+    .replace(/\b(?:which|who|what|how|does|do|did|would|could|should|can|is|are|has|have|the|a|an|of|and|or|on|for|at|about|regarding|with|using|use|if|both|from|to|it|comes|company|one)\b/gi,' ')
+    .replace(/[,:;?!./]+/g,' ')
+    .replace(/\s+-\s+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+
+  if(!work) return '';
+  work=cleanFallbackIssue(work,location);
+  if(!work || work.split(/\s+/).length>7) return '';
+  return work;
+}
+
+
+function countLiteralOccurrences(text,term){
+  if(!text||!term) return 0;
+  const escaped=term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  const matches=String(text).match(new RegExp('(?:^|\\b)'+escaped+'(?:\\b|$)','gi'));
+  return matches?matches.length:0;
+}
+
+function suppressLocationEmbeddedInSubject(raw,subjectTerms,location){
+  if(!location||(subjectTerms||[]).length===0) return location;
+
+  const rawText=String(raw||'');
+  const subjects=subjectTerms||[];
+
+  // Only suppress when an actually present place term is inside an organization
+  // and there is no second occurrence independently expressing geography.
+  for(const loc of location.terms||[]){
+    if(!loc || countLiteralOccurrences(rawText,loc)===0) continue;
+    const containing=subjects.filter(subject=>countLiteralOccurrences(subject,loc)>0);
+    if(!containing.length) continue;
+
+    const rawCount=countLiteralOccurrences(rawText,loc);
+    const subjectCount=containing.reduce((sum,subject)=>sum+countLiteralOccurrences(subject,loc),0);
+
+    if(rawCount<=subjectCount) return null;
+  }
+  return location;
+}
+
+function explicitLocationFromTerms(terms){
+  const clean=[...new Set((terms||[]).map(x=>String(x).trim()).filter(Boolean))];
+  if(!clean.length) return null;
+
+  let key='generic';
+  for(const concept of locationConcepts){
+    const conceptTerms=(concept.terms||[]).map(x=>x.toLowerCase());
+    if(clean.some(term=>conceptTerms.includes(term.toLowerCase()))){
+      key=concept.key||'generic';
+      break;
+    }
+  }
+
+  return {
+    patterns:[],
+    terms:clean,
+    query:groupQuery(clean),
+    label:clean.join(' / '),
+    key
+  };
+}
+
+function analyzeTopic(raw){
+  const normalized=normalizeTopic(raw);
+  const matched=[];
+  let subjectTaken=false;
+
+  topicConcepts.forEach(c=>{
+    if(!c.patterns.some(re=>re.test(normalized))) return;
+    if(c.group==='subject'){
+      if(subjectTaken) return;
+      subjectTaken=true;
+    }
+    matched.push(c);
+  });
+
+  const detectedLocation=locationConcepts.find(c=>c.patterns.some(re=>re.test(normalized)))||extractGenericLocation(normalized)||null;
+  const subjectMatches=matched.filter(c=>c.group==='subject');
+  const organizationMatches=matched.filter(c=>c.group==='organization');
+  const issueMatches=matched.filter(c=>!['subject','organization'].includes(c.group));
+  const explicitSubject=[...new Set(subjectMatches.flatMap(c=>c.terms))];
+  const organizationTerms=[...new Set(organizationMatches.flatMap(c=>c.terms))];
+  const comparison=parseComparisonStructure(normalized,detectedLocation);
+  const comparisonSubjects=comparison.subjects;
+  const fallbackSubject=extractFallbackSubject(normalized);
+  const genericFallbackSubject=extractGenericSubject(normalized);
+  const nearSDSU=/near\s+(?:the\s+)?(?:sdsu|san\s+diego\s+state)/i.test(normalized);
+
+  let subjectTerms=[];
+  if(comparisonSubjects.length){
+    subjectTerms.push(...comparisonSubjects);
+  }else{
+    if(fallbackSubject.length) subjectTerms.push(...fallbackSubject);
+    if(explicitSubject.length) subjectTerms.push(...explicitSubject);
+    if(!explicitSubject.length&&organizationTerms.length&&!nearSDSU) subjectTerms.push(...organizationTerms);
+    if(!subjectTerms.length&&organizationTerms.length) subjectTerms.push(...organizationTerms);
+    if(!subjectTerms.length&&genericFallbackSubject.length) subjectTerms.push(...genericFallbackSubject);
+  }
+  subjectTerms=[...new Set(subjectTerms.map(term=>stripLocationSuffix(term,detectedLocation)).filter(Boolean))];
+
+  const location=suppressLocationEmbeddedInSubject(normalized,subjectTerms,detectedLocation);
+
+  let issueTerms=[...new Set(issueMatches.flatMap(c=>c.terms))];
+
+  // The comparison dimension is independent evidence language. Merge it with
+  // recognized concepts instead of using it only when the concept dictionary is empty.
+  const comparisonDimension=isMarketDemandQuestion(normalized)
+    ? ''
+    : extractComparisonDimension(normalized,subjectTerms,location,issueTerms);
+  if(comparisonDimension&&!issueTerms.some(term=>issueTermOverlaps(term,comparisonDimension))){
+    issueTerms.unshift(comparisonDimension);
+  }
+
+  // Keep the earlier structural extractor as a secondary signal when the residue
+  // extractor has nothing useful.
+  if(comparisonSubjects.length&&comparison.issue&&!issueTerms.some(term=>issueTermOverlaps(term,comparison.issue))){
+    issueTerms.unshift(comparison.issue);
+  }
+
+  if(!issueTerms.length&&!isMarketDemandQuestion(normalized)){
+    issueTerms=extractFallbackIssue(normalized,subjectTerms,location);
+  }
+
+  return {
+    subjectTerms,
+    issueTerms:[...new Set(issueTerms)],
+    location,
+    locationTerms:location?.terms||[],
+    conceptLabels:[...matched.map(c=>c.label),...(location?[location.label]:[])],
+    matches:matched.map(c=>c.id)
+  };
+}
+
+const searchModifiers={
+  financial:['(revenue OR profit* OR margin* OR "cash flow")','(cost* OR financing OR "startup costs" OR "break even")','(benchmark* OR competitor* OR "industry average")'],
+  customers:['(consumer* OR customer* OR demand)','(spending OR behavior OR preferences)','(demographic* OR audience OR "target market")'],
+  industry:['(industry OR market) AND (trend* OR growth OR forecast*)','(competition OR competitor* OR "market share")','(cost* OR labor OR regulation OR technolog*)'],
+  location:['(demographic* OR spending OR demand)','(competitor* OR "market saturation")','(zoning OR licensing OR permit* OR traffic)'],
+  technology:['(adoption OR implementation OR use)','(cost OR productivity OR "return on investment")','(security OR privacy OR integration OR risk)'],
+  strategy:['(strategy OR expansion OR launch OR feasibility)','(demand OR market OR customer*)','(competition OR cost OR risk OR execution)'],
+  risk:['(zoning OR licensing OR regulation OR compliance)','(insurance OR liability OR labor OR safety)','(risk OR opposition OR reputation OR demand)'],
+  broad:['(industry OR market OR competition)','(consumer* OR customer* OR demand)','(cost OR risk OR feasibility)']
+};
+
+const situationSearchModifiers={
+  publicorg:{
+    broad:['(policy OR practice OR implementation)','(resident* OR student* OR user* OR stakeholder* OR access)','(cost OR operations OR compliance OR accessibility)'],
+    customers:['(resident* OR student* OR user* OR stakeholder* OR access OR demand)','(attitude* OR experience* OR barrier* OR use)','(survey* OR demographic* OR population)'],
+    financial:['(cost OR budget OR purchasing OR funding)','(maintenance OR staffing OR implementation)','(vendor* OR contract* OR procurement)'],
+    risk:['(law OR regulation OR policy OR compliance)','(access OR equity OR privacy OR safety)','(implementation OR operations OR responsibility)']
+  }
+};
+
+function activeSearchModifiers(){
+  return situationSearchModifiers[selectedSituation]?.[selectedProblem]||searchModifiers[selectedProblem];
+}
+
+const problemSearchLabels={
+  financial:['revenue / margins / cash flow','costs / financing / break even','benchmarks / competitors'],
+  customers:['customers / demand','spending / behavior / preferences','demographics / target market'],
+  industry:['industry trends / forecasts','competition / market share','costs / labor / regulation / technology'],
+  location:['demographics / spending / demand','competition / saturation','zoning / licensing / permits'],
+  technology:['adoption / implementation','cost / productivity / return','security / privacy / integration'],
+  strategy:['strategy / expansion / launch','demand / market / customers','competition / cost / risk'],
+  risk:['zoning / licensing / regulation','insurance / liability / labor / safety','risk / opposition / reputation / demand'],
+  broad:['industry / market / competition','customers / demand','cost / risk / feasibility']
+};
+
+const lensButtons=[...document.querySelectorAll('[data-lens]')];
+const situationButtons=[...document.querySelectorAll('[data-situation]')];
+const problemButtons=[...document.querySelectorAll('[data-problem]')];
+const buildButton=document.getElementById('build');
+const resetButton=document.getElementById('reset');
+const topicInput=document.getElementById('topic');
+const status=document.getElementById('status');
+let selectedSituation='';
+let selectedProblem='';
+
+function selectedLenses(){return lensButtons.filter(b=>b.classList.contains('selected')).map(b=>b.dataset.lens)}
+function selectSingle(buttons,button){buttons.forEach(b=>b.classList.remove('selected'));button.classList.add('selected')}
+function updateBuildState(){
+  const missing=[];
+  if(!topicInput.value.trim()) missing.push('report issue');
+  if(!selectedSituation) missing.push('situation');
+  if(!selectedLenses().length) missing.push('group perspective');
+  if(!selectedProblem) missing.push('factor');
+  buildButton.disabled=missing.length>0;
+  status.textContent=missing.length ? 'Add: '+missing.join(', ')+'.' : 'Ready.';
+}
+
+lensButtons.forEach(button=>button.addEventListener('click',()=>{
+  if(button.dataset.lens==='mixed'){
+    lensButtons.forEach(b=>b.classList.remove('selected'));
+    button.classList.add('selected');
+  }else{
+    document.querySelector('[data-lens="mixed"]').classList.remove('selected');
+    button.classList.toggle('selected');
+  }
+  updateBuildState();
+}));
+situationButtons.forEach(button=>button.addEventListener('click',()=>{selectSingle(situationButtons,button);selectedSituation=button.dataset.situation;updateBuildState()}));
+problemButtons.forEach(button=>button.addEventListener('click',()=>{selectSingle(problemButtons,button);selectedProblem=button.dataset.problem;updateBuildState()}));
+
+topicInput.addEventListener('input',updateBuildState);
+
+function addScores(target,source){Object.entries(source||{}).forEach(([id,value])=>target[id]=(target[id]||0)+value)}
+function allowedResource(id){return !situations[selectedSituation].exclude.includes(id)}
+function rankResources(topicAnalysis,lensIds){
+  const scores={};
+  addScores(scores,problemData[selectedProblem].boost);
+  addScores(scores,situations[selectedSituation].boost);
+  lensIds.forEach(id=>addScores(scores,lenses[id].boost));
+
+  if(['sandiego','santee'].includes(topicAnalysis.location?.key)){
+    if(['risk','location'].includes(selectedProblem)) scores.sandiego=(scores.sandiego||0)+18;
+    else if(selectedSituation==='new'&&selectedProblem==='strategy') scores.sandiego=(scores.sandiego||0)+8;
+    else if(selectedSituation==='new'&&selectedProblem==='financial') scores.sandiego=(scores.sandiego||0)+4;
+    else if(selectedSituation==='new'&&selectedProblem==='customers') scores.sandiego=(scores.sandiego||0)+1;
+    scores.simply=(scores.simply||0)+4;
+    scores.census=(scores.census||0)+2;
+  }else if(topicAnalysis.location?.key==='generic'){
+    if(selectedProblem==='location'){
+      scores.simply=(scores.simply||0)+6;
+      scores.census=(scores.census||0)+4;
+      scores.government=(scores.government||0)+2;
+    }else if(selectedProblem==='customers'){
+      scores.simply=(scores.simply||0)+5;
+      scores.census=(scores.census||0)+3;
+    }else if(selectedProblem==='risk'){
+      scores.government=(scores.government||0)+4;
+      scores.simply=(scores.simply||0)+2;
+      scores.census=(scores.census||0)+1;
+    }else if(selectedProblem==='strategy'){
+      scores.simply=(scores.simply||0)+3;
+      scores.census=(scores.census||0)+1;
+      scores.government=(scores.government||0)+1;
+    }
+  }else if((selectedSituation==='new'||['risk','location'].includes(selectedProblem))&&!topicAnalysis.location){
+    scores.government=(scores.government||0)+2;
+  }
+  if(selectedSituation==='public'&&selectedProblem==='financial'){scores.sec=(scores.sec||0)+9;scores.mergent=(scores.mergent||0)+9}
+  if(selectedSituation==='public'&&selectedProblem==='risk'){scores.sec=(scores.sec||0)+5;scores.mergent=(scores.mergent||0)+3}
+  if(selectedSituation==='public'&&selectedProblem==='strategy'){scores.sec=(scores.sec||0)+3;scores.mergent=(scores.mergent||0)+3;scores.newsroom=(scores.newsroom||0)+3}
+  if(selectedSituation==='private'&&['financial','risk','strategy'].includes(selectedProblem)) scores.privco=(scores.privco||0)+4;
+  if(selectedSituation==='nonprofit') scores.irs=(scores.irs||0)+4;
+  if(selectedSituation==='publicorg'){
+    scores.irs=-100;
+    scores.ibis=(scores.ibis||0)-8;
+    scores.trade=(scores.trade||0)-3;
+  }
+  if(selectedProblem==='risk'&&selectedSituation==='new') scores.articles=(scores.articles||0)+3;
+  if(selectedProblem==='customers'){
+    scores.mergent=(scores.mergent||0)-5;
+    scores.sec=(scores.sec||0)-5;
+    scores.articles=(scores.articles||0)+4;
+    scores.statista=(scores.statista||0)+4;
+    scores.ibis=(scores.ibis||0)+2;
+  }
+  const conceptIds=new Set(topicAnalysis.matches||[]);
+
+  if(conceptIds.has('sdsuorg')){
+    scores.sdsuresources=(scores.sdsuresources||0)+14;
+    scores.csupolicy=(scores.csupolicy||0)+8;
+    scores.irs=(scores.irs||0)-20;
+    scores.ibis=(scores.ibis||0)-6;
+    if(selectedSituation==='publicorg') scores.calaw=(scores.calaw||0)+5;
+  }
+  if(conceptIds.has('menstrual')||conceptIds.has('restroom')||conceptIds.has('inclusion')){
+    scores.sanitation=(scores.sanitation||0)+14;
+    scores.articles=(scores.articles||0)+7;
+    scores.calaw=(scores.calaw||0)+8;
+    scores.csupolicy=(scores.csupolicy||0)+5;
+    scores.ibis=(scores.ibis||0)-10;
+    scores.irs=(scores.irs||0)-10;
+  }
+  if(conceptIds.has('hotel')||conceptIds.has('restaurant')||conceptIds.has('bar')||conceptIds.has('adult')||conceptIds.has('brewery')||conceptIds.has('mcdonalds')){
+    scores.hospitality=(scores.hospitality||0)+4;
+  }
+  if(conceptIds.has('mcdonalds')){
+    scores.articles=(scores.articles||0)+4;
+    scores.ibis=(scores.ibis||0)+4;
+    scores.statista=(scores.statista||0)+3;
+    if(selectedProblem==='customers'){
+      scores.mergent=(scores.mergent||0)-3;
+      scores.sec=(scores.sec||0)-3;
+    }
+  }
+  if(conceptIds.has('plantbased')){
+    scores.statista=(scores.statista||0)+7;
+    scores.articles=(scores.articles||0)+7;
+    scores.ibis=(scores.ibis||0)+5;
+    scores.trade=(scores.trade||0)+3;
+    if(selectedProblem==='customers') scores.emarketer=(scores.emarketer||0)+1;
+  }
+  if(conceptIds.has('bathhouse')){
+    scores.articles=(scores.articles||0)+5;
+    scores.statista=(scores.statista||0)+2;
+    if(selectedSituation==='new') scores.government=(scores.government||0)+4;
+  }
+  if(conceptIds.has('hours')){
+    scores.articles=(scores.articles||0)+8;
+    scores.hospitality=(scores.hospitality||0)+7;
+    scores.statista=(scores.statista||0)+5;
+    scores.simply=(scores.simply||0)+4;
+    if(selectedSituation==='private') scores.privco=(scores.privco||0)-6;
+  }
+  if(conceptIds.has('housekeeping')){
+    scores.hospitality=(scores.hospitality||0)+6;
+    scores.articles=(scores.articles||0)+5;
+  }
+  if(!topicAnalysis.location&&selectedProblem!=='location'){
+    scores.simply=(scores.simply||0)-3;
+  }
+  if(conceptIds.has('ai')||conceptIds.has('robot')||conceptIds.has('automation')||conceptIds.has('kiosk')||conceptIds.has('facial')||conceptIds.has('crypto')||conceptIds.has('remote')||conceptIds.has('tiktok')||conceptIds.has('cyber')||conceptIds.has('ordering')){
+    scores.emarketer=(scores.emarketer||0)+3;
+    scores.articles=(scores.articles||0)+2;
+  }
+
+  const ranked=Object.entries(scores).filter(([id])=>resources[id]&&allowedResource(id)).sort((a,b)=>b[1]-a[1]);
+  return {primary:ranked.slice(0,3).map(([id])=>id),secondary:ranked.slice(3,6).map(([id])=>id)};
+}
+
+function getQuestionsEvidence(){
+  const base=problemData[selectedProblem];
+  const override=situationOverrides[selectedSituation]?.[selectedProblem];
+  return {questions:override?.questions||base.baseQuestions,evidence:override?.evidence||base.baseEvidence};
+}
+
+function parseTerms(value){
+  return [...new Set(value.split(',').map(v=>v.trim()).filter(Boolean))];
+}
+
+const genericSubjectTerms=new Set(['product','products','service','services','business','businesses','company','companies','industry','industries','market','markets','idea','concept']);
+
+function makeQuery(terms,placeholder=''){
+  return terms.length?groupQuery(terms):placeholder;
+}
+
+function buildSearchesFromInputs(){
+  const subjectTerms=parseTerms(document.getElementById('subject-terms').value);
+  const issueTerms=parseTerms(document.getElementById('issue-terms').value);
+  const locationTerms=parseTerms(document.getElementById('location-terms').value);
+  const subjectQuery=makeQuery(subjectTerms,'[enter business / industry terms]');
+  const issueQuery=makeQuery(issueTerms);
+  const locationQuery=makeQuery(locationTerms);
+  const mods=activeSearchModifiers();
+
+  return mods.map((mod,index)=>{
+    const parts=[subjectQuery];
+    if(issueQuery) parts.push(issueQuery);
+    parts.push(mod);
+    if(locationQuery && (['location','risk','customers','strategy'].includes(selectedProblem)||index===0)){
+      parts.push(locationQuery);
+    }
+    return parts.join(' AND ');
+  });
+}
+
+function renderSearches(){
+  const searches=buildSearchesFromInputs();
+  const searchOutput=document.getElementById('search-output');
+  searchOutput.innerHTML='';
+
+  searches.forEach(search=>{
+    const p=document.createElement('pre');
+    p.className='search-string';
+    p.textContent=search;
+    searchOutput.appendChild(p);
+  });
+
+  const subjectTerms=parseTerms(document.getElementById('subject-terms').value);
+  const hasSubject=subjectTerms.length>0;
+  const genericOnly=hasSubject && subjectTerms.every(term=>genericSubjectTerms.has(term.toLowerCase()));
+
+  document.getElementById('concept-warning').classList.toggle('show',!hasSubject);
+  document.getElementById('generic-concept-warning').classList.toggle('show',genericOnly);
+  return searches;
+}
+
+function fillList(id,items){
+  const list=document.getElementById(id);list.innerHTML='';
+  items.forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li)});
+}
+
+function makeResourceCard(id){
+  const r=resources[id];
+  const card=document.createElement('article');card.className='resource-card';
+  const type=document.createElement('div');type.className='resource-type';type.textContent=r.type;
+  const heading=document.createElement('h4');heading.textContent=r.name;
+  const p=document.createElement('p');p.textContent=r.reason;
+  const a=document.createElement('a');a.href=r.url;a.target='_blank';a.rel='noopener';a.textContent='Open resource ↗';
+  card.append(type,heading,p,a);return card;
+}
+
+function makeSecondaryCard(id){
+  const r=resources[id];
+  const card=document.createElement('article');card.className='secondary-card';
+  const strong=document.createElement('strong');strong.textContent=r.name;
+  const p=document.createElement('p');p.textContent=r.useWhen+'.';
+  const a=document.createElement('a');a.href=r.url;a.target='_blank';a.rel='noopener';a.textContent='Open ↗';
+  card.append(strong,p,a);return card;
+}
+
+function composePlan(searches,ranked,qe,lensIds){
+  const subject=parseTerms(document.getElementById('subject-terms').value);
+  const issue=parseTerms(document.getElementById('issue-terms').value);
+  const location=parseTerms(document.getElementById('location-terms').value);
+
+  return [
+    'RESEARCH FOCUS',topicInput.value.trim(),'',
+    'SITUATION',situations[selectedSituation].name,'',
+    'GROUP PERSPECTIVES',...lensIds.map(id=>'• '+lenses[id].name),'',
+    'FACTOR AREA',problemData[selectedProblem].title,'',
+    'FACTORS / QUESTIONS TO INVESTIGATE',...qe.questions.map(q=>'• '+q),'',
+    'EVIDENCE TO FIND',...qe.evidence.map(e=>'• '+e),'',
+    'START HERE',...ranked.primary.map(id=>'• '+resources[id].name+': '+resources[id].reason),'',
+    ranked.secondary.length?'ALSO USEFUL IF':'',
+    ...ranked.secondary.map(id=>'• '+resources[id].name+': '+resources[id].useWhen+'.'),
+    ranked.secondary.length?'':'',
+    'DATABASE LANGUAGE',
+    '• Subject / organization / industry terms: '+(subject.join(', ')||'[enter terms]'),
+    '• Issue / change terms: '+(issue.join(', ')||'[none]'),
+    '• Location terms: '+(location.join(', ')||'[none]'),'',
+    'ARTICLE SEARCH STARTERS',...searches.map(s=>'• '+s)
+  ].filter((line,index,arr)=>!(line===''&&arr[index-1]==='')).join('\n');
+}
+
+function buildPath(){
+  const lensIds=selectedLenses();
+  const topic=topicInput.value.trim();
+  const topicAnalysis=analyzeTopic(topic);
+  const qe=getQuestionsEvidence();
+  const ranked=rankResources(topicAnalysis,lensIds);
+
+  document.getElementById('result-title').textContent=problemData[selectedProblem].title;
+  document.getElementById('result-summary').textContent=topic+' · '+situations[selectedSituation].name+' · '+lensIds.map(id=>lenses[id].name).join(' + ');
+
+  const lensOutput=document.getElementById('lens-output');
+  lensOutput.innerHTML='';
+  lensIds.forEach(id=>{
+    const card=document.createElement('article');
+    card.className='lens-card';
+    const heading=document.createElement('h4');
+    heading.textContent=lenses[id].name;
+    const p=document.createElement('p');
+    p.textContent=lenses[id].contributions[selectedProblem]||lenses[id].contributions.broad;
+    card.append(heading,p);
+    lensOutput.appendChild(card);
+  });
+
+  fillList('question-output',qe.questions);
+  fillList('evidence-output',qe.evidence);
+
+  const resourceOutput=document.getElementById('resource-output');
+  resourceOutput.innerHTML='';
+  ranked.primary.forEach(id=>resourceOutput.appendChild(makeResourceCard(id)));
+
+  const secondaryOutput=document.getElementById('secondary-output');
+  secondaryOutput.innerHTML='';
+  ranked.secondary.forEach(id=>secondaryOutput.appendChild(makeSecondaryCard(id)));
+  document.getElementById('secondary-wrap').hidden=ranked.secondary.length===0;
+
+  document.getElementById('subject-terms').value=topicAnalysis.subjectTerms.join(', ');
+  document.getElementById('issue-terms').value=topicAnalysis.issueTerms.join(', ');
+  document.getElementById('location-terms').value=topicAnalysis.locationTerms.join(', ');
+
+  const conceptOutput=document.getElementById('concept-output');
+  conceptOutput.innerHTML='';
+  const factorLabels=(selectedSituation==='publicorg'&&selectedProblem==='broad')
+    ? ['current policy / practice','affected students / users','law / system policy','cost / implementation','comparable institutions']
+    : problemSearchLabels[selectedProblem];
+  factorLabels.forEach(label=>{
+    const span=document.createElement('span');
+    span.className='search-chip';
+    span.textContent=label;
+    conceptOutput.appendChild(span);
+  });
+
+  const searches=renderSearches();
+  document.getElementById('plan-output').textContent=composePlan(searches,ranked,qe,lensIds);
+
+  document.getElementById('results').classList.add('show');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+  status.textContent='Research path built.';
+}
+
+function analysisFromEditedFields(topic,subjectText,issueText,locationText){
+  const topicAnalysis=analyzeTopic([
+    topic||'',
+    subjectText||'',
+    issueText||''
+  ].join(' '));
+
+  const explicitLocationTerms=parseTerms(locationText||'');
+  if(explicitLocationTerms.length){
+    topicAnalysis.location=explicitLocationFromTerms(explicitLocationTerms);
+    topicAnalysis.locationTerms=[...explicitLocationTerms];
+  }else{
+    topicAnalysis.location=null;
+    topicAnalysis.locationTerms=[];
+  }
+
+  return topicAnalysis;
+}
+
+function updateSearchPlan(){
+  const searches=renderSearches();
+  const lensIds=selectedLenses();
+
+  const topicAnalysis=analysisFromEditedFields(
+    topicInput.value.trim(),
+    document.getElementById('subject-terms').value,
+    document.getElementById('issue-terms').value,
+    document.getElementById('location-terms').value
+  );
+
+  const qe=getQuestionsEvidence();
+  const ranked=rankResources(topicAnalysis,lensIds);
+
+  const resourceOutput=document.getElementById('resource-output');
+  resourceOutput.innerHTML='';
+  ranked.primary.forEach(id=>resourceOutput.appendChild(makeResourceCard(id)));
+
+  const secondaryOutput=document.getElementById('secondary-output');
+  secondaryOutput.innerHTML='';
+  ranked.secondary.forEach(id=>secondaryOutput.appendChild(makeSecondaryCard(id)));
+  document.getElementById('secondary-wrap').hidden=ranked.secondary.length===0;
+
+  document.getElementById('plan-output').textContent=composePlan(searches,ranked,qe,lensIds);
+}
+
+async function copyPlan(){
+  const text=document.getElementById('plan-output').textContent;
+  const copyStatus=document.getElementById('copy-status');
+  try{
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);copyStatus.textContent='Research plan copied.';return}
+    throw new Error('clipboard unavailable');
+  }catch(error){
+    const area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();
+    try{const ok=document.execCommand('copy');copyStatus.textContent=ok?'Research plan copied.':'Select the plan and copy it manually.'}catch(e){copyStatus.textContent='Select the plan and copy it manually.'}
+    area.remove();
+  }
+}
+
+buildButton.addEventListener('click',buildPath);
+document.getElementById('update-searches').addEventListener('click',updateSearchPlan);
+resetButton.addEventListener('click',()=>{
+  lensButtons.forEach(b=>b.classList.remove('selected'));
+  situationButtons.forEach(b=>b.classList.remove('selected'));
+  problemButtons.forEach(b=>b.classList.remove('selected'));
+  topicInput.value='';
+  document.getElementById('subject-terms').value='';
+  document.getElementById('issue-terms').value='';
+  document.getElementById('location-terms').value='';
+  selectedSituation='';selectedProblem='';
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('copy-status').textContent='';
+  document.getElementById('concept-warning').classList.remove('show');
+  document.getElementById('generic-concept-warning').classList.remove('show');
+  updateBuildState();window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('copy').addEventListener('click',copyPlan);
+document.getElementById('print').addEventListener('click',()=>window.print());
+updateBuildState();
+</script>
+</body>
+</html>
