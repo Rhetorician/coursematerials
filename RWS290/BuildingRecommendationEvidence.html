@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWS 290 | Building a Recommendation from Evidence</title>
+<style>
+:root{--black:#000;--ink:#111;--red:#a6192e;--red-dark:#761022;--white:#fff;--panel:#f3f3f3;--line:#d6d6d6;--muted:#616161}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#111;color:var(--ink);font-family:Helvetica,Arial,sans-serif;line-height:1.55}button,input,textarea{font:inherit}button{touch-action:manipulation}a{color:inherit}.shell{width:min(1180px,calc(100% - 32px));margin:0 auto;background:#fff;min-height:100vh}.hero{padding:34px;background:#000;color:#fff;border-top:8px solid var(--red)}.kicker{margin:0 0 7px;font-size:11pt;font-weight:700;letter-spacing:.04em}.hero h1{margin:0;max-width:920px;font-size:clamp(2rem,5vw,3.65rem);line-height:1.04}.hero p:last-child{max-width:900px;margin:16px 0 0;color:#e8e8e8;font-size:1.08rem}main{padding:30px 34px 60px}.jump-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:14px;background:var(--panel);border-left:6px solid var(--red)}.jump-nav a{display:inline-block;padding:8px 11px;background:#fff;border:1px solid #aaa;text-decoration:none;font-weight:700}.jump-nav a:hover,.jump-nav a:focus-visible{border-color:var(--red);color:var(--red-dark)}.section{scroll-margin-top:18px;padding:28px 0;border-bottom:1px solid var(--line)}.section:first-of-type{padding-top:4px}.section h2{margin:0 0 8px;font-size:1.65rem}.section-intro{max-width:930px;margin:0 0 18px;color:#414141}.callout{margin:0 0 20px;padding:15px 17px;background:var(--panel);border-left:6px solid var(--red)}.callout strong{display:block;margin-bottom:3px}.callout p{margin:0}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}.flow-step{padding:16px;background:var(--panel);border-top:5px solid #111}.flow-step strong{display:block;margin-bottom:4px}.flow-step p{margin:0;color:#444;font-size:.94rem}.card{padding:17px;border:1px solid var(--line);border-top:5px solid var(--red);background:#fff}.card h3{margin:0 0 8px;font-size:1.08rem}.card p{margin:0;color:#444}.card ul{margin:10px 0 0;padding-left:21px}.card li{margin:0 0 6px}.example{margin-top:18px;border:1px solid var(--line)}.example-head{padding:14px 16px;background:#111;color:#fff}.example-body{padding:17px}.example-row{display:grid;grid-template-columns:155px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}.example-row:last-child{border-bottom:0}.example-label{font-weight:700}.example-value{color:#333}.signal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.signal,.question,.check{padding:13px 14px;background:var(--panel);border-left:5px solid var(--red)}.signal strong,.question strong,.check strong{display:block;margin-bottom:3px}.signal p,.question p,.check p{margin:0;color:#444}.question-list{display:grid;gap:9px}.lab{border:1px solid var(--line);background:#fff}.lab-head{padding:18px 20px 15px;background:var(--panel);border-bottom:1px solid var(--line)}.lab-head h3{margin:0}.lab-head p{margin:6px 0 0;color:#444}.lab-body{padding:20px}.field{margin:0 0 18px}.field label{display:block;margin-bottom:6px;font-weight:700}.field-help{margin:5px 0 8px;color:#555;font-size:.92rem}.pattern-fieldset{margin:20px 0 18px;padding:0;border:0;min-width:0}.pattern-fieldset legend{display:block;width:100%;margin:0 0 7px;padding:0;font-weight:700}.field input,.field textarea{width:100%;padding:11px 12px;border:1px solid #999;border-radius:0;background:#fff;color:#111}.field textarea{min-height:92px;resize:vertical}.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.evidence-card{padding:14px;background:var(--panel);border-top:4px solid #111}.evidence-card label{display:block;font-weight:700;margin-bottom:6px}.evidence-card textarea{width:100%;min-height:128px;padding:10px;border:1px solid #999;resize:vertical;background:#fff}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{min-height:62px;padding:11px 12px;border:1px solid #999;background:#fff;color:#111;text-align:left;cursor:pointer}.choice strong{display:block}.choice span{display:block;margin-top:2px;color:#555;font-size:.9rem}.choice:hover{border-color:var(--red)}.choice:focus-visible{border-color:var(--red);outline:3px solid #111;outline-offset:2px}.choice.selected{border-color:var(--red);box-shadow:inset 6px 0 0 var(--red);background:#fafafa}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.action{padding:10px 14px;border:0;font-weight:700;cursor:pointer}.action.primary{background:var(--red);color:#fff}.action.secondary{background:#fff;color:#111;border:2px solid #111}.status{min-height:22px;margin-top:9px;color:var(--muted);font-size:.92rem}.output{display:none;margin-top:20px;background:#111;color:#fff;border-top:6px solid var(--red);padding:18px}.output.show{display:block}.output h4{margin:0 0 10px}.output pre{margin:0;color:#fff;font:inherit;white-space:pre-wrap}.matrix{overflow-x:auto}.matrix table{width:100%;border-collapse:collapse;min-width:760px}.matrix th,.matrix td{padding:12px 13px;border:1px solid var(--line);vertical-align:top;text-align:left}.matrix th{background:#111;color:#fff}.matrix td:first-child{font-weight:700}.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}.finish{padding:17px;background:#111;color:#fff;border-top:6px solid var(--red)}.finish p{margin:0}footer{padding:22px 34px 34px;background:#000;color:#ddd;border-top:8px solid var(--red)}footer p{margin:0}@media(max-width:900px){.two-col,.three-col,.flow,.evidence-grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.shell{width:100%}.hero{padding:26px 20px 23px}main{padding:22px 18px 45px}.two-col,.three-col,.flow,.evidence-grid,.choice-grid,.checklist{grid-template-columns:1fr}.example-row{grid-template-columns:1fr;gap:3px}}@media print{body,.shell{background:#fff}.hero,.jump-nav,.lab .actions,.status{display:none!important}main{padding:0}.section{break-inside:avoid}.output{display:none!important}.output.show{display:block!important;background:#fff;color:#000;border:1px solid #000}.output pre{color:#000}.finish{background:#fff;color:#000;border:2px solid #000}footer{background:#fff;color:#000;border-top:2px solid #000;padding:20px 0}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="hero"><p class="kicker">RWS 290 &middot; Recommendation Report</p><h1>Building a Recommendation from Evidence</h1><p>Use research to reach factor-level conclusions, then connect those conclusions to the recommendation your report is built to support.</p></header>
+<main>
+<nav class="jump-nav" aria-label="Page sections"><a href="#evidence-analysis">Evidence to analysis</a><a href="#factor">Work by factor</a><a href="#conflict">When sources disagree</a><a href="#lab">Evidence-to-analysis lab</a><a href="#recommendation">From factors to recommendation</a><a href="#check">Quick check</a></nav>
+<section class="section" id="evidence-analysis"><h2>Research is only the beginning</h2><p class="section-intro">A Recommendation Report needs more than useful sources. The report has to explain what the evidence means for the decision. That movement from evidence to meaning is analysis.</p><div class="flow"><div class="flow-step"><strong>1. Factor question</strong><p>Start with one factor your group said it would investigate.</p></div><div class="flow-step"><strong>2. Evidence</strong><p>Bring together the strongest information that actually bears on that factor.</p></div><div class="flow-step"><strong>3. Analysis</strong><p>Explain patterns, differences, limits, tradeoffs, and why the evidence matters.</p></div><div class="flow-step"><strong>4. Factor conclusion</strong><p>State what the evidence now suggests about that part of the decision.</p></div></div><div class="callout"><strong>A source is not a section.</strong><p>Your report should not become a sequence of “Source A says…” paragraphs. Organize the discussion around the factor being investigated and use multiple sources inside that discussion when they help answer the same question.</p></div><div class="three-col"><article class="card"><h3>Evidence</h3><p>What did the source actually establish?</p><ul><li>A number, trend, finding, policy, comparison, or documented event</li><li>Something you can verify and cite</li></ul></article><article class="card"><h3>Analysis</h3><p>Why does that evidence matter for the factor?</p><ul><li>What it strengthens or weakens</li><li>How it connects with other evidence</li></ul></article><article class="card"><h3>Conclusion</h3><p>What does the factor now suggest?</p><ul><li>A judgment grounded in the evidence</li><li>Not simply another source summary</li></ul></article></div></section>
+<section class="section" id="factor"><h2>Build the analysis around the factor</h2><p class="section-intro">Each factor should function like a research question. The evidence belongs together because it helps answer that question, not because the sources happen to be about the same company or industry.</p><div class="example"><div class="example-head"><strong>Example factor: Is there enough customer demand to support another hotel near Snapdragon Stadium?</strong></div><div class="example-body"><div class="example-row"><div class="example-label">Evidence 1</div><div class="example-value">Local demographic or visitor data shows who is in the market and when demand is likely to occur.</div></div><div class="example-row"><div class="example-label">Evidence 2</div><div class="example-value">Industry data shows whether hotel demand, occupancy, or room supply is growing, stable, or weakening.</div></div><div class="example-row"><div class="example-label">Evidence 3</div><div class="example-value">Current reporting or competitor information shows what nearby hotels are doing and whether new supply is already entering the market.</div></div><div class="example-row"><div class="example-label">Analysis</div><div class="example-value">The sources become useful when the report compares them: whether the local audience is large enough, whether broader lodging conditions support expansion, and whether nearby competition changes the opportunity.</div></div><div class="example-row"><div class="example-label">Factor conclusion</div><div class="example-value">The conclusion answers the demand question using the combined evidence. It can support the proposal, weaken it, or show that the answer depends on a condition the group still needs to address.</div></div></div></div><div class="signal-grid" style="margin-top:18px"><div class="signal"><strong>Compare</strong><p>Do the sources point in the same direction? If not, what explains the difference?</p></div><div class="signal"><strong>Connect</strong><p>How does one piece of evidence change the meaning of another?</p></div><div class="signal"><strong>Interpret</strong><p>Why does the evidence matter to the organization, audience, or decision?</p></div><div class="signal"><strong>Qualify</strong><p>What uncertainty, limitation, condition, or tradeoff keeps the conclusion from being stronger?</p></div></div></section>
+<section class="section" id="conflict"><h2>When the evidence does not line up neatly</h2><p class="section-intro">Conflicting evidence is not a research failure. It often gives you the analysis. The useful question is why the sources differ and which evidence applies most directly to the decision your group is investigating.</p><div class="two-col"><div class="question-list"><div class="question"><strong>Are the sources measuring the same thing?</strong><p>Revenue growth, customer interest, actual purchases, and survey intentions can describe different parts of the same market.</p></div><div class="question"><strong>Are they describing the same place or population?</strong><p>National evidence may not describe San Diego, a campus population, or a specific customer segment.</p></div><div class="question"><strong>Are they equally current?</strong><p>A strong older study may explain behavior while current reporting shows that the market has changed.</p></div></div><div class="question-list"><div class="question"><strong>What kind of source is speaking?</strong><p>A company, regulator, trade association, journalist, database, and scholar may have different access to evidence and different purposes.</p></div><div class="question"><strong>Does one source apply more directly?</strong><p>A broad industry statistic can be accurate while a local source is still more useful for a location-specific recommendation.</p></div><div class="question"><strong>Can the conclusion be conditional?</strong><p>Mixed evidence may support a recommendation only under certain costs, locations, customer levels, policies, or implementation choices.</p></div></div></div></section>
+<section class="section" id="lab"><h2>Evidence-to-analysis lab</h2><p class="section-intro">Use this after researching one factor. The lab does not write the analysis for you. It organizes the evidence and your own interpretation into a factor-level research outline you can use while drafting.</p><div class="lab"><div class="lab-head"><h3>Build a factor conclusion</h3><p>Enter the evidence in your own words. Keep enough detail to remember what the source actually establishes.</p></div><div class="lab-body"><div class="field"><label for="factor-question">Factor or question being investigated</label><input id="factor-question" type="text" placeholder="Example: Is there enough customer demand to support the proposal?"></div><p class="field-help"><strong>For every evidence note:</strong> Name the source, then record the actual number, finding, policy, comparison, or documented event. Do not enter only the article title or database name. <strong>Use at least two different sources.</strong></p><div class="evidence-grid"><div class="evidence-card"><label for="evidence-1">Evidence note 1 — source + actual evidence</label><textarea id="evidence-1" placeholder="Source name — actual number, finding, policy, comparison, or documented event"></textarea></div><div class="evidence-card"><label for="evidence-2">Evidence note 2 — different source + actual evidence</label><textarea id="evidence-2" placeholder="Different source — actual number, finding, policy, comparison, or documented event"></textarea></div><div class="evidence-card"><label for="evidence-3">Evidence note 3 — source + actual evidence</label><textarea id="evidence-3" placeholder="Optional: source name — actual evidence"></textarea></div></div><fieldset class="pattern-fieldset"><legend>What pattern do you see?</legend><div class="choice-grid" id="pattern-choices"><button class="choice" type="button" data-pattern="The evidence mostly points in the same direction." aria-pressed="false"><strong>Mostly consistent</strong><span>The sources generally support the same interpretation.</span></button><button class="choice" type="button" data-pattern="The evidence is mixed and points in more than one direction." aria-pressed="false"><strong>Mixed</strong><span>Some evidence strengthens the case while other evidence complicates it.</span></button><button class="choice" type="button" data-pattern="The sources directly conflict or describe the issue differently." aria-pressed="false"><strong>Conflicting</strong><span>The disagreement itself needs explanation.</span></button><button class="choice" type="button" data-pattern="The available evidence is incomplete." aria-pressed="false"><strong>Incomplete</strong><span>There is not enough evidence yet for a strong conclusion.</span></button></div></fieldset><div class="field"><label for="meaning">What does the combined evidence mean for this factor?</label><p class="field-help">Do not repeat the evidence. Explain what the pieces mean together and why that matters for the factor.</p><textarea id="meaning" placeholder="What does the combined evidence strengthen, weaken, complicate, or make conditional?"></textarea></div><div class="field"><label for="limit">What could make this conclusion less certain?</label><p class="field-help">Identify an important limitation, uncertainty, condition, or tradeoff. <strong>Do not enter “None” or “N/A.”</strong> If no limitation is obvious, identify information you do not have yet or an assumption that could be wrong.</p><textarea id="limit" placeholder="What keeps you from overstating the evidence?"></textarea></div><div class="field"><label for="factor-conclusion">Your answer to the factor question</label><p class="field-help">This is your factor-level conclusion. Answer from the evidence. Do not use “I think,” “we believe,” or personal preference. <strong>If you chose Incomplete, your conclusion may be that the evidence is not strong enough yet; state what still needs to be researched.</strong></p><textarea id="factor-conclusion" placeholder="Answer the factor question based on the combined evidence above."></textarea></div><div class="actions"><button class="action primary" id="build-outline" type="button">Build Analysis Outline</button><button class="action secondary" id="reset-lab" type="button">Reset Lab</button></div><div class="status" id="lab-status" aria-live="polite"></div><div class="output" id="analysis-output"><h4>Factor Analysis Outline</h4><pre id="analysis-text"></pre><div class="actions"><button class="action secondary" id="copy-outline" type="button">Copy Outline</button><button class="action secondary" id="print-page" type="button">Print</button></div><div class="status" id="copy-status" aria-live="polite"></div></div></div></div></section>
+<section class="section" id="recommendation"><h2>Move from factor conclusions to the recommendation</h2><p class="section-intro">Once the group has conclusions for the important factors, put those conclusions next to each other. The recommendation should follow from their combined weight rather than from whichever source sounded most persuasive.</p><div class="matrix"><table><thead><tr><th>Question to ask</th><th>What you are deciding</th></tr></thead><tbody><tr><td>Which factor is most decisive?</td><td>Some evidence matters more to the decision than other evidence. A legal barrier, impossible cost, or lack of demand may outweigh several minor advantages.</td></tr><tr><td>Which factors support the change?</td><td>Identify the conclusions that make the recommendation more workable, useful, profitable, efficient, equitable, or strategically sound.</td></tr><tr><td>Which factors create problems?</td><td>Identify costs, risks, weak demand, implementation problems, competitive pressure, legal constraints, or other evidence working against the proposal.</td></tr><tr><td>Can the problems be managed?</td><td>A limitation may change the form of the recommendation instead of killing it. Conditions, scope, timing, location, or implementation may matter.</td></tr><tr><td>What does the evidence support now?</td><td>The final recommendation should reflect the strongest conclusion the evidence actually supports, not the position the group hoped to prove at the beginning.</td></tr></tbody></table></div><div class="callout" style="margin-top:18px"><strong>Your recommendation can become more specific as you research.</strong><p>Research may support the proposed change as originally imagined, narrow it, add conditions, change the timing or location, or reveal that a different version of the change is more defensible.</p></div></section>
+<section class="section" id="check"><h2>Quick check before drafting</h2><p class="section-intro">A strong research process should leave you with more than a folder full of sources. You should know what each factor now suggests and why.</p><div class="checklist"><div class="check"><strong>The discussion is organized by factors or decision questions.</strong><p>Source names do not become the structure of the report.</p></div><div class="check"><strong>Important claims use evidence that actually bears on the decision.</strong><p>Interesting facts are not automatically useful facts.</p></div><div class="check"><strong>Multiple sources are synthesized when they answer the same factor.</strong><p>The report compares and connects evidence instead of presenting isolated summaries.</p></div><div class="check"><strong>Contradictions and limits are explained.</strong><p>The analysis does not pretend the evidence is cleaner than it really is.</p></div><div class="check"><strong>Each major factor reaches a conclusion.</strong><p>The reader should know what the evidence means for that part of the decision.</p></div><div class="check"><strong>The recommendation follows from the factor conclusions.</strong><p>The final position should be traceable back to the research rather than appearing suddenly at the end.</p></div></div><div class="finish" style="margin-top:18px"><p><strong>Finish line:</strong> You are ready to draft when you can explain what the strongest evidence means for each important factor and how those factor conclusions shape the recommendation.</p></div></section>
+</main><footer><p>RWS 290 &middot; Recommendation Report Research</p></footer></div>
+<script>
+const patternButtons=[...document.querySelectorAll('[data-pattern]')];
+const labFieldIds=['factor-question','evidence-1','evidence-2','evidence-3','meaning','limit','factor-conclusion'];
+let selectedPattern='';
+
+function value(id){return document.getElementById(id).value.trim()}
+
+function invalidateOutline(){
+  const output=document.getElementById('analysis-output');
+  const text=document.getElementById('analysis-text');
+  const hadOutput=output.classList.contains('show')||Boolean(text.textContent);
+  output.classList.remove('show');
+  text.textContent='';
+  document.getElementById('copy-status').textContent='';
+  const status=document.getElementById('lab-status');
+  status.textContent=hadOutput?'Your entries changed. Build the analysis outline again.':'';
+}
+
+patternButtons.forEach(button=>button.addEventListener('click',()=>{
+  const changed=selectedPattern!==button.dataset.pattern;
+  patternButtons.forEach(b=>{
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed','false');
+  });
+  button.classList.add('selected');
+  button.setAttribute('aria-pressed','true');
+  selectedPattern=button.dataset.pattern;
+  if(changed) invalidateOutline();
+}));
+
+labFieldIds.forEach(id=>{
+  document.getElementById(id).addEventListener('input',invalidateOutline);
+});
+
+function normalizeEvidenceNote(note){
+  const normalized=note.normalize?note.normalize('NFKC'):note;
+  return normalized.toLowerCase().replace(/\s+/g,' ').trim();
+}
+
+function duplicateEvidencePair(entries){
+  const seen=new Map();
+  for(const entry of entries){
+    const normalized=normalizeEvidenceNote(entry.text);
+    if(seen.has(normalized)) return [seen.get(normalized),entry.number];
+    seen.set(normalized,entry.number);
+  }
+  return null;
+}
+
+function normalizeCopOut(value){
+  return (value.normalize?value.normalize('NFKC'):value).toLowerCase().replace(/[.!?]+$/g,'').trim();
+}
+
+function buildOutline(){
+  const factor=value('factor-question');
+  const evidenceEntries=[
+    {number:1,text:value('evidence-1')},
+    {number:2,text:value('evidence-2')},
+    {number:3,text:value('evidence-3')}
+  ].filter(entry=>entry.text);
+  const notes=evidenceEntries.map(entry=>entry.text);
+  const meaning=value('meaning');
+  const limit=value('limit');
+  const conclusion=value('factor-conclusion');
+  const status=document.getElementById('lab-status');
+  const missing=[];
+
+  if(!factor) missing.push('factor or question');
+  if(notes.length<2) missing.push('at least two evidence notes');
+  if(!selectedPattern) missing.push('evidence pattern');
+  if(!meaning) missing.push('what the evidence means');
+  if(!limit) missing.push('what could make the conclusion less certain');
+  if(!conclusion) missing.push('answer to the factor question');
+
+  if(missing.length){
+    status.textContent='Add: '+missing.join(', ')+'.';
+    document.getElementById('analysis-output').classList.remove('show');
+    document.getElementById('analysis-text').textContent='';
+    return;
+  }
+
+  const limitationCopOuts=new Set(['none','n/a','na','idk','nothing']);
+  if(limitationCopOuts.has(normalizeCopOut(limit))){
+    status.textContent='Add a real limitation or uncertainty. Do not use None, N/A, IDK, or Nothing.';
+    document.getElementById('analysis-output').classList.remove('show');
+    document.getElementById('analysis-text').textContent='';
+    return;
+  }
+
+  const duplicate=duplicateEvidencePair(evidenceEntries);
+  if(duplicate){
+    status.textContent=`Evidence notes ${duplicate[0]} and ${duplicate[1]} are the same. Add evidence from another source.`;
+    document.getElementById('analysis-output').classList.remove('show');
+    document.getElementById('analysis-text').textContent='';
+    return;
+  }
+
+  const lines=[
+    'FACTOR / QUESTION',factor,'',
+    'EVIDENCE NOTES',...notes.map((note,index)=>`${index+1}. ${note}`),'',
+    'PATTERN ACROSS THE EVIDENCE',selectedPattern,'',
+    'WHAT THE EVIDENCE MEANS FOR THIS FACTOR',meaning,'',
+    'LIMIT / UNCERTAINTY / TRADEOFF',limit,'',
+    'FACTOR-LEVEL CONCLUSION',conclusion
+  ];
+
+  document.getElementById('analysis-text').textContent=lines.join('\n');
+  document.getElementById('analysis-output').classList.add('show');
+  status.textContent='Analysis outline built.';
+}
+
+function resetLab(){
+  labFieldIds.forEach(id=>document.getElementById(id).value='');
+  patternButtons.forEach(b=>{
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed','false');
+  });
+  selectedPattern='';
+  document.getElementById('analysis-output').classList.remove('show');
+  document.getElementById('analysis-text').textContent='';
+  document.getElementById('lab-status').textContent='';
+  document.getElementById('copy-status').textContent='';
+}
+
+async function copyOutline(){
+  const text=document.getElementById('analysis-text').textContent;
+  const status=document.getElementById('copy-status');
+  try{
+    if(navigator.clipboard&&window.isSecureContext){
+      await navigator.clipboard.writeText(text);
+      status.textContent='Outline copied.';
+      return;
+    }
+    throw new Error('clipboard unavailable');
+  }catch(error){
+    const area=document.createElement('textarea');
+    area.value=text;
+    area.setAttribute('readonly','');
+    area.style.position='fixed';
+    area.style.opacity='0';
+    document.body.appendChild(area);
+    area.select();
+    try{
+      const ok=document.execCommand('copy');
+      status.textContent=ok?'Outline copied.':'Select the outline and copy it manually.';
+    }catch(e){
+      status.textContent='Select the outline and copy it manually.';
+    }
+    area.remove();
+  }
+}
+
+document.getElementById('build-outline').addEventListener('click',buildOutline);
+document.getElementById('reset-lab').addEventListener('click',resetLab);
+document.getElementById('copy-outline').addEventListener('click',copyOutline);
+document.getElementById('print-page').addEventListener('click',()=>window.print());
+</script>
+</body>
+</html>
