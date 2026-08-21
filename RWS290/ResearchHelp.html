@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWS 290 | Research Help</title>
+<style>
+:root{--black:#000000;--ink:#111111;--red:#a6192e;--red-dark:#761022;--white:#ffffff;--panel:#f3f3f3;--line:#d6d6d6;--muted:#616161}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:var(--ink);font-family:Helvetica,Arial,sans-serif;line-height:1.55}
+a{color:inherit}
+.shell{width:min(1180px,calc(100% - 32px));margin:0 auto;background:var(--white);min-height:100vh}
+.hero{padding:34px 34px 30px;background:var(--black);color:var(--white);border-top:8px solid var(--red)}
+.kicker{margin:0 0 7px;font-size:11pt;font-weight:700;letter-spacing:.04em}
+.hero h1{margin:0;max-width:900px;font-size:clamp(2rem,5vw,3.7rem);line-height:1.04}
+.hero p:last-child{max-width:860px;margin:16px 0 0;color:#e8e8e8;font-size:1.08rem}
+main{padding:30px 34px 60px}
+.jump-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:14px;background:var(--panel);border-left:6px solid var(--red)}
+.jump-nav a{display:inline-block;padding:8px 11px;background:#fff;border:1px solid #aaa;text-decoration:none;font-weight:700}
+.jump-nav a:hover,.jump-nav a:focus-visible{border-color:var(--red);color:var(--red-dark)}
+.section{scroll-margin-top:18px;padding:28px 0;border-bottom:1px solid var(--line)}
+.section:first-of-type{padding-top:4px}
+.section h2{margin:0 0 8px;font-size:1.65rem}
+.section-intro{max-width:900px;margin:0 0 18px;color:#414141}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{display:flex;flex-direction:column;min-height:165px;padding:17px;border:1px solid var(--line);border-top:5px solid var(--red);background:#fff}
+.card h3{margin:0 0 8px;font-size:1.08rem}
+.card p{margin:0;color:#444}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.help-box{padding:17px;background:var(--panel);border-left:5px solid var(--red)}
+.help-box h3{margin:0 0 8px;font-size:1.08rem}
+.help-box p{margin:0;color:#444}
+.help-box ul{margin:10px 0 0;padding-left:22px}
+.help-box li{margin:0 0 7px}
+.contact-card{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start;padding:20px;border:1px solid var(--line);background:#fff}
+.contact-card h3{margin:0 0 7px;font-size:1.25rem}
+.contact-card p{margin:0 0 11px;color:#444}
+.contact-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.contact-links a{display:inline-block;padding:9px 12px;background:#111;color:#fff;text-decoration:none;font-weight:700}
+.contact-links a:hover,.contact-links a:focus-visible{background:var(--red)}
+.contact-links a.secondary{background:#fff;color:#111;border:2px solid #111;padding:7px 10px}
+.role-list{margin:0;padding:0;list-style:none}
+.role-list li{padding:11px 13px;background:var(--panel);border-left:5px solid #111}
+.role-list li+li{margin-top:8px}
+.role-list strong{display:block;margin-bottom:2px}
+.quick-list{display:grid;gap:10px}
+.quick-item{padding:14px 15px;border:1px solid var(--line);background:#fff}
+.quick-item strong{display:block;margin-bottom:3px}
+.quick-item p{margin:0 0 8px;color:#444}
+.quick-item a{font-weight:700;color:var(--red-dark)}
+.finish{margin-top:18px;padding:17px;background:#111;color:#fff;border-top:6px solid var(--red)}
+.finish p{margin:0}
+footer{padding:22px 34px 34px;background:#000;color:#ddd;border-top:8px solid var(--red)}
+footer p{margin:0}
+@media(max-width:900px){.card-grid{grid-template-columns:1fr 1fr}.two-col,.contact-card{grid-template-columns:1fr}}
+@media(max-width:620px){.shell{width:100%}.hero{padding:26px 20px 23px}main{padding:22px 18px 45px}.card-grid{grid-template-columns:1fr}}
+@media print{body,.shell{background:#fff}.hero,.jump-nav{display:none!important}main{padding:0}.section{break-inside:avoid}.contact-links{display:none}.finish{background:#fff;color:#000;border:2px solid #000}footer{background:#fff;color:#000;border-top:2px solid #000;padding:20px 0}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <p class="kicker">RWS 290 &middot; Recommendation Report</p>
+    <h1>Research Help</h1>
+    <p>When the search is going nowhere, get another set of eyes on the problem before you waste an hour making the same search slightly worse.</p>
+  </header>
+
+  <main>
+    <nav class="jump-nav" aria-label="Page sections">
+      <a href="#when">When to get help</a>
+      <a href="#librarians">Who can help</a>
+      <a href="#bring">What to bring</a>
+      <a href="#quick">Quick help</a>
+    </nav>
+
+    <section class="section" id="when">
+      <h2>When to get help</h2>
+      <p class="section-intro">A research consultation is useful when you cannot tell what kind of source would answer the question.</p>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Your searches keep missing</h3>
+          <p>You know what you are trying to investigate, but the databases keep returning irrelevant results or you are unsure which database to use.</p>
+        </article>
+
+        <article class="card">
+          <h3>You need a source that is hard to find</h3>
+          <p>The source you need may be in a different source family than the ones you have already searched.</p>
+        </article>
+
+        <article class="card">
+          <h3>Your evidence does not answer the factor</h3>
+          <p>You have sources, but they are not helping you answer the question your report needs to investigate. A librarian can help you rethink the search.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="librarians">
+      <h2>Who can help</h2>
+      <p class="section-intro">SDSU librarians can help when you are stuck on the research itself.</p>
+
+      <div class="contact-card">
+        <div>
+          <h3>Rashida Scott Blades</h3>
+          <p>Rashida is the subject librarian for Accountancy, Finance, Management, MIS, Marketing, Economics, and Communication. For most Recommendation Report groups, she is the best place to start.</p>
+          <div class="contact-links">
+            <a href="https://rashidascottblades.youcanbook.me/" target="_blank" rel="noopener">Schedule with Rashida ↗</a>
+            <a class="secondary" href="https://library.sdsu.edu/services-and-support/librarian-consultations" target="_blank" rel="noopener">All subject librarians ↗</a>
+          </div>
+        </div>
+
+        <ul class="role-list">
+          <li><strong>Hospitality / Tourism</strong>Wil Weston is the subject librarian for Hospitality and Tourism Management.</li>
+          <li><strong>Another field or mixed-major group</strong>Use the consultation directory or start with the librarian whose subject area best matches the factor you are researching.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="bring">
+      <h2>What to bring to a consultation</h2>
+      <p class="section-intro">A librarian can help much faster if the group arrives with the research problem in front of them.</p>
+
+      <div class="two-col">
+        <div class="help-box">
+          <h3>Bring the report setup</h3>
+          <ul>
+            <li>Your current problem and purpose statements.</li>
+            <li>The factor you are trying to investigate.</li>
+            <li>The organization, industry, population, or location involved.</li>
+            <li>Any limits that matter, such as geography, time period, or organization type.</li>
+          </ul>
+        </div>
+
+        <div class="help-box">
+          <h3>Bring what you already tried</h3>
+          <ul>
+            <li>A few searches that failed or returned junk.</li>
+            <li>The databases or websites you already used.</li>
+            <li>One or two sources that are close to what you need.</li>
+            <li>The Research Navigator search terms if you used them.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="finish">
+        <p><strong>You do not need to have the research figured out before asking for help.</strong> The useful thing to bring is a specific research problem and enough context for someone else to see where the search is breaking down.</p>
+      </div>
+    </section>
+
+    <section class="section" id="quick">
+      <h2>Quick research help</h2>
+      <p class="section-intro">If you need a quick answer or are not sure whom to contact, use one of these routes.</p>
+
+      <div class="quick-list">
+        <div class="quick-item">
+          <strong>Ask a Librarian</strong>
+          <p>Use in-person help, online chat, email, or the consultation option. SDSU's online chat is available 24/7.</p>
+          <a href="https://library.sdsu.edu/services-and-support/ask-librarian" target="_blank" rel="noopener">Open Ask a Librarian ↗</a>
+        </div>
+
+        <div class="quick-item">
+          <strong>Business Research Guide</strong>
+          <p>Use the guide to reach SDSU's business databases and subject-specific research pages.</p>
+          <a href="https://libguides.sdsu.edu/business" target="_blank" rel="noopener">Open the Business Research Guide ↗</a>
+        </div>
+
+        <div class="quick-item">
+          <strong>General consultation</strong>
+          <p>If you are not sure which subject librarian fits the problem, use the Library's general consultation form.</p>
+          <a href="https://libinfo.sdsu.edu/form?queue_id=7893" target="_blank" rel="noopener">Request a general consultation ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>RWS 290 &middot; Recommendation Report Research Module</p>
+  </footer>
+</div>
+</body>
+</html>
