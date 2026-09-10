@@ -10,7 +10,7 @@
 <script>
 (async function () {
   try {
-    let html = await fetch('./Syllabus.html?v=20260817a1', { cache: 'no-store' }).then(function (response) {
+    let html = await fetch('./SyllabusBaseFall2026.html?v=20260909zoom', { cache: 'no-store' }).then(function (response) {
       if (!response.ok) {
         throw new Error('Unable to load syllabus source.');
       }
@@ -24,6 +24,7 @@
       ['Section 57 · Professional Writing · Asynchronous Online', 'Section A1 · Professional Writing · Hybrid'],
       ['<span>Canvas based</span>', '<span>Hybrid</span>'],
       ['<dt>Class days</dt>\n<dd>Asynchronous</dd>\n<dt>Class time</dt>\n<dd>N/A</dd>\n<dt>Class location</dt>\n<dd>Online through Canvas</dd>', '<dt>Class days</dt>\n<dd>Tuesday</dd>\n<dt>Class time</dt>\n<dd>2:00 PM to 3:15 PM</dd>\n<dt>Class location</dt>\n<dd>LH 247</dd>'],
+      ['<dt>Office location</dt>\n<dd>Zoom</dd>', '<dt>Office location</dt>\n<dd><a href="https://sdsu.zoom.us/j/85270281161" rel="noopener" target="_blank">Zoom</a></dd>'],
       ['<dt>Section</dt>\n<dd>57</dd>', '<dt>Section</dt>\n<dd>A1</dd>'],
       ['<dt>Class number</dt>\n<dd>3410</dd>', '<dt>Class number</dt>\n<dd>12690</dd>'],
       ['This module includes the Labor Market Analysis Report, an online quiz on plagiarism and paraphrasing, and two reflections:', 'This module includes the Labor Market Analysis Report, an in-class quiz on plagiarism and paraphrasing, and two reflections:'],
